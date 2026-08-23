@@ -1,0 +1,172 @@
+html[dir="ltr"] .item-block-2 {
+
+    flex-direction: row;
+    justify-content: left;
+  
+}
+html[dir="ltr"] .reviews-into{
+   direction: ltr !important;
+    text-align: left;
+}
+
+html[dir="ltr"] .ellips10{
+   
+    position: absolute;
+    left: -172px;
+    top: -168px;
+    width: 951px;
+    
+}  
+
+html[dir="ltr"] .yl-region{
+    direction: ltr !important;
+}
+html[dir="ltr"] .contact-into p{
+direction: ltr;
+}
+html[dir="ltr"] .order-mr{
+    direction: ltr;
+}
+ html[dir="ltr"] h1{
+ direction: ltr;
+ }  
+ 
+ html[dir="ltr"] .text-end h2 {
+    text-align: left;
+}
+ html[dir="ltr"] .text-end-2{
+
+}
+    html[dir="ltr"] .fix-wrap-whatsapp-mobile {
+        direction: ltr;
+        font-size: 15px;
+    }
+ html[dir="ltr"] .site-main-title-2 strong{
+    direction: ltr;
+    display: flex;
+    justify-content: center;
+ }
+ html[dir="ltr"] .yl-region svg {
+    position: relative;
+    left: 7px;
+    top: 2px;
+}
+html[dir="ltr"] .flag-swiss img {
+    width: 124px;
+    height: 63px;
+    position: relative;
+    top: 2px;
+    left: -4px;
+}
+html[dir="ltr"] .footer-column .whatsapp-button svg {
+    position: relative;
+    left: -9px;
+}
+html[dir="ltr"] .oleksandr-card-title{
+   direction: ltr; 
+   text-align: left;
+}
+html[dir="ltr"] .oleksandr-card-text{
+    direction: ltr; 
+    text-align: left;
+ }
+
+ html[dir="ltr"] .oleksandr-dop-text{
+    direction: ltr; 
+ }
+
+
+html[dir="ltr"] .into-header{
+    flex-direction: row;
+}
+
+html[dir="ltr"] #main-menu span {
+      font-size: 15px;
+    font-weight: 500;
+    color: #192D37;
+    text-transform: initial;
+}
+html[dir="ltr"] .menu-item-text {
+    margin-right: -4px;
+}
+
+
+html[dir="ltr"] .item-block-2 span {
+    display: block;
+    position: relative;
+    left: -3px;
+    top: -9px;
+    text-align: left;
+    padding-right: 10px;
+}
+html[dir="ltr"] .item-block-2 {
+    flex-direction: row;
+    justify-content: left;
+    padding-left: 29px;
+}
+
+html[dir="ltr"] .carousel-button-right_d3 {
+    right: -4px;
+}
+html[dir="ltr"] .carousel-block_d3 {
+ 
+    left: 57%;
+
+}
+html[dir="ltr"] .main-block-1 h1 span:nth-child(1) {
+color: #738E9F;
+    font-size: 60px;
+    font-weight: 600;
+}
+html[dir="ltr"] .main-block-1 h1 span:nth-child(2) {
+    color: #192D37;
+    margin-top: 13px;
+    font-size: 34px;
+}
+.site-main-title strong {
+
+    line-height: 27px;
+}
+
+
+html[dir="ltr"] .zakaz svg{
+    position: relative;
+    top: 1px;
+    left: 5px;
+}
+
+html[dir="ltr"] .st1 {
+    position: absolute;
+    left: auto;
+    margin-top: -51px;
+
+    right: 115px;
+}
+html[dir="ltr"] .left-work p{
+        padding-right: 22px;
+}
+
+html[dir="ltr"] .st2 {
+    left: auto;
+    margin-top: -70px;
+    right: 6px;
+}
+
+html[dir="ltr"] .st3 {
+    position: absolute;
+    right: 0;
+    margin-top: -74px;
+    left: 96px;
+}
+html[dir="ltr"] .st4 {
+    margin-top: -50px;
+    right: auto;
+    left: -3px;
+}
+
+
+html[dir="ltr"] .carusel-wrap-t {
+    margin-top: 21px;
+    padding-right: 31px;
+    text-align: left;
+}

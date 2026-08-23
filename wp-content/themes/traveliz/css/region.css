@@ -1,0 +1,1944 @@
+/* ====== Таблица цен на сыр Грюйер ====== */
+ /* горизонтальная лента */
+
+.cats_r>div{
+display: flex;
+}
+.main-block-22 h2 {
+    font-size: 60px;
+    margin-top: 81px;
+    margin-bottom: 11px;
+    position: relative;
+    line-height: 73px;
+}
+.text-end h1{
+    color: #000;
+}
+.advice-image {
+    flex-shrink: 0;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 250px;
+    height: 250px !important;
+
+}
+.flexibol-block .reviews-section{
+        margin-top: 0px;
+}
+.active-mobile{
+    display: none;
+}
+.expert{
+    overflow: hidden;
+}
+.active-otd-into{
+    overflow: hidden;
+}
+
+.reg-img-v{
+        width: 100%;
+    height: 188px;
+}
+.photo-container-1{
+    position: relative;
+    display: inline-block;
+    float: right;
+    width: auto;
+    max-width: 643px;
+    height: 493px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+
+}
+.slider-pogoda{
+    display: block !important;
+}
+.rec1.rec {
+    width: 442px;
+    height: 236px;
+}
+.rec2.rec{
+  width: 442px;
+    height: 236px;
+}
+.rec3.rec{
+width: 711px;
+    height: 495px;
+}
+.forma1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+}
+
+/* Чтобы фотография внутри контейнера заполнила маску */
+.photo-container-1 .floating-mountains {
+    width: 643px;
+    height: 100%;
+    object-fit: cover; /* Фотография масштабируется, чтобы заполнить маску */
+    display: block;
+    padding: 1px;
+}
+.photo-container-2{
+    position: relative;
+    float: left;
+    width: auto;
+    max-width: 643px;
+    height: auto;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    height: 493px;
+}
+.web-expert-into{
+    display: grid;
+    grid-template-columns: 241px 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    align-items: center;
+}
+.web-expert{
+
+    padding-top: 25px;
+    padding-bottom: 45px;
+}
+
+.holiday{
+       background: url(../img/Group-2279.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 137px;
+    display: flex;
+    align-items: center;
+    padding-left: 21%;
+    padding-right: 5%;
+    font-size: 20px;
+    margin-top: 22px;
+}
+.web-expert-into img{
+        border-radius: 100%;
+}
+.web-expert-into h3{
+        color: #000;
+    font-weight: 700;
+    font-size: 30px;
+}
+.the_web p{
+    color: #626E79;
+    line-height: 25px;
+    font-size: 18px;
+    margin-top: 18px;
+    line-height: 27px;
+}
+
+.cat-item_r{
+
+}
+.wrap-grid>div{
+    display: grid;
+    grid-template-columns: 33px 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    align-items: center;
+    padding: 0px 14px !important;
+    font-weight: 600;
+}
+.wrap-grid .pogoda{
+border-top-left-radius: 20px;
+
+}
+.wrap-flex>div{
+    display: flex;
+   
+    align-items: center;
+}
+.wrap-grid .cena{
+border-bottom-left-radius: 20px;
+} 
+.reg-img-v{
+    width: 214px;
+    height: 187px;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.dio{
+        width: 236px !important;
+    height: 231px !important;
+}
+.vibor-wrap .vibor-reg{
+    width: 231px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+    border-radius: 25px;
+}
+
+
+   .reg-img-v img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vibor-f{
+   margin-top: 96px !important;
+    left: 21px;
+}
+.wrap-pogoda img{
+  width: auto;  
+}
+.wrap-pogoda{
+    margin-top: 10px;
+}
+.one-v h3{
+    position: relative;
+    font-weight: 700;
+    line-height: 26px;
+    font-size: 22px;
+}
+.one-v p{
+color: #626E79;
+    font-weight: 500;
+    padding-top: 9px;
+}
+.wrap-pogoda>div{
+    height: 61px;
+  
+}
+.wrap-pogoda > div:nth-child(odd) {
+background-color: #F8F7FB;
+}
+
+.wrap-pogoda > div:nth-child(even) {
+
+}
+.vibor-reg2{
+    margin-top: 20px;
+}
+
+.one-v h3{
+  
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+
+}
+.vibor-reg{
+    position: relative;
+}
+.vibor-f{
+    position: absolute;
+}
+.dio{
+
+}
+.vibor-wrap .vibor-reg h3{ 
+    position: relative;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    /* text-align: left; */
+    width: 100%;
+    padding-left: 16px;
+    font-weight: 700;
+    padding-right: 16px;
+}
+.vibor-reg h3{
+position: relative;
+}
+.vibor-reg p{
+position: relative;
+}
+.сomparison_of_regions .container-4 {
+    max-width: 1219px;
+    margin: 0 auto;
+}
+.comparison_of_regions_dop_text {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: #000;
+    max-width: 900px;
+    margin: 12px auto 0;
+}
+.wrap-flex>div{
+display: flex;
+align-items: center;
+  padding: 0 20px !important;
+
+}
+.wrap-flex>div span
+{
+    font-weight: 500;
+}
+.into-cats_r{
+        padding-bottom: 24px !important; 
+}
+.dio{
+        border-radius: 20px;
+}
+.dio{
+    height: 225px;
+}
+.wrap-grid{
+    
+    position: relative;
+    top: -8px;
+
+}
+.contact{
+    padding-bottom: 97px;
+}
+.wrap-flex>div
+{
+  
+}
+.сomparison_of_regions{
+    padding-top: 67px;
+    padding-bottom: 42px;
+}
+
+    .cats-wrap_r {
+     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    border-bottom: 1px solid #e5e7eb;
+    padding-top: 45px;
+    }
+    .cats-wrap_r.dragging {
+      cursor: grabbing;
+      user-select: none;
+    }
+.wrap-pogoda{
+    margin: 11px -5px 0px !important;
+    border-right: 1px solid #EAEAEA;
+}
+    .cats-wrap_r .cats_r div {
+   
+    gap: 0px;
+    padding: 0px 0;
+    margin: 0 2px;
+    list-style: none;
+    scroll-snap-type: x mandatory;
+    }
+    .cats-wrap_r .cats_r .cat-item_r {
+ 
+    }
+    .cats-wrap_r .cats_r a {
+      display: inline-block; /* ссылка только по тексту */
+      white-space: nowrap;
+      padding: 8px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #111827;
+      background: #fff;
+      transition: .2s;
+    }
+    .cats-wrap_r .cats_r a:hover {
+      background: #111827;
+      color: #fff;
+    }
+    .cats-wrap_r .cats_r a[href*="r"] {
+      text-decoration: underline;
+    }
+    
+    .container-3{
+          max-width: 1170px;
+          margin: 0 auto;
+      }
+    /* скроллбар (необязательно) */
+    .cats-wrap_r::-webkit-scrollbar { height: 6px; }
+    .cats-wrap_r::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+.table-price {
+    padding: 80px 0 80px;
+}
+/* ====== Где остановиться в Грюйере ====== */
+.google-otel {
+    padding: 60px 0 0px;
+}
+.parking .container-4{
+position: relative;
+}
+.google-otel .container-4 {
+    position: relative;
+}
+.ellipse374{
+    position: absolute;
+    right: 50%;
+    transform: translate(50%, 0%);
+    top: -80px;
+    width: 100%;
+}
+.google-otel-into {
+    max-width: 1228px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 10px;
+    background: url(../img/Frame-2274.webp);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding-bottom: 60px;
+}
+
+.ellipse372 {
+    position: absolute;
+    right: 50%;
+    display: block;
+    top: -88px;
+    transform: translate(50%, 0%);
+    z-index: 1;
+}
+
+.google-otel-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #0B2744;
+    margin: 0 0 20px;
+}
+
+.google-otel-subtitle {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #626E79;
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.google-otel-image {
+    margin-bottom: 50px;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.google-otel-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.google-otel-cards {
+    display: flex;
+
+    gap: 24px;
+    background: #fdfdfda6;
+    padding: 40px;
+    border-radius: 32px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.google-otel-card{
+    width: 350px;
+
+}
+.google-otel-card {
+background: #FFFFFF;
+    border-radius: 24px;
+    padding: 27px 24px 9px;
+    box-shadow: 0 18px 40px rgba(15, 30, 54, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.google-otel-card:nth-child(4),
+.google-otel-card:nth-child(5) {
+    grid-column: span 1;
+}
+
+.google-otel-card:nth-child(4) {
+    grid-column: 1;
+}
+
+.google-otel-card:nth-child(5) {
+    grid-column: 3;
+}
+
+.google-otel-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0B2744;
+    margin: 0 0 12px;
+    line-height: 1.3;
+}
+
+.google-otel-card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #626E79;
+    margin: 0 0 20px;
+    flex: 1;
+}
+
+.google-otel-card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #E6EDFF;
+    color: #0B2744;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.google-otel-card-button:hover {
+    background: #D0DCFF;
+    opacity: 0.9;
+}
+
+.google-otel-card-button img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+.expert .container-4{
+position: relative;
+}
+.table-price{
+    background: url(../img/Group2206.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.elips371{
+position: absolute;
+    right: 50%;
+    margin-top: -80px;
+    /* bottom: -102px; */
+    transform: translate(50%, 0%);
+    /* top: -35px;*/
+}
+.table-price .container-4{
+    position: relative;
+}
+
+.table-into {
+max-width: 1160px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+.price-card-small-header span{
+font-size: 23px;
+}
+.price-table-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #0B2744;
+    margin: 0 0 32px;
+}
+.price-card-desc-title span{
+    font-size: 20px;
+}
+
+.price-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Верхний большой блок "Проживание" */
+.price-card-main {
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.price-card-main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 29px;
+    background: #F4EDEE;
+}
+
+.price-card-main-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0B2744;
+}
+
+.price-card-main-header-left img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+}
+
+.price-card-main-rows {
+    background: #FFFFFF;
+}
+
+.price-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(210px, 0.7fr);
+    align-items: center;
+    padding: 16px 25px;
+    border-top: 1px solid #E6E6E6;
+}
+
+.price-row-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.price-row-icon {
+    flex-shrink: 0;
+}
+
+.price-row-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    display: block;
+}
+
+.price-row-text-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #192D37;
+    margin-bottom: 6px;
+}
+
+.price-row-text-subtitle {
+    font-size: 14px;
+    color: #73808B;
+}
+
+.price-row-right {
+    text-align: right;
+    white-space: nowrap;
+    font-size: 29px;
+    font-weight: 800;
+    color: #0B2744;
+}
+
+.price-row-right span.price-period {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-left: 6px;
+}
+
+/* Нижний ряд из трёх карточек */
+.price-cards-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.price-card-small {
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.price-card-small-header {
+    padding: 20px 26px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0B2744;
+}
+
+.price-card-small-header img {
+width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.price-card-small-header--transport {
+    background: #E6EDFF;
+}
+
+.price-card-small-header--food {
+    background: #FBE4D3;
+}
+
+.price-card-small-header--extra {
+    background: #E8E9F3;
+}
+
+.price-card-small-body {
+    padding: 22px 0px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.price-card-desc-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #192D37;
+    display: flex;
+    align-items: end;
+    gap: 6px;
+}
+
+.price-card-desc-subtitle {
+    font-size: 16px;
+    color: #626E79;
+    padding-top: 8px;
+    padding-right: 11px;
+}
+.price-card-small-body>div:nth-child(1){
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.price-card-small-price {
+    margin-top: 22px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0B2744;
+    border-top: 1px solid #EAEAEA;
+    padding-top: 18px;
+    padding-left: 23px;
+    padding-right: 23px;
+
+}
+
+.price-card-small-price span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #73808B;
+    margin-left: 6px;
+}
+
+@media (max-width: 1024px) {
+    .price-row {
+        grid-template-columns: 1.5fr 1fr;
+        padding: 18px 20px;
+    }
+
+    .price-cards-bottom {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .price-table-title {
+        font-size: 28px;
+    }
+
+    .price-row {
+        grid-template-columns: 1fr 211px;
+        row-gap: 12px;
+        text-align: left;
+                padding: 7px 9px;
+    }
+    .price-row-right {
+
+    font-size: 18px;
+}
+    .price-row-text-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #192D37;
+    margin-bottom: 6px;
+}
+
+    .price-row-right {
+        text-align: right;
+    }
+}
+
+
+  .itinerary-container {
+        max-width: 100%;
+    margin: 0 auto;
+        }
+
+        /* Главный заголовок по центру */
+        .main-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 60px;
+        }
+.rout_dop_text {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: #000;
+    max-width: 900px;
+    margin: -44px auto 40px;
+}
+
+        /* --- Сетка: Таймлайн слева, Картинки справа --- */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px; /* Первая колонка тянется, вторая - фиксирована */
+            gap: 50px; /* Отступ между колонками */
+            align-items: start; /* Колонки не растягиваются по высоте */
+        }
+
+        /* Левая колонка: Таймлайн */
+        .timeline-column {
+            position: relative;
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .day-badge {
+    background-color: #f7e9b9;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #695729;
+        }
+
+        .day-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Сам таймлайн */
+        .timeline-list {
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            padding-bottom: 40px; /* Расстояние между событиями */
+        }
+
+        /* Вертикальная серая линия */
+        .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 18px;
+    bottom: 0;
+    width: 2px;
+    background-color: #E8E8E8;
+    z-index: 1;
+        }
+
+        /* Желтый кружок */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background-color: #FFCC00;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* Убираем линию у самого последнего элемента */
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .event-time {
+            font-weight: bold;
+        }
+
+        .event-time-title {
+       font-size: 21px;
+    margin: 0 0 10px 0;
+    color: #192D37;
+    font-weight: 800;
+        }
+
+        .event-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin: 0;
+        }
+
+        /* --- Правая колонка: Картинки --- */
+        .images-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Отступ между картинками */
+        }
+
+        .images-column img {
+            width: 100%;
+            height: auto; /* Высота подстраивается, картинка высокая */
+            border-radius: 20px;
+            display: block;
+            /* Твоя легкая тень: по всем углам, тонкая */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); 
+            object-fit: cover; /* Чтобы картинка заполняла место */
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 900px) {
+            .grid-layout {
+                grid-template-columns: 1fr; /* Одна колонка */
+                gap: 30px;
+            }
+            .images-column {
+                width: 100%;
+            }
+        }
+
+
+.now-carousel-title img{
+    width: 19px;
+}
+/* Нечетные элементы (1-й, 3-й, 5-й и т.д.) */
+.advice-grid > div:nth-child(odd) {
+   
+}
+
+/* Четные элементы (2-й, 4-й, 6-й и т.д.) */
+.advice-grid > div:nth-child(even) {
+   flex-direction: row-reverse;
+}
+
+.now-carousel {
+    position: relative;
+    max-width: 1227px;
+    width: 100%;
+    padding: 40px 72px;
+    box-sizing: border-box;
+    border-radius: 32px;
+   /* background: rgba(255, 255, 255, 0.72);   
+    backdrop-filter: blur(20px);
+*/
+    }
+.into-slider-pogoda{
+    position: relative;
+}
+.pod-zag-pogoda {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: #000;
+    max-width: 900px;
+    margin: 12px auto 24px;
+    position: relative;
+    z-index: 2;
+}
+.slider-pogoda{
+    position: relative;
+}
+.Ellipse523{
+    position: absolute;
+    right: 50%;
+    bottom: 185px;
+    transform: translate(50%, -54%);
+}
+.now-carousel-wrapper {
+  /* фиксированная "рабочая" высота под слайды (чуть больше, чем активный слайд) */
+  height: 430px;
+  display: flex;
+  align-items: center;
+  /* даём активной карточке "выпрыгивать" только по вертикали внутри этой области */
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  align-items: center;
+}
+
+.now-carousel-items {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  justify-content: center;
+  position: relative;
+  left: 0;
+  align-items: center;
+}
+
+.now-carousel-block {
+  /* базовая ширина всех слайдов: 173px, базовая высота 212px */
+  flex: 0 0 173px;
+  width: 173px;
+  height: 212px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  overflow: visible;
+  background: #ffffff;
+  transform-origin: center;
+  transition: height 0.3s ease,
+              opacity 0.3s ease,
+              flex-basis 0.3s ease,
+              width 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* визуально выделяем активную центральную карточку */
+.now-carousel-block.is-active {
+  /* активный слайд: ширина 294px, высота 411px */
+  flex: 0 0 294px;
+  width: 294px;
+  height: 411px;
+  opacity: 1;
+  z-index: 3;
+}
+
+.now-carousel-media {
+flex: 1 1 auto;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+    border: 7px solid #fff;
+}
+
+.now-carousel-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.now-carousel-caption h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.now-carousel-title span{
+color: #000;
+font-weight: 600;
+}
+
+.is-active .now-carousel-text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #010101;
+    display: block;
+    padding-top: 6px;
+}
+.is-active .now-carousel-caption {
+    padding: 13px;
+}
+.is-active .now-carousel-title span {
+    color: #000;
+    font-weight: 600;
+    font-size: 16px;
+}
+.is-active .now-carousel-title + strong {
+    color: #695729;
+    font-weight: 600;
+    font-size: 16px;
+}
+.now-carousel-title + strong{
+    color: #695729;
+    font-weight: 600;
+    font-size: 15px;
+    padding-left: 5px;
+}
+.now-carousel-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+.now-carousel-caption{
+        padding: 9px;
+}
+.now-carousel-text {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #666;
+  display: none;
+}
+
+.now-carousel-button-left,
+.now-carousel-button-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.slider-pogoda .container-4{
+        max-width: 1228px;
+    margin: 0 auto;
+}
+.now-carousel-button-left {
+  left: -4px;
+}
+
+.now-carousel-button-right {
+  right: 24px;
+}
+
+.slider-pogoda{
+    background: url(../img/delete1.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+        padding-top: 76px;
+    padding-bottom: 74px;
+}
+
+
+.now-carousel-button-left a,
+.now-carousel-button-right a {
+  width: 24px;
+  height: 24px;
+  position: static;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.now-carousel-button-left a {
+  background-image: url("../images/carousel-left.png");
+}
+
+.now-carousel-button-right a {
+  background-image: url("../images/carousel-right.png");
+}
+.wrap-page .reviews-section{
+    margin-top: 0px;
+}
+
+.dop-car{
+        color: #626E79;
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 46px;
+    font-weight: 600;
+}
+.table-price{
+    overflow: hidden;
+}
+
+.hero-wrapper.st210{
+    background: url(../img/cartinkafon.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 92px;
+}
+.v-1-one{
+position: relative;
+    margin-bottom: 18px;
+}
+.v-1-two{
+
+    position: relative;
+}
+.video-otziv p{
+    color: white;
+}
+.into-video-region{
+
+}
+.video-otziv{
+    display: flex;
+    align-items: center;
+}
+.v-2-one{
+    position: relative;
+    cursor: pointer;
+}
+.into-text-and-1 {
+    display: block; /* Важно: для float не используем flex! */
+    overflow: hidden; /* Очистка потока */
+    line-height: 1.6;
+    color: #333;
+}
+.rec{
+     width: 100%;
+    border-radius: 20px;
+}
+.video-otziv{
+    width: 100%;
+    position: absolute !important;
+    bottom: 0;
+    background-color: #1c1d1d8f;
+    backdrop-filter: blur(10px);
+    height: 72px;
+    z-index: 2;
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
+    padding-left: 18px;
+    padding-right: 18px;
+    
+}
+.wrap-region-v-1>div::before{
+
+}
+.v-2-one::before{
+    content: '';
+    display: none;
+    width: 58px;
+    height: 70px;
+    background: url(../img/Polygon1.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85%;
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 0%);
+    z-index: 2;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.v-2-one::after {
+    content: '';
+    background: #0303038a;
+    background-repeat: no-repeat;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border-radius: 20px;
+}
+.one-slide{
+       width: 455px;
+}
+/* Стили картинки с обтеканием */
+.floating-mountains {
+    float: right;
+    width: auto;
+    max-width: 643px;
+    height: auto;
+
+
+}
+
+/* Стили заголовка */
+.text-end h2 {
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #000;
+}
+
+/* Стили текста */
+.text-end p {
+    margin-bottom: 20px;
+    font-size: 18px;
+ 
+}
+.text-end-2 p {
+    margin-bottom: 20px;
+    font-size: 18px;
+ 
+}
+
+.into-text-and-1{
+    
+    gap: 21px;
+}
+.main-block-22{
+    position: relative;
+}
+.elips35{
+  
+position: absolute;
+    right: 50%;
+    bottom: auto;
+    top: -198px;
+    transform: translate(50%, 0%);
+}
+.short-text-and-video{
+     padding-top: 45px;
+    padding-bottom: 40px;    
+}
+.wrap-region-v-1>div::after{
+    content: '';
+    background: #0303038a;
+    background-repeat: no-repeat;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border-radius: 20px;
+}
+.short-text-and-video p{
+    font-size: 18px;
+    line-height: 26px;
+    padding-left: 0px;
+    font-weight: 400;
+    padding-right: 0px;
+}
+/* Убираем фиксированную ширину для floating-mountains, она задается отдельно */
+.into-text-and-1 img:not(.floating-mountains){
+    width: 643px;
+}
+.short-text-and-video h2{
+    color: #000 !important;
+}
+.into-text-and-2 img{
+   width: 643px;
+}
+.two-slide{
+    width: 725px;
+}
+.into-text-text {
+       
+    line-height: 28px;
+    font-size: 18px;
+    margin-top: 22px;
+    margin-bottom: 32px;
+}
+.into-text-and-video{
+ color: #626E79;
+}
+.into-text-and-2{
+    display: block;
+    overflow: hidden;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 25px;
+}
+
+/* Стили картинки с обтеканием для второго блока */
+.floating-mountains-2 {
+    float: left;
+    width: auto;
+    max-width: 643px;
+    height: auto;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    height: 493px;
+}
+.into-text-and-3{
+        margin-top: 34px;
+}
+.text-end{
+    margin-top: 24px;
+    color: #626E79;
+    line-height: 28px;
+    font-size: 18px;
+}
+.text-end-2{
+     color: #626E79;
+    line-height: 28px;
+    font-size: 18px;
+}
+.into-text-and-video h2{
+text-align: right;
+}
+.site-main{
+    text-align: center;
+}
+.main-block-22{
+color: #fff;
+    text-align: center;
+}
+.yl-region{
+    background: linear-gradient(254.44deg, #F3D17B 10.01%, #FFECB4 47.46%, #F3D17B 87.94%);
+    color: #695729;
+    font-weight: 700;
+    width: 328px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 54px;
+    margin: 0 auto;
+    transition: all 0.3s ;
+}
+.text-end-2{
+        padding-top: 0px;
+}
+
+.yl-region:hover{
+    opacity: .8;
+}
+.main-block-22 h1{
+    font-size: 60px;
+    margin-top: 81px;
+    margin-bottom: 11px;
+    position: relative;
+}
+.yl-region{
+    position: relative;
+}
+.site-main-title-2{
+    position: relative;
+}
+.main-block-22 span{
+    display: block;
+}
+.main-block-22{
+    font-size: 20px;
+}
+.yl-region svg{
+    position: relative;
+    left: -5px;
+    top: 2px;
+}
+.yl-region{
+    margin-top: 26px;
+}
+
+/* Блок "Советы от эксперта" */
+.advice {
+    padding: 76px 0 74px;
+}
+
+.into-advice {
+    max-width: 1228px;
+    margin: 0 auto;
+}
+
+.advice-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #000;
+    text-align: center;
+    margin: 0 0 50px;
+}
+
+.advice-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px 60px;
+}
+
+.advice-item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    align-items: center;
+}
+
+.advice-image {
+    flex-shrink: 0;
+
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.advice-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.advice-content {
+      flex: 1;
+    border-bottom: 1px solid #E9E9E9;
+    padding-bottom: 29px;
+}
+
+.advice-content h3 {
+
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 10px;
+
+
+    font-weight: 700;
+
+    font-size: 24px;
+
+    line-height: 31px;
+
+}
+.active-otd-banner{
+    background: url(../img/Rectangle28.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.advice-content p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #626E79;
+    margin: 0;
+}
+.flexibol-block + .reviews-section{
+        margin-top: 0px;
+}
+/* ====== Активный отдых и развлечения (десктоп) ====== */
+.active-otd {
+padding: 72px 0 72px;
+
+}
+.click{
+right: 50%;
+    bottom: 51%;
+    transform: translate(50%, 0%);
+    position: absolute;
+    background: url(../img/Polygon1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 4;
+    width: 60px;
+    height: 60px;
+
+}
+.active-otd-into {
+    max-width: 1228px;
+    margin: 0 auto;
+}
+
+.active-otd-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #0B2744;
+    margin: 0 0 40px;
+}
+
+.active-otd-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 28px;
+    margin-bottom: 40px;
+    margin-top: 32px;
+        padding: 0px 29px;
+}
+
+.active-otd-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    border-radius: 24px;
+    background: #FFFFFF;
+    box-shadow: 0 18px 40px rgba(15, 30, 54, 0.08);
+}
+
+.active-otd-image {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: none;
+}
+
+.active-otd-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.active-otd-content {
+    flex: 1;
+}
+
+.active-otd-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0B2744;
+    margin: 0 0 10px;
+}
+
+.active-otd-card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #626E79;
+    margin: 0;
+}
+
+.active-otd-banner {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+  height: 159px;
+}
+
+.active-otd-banner-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+.active-otd-banner-content p {
+max-width: 830px;
+    margin: 27px 81px 0px auto;
+    font-size: 21px;
+    font-weight: 600;
+    color: white;
+    line-height: 38px;
+}
+
+/* ====== Мнение эксперта (десктоп) ====== */
+.expert {
+    padding: 88px 0 90px;
+    background: url(../img/expert/Frame21721.webp) no-repeat center top;
+
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
+
+.expert-into {
+    max-width: 1228px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.expert-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    color: #0B2744;
+    margin: 0 0 36px;
+}
+
+.expert-card {
+    background: #FFFFFF;
+    border-radius: 32px;
+    padding: 40px 48px 32px;
+    box-shadow: 0 26px 60px rgba(15, 30, 54, 0.18);
+}
+
+.expert-main {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 0px;
+    align-items: self-start;
+    margin-bottom: 28px;
+}
+
+.expert-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.expert-photo {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.expert-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.expert-name {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0B2744;
+}
+
+.expert-role {
+    margin: 0 0 6px;
+    font-size: 17px;
+    color: #626E79;
+    font-weight: 500;
+}
+.marshrut-w{
+    color: #626E79;
+    font-size: 18px;
+    width: 261px; 
+}
+.expert-stat {
+    margin: 0;
+    font-size: 16px;
+    color: #0B2744;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+}
+.expert-quote{
+    text-align: center;
+}
+.expert-quote-wrap {
+    position: relative;
+
+    padding: 0 60px;
+    top: 25px;
+}
+
+.expert-quote-marks {
+    position: absolute;
+    top: -16px;
+    width: 44px;
+    height: 44px;
+}
+
+.expert-quote-marks--left {
+    left: 0;
+}
+
+.expert-quote-marks--right {
+    right: 0;
+    top: auto;
+    bottom: -6px;
+}
+
+.expert-quote-marks img {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+.expert-stat img{
+        position: relative;
+    top: 5px;
+    padding-right: 7px;
+}
+.expert-quote p {
+    font-size: 21px;
+    line-height: 27px;
+    color: #192D37;
+    margin: 0;
+    font-style: oblique;
+}
+.marshrut-w strong{
+color: #192D37;
+    font-size: 18px;
+}
+
+.expert-text {
+font-size: 18px;
+    line-height: 1.7;
+    color: #626E79;
+    margin-top: 48px;
+    padding-left: 68px;
+
+  
+}
+.expert-bottom-card{
+
+}
+.expert-bottom-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 19px;
+}
+
+.expert-bottom-card {
+    background: #f8faff00;
+    border-radius: 24px;
+    padding: 22px 24px 24px;
+    gap: 16px;
+    box-shadow: 0 1px 14px rgba(0, 0, 0, 0.08);
+}
+
+.expert-bottom-icon {
+    flex-shrink: 0;
+
+}
+.expert-bottom-icon h4{
+    color: #192D37;
+    font-weight: 700;
+    font-size: 18px;
+}
+.expert-bottom-icon{
+      display: flex;
+    gap: 9px;
+}
+.expert-bottom-icon img {
+width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.expert-bottom-content h4 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0B2744;
+}
+
+.expert-bottom-content p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #626E79;
+    margin-top: 15px;
+}
+
+/* ====== Где можно припарковаться в деревне Грюйер ====== */
+.parking {
+    padding: 80px 0 90px;
+background: url(../img/Group-2269.webp);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}
+
+.parking-into {
+    max-width: 1228px;
+    margin: 0 auto;
+}
+
+.parking-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #0B2744;
+    margin: 0 0 20px;
+}
+
+.parking-subtitle {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #626E79;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.parking-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.parking-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: 0 18px 40px rgba(15, 30, 54, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.parking-card-icon {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.parking-card-icon img {
+    width: auto;
+    height: auto;
+
+
+    max-width: 120px;
+    object-fit: contain;
+    display: block;
+}
+
+.parking-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0B2744;
+    margin: 0 0 12px;
+    line-height: 1.3;
+}
+
+.parking-card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #626E79;
+    margin: 0 0 20px;
+    flex: 1;
+    font-weight: 500;
+}
+
+.parking-card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+   background: linear-gradient(254.44deg, #BDDAED 10.01%, #DEEEFF 47.46%, #C9D8E4 87.94%);
+
+    color: #0B2744;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    width: fit-content;
+}
+
+.parking-card-button:hover {
+
+    opacity: 0.8;
+}
+
+.parking-card-button img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+@media (max-width: 500px) { 
+    .Ellipse523 {
+        position: absolute;
+        right: 50%;
+        bottom: 0px;
+        transform: translate(50%, -146%);
+        display: block !important;
+        width: 340px;
+        height: 300px;
+       
+        z-index: 2;
+    }
+    .active-otd-into {
+        overflow: hidden;
+        padding-bottom: 35px;
+    }
+ }

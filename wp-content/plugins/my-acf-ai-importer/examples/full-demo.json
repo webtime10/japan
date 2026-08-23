@@ -1,0 +1,657 @@
+{
+  "sections": [
+    {
+      "layout": "text_country",
+      "data": {
+        "title": "О стране и регионе",
+        "text": "<p>Подробное введение о стране: климат, культура, лучшее время для поездки и общие впечатления от региона.</p>",
+        "image": "https://picsum.photos/900/600?random=501",
+        "text_2": "<p>Дополнительный блок: логистика, транспорт, виза и практические советы для комфортного путешествия.</p>"
+       
+      }
+    },
+    {
+      "layout": "regions_comparison",
+      "data": {
+        "title": "Сравнение регионов для поездки",
+        "left_title": "Выберите регион для путешествия",
+        "left_subtitle": "Сравните ключевые направления по важным критериям отдыха.",
+        "label_weather": "Погода в сезон",
+        "label_entertainment": "Развлечения и досуг",
+        "label_transport": "Транспорт и логистика",
+        "label_kids": "Развлечения для детей",
+        "label_price": "Уровень цен и бюджет",
+        "items": [
+          {
+            "city": "Цюрих",
+            "weather": "Умеренный климат, мягкая зима в долине.",
+            "entertainment": "Музеи, концерты, набережная Лиммата, фестивали.",
+            "transport": "Отличное ж/д и трамваи, проездные на всю сеть.",
+            "kids": "Парк и зоопарк, научные музеи с интерактивом.",
+            "price": "Высокий уровень цен в центре и на набережной."
+          },
+          {
+            "city": "Женева",
+            "weather": "Озеро смягчает климат круглый год очень мягко.",
+            "entertainment": "Прогулки у Женевского озера, выставки, старый город.",
+            "transport": "Трамваи и автобусы, велодорожки вдоль воды.",
+            "kids": "Пляжные зоны, парки у променада, лодочные прогулки.",
+            "price": "Выше среднего, но есть недорогие кварталы."
+          },
+          {
+            "city": "Люцерн",
+            "weather": "Горный воздух и озеро, комфортно летом и осенью.",
+            "entertainment": "Круизы по озеру, мост Капелльбрюкке, стены старого города.",
+            "transport": "Пешком по центру, поезда в сторону Альп близко.",
+            "kids": "Паровые корабли, зоопарк и канатка на смотровую.",
+            "price": "Средний и выше среднего в туристический сезон."
+          },
+          {
+            "city": "Интерлакен",
+            "weather": "Ясные дни в горах, прохладнее вечером на высоте.",
+            "entertainment": "Параглайдинг, походы, ж/д на Юнгфрауйох с видами.",
+            "transport": "Связка поездов Bern–Spiez–Interlaken очень удобная.",
+            "kids": "Легкие тропы, озёрные пляжи, аттракционы у воды.",
+            "price": "Туристический регион с пиком цен в июле и августе."
+          },
+          {
+            "city": "Кантон Берн",
+            "weather": "Континентальный климат, чистый воздух в городе.",
+            "entertainment": "ЮНЕСКО-центр, аркады, фонтаны средневековья.",
+            "transport": "Хаб поездов к Альпам и к западу страны без пересадок.",
+            "kids": "Медвежий ров, медвежий парк, музеи с детскими зонами.",
+            "price": "Спокойнее по отелям, чем Цюрих и Женева в пик."
+          },
+          {
+            "city": "Базель",
+            "weather": "Тёплее зимой чем в Альпах, дождливые осенние дни.",
+            "entertainment": "Kunstmuseum, Рейн, рождественский базар в декабре.",
+            "transport": "Трамваи и поезда, аэропорт рядом для пересадок.",
+            "kids": "Зоопарк среди лучших в Европе по отзывам гостей.",
+            "price": "Средний плюс, конференц-город поднимает цены на жильё."
+          },
+          {
+            "city": "Лозанна",
+            "weather": "Виноградники и озеро дают мягкий средиземноморский оттенок.",
+            "entertainment": "Олимпийский музей, набережная Уши, винные терассы.",
+            "transport": "Метро M1/M2 и поезда к горным курортам недалеко.",
+            "kids": "Пляжные зоны озера, музей без жёсткого формата экскурсий.",
+            "price": "Студенческий город, но вид на озеро дорожает в сезон."
+          },
+          {
+            "city": "Лугано",
+            "weather": "Теплее остальной Швейцарии, зимы короче и мягче.",
+            "entertainment": "Озеро Лугано, площади, итальянская кухня и кофе.",
+            "transport": "Пароходы, фуникулёр Монте Бре, парковки на холмах.",
+            "kids": "Пляжи, парк Сьяни, короткие паромные переправы.",
+            "price": "Курортная зона, смотрите отели заранее на выходные."
+          },
+          {
+            "city": "Церматт",
+            "weather": "Альпийский микроклимат, солнце высоко даже зимой.",
+            "entertainment": "Лыжи и сноуборд, трассы с видом на Матерхорн.",
+            "transport": "Без машин в деревне, электро-такси и шаттлы главные.",
+            "kids": "Лыжная школа, санные трассы, безопасные зелёные склоны.",
+            "price": "Очень высокий сегмент отелей в зимний пиковый сезон."
+          },
+          {
+            "city": "Гриндельвальд",
+            "weather": "Снежные зимы, прохладное лето идеально для походов.",
+            "entertainment": "Канатки на Айгер, виды на трёхтысячники круглый год.",
+            "transport": "Поезд WAB из Интерлакена, парковки у въезда в долину.",
+            "kids": "Альпийский игольный курс, троллей для начинающих, зоопарк.",
+            "price": "Горнолыжка и жильё дороги, бронируйте пакеты заранее."
+          },
+          {
+            "city": "Монтрё",
+            "weather": "Лазурный берег озера, мягкие весны и тёплые лета.",
+            "entertainment": "Фестиваль джаза летом, замок Шильон, винные тропы.",
+            "transport": "GoldenPass поезда, лодки по Женевскому озеру часто.",
+            "kids": "Замок как история с аудиогидом, променад без машин.",
+            "price": "Премиальные отели на берегу, есть апарты чуть дальше."
+          },
+          {
+            "city": "Санкт-Мориц",
+            "weather": "Солнечно зимой благодаря высоте и сухому воздуху.",
+            "entertainment": "Гольф летом, беговые лыжи зимой, люкс-шопинг.",
+            "transport": "Ледниковый экспресс и региональные поезда Ретийских ж/д.",
+            "kids": "Лыжные детсады, санки, горячие бассейны в отелях.",
+            "price": "Топовый ценник в мире горнолыжного люкса."
+          },
+          {
+            "city": "Шаффхаузен",
+            "weather": "Север страны чуть прохладнее, туман редкий у Рейна.",
+            "entertainment": "Рейнский водопад, средневековый центр, винные бары.",
+            "transport": "Поезд до Цюриха около часа, парковки у водопада.",
+            "kids": "Лодка к водопаду, безопасные смотровые площадки с перилами.",
+            "price": "Дневной визит бюджетен, ночёвки скромнее курортов Альп."
+          },
+          {
+            "city": "Кур",
+            "weather": "Долина в кантоне Граубюнден, много солнца зимой часто.",
+            "entertainment": "Старейший город страны, музеи, выход к скачкам Альбулы.",
+            "transport": "Старт Bernina и Glacier Express, замечательные виды из окна.",
+            "kids": "Короткие круги по старому городу, игровые площади у Рейна.",
+            "price": "Средний уровень вне этапов крупных фестивалей и авторалли."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "our_experience",
+      "data": {
+        "title": "Опыт команды и проверенные маршруты",
+        "items": [
+          {
+            "title": "Город за два дня без спешки",
+            "text": "Маршрут с упором на пешие прогулки и кафе с видом в историческом центре.",
+            "image": "https://picsum.photos/640/420?random=511"
+          },
+          {
+            "title": "Озеро и горы в одной поездке",
+            "text": "Сочетаем водную прогулку и подъем на смотровую без ранних подъемов.",
+            "image": "https://picsum.photos/640/420?random=512"
+          },
+          {
+            "title": "Семейный маршрут с детьми",
+            "text": "Короткие переезды, игровые зоны и предсказуемый распорядок дня.",
+            "image": "https://picsum.photos/640/420?random=513"
+          },
+          {
+            "title": "Бюджетный вариант выходного дня",
+            "text": "Общественный транспорт, рынки и бесплатные пешеходные зоны.",
+            "image": "https://picsum.photos/640/420?random=514"
+          },
+          {
+            "title": "Комфорт-пакет с гидом",
+            "text": "Персональные пояснения и пропуск к ключевым локациям без очередей.",
+            "image": "https://picsum.photos/640/420?random=515"
+          }
+        ]
+      }
+    },
+    {
+      "layout": "city",
+      "data": {
+        "title": "Города рядом с маршрутом",
+        "items": [
+          {
+            "title": "Базель",
+            "text": "Художественные музеи и река Рейн с красивыми мостами."
+          },
+          {
+            "title": "Лозанна",
+            "text": "Озеро Женева, Олимпийский музей и винные террасы."
+          },
+          {
+            "title": "Лугано",
+            "text": "Итальянское настроение, пальмы и горное озеро."
+          },
+          {
+            "title": "Санкт-Галлен",
+            "text": "Барокко библиотеки и спокойные улочки старого города."
+          },
+          {
+            "title": "Констанц",
+            "text": "Пограничный город для шопинга и прогулок у воды."
+          },
+          {
+            "title": "Церматт",
+            "text": "Пеший курорт у подножия Маттерхорна с альпийскими тропами."
+          },
+          {
+            "title": "Апенцелль",
+            "text": "Традиционная архитектура и дегустации в кантоне восточных Альп."
+          },
+          {
+            "title": "Невшатель",
+            "text": "Озеро, замок и винодельни на тихих террасах к югу от Юра."
+          },
+          {
+            "title": "Сион",
+            "text": "Столица Валле с холмами и замками над крытыми улочками."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "where_to_stay",
+      "data": {
+        "title": "Where to stay in Gruyeres - and what's family-friendly?",
+        "lead_text": "A holiday in Gruyeres is an excellent choice for a family vacation. In the evening, the village quiets down, the landscape becomes soft and tranquil, and in the morning, you can enjoy a pleasant stroll in near-total solitude.",
+        "items": [
+          {
+            "title": "Au Soleil de Gruyeres, chez Chantal",
+            "text": "Rural and well maintained rooms with excellent hosts."
+          },
+          {
+            "title": "Le Saint Georges",
+            "text": "A central boutique option with easy access to the castle and old town restaurants."
+          },
+          {
+            "title": "Hotel de Ville",
+            "text": "Comfortable family rooms and a quiet atmosphere near the pedestrian streets."
+          },
+          {
+            "title": "Gruyere Rooms",
+            "text": "Simple, clean accommodation for travelers who plan active day trips around the region."
+          },
+          {
+            "title": "La Fleur de Lys",
+            "text": "Traditional Swiss style interiors and scenic views of the hills around Gruyeres."
+          },
+          {
+            "title": "Maison du Bourg",
+            "text": "A practical choice for short stays with convenient parking and walkable locations."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "attractions",
+      "data": {
+        "title": "Достопримечательности и точки интереса",
+        "items": [
+          {
+            "title": "Историческая набережная города",
+            "text": "Прогулка вдоль воды с видом на старинные фасады.",
+            "button_text": "Подробнее о маршруте",
+            "button_link": "https://example.com/attractions/waterfront"
+          },
+          {
+            "title": "Смотровая площадка над долиной",
+            "text": "Панорама Альп и озера при хорошей погоде.",
+            "button_text": "Купить билет онлайн",
+            "button_link": "https://example.com/attractions/viewpoint"
+          },
+          {
+            "title": "Крепость и музей под открытым небом",
+            "text": "Экспозиция для снимков и понимания истории региона.",
+            "button_text": "Расписание экскурсий",
+            "button_link": "https://example.com/attractions/fort"
+          },
+          {
+            "title": "Ботанический сад и оранжерея",
+            "text": "Спокойное место для отдыха между активными блоками дня.",
+            "button_text": "Открыть карту парка",
+            "button_link": "https://example.com/attractions/garden"
+          },
+          {
+            "title": "Рынок местных продуктов",
+            "text": "Сыры, выпечка и сезонные фрукты для пикника.",
+            "button_text": "Часы работы рынка",
+            "button_link": "https://example.com/attractions/market"
+          }
+        ]
+      }
+    },
+    {
+      "layout": "seasons_line",
+      "data": {
+        "title": "Климат по месяцам для планирования",
+        "jan_title": "Январь холодный",
+        "jan_subtitle": "Зимние прогулки",
+        "jan_text": "Снег в горах, город спокойный, меньше туристов в будни.",
+        "feb_title": "Февраль морозный",
+        "feb_subtitle": "Горные склоны",
+        "feb_text": "Отлично для лыж и зимних фестивалей в регионе.",
+        "mar_title": "Март переменчивый",
+        "mar_subtitle": "Конец зимы",
+        "mar_text": "Смесь солнца и дождя, начинается цветение в долинах.",
+        "apr_title": "Апрель свежий",
+        "apr_subtitle": "Весенние цветы",
+        "apr_text": "Теплее днем, еще может быть прохладно вечером у воды.",
+        "may_title": "Май мягкий",
+        "may_subtitle": "Длинный световой день",
+        "may_text": "Идеально для походов и первых купаний в озере.",
+        "jun_title": "Июнь тёплый",
+        "jun_subtitle": "Начало лета",
+        "jun_text": "Фестивали на открытом воздухе и зеленые террасы.",
+        "jul_title": "Июль жаркий",
+        "jul_subtitle": "Пик туристов",
+        "jul_text": "Бронируйте жилье заранее, много событий и экскурсий.",
+        "aug_title": "Август теплый",
+        "aug_subtitle": "Летний сезон",
+        "aug_text": "Купание, лодки и прогулки до позднего вечера.",
+        "sep_title": "Сентябрь золотой",
+        "sep_subtitle": "Бархатный сезон",
+        "sep_text": "Комфортная погода и меньше очередей в музеях.",
+        "oct_title": "Октябрь яркий",
+        "oct_subtitle": "Осенние краски",
+        "oct_text": "Фотоальбом из парков и виноградников на склонах.",
+        "nov_title": "Ноябрь спокойный",
+        "nov_subtitle": "Низкий сезон",
+        "nov_text": "Подходит для музеев и гастрономии без толпы.",
+        "dec_title": "Декабрь праздничный",
+        "dec_subtitle": "Ярмарки и огни",
+        "dec_text": "Рождественские рынки и уютные улицы центра."
+      }
+    },
+    {
+      "layout": "price_table",
+      "data": {
+        "title": "Ориентиры по бюджету поездки",
+        "top_input": "Проживание в отеле",
+        "top_image": null,
+
+        "bb1_top": "Транспорт автомобильный",
+        "bb1_middle": "Аренда автомобиля эконом",
+        "bb1_extra": "Страховка и топливо включайте отдельно.",
+        "bb1_price": "от 55 EUR",
+        "bb1_day": "за сутки",
+
+        "bb2_top": "Питание и кафе",
+        "bb2_middle": "Средний чек на двоих",
+        "bb2_extra": "Завтрак в отеле или рынок по утрам.",
+        "bb2_price": "от 40 EUR",
+        "bb2_day": "за день",
+
+        "bb3_top": "Дополнительные траты",
+        "bb3_middle": "Парковки в центре",
+        "bb3_extra": "Проверяйте зоны оплаты и выходные тарифы.",
+        "bb3_price": "от 12 EUR",
+        "bb3_day": "за день",
+
+        "items": [
+          {
+            "title": "Бюджетный отель у вокзала",
+            "input": "Рейтинг 3.9",
+            "input_2": "из пяти",
+            "price": "от 45 EUR",
+            "night": "за ночь",
+            "image_1": null,
+            "image_2": null
+          },
+          {
+            "title": "Отель комфорт в центре",
+            "input": "Рейтинг 4.4",
+            "input_2": "из пяти",
+            "price": "от 95 EUR",
+            "night": "за ночь",
+            "image_1": null,
+            "image_2": null
+          }
+        ]
+      }
+    },
+    {
+      "layout": "route_one_day",
+      "data": {
+        "section_title": "Примерный маршрут на 2 дня",
+        "days": [
+          {
+            "badge": "день 1",
+            "subtitle": "— Старый город, музеи и набережная",
+            "timeline": [
+              {
+                "time": "08:30",
+                "text": "Завтрак в отеле или кофе на террасе с видом на реку."
+              },
+              {
+                "time": "10:15",
+                "text": "Пешеходная экскурсия по историческому центру и главной площади."
+              },
+              {
+                "time": "13:00",
+                "text": "Обед из местной кухни в проверенном семейном ресторане."
+              },
+              {
+                "time": "15:30",
+                "text": "Музей или галерея по интересам группы без спешки."
+              },
+              {
+                "time": "18:45",
+                "text": "Набережная, фото на закате и спокойная прогулка обратно."
+              }
+            ],
+            "photos": [
+              { "photo": "https://picsum.photos/800/600?random=551" },
+              { "photo": "https://picsum.photos/800/600?random=552" }
+            ]
+          },
+          {
+            "badge": "день 2",
+            "subtitle": "— Озеро, подъём на смотровую и ужин в новом районе",
+            "timeline": [
+              {
+                "time": "09:00",
+                "text": "Спокойный завтрак и выезд к пристани для короткой водной прогулки."
+              },
+              {
+                "time": "11:30",
+                "text": "Фуникулёр или канатная дорога на смотровую над городом."
+              },
+              {
+                "time": "14:00",
+                "text": "Обед в местном бистро без фиксированного меню — сезонные блюда."
+              },
+              {
+                "time": "17:00",
+                "text": "Свободное время для шопинга или второго музея по желанию."
+              },
+              {
+                "time": "19:30",
+                "text": "Ужин во дворике или на крыше с видом на огни города."
+              }
+            ],
+            "photos": [
+              { "photo": "https://picsum.photos/800/600?random=553" },
+              { "photo": "https://picsum.photos/800/600?random=554" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "layout": "expert",
+      "data": {
+        "title": "Expert notes from real trip",
+        "photo": null,
+        "name": "Marina Orlova",
+        "role": "Traveler and guide",
+        "quote": "In September 2023, I visited Gruyeres, Switzerland, and it felt like a movie set come to life: the sound of bells echoing through the hills, the aroma of fresh cheese wafting through the medieval gates - everything exudes authenticity. Yet Gruyeres is incredibly family-friendly.",
+        "text": "For families traveling with children, Gruyeres offers a rare combination of culture and entertainment without becoming overwhelming. You can explore the Chateau de Gruyeres in less than two hours, then head to the La Maison du Gruyere cheese factory, where the production process is transformed into a fascinating interactive experience. Afterward, stroll through the cozy streets of the old town or enjoy the natural surroundings.",
+        "stat_value": "560+",
+        "stat_label": "routes compiled",
+        "item_1_title": "What did you particularly like?",
+        "item_1_text": "A funicular ride to Mont Moleson: the open meadows and views of Lake Geneva are breathtaking. And in the evening, when the crowds thin out, the old town of Gruyeres takes on a special quiet and fairytale atmosphere.",
+        "item_2_title": "Helpful advice",
+        "item_2_text": "If you're planning a climb to the Old Town, wear comfortable shoes - the cobbled streets are quite steep. And be sure to try the fondue at Le Chalet: a cozy spot with a stunning view and an authentic taste of the region.",
+        "item_3_title": "Result",
+        "item_3_text": "Gruyeres is a vibrant and rich Swiss hilltop experience: a castle, traditional cuisine, nature, and coziness. I recommend it to anyone looking for a true Swiss experience."
+      }
+    },
+    {
+      "layout": "advice",
+      "data": {
+        "title": "Полезные советы путешественникам",
+        "items": [
+          {
+            "title": "Транспорт и билеты заранее",
+            "text": "Проездные и онлайн-билеты экономят время в пиковые часы."
+          },
+          {
+            "title": "Погода и слой одежды",
+            "text": "Возьмите ветровку и легкий дождевик даже летом в горах."
+          },
+          {
+            "title": "Документы и резервные копии",
+            "text": "Скан паспорта в облаке помогает при потере кошелька."
+          },
+          {
+            "title": "Питание и вода с собой",
+            "text": "Бутылка для воды снижает расходы и удобна на тропах."
+          },
+          {
+            "title": "Отдых между блоками дня",
+            "text": "Планируйте час без планов для кофе и спонтанных открытий."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "section_expert_advice_new",
+      "data": {
+        "heading": "Советы экспертов перед поездкой в Цюрих",
+        "items": [
+          {
+            "title": "Покупайте Zurich Card на 24 или 72 часа",
+            "text": "Карта покрывает большинство переездов по городу и часто дает скидки в музеи. Для короткой поездки это обычно выгоднее разовых билетов."
+          },
+          {
+            "title": "Бронируйте рестораны в центре заранее",
+            "text": "В пятницу и субботу хорошие места у набережной и в старом городе быстро заполняются. Онлайн-бронирование сэкономит время вечером."
+          },
+          {
+            "title": "Планируйте подъем на Утлиберг по погоде",
+            "text": "Лучшие виды открываются утром или перед закатом в ясный день. Если пасмурно, перенесите подъем и замените его музеями в центре."
+          },
+          {
+            "title": "Используйте офлайн-карты и точки встречи",
+            "text": "В старом городе легко потеряться в переулках, особенно вечером. Заранее сохраните 2-3 точки встречи для всей группы."
+          },
+          {
+            "title": "Оставляйте вечер без плотного графика",
+            "text": "Цюрих удобен для спонтанных прогулок у воды и по кварталам с кафе. Час свободного времени делает маршрут комфортнее и живее."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "active",
+      "data": {
+        "title": "Активный отдых и природные локации",
+        "bottom_text": "Учитывайте прогноз и физическую подготовку группы перед выбором блока.",
+        "items": [
+          {
+            "title": "Пеший маршрут средней сложности",
+            "text": "Около восьми километров с подъемом и смотровой на полпути маршрута."
+          },
+          {
+            "title": "Велопрогулка вдоль озера",
+            "text": "Ровная трасса, прокат велосипедов и остановки на пляжах."
+          },
+          {
+            "title": "Каяк или лодка по спокойной воде",
+            "text": "Инструктаж для новичков и спасательные жилеты включены в аренду."
+          },
+          {
+            "title": "Канатная дорога на смотровую",
+            "text": "Быстрый подъем с панорамой долины для фото и короткого отдыха."
+          },
+          {
+            "title": "Легкая тропа для семей с детьми",
+            "text": "Игровые площадки и кафе у финиша маршрута без крутых склонов."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "parking",
+      "data": {
+        "title": "Parking in Zurich: convenient options near key attractions",
+        "subtitle": "Practical parking locations for city walks, museums, and Old Town visits.",
+        "footer_text": "Always check local payment signs, time limits, and low-emission zone requirements before leaving your car.",
+        "items": [
+          {
+            "title": "Parkhaus Urania",
+            "text": "Central covered parking with quick walking access to Bahnhofstrasse and the Old Town area.",
+            "map_link": "https://maps.google.com/?q=47.3721,8.5390",
+            "button_label": "Open parking route"
+          },
+          {
+            "title": "Parkhaus Hohe Promenade",
+            "text": "Good option for visits to Kunsthaus and nearby viewpoints; usually quieter in the morning.",
+            "map_link": "https://maps.google.com/?q=47.3701,8.5482",
+            "button_label": "Show driving directions"
+          },
+          {
+            "title": "Sihlquai Parking (near HB)",
+            "text": "Useful for travelers arriving by train and switching to a rental car for day trips.",
+            "map_link": "https://maps.google.com/?q=47.3782,8.5369",
+            "button_label": "View parking map"
+          },
+          {
+            "title": "Opernhaus Parking",
+            "text": "Convenient for Lake Zurich promenade and opera district, with easy pedestrian exits.",
+            "map_link": "https://maps.google.com/?q=47.3662,8.5476",
+            "button_label": "Check entry details"
+          },
+          {
+            "title": "Park + Ride Altstetten",
+            "text": "Budget-friendly park-and-ride choice with fast tram connections to the city center.",
+            "map_link": "https://maps.google.com/?q=47.3915,8.4896",
+            "button_label": "Public transport connection"
+          }
+        ]
+      }
+    },
+    {
+      "layout": "faq",
+      "data": {
+        "title": "Ответы на частые вопросы гостей",
+        "items": [
+          {
+            "question": "Какое лучшее время для поездки в этот регион?",
+            "answer": "Май и сентябрь дают комфортную погоду и меньше толпы у достопримечательностей."
+          },
+          {
+            "question": "Нужен ли личный автомобиль для программы?",
+            "answer": "Нет, большинство точек доступны на поездах и трамваях с проездным билетом."
+          },
+          {
+            "question": "Подходит ли маршрут семьям с детьми?",
+            "answer": "Да, можно сократить дистанции и добавить парки без крутых подъемов."
+          },
+          {
+            "question": "Как заранее бронировать жилье и экскурсии?",
+            "answer": "Рекомендуем фиксировать жилье за месяц в высокий сезон и билеты онлайн."
+          },
+          {
+            "question": "Что делать при резком ухудшении погоды?",
+            "answer": "Запасной план с музеем, термами или крытым рынком спасет маршрутный день."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "tourist_reviews",
+      "data": {
+        "title": "Reviews from tourists",
+        "items": [
+          {
+            "photo": null,
+            "name": "Louise",
+            "text": "Zurich is the largest city in Switzerland and an important financial center in Europe. It is known for its clean streets, beautiful old town, and high quality of life. The city is located on the shores of Lake Zurich and surrounded by mountains, which makes it very scenic."
+          },
+          {
+            "photo": null,
+            "name": "Daniel",
+            "text": "I loved the mix of urban comfort and nature. In one day we walked through the Old Town, visited museums, and then enjoyed sunset views by the lake. Public transport is very easy to use, even for first-time visitors."
+          },
+          {
+            "photo": null,
+            "name": "Marta",
+            "text": "Traveling with children was surprisingly comfortable. Parks are clean, distances are manageable, and there are many family-friendly places to eat. Zurich feels safe and well organized, which makes the trip stress-free."
+          },
+          {
+            "photo": null,
+            "name": "Alex",
+            "text": "The city impressed me with punctual transport, cozy neighborhoods, and excellent food options. If you plan a short stay, focus on two or three key areas per day and leave room for spontaneous walks."
+          },
+          {
+            "photo": null,
+            "name": "Nina",
+            "text": "Our highlight was a boat ride on Lake Zurich followed by an evening walk near the river. The atmosphere is calm and elegant, and even popular places felt pleasant thanks to good city infrastructure."
+          }
+        ]
+      }
+    },
+    {
+      "layout": "editor",
+      "data": {
+        "content": "<h2>Итоговый текстовый блок страницы</h2><p>Здесь можно разместить юридические примечания, ссылки на партнеров и контакты службы поддержки.</p><ul><li>Пункт контактов для экстренной связи</li><li>Пункт политики отмены бронирования</li><li>Пункт рекомендаций по экологичному туризму</li><li>Пункт благодарности гидам и локальным жителям</li><li>Пункт призыва подписаться на рассылку новостей</li></ul>"
+      }
+    }
+  ]
+}

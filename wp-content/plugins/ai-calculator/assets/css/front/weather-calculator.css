@@ -1,0 +1,302 @@
+/* AI Calculator — Weather Calculator (BEM: .ai-wh) */
+
+.ai-wh {
+    --ai-wh-border-gradient: linear-gradient(254.44deg, #bddaed 10.01%, #deeeff 47.46%, #c9d8e4 87.94%);
+    --ai-wh-border-color: #bddaed;
+    --ai-wh-inner-bg: #faf6ef;
+    --ai-wh-text: #192d37;
+    --ai-wh-text-muted: #626e79;
+    --ai-wh-field-bg: #eef2f6;
+    --ai-wh-radius-outer: 50px;
+    --ai-wh-radius-inner: 28px;
+    --ai-wh-radius-stat: 20px;
+    --ai-wh-radius-field: 999px;
+    --ai-wh-frame-padding: 24px;
+    box-sizing: border-box;
+    padding: 60px 0 56px;
+}
+.ai-wh__label{
+	font-family: 'Heebo', sans-serif;
+}
+.ai-wh__field{
+    font-family: 'Heebo', sans-serif;
+}
+.ai-wh *,
+.ai-wh *::before,
+.ai-wh *::after {
+	box-sizing: border-box;
+}
+
+.ai-calculator-hp {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px !important;
+	height: 1px !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+}
+
+.ai-wh__inner {
+
+	margin: 0 auto;
+}
+
+.ai-wh__title {
+	margin: 0 0 24px;
+	font-size: clamp(22px, 4vw, 32px);
+	font-weight: 700;
+	line-height: 1.2;
+	text-align: center;
+	color: var(--ai-wh-text);
+}
+
+/* Outer curved frame — gradient + padding */
+.ai-wh__frame {
+	padding: var(--ai-wh-frame-padding);
+	background: var(--ai-wh-border-gradient);
+	border-radius: 20px;
+}
+
+/* Inner content area */
+.ai-wh__widget {
+    width: 100%;
+    padding: 30px 32px 20px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.ai-wh__filters {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px 20px;
+	margin-bottom: 18px;
+}
+
+.ai-wh__label {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.2;
+	color: var(--ai-wh-text-muted);
+}
+
+.ai-wh__select-wrap {
+	position: relative;
+}
+
+.ai-wh__select-wrap::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	width: 10px;
+	height: 10px;
+	border-right: 2px solid var(--ai-wh-text-muted);
+	border-bottom: 2px solid var(--ai-wh-text-muted);
+	transform: translateY(-65%) rotate(45deg);
+	pointer-events: none;
+}
+
+.ai-wh__select {
+    display: block;
+    width: 100%;
+    min-height: 63px;
+    padding: 0 44px 0 26px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--ai-wh-text);
+    background: #F6F6F6;
+    border: none;
+    border-radius: var(--ai-wh-radius-field);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.ai-wh__select:focus {
+	outline: 2px solid var(--ai-wh-border-color);
+	outline-offset: 2px;
+}
+
+.ai-wh__stats {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    overflow: hidden;
+}
+
+.ai-wh__loading {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: var(--ai-wh-radius-stat);
+    pointer-events: none;
+}
+
+.ai-wh__loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(74, 105, 134, 0.2);
+    border-top-color: #4a6986;
+    border-radius: 50%;
+    animation: ai-wh-spin 0.75s linear infinite;
+}
+
+@keyframes ai-wh-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ai-wh--loading .ai-wh__loading {
+    display: flex;
+}
+
+.ai-wh--loading .ai-wh__stats {
+    overflow: hidden;
+}
+
+.ai-wh--loading [data-ai-wh-month],
+.ai-wh--loading [data-ai-wh-region] {
+    pointer-events: none;
+    opacity: 0.65;
+}
+
+.ai-wh__stat {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--ai-wh-radius-stat);
+	min-height: 120px;
+}
+
+.ai-wh__stat--temperature {
+	min-height: 132px;
+}
+
+.ai-wh__stat-bg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	pointer-events: none;
+}
+
+.ai-wh__stat-body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: inherit;
+    padding: 18px 20px;
+}
+
+.ai-wh__stat--temperature .ai-wh__stat-body {
+    justify-content: center;
+    padding: 27px 24px 15px;
+    height: 165px;
+}
+
+.ai-wh__stat-label {
+	display: block;
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ai-wh-text);
+    color: #192D37;
+}
+
+.ai-wh__stat--temperature .ai-wh__stat-value {
+    display: block;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #4a6986;
+    margin-top: 12px;
+}
+
+
+.ai-wh__stat-row {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 12px;
+}
+
+.ai-wh__stat-row .ai-wh__stat {
+	min-height: 134px;
+}
+
+.ai-wh__stat-row .ai-wh__stat-value {
+	font-size: 31px;
+    font-weight: 600;
+}
+
+.ai-wh__stat-row .ai-wh__stat-label {
+	font-size: 18px;
+	margin-bottom: 4px;
+}
+
+.ai-wh__stat--on-dark .ai-wh__stat-label,
+.ai-wh__stat--on-dark .ai-wh__stat-value {
+	color: #fff;
+}
+
+.ai-wh__stat--on-dark::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: linear-gradient(180deg, rgba(0, 40, 20, 0.15) 0%, rgba(0, 50, 25, 0.45) 100%);
+	pointer-events: none;
+}
+
+.ai-wh__stat--on-dark .ai-wh__stat-body {
+	z-index: 1;
+}
+
+@media (max-width: 680px) {
+	.ai-wh {
+		padding: 32px 0;
+		--ai-wh-frame-padding: 16px;
+		--ai-wh-radius-outer: 28px;
+		--ai-wh-radius-inner: 20px;
+	}
+
+	.ai-wh__title {
+		margin-bottom: 18px;
+	}
+
+	.ai-wh__widget {
+		padding: 16px 14px 14px;
+	}
+
+	.ai-wh__filters {
+		grid-template-columns: 1fr;
+		gap: 14px;
+	}
+
+	.ai-wh__stat-row {
+		grid-template-columns: 1fr;
+	}
+
+	.ai-wh__stat--temperature .ai-wh__stat-value {
+		font-size: 34px;
+	}
+
+	.ai-wh__stat-row .ai-wh__stat-value {
+		font-size: 26px;
+	}
+}

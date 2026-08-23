@@ -1,0 +1,92 @@
+.ai-db-dump {
+	max-width: 100%;
+	margin: 24px 0;
+	padding: 20px;
+	background: #f6f7f7;
+	border: 1px solid #c3c4c7;
+	border-radius: 8px;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 13px;
+	line-height: 1.45;
+	overflow-x: auto;
+}
+
+.ai-db-dump__title {
+	margin: 0 0 8px;
+	font-family: inherit;
+	font-size: 20px;
+}
+
+.ai-db-dump__meta {
+	margin: 0 0 16px;
+	color: #50575e;
+}
+
+.ai-db-dump__denied,
+.ai-db-dump__empty,
+.ai-db-dump__empty-row {
+	color: #b32d2e;
+}
+
+.ai-db-dump__summary,
+.ai-db-dump__data {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 24px;
+	background: #fff;
+}
+
+.ai-db-dump__summary th,
+.ai-db-dump__summary td,
+.ai-db-dump__data th,
+.ai-db-dump__data td {
+	border: 1px solid #dcdcde;
+	padding: 8px 10px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.ai-db-dump__data th {
+	background: #2271b1;
+	color: #fff;
+	font-weight: 600;
+}
+
+.ai-db-dump__block {
+	margin-bottom: 32px;
+	padding-top: 16px;
+	border-top: 2px solid #2271b1;
+}
+
+.ai-db-dump__block-title {
+	margin: 0 0 12px;
+	font-size: 16px;
+}
+
+.ai-db-dump__count {
+	font-weight: normal;
+	color: #646970;
+}
+
+.ai-db-dump__table-wrap {
+	overflow-x: auto;
+	margin-bottom: 12px;
+}
+
+.ai-db-dump__pre {
+	margin: 0;
+	padding: 12px;
+	background: #1d2327;
+	color: #f0f0f1;
+	border-radius: 4px;
+	white-space: pre-wrap;
+	word-break: break-word;
+	max-height: 400px;
+	overflow: auto;
+}
+
+.ai-db-dump__raw summary {
+	cursor: pointer;
+	margin-bottom: 8px;
+	color: #2271b1;
+}

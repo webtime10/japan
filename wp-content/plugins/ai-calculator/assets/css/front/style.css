@@ -1,0 +1,8 @@
+/* AI Calculator — front (base) */
+
+@import url('weather-calculator.css');
+@import url('budget-calculator.css');
+
+[v-cloak] {
+	display: none !important;
+}

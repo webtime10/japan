@@ -1,0 +1,489 @@
+html[dir="rtl"] .into-header-0{
+
+}
+
+
+/* Плавная фиксация меню при прокрутке */
+.into-header-0 {
+  transition: all 0.3s ease-in-out;
+}
+
+.into-header-0.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10001;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  animation: slideDown 0.3s ease-out;
+}
+.nav-wrap.scrolled{
+    max-width: 1218px;
+    margin: 0 auto;
+}
+
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.hamburger-menu-top{
+  display: none;
+}
+.nav-wrap{
+  display: flex;
+}
+.into-header-0{
+
+  
+}
+
+.smenu span{
+  text-transform: none;
+}
+html[dir="ltr"] .nav-wrap{
+  flex-direction: row-reverse;
+}
+
+html[dir="ltr"] .button-up{
+display: flex;
+    flex-direction: row-reverse;
+}
+html[dir="ltr"]  .button-up img {
+   
+    left: -6px;
+}
+.smenu-container
+.hamburger-menu-top{
+  display: none;
+}
+.nav-wrap{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    align-items: center;
+    height: 60px;
+    padding: 0px 15px;
+    justify-content: space-between;
+  }
+  
+  /* Контейнер для меню внутри nav-wrap */
+  .nav-wrap .smenu-container {
+
+ 
+ 
+  }
+  html[dir="rtl"] .mega-image-section{
+    justify-content: left;
+  }
+  /* Верхнее меню: внутри только DIV/A */
+  .smenu{ position:relative; display:flex; gap:4px; margin:0; padding:0; }
+  /* Поддержка RTL/LTR */
+  html[dir="rtl"] .smenu{ flex-direction:row; }
+  html[dir="ltr"] .smenu{ flex-direction: row-reverse; }
+  .smenu>div{ position:static; }
+  .smenu>div>a{
+    display: flex;
+    align-items: center;
+    padding: 3px 6px;
+    text-decoration: none;
+    color: var(--text, #333);
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-weight: 600;
+    gap: 0px;
+  }
+  
+  /* Название страницы в span */
+  .smenu>div>a .menu-item-text {
+    flex:1;
+  }
+  
+  /* Миниатюра в главном меню */
+  .main-menu-thumbnail {
+    width: 20px;
+    height: 20px;
+    object-fit: none;
+    border-radius: 3px;
+    flex-shrink: 0;
+    position: relative;
+    top: 1px;
+    left: -4px;
+  }
+  
+  /* Для RTL и LTR: порядок определяется HTML, flex-direction: row */
+  html[dir="rtl"] .smenu>div>a,
+  html[dir="ltr"] .smenu>div>a,
+  html:not([dir]) .smenu>div>a {
+    flex-direction:row;
+  }
+  .menu-item-with-thumb span{
+font-weight: 600;
+  }
+  .smenu>div>a:hover, .smenu>div:focus-within>a, .smenu>div[aria-expanded="true"]>a {
+    background: transparent !important;
+}
+  .smenu>div>a:hover, .smenu>div:focus-within>a, .smenu>div[aria-expanded="true"]>a{ background:#fafafa; }
+  .caret2{ font-size:11px; color:var(--muted); transition:transform 0.3s ease; }
+  /* Для LTR: caret справа (после текста) */
+  html[dir="ltr"] .caret2,
+  html:not([dir]) .caret2 {
+    margin-left:6px;
+  }
+  /* Для RTL: caret слева (перед текстом) */
+  html[dir="rtl"] .caret2 {
+    margin-right:3px;
+  }
+  .smenu>div.active .caret2{ transform:rotate(180deg); }
+
+  /* Слой для панелей идёт сразу после UL */
+  .mega-layer{ 
+    position:absolute; 
+    left:0;
+    right:0;
+    top:100%;
+    width:100%;
+    z-index:10000;
+  }
+
+  /* Панели - выпадающее меню под баром, от края до края */
+  .mega{
+    position:relative !important; 
+    left:0;
+    right:0;
+    width:100%;
+    padding:30px 40px;
+    background:#ffffff !important; 
+    background-color:#ffffff !important;
+    border:1px solid var(--border, #ddd); 
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
+    display:none; 
+    z-index:10000 !important;
+    margin-top:0;
+    box-sizing:border-box;
+  }
+  .mega[style*="display: block"] {
+    opacity:1 !important;
+    visibility:visible !important;
+    background:#ffffff !important;
+    background-color:#ffffff !important;
+  }
+  .mega[style*="display: block"] {
+    opacity:1 !important;
+    visibility:visible !important;
+    background:#ffffff !important;
+    background-color:#ffffff !important;
+  }
+
+  /* Сетка: колонки текста + картинка всегда на противоположном краю */
+  .mega-grid{ 
+    display:grid; 
+    gap:40px; 
+    max-width:1400px;
+    margin:0 auto;
+    width:100%;
+  }
+  
+  /* Для LTR: картинка должна быть третьей секцией */
+  html[dir="ltr"] .mega-grid,
+  html:not([dir]) .mega-grid {
+    grid-auto-flow: column;
+    direction: ltr; /* Явно указываем LTR для grid */
+  }
+  
+  
+  /* Для RTL: картинка слева (первая колонка) - принудительно первая */
+  html[dir="rtl"] .mega-grid {
+    grid-auto-flow: column;
+    direction: rtl; /* RTL направление для grid */
+  }
+  
+  /* Картинка всегда последней в HTML (справа для RTL и LTR) - не нужно менять order */
+
+  /* Секции с текстом */
+  .mega-grid > section:not(.mega-image-section) {
+    padding:20px 0;
+  }
+
+  /* Типографика */
+  .mega h4{ 
+    margin:0 0 25px; 
+    font-size:16px; 
+    font-weight:600;
+    text-transform:uppercase; 
+    letter-spacing:.05em; 
+    color:#333;
+    border-bottom:2px solid #e0e0e0;
+    padding-bottom:15px;
+  }
+  .mega section > div{ display:flex; flex-direction:column; gap:12px; margin:0; padding:0; }
+  .mega section > div > div{ margin:0; padding:0; }
+  .mega a{ 
+    text-decoration:none; 
+    color:#555;
+    font-size:15px;
+    line-height:1.6;
+    display:block;
+    transition:color 0.2s ease;
+  }
+  
+  /* Пункты меню с миниатюрами */
+  .mega .menu-item-with-thumb {
+    margin:0;
+    padding:0;
+  }
+  .mega .menu-item-with-thumb > a {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:8px 0;
+  }
+  .mega .menu-item-with-thumb .menu-item-thumbnail {
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    flex-shrink:0;
+    border-radius:4px;
+  }
+  .mega .menu-item-with-thumb .menu-item-text {
+    flex:1;
+  }
+  
+  /* Для RTL - миниатюра справа */
+  html[dir="rtl"] .mega .menu-item-with-thumb > a {
+    flex-direction:row-reverse;
+  }
+  
+  /* Для LTR - миниатюра слева */
+  html[dir="ltr"] .mega .menu-item-with-thumb > a,
+  html:not([dir]) .mega .menu-item-with-thumb > a {
+    flex-direction:row;
+  }
+
+  /* Секция с картинкой - естественный размер, не растягивается на контейнер */
+  .mega-image-section{ 
+    position:relative;
+    display:flex !important; 
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    visibility:visible;
+    opacity:1 !important;
+    border-radius:8px;
+    overflow:hidden;
+    width:auto; /* Естественная ширина */
+    height:auto; /* Естественная высота */
+  }
+  .mega-image-section .image-cta {
+    display:block;
+    width:auto;
+    height:auto;
+  }
+
+  html[dir="ltr"]  .mega section > div {
+ 
+    text-align: left;
+}
+
+  html[dir="ltr"]  .mega-image-section {
+    justify-content: flex-end;
+  }
+
+
+  .mega-image-section img{ 
+    width:auto !important; 
+    height:auto !important; 
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain; /* Сохраняет пропорции */
+    display:block !important; 
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+
+/* ≤1162px: закрыто — слой в потоке; открыто (.mega-layer--open) — на весь экран по высоте */
+@media (max-width: 1162px) {
+  /* Кнопка «назад/закрыть» — в потоке скрыта; при открытом мега — фиксирована у верхнего края экрана */
+  .left-close-menu-svg {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+.left-close-menu-svg{
+    display: block;
+    opacity: 0;
+}
+.mega-layer--open .left-close-menu-svg{
+    opacity: 1;
+}
+
+
+  .mega-layer.mega-layer--open .left-close-menu-svg {
+display: flex;
+        position: fixed;
+        top: 61px;
+        left: 7px;
+        right: auto;
+        inset-inline-start: auto;
+        z-index: 100001;
+        width: 52px;
+        min-height: 52px;
+        padding: 10px 12px;
+        box-sizing: border-box;
+        background: transparent;
+        box-shadow: none;
+  }
+  html[dir="ltr"] .smenu {
+    flex-direction: row-reverse;
+    padding-left: 10px;
+}
+  .smenu a{
+    display: flex;
+    width: 100%;
+  }
+  .caret2{
+    font-size: 19px;
+    cursor: pointer;
+    user-select: none;
+  }
+   html[dir="ltr"] .mega-layer.mega-layer--open .left-close-menu-svg {
+  
+        top: 61px;
+        right: 2px;
+        left: auto;
+        transform: rotate(180deg);
+
+    }
+html[dir="ltr"] .button-up img {
+    left: 0px;
+}
+  .mega-layer.mega-layer--open .left-close-menu-svg img {
+    display: block;
+    width: 18px;
+    height: auto;
+    pointer-events: none;
+  }
+
+  .nav-wrap {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .mega-layer:not(.mega-layer--open) {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    flex: 1 1 100%;
+    order: 50;
+    z-index: 1;
+    box-shadow: none;
+    margin: 0 -15px;
+  }
+
+  /* Один «этаж» на всю высоту экрана под строкой меню (~60px) */
+  .mega-layer.mega-layer--open {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: calc(60px + env(safe-area-inset-top, 0px)) !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: calc(
+      100dvh - 60px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
+    ) !important;
+    max-height: calc(
+      100dvh - 60px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)
+    ) !important;
+    flex: none !important;
+    order: 99999 !important;
+    z-index: 100000 !important;
+    margin: 0 !important;
+    padding: 0 env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0)
+      env(safe-area-inset-left, 0);
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+    background: #fff;
+  }
+
+  .mega-image-section {
+    display: none !important;
+  }
+
+  .mega-layer:not(.mega-layer--open) .mega {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 16px 14px;
+    margin: 0;
+    box-shadow: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    margin-top: 11px;
+  }
+
+  .mega-layer.mega-layer--open .mega {
+    position: relative !important;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100% !important;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 16px 14px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    box-shadow: none;
+    border-radius: 0;
+border-top: none;
+  }
+
+  .mega-grid {
+    gap: 20px;
+  }
+
+  .mega h4 {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .mega a {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}

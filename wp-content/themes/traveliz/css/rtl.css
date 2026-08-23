@@ -1,0 +1,319 @@
+html[dir="rtl"] .carousel-button-right_m a {
+    background-image: url(../images/carousel-right.png);
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .carousel-button-left_m a {
+    background-image: url(../images/carousel-right.png);
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .caruael_t .carousel-button-right_m.turist2 {
+    right: 25px;
+    left: auto;
+}
+
+html[dir="rtl"] .hero-btns-group2 .whatsapp-button svg
+ {
+    position: relative;
+    left: -6px;
+}
+html[dir="rtl"] img .logo2{
+    position: relative;
+    top: -3px;
+}
+
+
+
+html[dir="rtl"] .timeline-item {
+    position: relative;
+    padding-left: 0px;
+    padding-bottom: 39px;
+    padding-right: 34px;
+}
+
+html[dir="rtl"] .into-2-bas-swiss .carousel-block_m{
+        width: 499px;
+}
+
+html[dir="rtl"]  .marshrut-w {
+    color: #626E79;
+    font-size: 18px;
+    width: 261px;
+    margin-right: 7px;
+    position: relative;
+}
+
+html[dir="rtl"] .expert-stat img {
+    position: relative;
+    top: 5px;
+    padding-right: 0px !important;
+}
+html[dir="rtl"] .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: auto;
+    top: 18px;
+    right: 5px;
+    bottom: 0;
+    width: 2px;
+    background-color: #E8E8E8;
+    z-index: 1;
+}
+
+html[dir="rtl"] .caruael_t .carousel-button-left_m.turist a {
+    top: 0px;
+    left: -4px;
+}
+
+html[dir="rtl"]  #review_stars {
+    overflow: visible;
+    position: relative;
+    float: right;
+    display: flex;
+    flex-direction: row-reverse;
+}
+html[dir="rtl"] .vibor-f{
+ margin-top: 97px !important;
+    left: 0px;
+    right: 21px;
+}
+
+html[dir="rtl"] .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: #FFCC00;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+html[dir="rtl"] .wrap-grid .pogoda {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 20px;
+}
+html[dir="rtl"]  .wrap-pogoda {
+  
+    border-right: none;
+}
+html[dir="rtl"] .wrap-grid .cena {
+    border-bottom-left-radius: 0px;
+     border-bottom-right-radius: 0px;
+}
+
+html[dir="rtl"] .reviews-into{
+       display: flex;
+    justify-content: left; 
+
+}
+html[dir="rtl"] .now-carousel-button-left {
+    left: 29px;
+}
+html[dir="rtl"] .now-carousel-button-right {
+    right: -3px;
+}
+
+
+html[dir="rtl"] .into-r{
+    position: relative;
+    left: 0px;
+}
+html[dir="rtl"] .reviews-section.reviews2 .caruael_t .wrap-dots-wra {
+
+    left: -11px;
+}
+
+html[dir="rtl"] .sity-t {
+    padding-left: 17px;
+    padding-bottom: 20px;
+    padding-right: 21px;
+}
+
+html[dir="rtl"] .bas-swiss .ltr-1{
+    display: none !important;
+}
+html[dir="rtl"] .bas-swiss .rtl-1{
+    display: block !important;
+}
+html[dir="rtl"] .into-1-bas-swiss>div {
+    display: flex;
+    gap: 6px;
+}
+
+html[dir="rtl"] .site-main-reviews-block-1 h1 {
+
+    font-size: 54px;
+ 
+}
+html[dir="rtl"] .into-reviews-block-1>p {
+  
+font-size: 18px !important;
+    padding: 0 20px;
+}
+
+html[dir="rtl"] .landpark-into .carousel-button-right_m {
+
+    right: 25px;
+}
+html[dir="rtl"] .zakaz{
+      position: relative;
+    left: -8px;
+}
+
+html[dir="rtl"] .tab>div{
+text-align: right;
+}
+
+html[dir="rtl"] .carousel-button-left_d3 {
+    left: 24px;
+}
+
+html[dir="rtl"] .carousel-button-right_d3 {
+    right: 22px;
+}
+html[dir="rtl"] .into-region .carousel-button-left{
+background: url(../img/arrow-r.webp);
+}
+html[dir="rtl"] .into-region .carousel-button-right{
+
+
+    background: url(../img/arrow-l.webp);
+
+}
+html[dir="rtl"]  .reviews-container-into .carousel-wrapper_m {
+
+     padding: 36px 0px;
+}
+html[dir="rtl"] .into-2-bas-swiss .carousel-block_m span {
+    padding-right: 0px;
+    display: inline-block;
+}
+html[dir="rtl"] .caruael_t .carousel-button-right_m {
+    right: 10px;
+  
+    left: auto;
+}
+
+html[dir="rtl"] .caruael_t .carousel-button-left_m a {
+
+    top: 4px;
+    left: 9px;
+}
+html[dir="rtl"] .what-will-happen-buttons svg {
+    position: relative;
+    right: -10px;
+}
+
+/* Автоматическое выравнивание для RTL языков */
+html[dir="rtl"] .wpcf7-form,
+html[dir="rtl"] .wpcf7-form {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Исправляем отступы для плейсхолдеров в RTL */
+html[dir="rtl"] .wpcf7-text,
+html[dir="rtl"] .wpcf7-tel {
+    
+}
+html[dir="rtl"] .wpcf7-text, html[dir="rtl"] .wpcf7-tel {
+    text-align: right;
+}
+
+html[dir="rtl"] .whatsapp-button svg {
+    position: relative;
+    left: 9px;
+}
+
+html[lang="he-IL"] .landpark-into .carousel-button-left_m {
+
+    left: 25px;
+}
+
+html[dir="rtl"] .faq-question {
+
+    flex-direction: row-reverse;
+}
+html[dir="rtl"] .answer-inner{
+    text-align: right;
+}
+.st44 img{
+        position: relative;
+    left: 11px;
+}
+
+html[dir="rtl"] .work {
+   
+    background-repeat: no-repeat;
+    background-size: 105%;
+    background-position: center center;
+}
+
+
+
+html[dir="rtl"] .wrap-rout-ptice svg{
+    position: relative;
+    right: 10px;
+}
+html[dir="rtl"] .wrap-img-work-right p {
+    
+    text-align: right;
+}
+
+
+html[dir="rtl"] .left-work p {
+   text-align: left;
+    padding-left: 12px;
+}
+
+@media (max-width: 1600px) {
+
+
+html[dir="rtl"] .work {
+  
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position: center center;
+}
+
+html[dir="rtl"] .wrap-img-work-right {
+    display: grid;
+    grid-template-columns: 1fr 244px;
+
+}
+html[dir="rtl"] .left-work p {
+    text-align: left;
+    padding-left: 5px;
+}
+
+  }
+  @media (max-width: 1440px) { 
+.wrap-work p {
+    font-size: 16px;
+}
+    html[dir="rtl"] .work {
+     
+        background-repeat: no-repeat;
+        background-size: 117%;
+        background-position: center center;
+    }
+   }
+
+   @media (max-width: 1366px) { 
+    html[dir="rtl"] .work {
+       
+        background-repeat: no-repeat;
+        background-size: 121%;
+        background-position: center center;
+    }
+    }
+       @media (max-width: 1300px) { 
+html[dir="rtl"] .work {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    }

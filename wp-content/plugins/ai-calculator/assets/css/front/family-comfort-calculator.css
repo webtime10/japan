@@ -1,0 +1,282 @@
+.ai-family-comfort {
+	margin: 40px 0;
+	font-family: "Heebo", Arial, sans-serif;
+	color: #1f2933;
+}
+
+.ai-family-comfort * {
+	box-sizing: border-box;
+}
+
+.ai-family-comfort__inner {
+	width: min(1240px, calc(100% - 32px));
+	margin: 0 auto;
+	padding: 28px 24px 24px;
+	border-radius: 18px;
+	background: #d8ecfb;
+}
+
+.ai-family-comfort__panel {
+	position: relative;
+	padding: 30px 32px;
+	border-radius: 18px;
+	background: #fff;
+}
+
+.ai-family-comfort__title {
+	margin: 0 0 22px;
+	font-size: 32px;
+	line-height: 1.2;
+	text-align: center;
+	color: #1f2933;
+}
+
+.ai-family-comfort__form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px 28px;
+}
+
+.ai-family-comfort__field label {
+	display: block;
+	margin: 0 0 10px;
+	font-size: 17px;
+	color: #7a7f87;
+}
+
+.ai-family-comfort__field select {
+	width: 100%;
+	height: 74px;
+	padding: 0 56px 0 30px;
+	border: 0;
+	border-radius: 34px;
+	background: #f4f4f4;
+	color: #1f2933;
+	font-size: 20px;
+	font-weight: 700;
+	outline: none;
+	appearance: none;
+	background-image:
+		linear-gradient(45deg, transparent 50%, #7a7f87 50%),
+		linear-gradient(135deg, #7a7f87 50%, transparent 50%);
+	background-position:
+		calc(100% - 31px) 50%,
+		calc(100% - 24px) 50%;
+	background-size: 8px 8px, 8px 8px;
+	background-repeat: no-repeat;
+}
+
+.ai-family-comfort__button {
+	grid-column: 1 / -1;
+	height: 74px;
+	border: 0;
+	border-radius: 34px;
+	background: linear-gradient(90deg, #f5d05f 0%, #fff3bb 50%, #f3ca59 100%);
+	color: #695729;
+	font-size: 20px;
+	font-weight: 800;
+	cursor: default;
+}
+
+.ai-family-comfort__age-results {
+	margin-top: 28px;
+	padding-top: 22px;
+	border-top: 1px solid #edf0f3;
+}
+
+.ai-family-comfort__age-result {
+	display: none;
+	grid-template-columns: minmax(160px, 220px) 1fr;
+	gap: 24px;
+	align-items: start;
+}
+
+.ai-family-comfort__age-result.is-active {
+	display: grid;
+}
+
+.ai-family-comfort__age-meta {
+	padding-top: 4px;
+	border-top: 1px solid #e6e8eb;
+}
+
+.ai-family-comfort__age-meta strong,
+.ai-family-comfort__age-meta span {
+	display: block;
+	font-size: 18px;
+	line-height: 1.35;
+	color: #1f2933;
+}
+
+.ai-family-comfort__age-meta strong {
+	margin-bottom: 18px;
+	font-weight: 800;
+}
+
+.ai-family-comfort__age-meta span {
+	font-weight: 800;
+}
+
+.ai-family-comfort__age-result ul {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 16px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ai-family-comfort__age-result li {
+	position: relative;
+	padding-left: 18px;
+	font-size: 18px;
+	line-height: 1.35;
+	color: #2b2f36;
+}
+
+.ai-family-comfort__age-result li::before {
+	content: "•";
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: currentColor;
+}
+
+.ai-family-comfort__notch {
+	width: 64px;
+	height: 34px;
+	margin: 0 auto;
+	background: #fff;
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.ai-family-comfort__subtitle {
+	margin: 10px 0 22px;
+	font-size: 34px;
+	line-height: 1.2;
+	text-align: center;
+	color: #1f2933;
+}
+
+.ai-family-comfort__cards {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+}
+
+.ai-family-comfort__card {
+	padding: 28px 28px 24px;
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 10px 30px rgba(31, 41, 51, 0.06);
+}
+
+.ai-family-comfort__card h4 {
+	margin: 0 0 8px;
+	font-size: 21px;
+	line-height: 1.25;
+	color: #1f2933;
+}
+
+.ai-family-comfort__card p {
+	min-height: 76px;
+	margin: 0 0 16px;
+	font-size: 17px;
+	line-height: 1.45;
+	color: #69717d;
+}
+
+.ai-family-comfort__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0 0 16px;
+}
+
+.ai-family-comfort__tags span {
+	padding: 8px 18px;
+	border-radius: 999px;
+	background: #f3f3f5;
+	color: #69717d;
+	font-size: 15px;
+}
+
+.ai-family-comfort__card img {
+	display: block;
+	width: 100%;
+	height: 145px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.ai-family-comfort__rating {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	gap: 8px;
+	margin: 18px 0 10px;
+	color: #1f2933;
+}
+
+.ai-family-comfort__rating span {
+	color: #ffc400;
+	font-size: 30px;
+	line-height: 1;
+}
+
+.ai-family-comfort__rating strong {
+	font-size: 34px;
+	line-height: 1;
+}
+
+.ai-family-comfort__rating small {
+	font-size: 17px;
+	font-weight: 700;
+	color: #59616b;
+}
+
+.ai-family-comfort__bar {
+	height: 7px;
+	overflow: hidden;
+	border-radius: 999px;
+	background: #eee;
+}
+
+.ai-family-comfort__bar span {
+	display: block;
+	height: 100%;
+	border-radius: inherit;
+	background: #f1d16a;
+}
+
+@media (max-width: 900px) {
+	.ai-family-comfort__form,
+	.ai-family-comfort__cards,
+	.ai-family-comfort__age-result,
+	.ai-family-comfort__age-result ul {
+		grid-template-columns: 1fr;
+	}
+
+	.ai-family-comfort__title,
+	.ai-family-comfort__subtitle {
+		font-size: 28px;
+	}
+}
+
+@media (max-width: 560px) {
+	.ai-family-comfort__inner {
+		width: calc(100% - 20px);
+		padding: 16px;
+	}
+
+	.ai-family-comfort__panel,
+	.ai-family-comfort__card {
+		padding: 22px 18px;
+	}
+
+	.ai-family-comfort__field select,
+	.ai-family-comfort__button {
+		height: 62px;
+		font-size: 17px;
+	}
+}
