@@ -41,14 +41,24 @@ class AI_Calculator_Category_Controller extends AI_Calculator_Controller {
 	public function index() {
 		$lang_id         = $this->admin_language_id();
 		$manufacturer_id = isset( $_GET['filter_manufacturer'] ) ? (int) $_GET['filter_manufacturer'] : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page            = isset( $_GET['paged'] ) ? max( 1, (int) $_GET['paged'] ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		$total = $this->model->count_list( $lang_id, $manufacturer_id );
+		$pages = max( 1, (int) ceil( $total / AI_Calculator_Category_Model::PER_PAGE ) );
+		if ( $page > $pages ) {
+			$page = $pages;
+		}
 
 		$this->render(
 			'category/list',
 			array(
 				'title'              => __( 'Categories', 'ai-calculator' ),
-				'categories'         => $this->model->get_list( $lang_id, $manufacturer_id ),
+				'categories'         => $this->model->get_list( $lang_id, $manufacturer_id, $page ),
 				'manufacturer_id'    => $manufacturer_id,
 				'manufacturer_list'  => $this->manufacturers->get_options( $lang_id ),
+				'total'              => $total,
+				'page'               => $page,
+				'pages'              => $pages,
 				'heading_title'      => __( 'Category List', 'ai-calculator' ),
 				'header_buttons'     => $this->header_btn_add( 'category', __( 'Add Category', 'ai-calculator' ) ),
 			)
@@ -69,20 +79,34 @@ class AI_Calculator_Category_Controller extends AI_Calculator_Controller {
 		}
 
 		$mfr_id = $data['category'] ? (int) $data['category']->manufacturer_id : 0;
-		if ( ! $mfr_id && isset( $_GET['filter_manufacturer'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$mfr_id = (int) $_GET['filter_manufacturer'];
+
+		if ( function_exists( 'ai_calculator_ensure_family_comfort_root_category' ) ) {
+			ai_calculator_ensure_family_comfort_root_category();
 		}
+
+		$family_comfort_manufacturer_id = function_exists( 'ai_calculator_get_family_comfort_manufacturer_id' )
+			? ai_calculator_get_family_comfort_manufacturer_id()
+			: 0;
+		$family_comfort_root_category_id = function_exists( 'ai_calculator_get_family_comfort_root_category_id' )
+			? ai_calculator_get_family_comfort_root_category_id()
+			: 0;
+		$is_family_comfort_root = $id > 0
+			&& function_exists( 'ai_calculator_is_family_comfort_root_category' )
+			&& ai_calculator_is_family_comfort_root_category( $id );
 
 		$this->render(
 			'category/form',
 			array(
-				'title'                => $id ? __( 'Edit Category', 'ai-calculator' ) : __( 'Add Category', 'ai-calculator' ),
-				'category'             => $data['category'],
-				'descriptions'         => $data['descriptions'],
-				'languages'            => $lang_list,
-				'manufacturer_options' => $this->manufacturers->get_options( $lang_id ),
-				'parent_categories'    => $this->model->get_list( $lang_id ),
-				'header_buttons'       => $this->header_btn_save( 'ai-calculator-form-category' ),
+				'title'                           => $id ? __( 'Edit Category', 'ai-calculator' ) : __( 'Add Category', 'ai-calculator' ),
+				'category'                        => $data['category'],
+				'descriptions'                    => $data['descriptions'],
+				'languages'                       => $lang_list,
+				'manufacturer_options'            => $this->manufacturers->get_options( $lang_id ),
+				'parent_categories'               => $this->model->get_parent_categories_for_form( $lang_id, $id, $mfr_id ),
+				'family_comfort_manufacturer_id'  => $family_comfort_manufacturer_id,
+				'family_comfort_root_category_id' => $family_comfort_root_category_id,
+				'is_family_comfort_root'          => $is_family_comfort_root,
+				'header_buttons'                  => $this->header_btn_save( 'ai-calculator-form-category' ),
 			)
 		);
 	}
@@ -106,6 +130,13 @@ class AI_Calculator_Category_Controller extends AI_Calculator_Controller {
 
 		if ( $id > 0 && (int) $data['parent_id'] === $id ) {
 			$data['parent_id'] = 0;
+		}
+
+		$data = $this->model->normalize_family_comfort_parent( $id, $data );
+
+		if ( ! $this->model->is_valid_parent( $id, (int) $data['parent_id'], (int) $data['manufacturer_id'] ) ) {
+			$this->set_flash( 'error', __( 'Нельзя выбрать эту категорию как родительскую: получится циклическая ссылка.', 'ai-calculator' ) );
+			$this->redirect( 'form', $id );
 		}
 
 		$descriptions = $this->parse_descriptions(
@@ -206,6 +237,9 @@ class AI_Calculator_Category_Controller extends AI_Calculator_Controller {
 		$args = array(
 			'filter_manufacturer' => isset( $_POST['filter_manufacturer'] ) ? (int) $_POST['filter_manufacturer'] : 0, // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		);
+		if ( isset( $_POST['paged'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$args['paged'] = max( 1, (int) $_POST['paged'] );
+		}
 		$url  = AI_Calculator_Router::url( 'category', 'index', 0, $args );
 
 		if ( ! headers_sent() ) {

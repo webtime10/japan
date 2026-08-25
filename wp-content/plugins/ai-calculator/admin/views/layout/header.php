@@ -14,11 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $nav_items = array(
-	'dashboard'    => __( 'Home', 'ai-calculator' ),
-	'language'     => __( 'Languages', 'ai-calculator' ),
-	'category'     => __( 'Categories', 'ai-calculator' ),
-	'manufacturer' => __( 'Калькуляторы', 'ai-calculator' ),
-	'product'      => __( 'Products', 'ai-calculator' ),
+	'dashboard'       => __( 'Главная', 'ai-calculator' ),
+	'language'        => __( 'Языки', 'ai-calculator' ),
+	'category'        => __( 'Категории', 'ai-calculator' ),
+	'manufacturer'    => __( 'Калькуляторы', 'ai-calculator' ),
+	'attribute_group' => __( 'Группы атрибутов', 'ai-calculator' ),
+	'attribute'       => __( 'Атрибуты', 'ai-calculator' ),
+	'product'         => __( 'Товары', 'ai-calculator' ),
 );
 
 if ( empty( $heading_title ) && ! empty( $title ) ) {

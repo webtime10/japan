@@ -1,5 +1,14 @@
+/* Chrome/RTL: html overflow уже в style.css; дубль безопасен. */
+html {
+	overflow-x: clip;
+}
+
 .ai-family-comfort {
 	margin: 40px 0;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	overflow-x: clip;
 	font-family: "Heebo", Arial, sans-serif;
 	color: #1f2933;
 }
@@ -9,11 +18,13 @@
 }
 
 .ai-family-comfort__inner {
-	width: min(1240px, calc(100% - 32px));
+	width: min(1180px, calc(100% - 32px));
 	margin: 0 auto;
 	padding: 28px 24px 24px;
 	border-radius: 18px;
-	background: #d8ecfb;
+	background: linear-gradient(254.44deg, #bddaed 10.01%, #deeeff 47.46%, #c9d8e4 87.94%);
+	max-width: 100%;
+	min-width: 0;
 }
 
 .ai-family-comfort__panel {
@@ -25,10 +36,11 @@
 
 .ai-family-comfort__title {
 	margin: 0 0 22px;
-	font-size: 32px;
+	font-size: 40px;
 	line-height: 1.2;
 	text-align: center;
 	color: #1f2933;
+	font-weight: 700;
 }
 
 .ai-family-comfort__form {
@@ -47,21 +59,17 @@
 .ai-family-comfort__field select {
 	width: 100%;
 	height: 74px;
-	padding: 0 56px 0 30px;
+	padding: 0 58px 0 30px;
 	border: 0;
 	border-radius: 34px;
 	background: #f4f4f4;
-	color: #1f2933;
+	color: #192d37;
 	font-size: 20px;
-	font-weight: 700;
+	font-weight: 600;
 	outline: none;
 	appearance: none;
-	background-image:
-		linear-gradient(45deg, transparent 50%, #7a7f87 50%),
-		linear-gradient(135deg, #7a7f87 50%, transparent 50%);
-	background-position:
-		calc(100% - 31px) 50%,
-		calc(100% - 24px) 50%;
+	background-image: linear-gradient(45deg, transparent 50%, #7a7f87 50%), linear-gradient(135deg, #7a7f87 50%, transparent 50%);
+	background-position: calc(100% - 28px) 50%, calc(100% - 21px) 50%;
 	background-size: 8px 8px, 8px 8px;
 	background-repeat: no-repeat;
 }
@@ -74,72 +82,8 @@
 	background: linear-gradient(90deg, #f5d05f 0%, #fff3bb 50%, #f3ca59 100%);
 	color: #695729;
 	font-size: 20px;
-	font-weight: 800;
-	cursor: default;
-}
-
-.ai-family-comfort__age-results {
-	margin-top: 28px;
-	padding-top: 22px;
-	border-top: 1px solid #edf0f3;
-}
-
-.ai-family-comfort__age-result {
-	display: none;
-	grid-template-columns: minmax(160px, 220px) 1fr;
-	gap: 24px;
-	align-items: start;
-}
-
-.ai-family-comfort__age-result.is-active {
-	display: grid;
-}
-
-.ai-family-comfort__age-meta {
-	padding-top: 4px;
-	border-top: 1px solid #e6e8eb;
-}
-
-.ai-family-comfort__age-meta strong,
-.ai-family-comfort__age-meta span {
-	display: block;
-	font-size: 18px;
-	line-height: 1.35;
-	color: #1f2933;
-}
-
-.ai-family-comfort__age-meta strong {
-	margin-bottom: 18px;
-	font-weight: 800;
-}
-
-.ai-family-comfort__age-meta span {
-	font-weight: 800;
-}
-
-.ai-family-comfort__age-result ul {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 16px;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.ai-family-comfort__age-result li {
-	position: relative;
-	padding-left: 18px;
-	font-size: 18px;
-	line-height: 1.35;
-	color: #2b2f36;
-}
-
-.ai-family-comfort__age-result li::before {
-	content: "•";
-	position: absolute;
-	left: 0;
-	top: 0;
-	color: currentColor;
+	font-weight: 700;
+	cursor: pointer;
 }
 
 .ai-family-comfort__notch {
@@ -156,28 +100,164 @@
 	line-height: 1.2;
 	text-align: center;
 	color: #1f2933;
+	font-weight: 600;
 }
 
-.ai-family-comfort__cards {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 20px;
+.ai-family-comfort__empty {
+	margin: 0 0 20px;
+	text-align: center;
+	font-size: 17px;
+	color: #69717d;
+}
+
+.ai-family-comfort__card-pool {
+	display: none !important;
+}
+
+.ai-family-comfort__slider {
+	--fc-gap: 20px;
+	display: none;
+	margin-top: 4px;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.ai-family-comfort__slider.is-active {
+	display: block;
+}
+
+.ai-family-comfort__slider-shell {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.ai-family-comfort__slider-viewport {
+	overflow-x: auto;
+	overflow-y: hidden;
+	flex: 1 1 0;
+	width: 0;
+	min-width: 0;
+	max-width: 100%;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	direction: ltr;
+}
+
+.ai-family-comfort__slider-viewport::-webkit-scrollbar {
+	display: none;
+}
+
+.ai-family-comfort__slider-track {
+	display: flex;
+	gap: var(--fc-gap);
+	width: max-content;
+	max-width: none;
+}
+.ai-family-comfort__tags{
+	direction: rtl;
+}
+.ai-family-comfort__slider-btn {
+	position: relative;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 56px;
+	width: 56px;
+	height: 56px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 10px 28px rgba(31, 41, 51, 0.18);
+	color: #1f2933;
+	cursor: pointer;
+	transition: box-shadow 0.2s ease;
+
+}
+
+.ai-family-comfort__slider-btn.is-disabled {
+	opacity: 0.35;
+	cursor: default;
+}
+
+.ai-family-comfort__slider-btn svg {
+	display: block;
+	pointer-events: none;
+	transform-origin: center center;
+	transition: transform 0.45s ease;
+}
+
+.ai-family-comfort__slider-btn:not(.is-disabled):hover {
+	box-shadow: 0 12px 32px rgba(31, 41, 51, 0.24);
+}
+
+.ai-family-comfort__slider-btn:not(.is-disabled):hover svg {
+	transform: rotate(360deg);
 }
 
 .ai-family-comfort__card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 var(--fc-card-width, 280px);
+	width: var(--fc-card-width, 280px);
+	max-width: var(--fc-card-width, 280px);
+	min-width: var(--fc-card-width, 280px);
+	flex-shrink: 0;
+	scroll-snap-align: start;
 	padding: 28px 28px 24px;
 	border-radius: 16px;
 	background: #fff;
 	box-shadow: 0 10px 30px rgba(31, 41, 51, 0.06);
 }
 
-.ai-family-comfort__card h4 {
-	margin: 0 0 8px;
-	font-size: 21px;
-	line-height: 1.25;
-	color: #1f2933;
+.ai-family-comfort__card[hidden] {
+	display: none !important;
 }
 
+.ai-family-comfort__card.is-visible {
+	display: flex;
+}
+
+.ai-family-comfort__card h4 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.ai-family-comfort__card h4 a:hover,
+.ai-family-comfort__card-title a:hover {
+	text-decoration: underline;
+}
+
+.ai-family-comfort__card-head {
+	margin: 0 0 8px;
+}
+
+.ai-family-comfort__card-title,
+.ai-family-comfort__card h4 {
+	margin: 0;
+	font-size: 26px;
+	line-height: 1.25;
+	color: #1f2933;
+	font-weight: 500;
+}
+
+.ai-family-comfort__card-subtitle {
+	margin: 4px 0 0;
+	font-size: 17px;
+	line-height: 1.3;
+	color: #69717d;
+}
+
+.ai-family-comfort__card-text,
 .ai-family-comfort__card p {
 	min-height: 76px;
 	margin: 0 0 16px;
@@ -189,19 +269,28 @@
 .ai-family-comfort__tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 2px;
 	margin: 0 0 16px;
+	height: 61px;
 }
 
 .ai-family-comfort__tags span {
 	padding: 8px 18px;
+	height: 38px;
 	border-radius: 999px;
 	background: #f3f3f5;
 	color: #69717d;
 	font-size: 15px;
+	display: inline-block;
+	margin-bottom: 5px;
 }
 
-.ai-family-comfort__card img {
+.ai-family-comfort__card-media {
+	margin: 24px 0 16px;
+}
+
+.ai-family-comfort__card img,
+.ai-family-comfort__card-media img {
 	display: block;
 	width: 100%;
 	height: 145px;
@@ -214,7 +303,7 @@
 	align-items: baseline;
 	justify-content: center;
 	gap: 8px;
-	margin: 18px 0 10px;
+	margin: 8px 0 10px;
 	color: #1f2933;
 }
 
@@ -250,16 +339,13 @@
 }
 
 @media (max-width: 900px) {
-	.ai-family-comfort__form,
-	.ai-family-comfort__cards,
-	.ai-family-comfort__age-result,
-	.ai-family-comfort__age-result ul {
+	.ai-family-comfort__form {
 		grid-template-columns: 1fr;
 	}
 
 	.ai-family-comfort__title,
 	.ai-family-comfort__subtitle {
-		font-size: 28px;
+		font-size: 20px;
 	}
 }
 
@@ -277,6 +363,57 @@
 	.ai-family-comfort__field select,
 	.ai-family-comfort__button {
 		height: 62px;
-		font-size: 17px;
+		font-size: 16px;
 	}
+
+	.ai-family-comfort__slider-btn {
+		flex-basis: 48px;
+		width: 48px;
+		height: 48px;
+	}
+}
+
+@media (max-width: 470px) {
+	.ai-family-comfort__slider-shell {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: 16px 32px;
+	}
+
+	.ai-family-comfort__slider-viewport {
+		order: 1;
+		flex: 0 0 100%;
+		width: 100%;
+		min-width: 100%;
+		max-width: 100%;
+	}
+
+	.ai-family-comfort__slider-btn {
+		order: 2;
+		flex: 0 0 48px;
+	}
+}
+
+html[dir="rtl"] .ai-family-comfort__field label {
+	text-align: right;
+}
+
+html[dir="rtl"] .ai-family-comfort__field select {
+	direction: rtl;
+	text-align: right;
+	padding: 0 54px 0 30px;
+	background-position: calc(100% - 28px) 50%, calc(100% - 21px) 50%;
+}
+
+html[dir="rtl"] .ai-family-comfort__card {
+	direction: rtl;
+	text-align: right;
+}
+
+html[dir="rtl"] .ai-family-comfort__card-head,
+html[dir="rtl"] .ai-family-comfort__card-text,
+html[dir="rtl"] .ai-family-comfort__tags {
+	text-align: right;
 }

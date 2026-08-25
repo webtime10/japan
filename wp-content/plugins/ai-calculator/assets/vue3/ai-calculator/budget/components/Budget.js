@@ -816,7 +816,7 @@ Vue непрерывно караулит переменную step. Как то
 
 			validateTripDates: function () {
 				if (this.hasPastTripDate()) {
-					window.alert('אנא הזן תאריך תקין, לא ניתן לבחור תאריך שעבר');
+					window.alert('يرجى إدخال تاريخ صحيح، لا يمكن اختيار تاريخ سابق');
 
 					return false;
 				}
@@ -829,7 +829,7 @@ Vue непрерывно караулит переменную step. Как то
 			},
 
 			showRequiredAlert: function () {
-				window.alert('אנא מלא את כל השדות');
+				window.alert('يرجى تعبئة البيانات');
 			},
 
 			areChildrenAgesFilled: function () {

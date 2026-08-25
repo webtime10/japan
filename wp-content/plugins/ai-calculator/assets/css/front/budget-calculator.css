@@ -15,6 +15,11 @@
 	padding: 40px 0 56px;
 	color: var(--ai-bg-text);
 	font-family: 'Heebo', sans-serif;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	overflow-x: clip;
 }
 
 .ai-bg *,
@@ -22,14 +27,24 @@
 .ai-bg *::after {
 	box-sizing: border-box;
 }
+.ai-bg__option + .ai-bg__option{
+	display: none;
+}
 
+/* Не left:-9999px: в RTL раздувает scrollWidth и уезжает вправо при узком viewport (админ-бар / DevTools). */
 .ai-calculator-hp {
 	position: absolute !important;
-	left: -9999px !important;
 	width: 1px !important;
 	height: 1px !important;
+	margin: -1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	clip-path: inset(50%) !important;
+	border: 0 !important;
 	opacity: 0 !important;
 	pointer-events: none !important;
+	white-space: nowrap !important;
 }
 
 .ai-bg__page-title {
@@ -950,6 +965,92 @@
 		padding: 32px 20px 14px;
 	}
 }
+@media (max-width: 500px) { 
+    .ai-family-comfort__field select, .ai-family-comfort__button {
+        height: 53px;
+        font-size: 17px;
+    }
+	.ai-family-comfort__field select, .ai-family-comfort__button {
+        height: 62px;
+        font-size: 15px;
+    }
+	.ai-family-comfort__field label {
+    display: block;
+    margin: 0 0 10px;
+    font-size: 15px;
+    color: #7a7f87;
+}
+.ai-family-comfort__title, .ai-family-comfort__subtitle {
+        font-size: 22px;
+    }
+.ai-bg__date-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--ai-bg-text);
+    -webkit-text-fill-color: var(--ai-bg-text);
+    font: inherit;
+    font-size: 15px;
+    line-height: 1.2;
+    outline: none;
+    cursor: pointer;
+    padding-right: 13px;
+}
+ }
+
+@media (max-width: 430px) { 
+.ai-bg__field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 48px;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    /* margin: 0 20px; */
+    border: 0;
+    background: var(--ai-bg-field-bg);
+    border-radius: var(--ai-bg-radius-field);
+    color: var(--ai-bg-text-muted);
+    font: inherit;
+    font-size: 15px;
+    /* line-height: 1.2; */
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.ai-bg__date-trigger {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ai-bg-text-muted);
+    cursor: pointer;
+    position: relative;
+    left: -16px;
+}
+.ai-bg__field-icon, .ai-bg__field-chevron {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: var(--ai-bg-text-muted);
+    /* margin-left: 15px; */
+    position: relative;
+    left: 12px;
+}
+    .ai-family-comfort__inner {
+        width: calc(100% - 37px);
+        padding: 16px;
+    }
+
+}
+
 
 .ai-bg__overlay {
 	width: 100%;

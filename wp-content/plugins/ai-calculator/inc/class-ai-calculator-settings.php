@@ -51,6 +51,26 @@ final class AI_Calculator_Settings {
 	}
 
 	/**
+	 * Origin Laravel со схемой. Хост без http(s) — всегда https://
+	 *
+	 * @return string
+	 */
+	public static function get_laravel_origin_url() {
+		$base = self::get_laravel_base_url();
+		if ( '' === $base ) {
+			return '';
+		}
+
+		if ( ! preg_match( '#^https?://#i', $base ) ) {
+			// Локальные .loc/.test — http; иначе https.
+			$scheme = preg_match( '/\.(loc|test|localhost)(:\d+)?$/i', $base ) ? 'http://' : 'https://';
+			$base   = $scheme . ltrim( $base, '/' );
+		}
+
+		return untrailingslashit( $base );
+	}
+
+	/**
 	 * Убирает суффикс /api/plugins/{slug}, если сохранили полный endpoint.
 	 *
 	 * @param string $stored

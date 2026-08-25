@@ -3,6 +3,16 @@
 @import url('weather-calculator.css');
 @import url('budget-calculator.css');
 
+/* RTL + узкий viewport: не даём каруселям темы / скрытым полям раздувать ширину. */
+html {
+	overflow-x: clip;
+}
+
+body {
+	overflow-x: clip;
+	max-width: 100%;
+}
+
 [v-cloak] {
 	display: none !important;
 }

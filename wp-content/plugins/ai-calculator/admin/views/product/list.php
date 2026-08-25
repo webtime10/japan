@@ -110,13 +110,13 @@ $admin_language_id = isset( $admin_language_id ) ? (int) $admin_language_id : 0;
 										<span class="ai-calculator-inline-status small" aria-live="polite"></span>
 									</td>
 									<td>
-										<input type="text" class="form-control input-sm ai-calculator-inline-input" data-field="description" value="<?php echo esc_attr( ! empty( $product->russian_name ) ? wp_strip_all_tags( $product->russian_name ) : '' ); ?>" style="display:inline-block;width:180px;">
+										<input type="text" class="form-control input-sm ai-calculator-inline-input" data-field="block6" value="<?php echo esc_attr( ! empty( $product->russian_name ) ? wp_strip_all_tags( $product->russian_name ) : '' ); ?>" style="display:inline-block;width:180px;">
 										<button
 											type="button"
 											class="btn btn-success btn-sm ai-calculator-inline-save"
 											data-product-id="<?php echo (int) $product->product_id; ?>"
 											data-language-id="<?php echo (int) $admin_language_id; ?>"
-											data-field="description"
+											data-field="block6"
 											title="<?php esc_attr_e( 'Save Russian name', 'ai-calculator' ); ?>"
 										>
 											<i class="fa fa-save"></i>

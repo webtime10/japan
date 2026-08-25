@@ -3,7 +3,7 @@
  * Plugin Name: AI Calculator
  * Plugin URI: https://example.com/
  * Description: Travel calculators — catalog in WP, data via REST to Laravel.
- * Version: 1.8.1
+ * Version: 1.8.7
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: Nordic
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'AI_CALCULATOR_FILE', __FILE__ );
 define( 'AI_CALCULATOR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AI_CALCULATOR_URL', plugin_dir_url( __FILE__ ) );
-define( 'AI_CALCULATOR_VERSION', '1.8.1' );
+define( 'AI_CALCULATOR_VERSION', '1.8.7' );
 
 require_once AI_CALCULATOR_PATH . 'admin/core/class-ai-calculator-model.php';
 require_once AI_CALCULATOR_PATH . 'inc/class-ai-calculator-settings.php';
@@ -67,8 +67,15 @@ final class AI_Calculator_Plugin {
 		$prefix = $wpdb->prefix . 'ai_calculator_';
 		ai_calculator_maybe_add_category_manufacturer_column( $prefix );
 		ai_calculator_maybe_add_product_manufacturer_column( $prefix );
+		ai_calculator_maybe_add_product_gallery_image_columns( $prefix );
+		ai_calculator_maybe_fix_category_auto_increment( $prefix );
+		ai_calculator_maybe_fix_manufacturer_auto_increment( $prefix );
 		ai_calculator_maybe_fix_product_auto_increment( $prefix );
+		ai_calculator_maybe_create_attribute_tables( $prefix );
 		ai_calculator_maybe_add_product_description_block_columns( $prefix );
+		ai_calculator_maybe_add_product_description_dop1_column( $prefix );
+		ai_calculator_maybe_add_attribute_extended_columns( $prefix );
+		ai_calculator_maybe_add_product_attribute_columns( $prefix );
 		ai_calculator_drop_prompt_tables( $prefix );
 
 		if ( get_option( 'ai_calculator_db_version' ) === AI_CALCULATOR_VERSION ) {
@@ -103,7 +110,7 @@ final class AI_Calculator_Plugin {
 			'ai_calculator_script_admin',
 			plugins_url( 'assets/js/admin/scripts.js', AI_CALCULATOR_FILE ),
 			array( 'jquery' ),
-			AI_CALCULATOR_VERSION . '.product-category-filter-2',
+			AI_CALCULATOR_VERSION . '.fc-product-form-5',
 			true
 		);
 
@@ -112,6 +119,8 @@ final class AI_Calculator_Plugin {
 			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 			'nonce'      => wp_create_nonce( 'ai_calculator_admin' ),
 			'saveEscape' => '',
+			'mediaTitle' => __( 'Выберите изображение', 'ai-calculator' ),
+			'mediaButton' => __( 'Использовать', 'ai-calculator' ),
 		);
 
 		if ( isset( $_GET['action'] ) && 'save' === sanitize_key( wp_unslash( $_GET['action'] ) ) && isset( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -129,6 +138,8 @@ final class AI_Calculator_Plugin {
 		);
 
 		if ( 'toplevel_page_ai_calculator' === $hook ) {
+			wp_enqueue_media();
+
 			wp_enqueue_script(
 				'ai_calculator_dashboard_settings',
 				plugins_url( 'assets/js/admin/dashboard-settings.js', AI_CALCULATOR_FILE ),
@@ -139,6 +150,8 @@ final class AI_Calculator_Plugin {
 		}
 
 		if ( false !== strpos( $hook, 'ai_calculator_products' ) ) {
+			wp_enqueue_media();
+
 			wp_enqueue_script(
 				'ai_calculator_product_related',
 				plugins_url( 'assets/js/admin/product-related.js', AI_CALCULATOR_FILE ),
@@ -211,6 +224,24 @@ final class AI_Calculator_Plugin {
 
 		add_submenu_page(
 			'ai_calculator',
+			__( 'Группы атрибутов', 'ai-calculator' ),
+			__( 'Группы атрибутов', 'ai-calculator' ),
+			'manage_options',
+			'ai_calculator_attribute_groups',
+			array( $this, 'admin_page_attribute_groups' )
+		);
+
+		add_submenu_page(
+			'ai_calculator',
+			__( 'Атрибуты', 'ai-calculator' ),
+			__( 'Атрибуты', 'ai-calculator' ),
+			'manage_options',
+			'ai_calculator_attributes',
+			array( $this, 'admin_page_attributes' )
+		);
+
+		add_submenu_page(
+			'ai_calculator',
 			__( 'DB Dump', 'ai-calculator' ),
 			__( 'DB Dump', 'ai-calculator' ),
 			'manage_options',
@@ -237,6 +268,14 @@ final class AI_Calculator_Plugin {
 
 	public function admin_page_products() {
 		AI_Calculator_Router::dispatch( 'product' );
+	}
+
+	public function admin_page_attribute_groups() {
+		AI_Calculator_Router::dispatch( 'attribute_group' );
+	}
+
+	public function admin_page_attributes() {
+		AI_Calculator_Router::dispatch( 'attribute' );
 	}
 
 	public function admin_page_db_dump() {

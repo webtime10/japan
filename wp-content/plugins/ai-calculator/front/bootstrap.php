@@ -35,8 +35,16 @@ require_once AI_CALCULATOR_FRONT_PATH . 'calculators/budget/class-budget-service
 require_once AI_CALCULATOR_FRONT_PATH . 'calculators/budget/class-budget-controller.php';
 require_once AI_CALCULATOR_FRONT_PATH . 'calculators/budget/register.php';
 
+require_once AI_CALCULATOR_FRONT_PATH . 'calculators/family-comfort/class-family-comfort-model.php';
 require_once AI_CALCULATOR_FRONT_PATH . 'calculators/family-comfort/class-family-comfort-controller.php';
 require_once AI_CALCULATOR_FRONT_PATH . 'calculators/family-comfort/register.php';
+
+require_once AI_CALCULATOR_FRONT_PATH . 'calculators/ideal-region/class-ideal-region-model.php';
+require_once AI_CALCULATOR_FRONT_PATH . 'calculators/ideal-region/class-ideal-region-controller.php';
+require_once AI_CALCULATOR_FRONT_PATH . 'calculators/ideal-region/register.php';
+
+require_once AI_CALCULATOR_FRONT_PATH . 'calculators/chat/class-chat-controller.php';
+require_once AI_CALCULATOR_FRONT_PATH . 'calculators/chat/register.php';
 
 require_once AI_CALCULATOR_FRONT_PATH . 'tools/db-dump/class-db-dump-tool.php';
 

@@ -59,7 +59,7 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 		$prepare_args[] = $offset;
 		$args           = $prepare_args;
 
-		$sql = "SELECT p.*, d.name, d.description AS russian_name, md.name AS manufacturer_name, cat_names.category_name
+		$sql = "SELECT p.*, d.name, COALESCE(NULLIF(d.block6, ''), d.description) AS russian_name, md.name AS manufacturer_name, cat_names.category_name
 			FROM `{$p_table}` p
 			{$join}
 			{$cat_names_join}
@@ -435,10 +435,12 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 	 * @param array             $data
 	 * @param array<int, array> $descriptions
 	 * @param array<int>        $category_ids
+	 * @param array<int>        $category_ids
 	 * @param array<int>        $related_product_ids
+	 * @param array             $product_attributes attribute_id => [ language_id => text ].
 	 * @return int
 	 */
-	public function save( $product_id, $data, $descriptions, $category_ids, $related_product_ids = array() ) {
+	public function save( $product_id, $data, $descriptions, $category_ids, $related_product_ids = array(), $product_attributes = array() ) {
 		$p_table = $this->table( 'product' );
 		$d_table = $this->table( 'product_description' );
 		$p2c     = $this->table( 'product_to_category' );
@@ -446,14 +448,21 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 		$row = array(
 			'manufacturer_id' => isset( $data['manufacturer_id'] ) ? (int) $data['manufacturer_id'] : 0,
 			'image'           => isset( $data['image'] ) ? $data['image'] : '',
+			'image2'          => isset( $data['image2'] ) ? $data['image2'] : '',
+			'image3'          => isset( $data['image3'] ) ? $data['image3'] : '',
+			'image4'          => isset( $data['image4'] ) ? $data['image4'] : '',
+			'image5'          => isset( $data['image5'] ) ? $data['image5'] : '',
+			'image6'          => isset( $data['image6'] ) ? $data['image6'] : '',
 			'sort_order'      => isset( $data['sort_order'] ) ? (int) $data['sort_order'] : 0,
 			'status'          => ! empty( $data['status'] ) ? 1 : 0,
 		);
 
+		$formats = array( '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d' );
+
 		if ( $product_id > 0 ) {
-			$this->wpdb->update( $p_table, $row, array( 'product_id' => $product_id ), array( '%d', '%s', '%d', '%d' ), array( '%d' ) );
+			$this->wpdb->update( $p_table, $row, array( 'product_id' => $product_id ), $formats, array( '%d' ) );
 		} else {
-			$inserted = $this->wpdb->insert( $p_table, $row, array( '%d', '%s', '%d', '%d' ) );
+			$inserted = $this->wpdb->insert( $p_table, $row, $formats );
 			if ( false === $inserted ) {
 				return 0;
 			}
@@ -482,8 +491,11 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 					'block4'       => isset( $desc['block4'] ) ? $desc['block4'] : '',
 					'block5'       => isset( $desc['block5'] ) ? $desc['block5'] : '',
 					'block6'       => isset( $desc['block6'] ) ? $desc['block6'] : '',
+					'block7'       => isset( $desc['block7'] ) ? $desc['block7'] : '',
+					'block8'       => isset( $desc['block8'] ) ? $desc['block8'] : '',
+					'dop1'         => isset( $desc['dop1'] ) ? $desc['dop1'] : '',
 				),
-				array( '%d', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
+				array( '%d', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
 			);
 		}
 
@@ -508,6 +520,9 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 
 		$this->save_related_products( $product_id, $related_product_ids, $primary_category );
 
+		$attribute_model = new AI_Calculator_Attribute_Model();
+		$attribute_model->save_product_attributes( $product_id, $product_attributes );
+
 		return $product_id;
 	}
 
@@ -521,6 +536,7 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 		}
 
 		$this->wpdb->delete( $this->table( 'product_description' ), array( 'product_id' => $product_id ), array( '%d' ) );
+		$this->wpdb->delete( $this->table( 'product_attribute' ), array( 'product_id' => $product_id ), array( '%d' ) );
 		$this->wpdb->delete( $this->table( 'product_to_category' ), array( 'product_id' => $product_id ), array( '%d' ) );
 		$this->wpdb->delete( $this->table( 'product_related' ), array( 'product_id' => $product_id ), array( '%d' ) );
 		$this->wpdb->delete( $this->table( 'product_related' ), array( 'related_product_id' => $product_id ), array( '%d' ) );
@@ -557,7 +573,7 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 		$language_id = (int) $language_id;
 		$field       = (string) $field;
 
-		if ( $product_id <= 0 || $language_id <= 0 || ! in_array( $field, array( 'name', 'description' ), true ) ) {
+		if ( $product_id <= 0 || $language_id <= 0 || ! in_array( $field, array( 'name', 'description', 'block6' ), true ) ) {
 			return false;
 		}
 

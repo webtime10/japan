@@ -5,6 +5,9 @@
  * @var array $categories
  * @var array $manufacturer_list
  * @var int   $manufacturer_id
+ * @var int   $total
+ * @var int   $page
+ * @var int   $pages
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,6 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<form method="post" action="<?php echo esc_url( AI_Calculator_Router::url( 'category', 'bulk_delete' ) ); ?>">
 				<?php wp_nonce_field( 'ai_calculator_category_bulk_delete' ); ?>
 				<input type="hidden" name="filter_manufacturer" value="<?php echo (int) $manufacturer_id; ?>">
+				<input type="hidden" name="paged" value="<?php echo (int) $page; ?>">
 
 				<div class="ai-calculator-bulk-actions">
 					<button type="submit" class="btn btn-danger" onclick="return confirm('<?php echo esc_js( __( 'Delete selected categories?', 'ai-calculator' ) ); ?>');">
@@ -93,6 +97,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</tbody>
 				</table>
 			</form>
+
+			<?php if ( $pages > 1 ) : ?>
+				<nav class="ai-calculator-pagination">
+					<ul>
+						<?php
+						$base = add_query_arg(
+							array(
+								'page'                => 'ai_calculator_categories',
+								'filter_manufacturer' => $manufacturer_id,
+								'paged'               => '%#%',
+							),
+							admin_url( 'admin.php' )
+						);
+						$links = paginate_links(
+							array(
+								'base'      => $base,
+								'format'    => '',
+								'current'   => $page,
+								'total'     => $pages,
+								'prev_text' => '&laquo;',
+								'next_text' => '&raquo;',
+								'type'      => 'array',
+							)
+						);
+						if ( is_array( $links ) ) :
+							foreach ( $links as $link ) :
+								if ( strpos( $link, 'current' ) !== false ) {
+									echo '<li><span class="ai-calculator-page-current">' . wp_kses_post( strip_tags( $link ) ) . '</span></li>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+								} else {
+									echo '<li>' . str_replace( 'page-numbers', 'ai-calculator-page-link', $link ) . '</li>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+								}
+							endforeach;
+						endif;
+						?>
+					</ul>
+				</nav>
+			<?php endif; ?>
 		</div>
 	</div>
 </div>

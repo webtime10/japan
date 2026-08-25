@@ -13,11 +13,13 @@ class AI_Calculator_Router {
 
 	/** @var array<string, string> */
 	private static $page_to_route = array(
-		'ai_calculator'               => 'dashboard',
-		'ai_calculator_languages'     => 'language',
-		'ai_calculator_categories'    => 'category',
-		'ai_calculator_manufacturers' => 'manufacturer',
-		'ai_calculator_products'      => 'product',
+		'ai_calculator'                    => 'dashboard',
+		'ai_calculator_languages'          => 'language',
+		'ai_calculator_categories'         => 'category',
+		'ai_calculator_manufacturers'      => 'manufacturer',
+		'ai_calculator_attribute_groups'   => 'attribute_group',
+		'ai_calculator_attributes'         => 'attribute',
+		'ai_calculator_products'           => 'product',
 	);
 
 	/**
@@ -82,6 +84,12 @@ class AI_Calculator_Router {
 				break;
 			case 'manufacturer':
 				$controller = new AI_Calculator_Manufacturer_Controller( 'manufacturer' );
+				break;
+			case 'attribute_group':
+				$controller = new AI_Calculator_Attribute_Group_Controller( 'attribute_group' );
+				break;
+			case 'attribute':
+				$controller = new AI_Calculator_Attribute_Controller( 'attribute' );
 				break;
 			case 'product':
 				$controller = new AI_Calculator_Product_Controller( 'product' );

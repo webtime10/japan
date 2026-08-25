@@ -11,12 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class AI_Calculator_Category_Model extends AI_Calculator_Model {
 
+	const PER_PAGE = 30;
+
 	/**
 	 * @param int $language_id
 	 * @param int $manufacturer_id 0 = all calculators.
+	 * @param int $page 0 = all rows; 1+ = paginated slice.
 	 * @return array<int, object>
 	 */
-	public function get_list( $language_id, $manufacturer_id = 0 ) {
+	public function get_list( $language_id, $manufacturer_id = 0, $page = 0 ) {
 		$language_id     = (int) $language_id;
 		$manufacturer_id = (int) $manufacturer_id;
 		$c_table         = $this->table( 'category' );
@@ -56,7 +59,34 @@ class AI_Calculator_Category_Model extends AI_Calculator_Model {
 			$tree[]         = $row;
 		}
 
+		$page = (int) $page;
+		if ( $page > 0 ) {
+			$offset = ( $page - 1 ) * self::PER_PAGE;
+			return array_slice( $tree, $offset, self::PER_PAGE );
+		}
+
 		return $tree;
+	}
+
+	/**
+	 * @param int $language_id
+	 * @param int $manufacturer_id 0 = all calculators.
+	 * @return int
+	 */
+	public function count_list( $language_id, $manufacturer_id = 0 ) {
+		$manufacturer_id = (int) $manufacturer_id;
+		$c_table         = $this->table( 'category' );
+
+		if ( $manufacturer_id > 0 ) {
+			return (int) $this->wpdb->get_var(
+				$this->wpdb->prepare(
+					"SELECT COUNT(*) FROM `{$c_table}` WHERE manufacturer_id = %d",
+					$manufacturer_id
+				)
+			);
+		}
+
+		return (int) $this->wpdb->get_var( "SELECT COUNT(*) FROM `{$c_table}`" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 	}
 
 	/**
@@ -65,18 +95,162 @@ class AI_Calculator_Category_Model extends AI_Calculator_Model {
 	 */
 	private function build_path_name( $row, $by_id ) {
 		$parts   = array();
+		$visited = array();
 		$current = $row;
-		$guard   = 0;
-		while ( $current && $guard < 20 ) {
-			array_unshift( $parts, $current->name ? $current->name : '#' . $current->category_id );
+		while ( $current ) {
+			$category_id = (int) $current->category_id;
+			if ( isset( $visited[ $category_id ] ) ) {
+				break;
+			}
+			$visited[ $category_id ] = true;
+			array_unshift( $parts, $current->name ? $current->name : '#' . $category_id );
 			$parent_id = (int) $current->parent_id;
 			if ( $parent_id <= 0 || ! isset( $by_id[ $parent_id ] ) ) {
 				break;
 			}
 			$current = $by_id[ $parent_id ];
-			++$guard;
 		}
-		return implode( ' &gt; ', $parts );
+		return implode( ' > ', $parts );
+	}
+
+	/**
+	 * @param int $category_id 0 = new category.
+	 * @param int $parent_id
+	 * @param int $manufacturer_id
+	 */
+	public function is_valid_parent( $category_id, $parent_id, $manufacturer_id = 0 ) {
+		$category_id     = (int) $category_id;
+		$parent_id       = (int) $parent_id;
+		$manufacturer_id = (int) $manufacturer_id;
+
+		if (
+			function_exists( 'ai_calculator_is_family_comfort_manufacturer_id' )
+			&& ai_calculator_is_family_comfort_manufacturer_id( $manufacturer_id )
+		) {
+			$root_id = function_exists( 'ai_calculator_get_family_comfort_root_category_id' )
+				? ai_calculator_get_family_comfort_root_category_id()
+				: 0;
+
+			if ( $root_id > 0 && $category_id === $root_id ) {
+				return 0 === $parent_id;
+			}
+
+			if ( $root_id > 0 ) {
+				return $parent_id === $root_id;
+			}
+
+			return 0 === $parent_id;
+		}
+
+		if ( $parent_id <= 0 ) {
+			return true;
+		}
+		if ( $category_id > 0 && $parent_id === $category_id ) {
+			return false;
+		}
+
+		$c_table    = $this->table( 'category' );
+		$visited    = array();
+		$current_id = $parent_id;
+
+		while ( $current_id > 0 ) {
+			if ( $category_id > 0 && $current_id === $category_id ) {
+				return false;
+			}
+			if ( isset( $visited[ $current_id ] ) ) {
+				break;
+			}
+			$visited[ $current_id ] = true;
+			$current_id             = (int) $this->wpdb->get_var(
+				$this->wpdb->prepare(
+					"SELECT parent_id FROM `{$c_table}` WHERE category_id = %d",
+					$current_id
+				)
+			);
+		}
+
+		return true;
+	}
+
+	/**
+	 * @param int                  $category_id
+	 * @param array<string, mixed> $data
+	 * @return array<string, mixed>
+	 */
+	public function normalize_family_comfort_parent( $category_id, $data ) {
+		$manufacturer_id = isset( $data['manufacturer_id'] ) ? (int) $data['manufacturer_id'] : 0;
+		if (
+			! function_exists( 'ai_calculator_is_family_comfort_manufacturer_id' )
+			|| ! ai_calculator_is_family_comfort_manufacturer_id( $manufacturer_id )
+		) {
+			return $data;
+		}
+
+		if ( function_exists( 'ai_calculator_ensure_family_comfort_root_category' ) ) {
+			ai_calculator_ensure_family_comfort_root_category();
+		}
+
+		$root_id     = function_exists( 'ai_calculator_get_family_comfort_root_category_id' )
+			? ai_calculator_get_family_comfort_root_category_id()
+			: 0;
+		$category_id = (int) $category_id;
+
+		if ( $root_id > 0 && $category_id === $root_id ) {
+			$data['parent_id'] = 0;
+		} elseif ( $root_id > 0 ) {
+			$data['parent_id'] = $root_id;
+		} else {
+			$data['parent_id'] = 0;
+		}
+
+		return $data;
+	}
+
+	/**
+	 * @param int $language_id
+	 * @param int $editing_id
+	 * @param int $manufacturer_id
+	 * @return array<int, object>
+	 */
+	public function get_parent_categories_for_form( $language_id, $editing_id = 0, $manufacturer_id = 0 ) {
+		$list        = $this->get_list( $language_id, $manufacturer_id );
+		$editing_id  = (int) $editing_id;
+		$manufacturer_id = (int) $manufacturer_id;
+
+		if (
+			function_exists( 'ai_calculator_is_family_comfort_manufacturer_id' )
+			&& ai_calculator_is_family_comfort_manufacturer_id( $manufacturer_id )
+		) {
+			if ( function_exists( 'ai_calculator_ensure_family_comfort_root_category' ) ) {
+				ai_calculator_ensure_family_comfort_root_category();
+			}
+
+			$root_id = function_exists( 'ai_calculator_get_family_comfort_root_category_id' )
+				? ai_calculator_get_family_comfort_root_category_id()
+				: 0;
+
+			if ( $root_id <= 0 || $editing_id === $root_id ) {
+				return array();
+			}
+
+			foreach ( $list as $row ) {
+				if ( (int) $row->category_id === $root_id ) {
+					return array( $row );
+				}
+			}
+
+			return array();
+		}
+
+		$parents = array();
+		foreach ( $list as $row ) {
+			if ( (int) $row->category_id === $editing_id ) {
+				continue;
+			}
+			$parents[] = $row;
+		}
+
+		return $parents;
 	}
 
 	/**

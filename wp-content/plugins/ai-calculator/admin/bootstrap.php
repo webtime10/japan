@@ -17,11 +17,15 @@ require_once AI_CALCULATOR_PATH . 'admin/models/class-ai-calculator-language-mod
 require_once AI_CALCULATOR_PATH . 'admin/models/class-ai-calculator-category-model.php';
 require_once AI_CALCULATOR_PATH . 'admin/models/class-ai-calculator-manufacturer-model.php';
 require_once AI_CALCULATOR_PATH . 'admin/models/class-ai-calculator-product-model.php';
+require_once AI_CALCULATOR_PATH . 'admin/models/class-ai-calculator-attribute-group-model.php';
+require_once AI_CALCULATOR_PATH . 'admin/models/class-ai-calculator-attribute-model.php';
 
 require_once AI_CALCULATOR_PATH . 'admin/controllers/class-dashboard-controller.php';
 require_once AI_CALCULATOR_PATH . 'admin/controllers/class-language-controller.php';
 require_once AI_CALCULATOR_PATH . 'admin/controllers/class-category-controller.php';
 require_once AI_CALCULATOR_PATH . 'admin/controllers/class-manufacturer-controller.php';
+require_once AI_CALCULATOR_PATH . 'admin/controllers/class-attribute-group-controller.php';
+require_once AI_CALCULATOR_PATH . 'admin/controllers/class-attribute-controller.php';
 require_once AI_CALCULATOR_PATH . 'admin/controllers/class-product-controller.php';
 
 require_once AI_CALCULATOR_PATH . 'inc/class-ai-calculator-settings.php';

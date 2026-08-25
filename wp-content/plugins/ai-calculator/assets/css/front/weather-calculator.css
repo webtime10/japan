@@ -14,6 +14,10 @@
     --ai-wh-frame-padding: 24px;
     box-sizing: border-box;
     padding: 60px 0 56px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
 }
 .ai-wh__label{
 	font-family: 'Heebo', sans-serif;
@@ -27,18 +31,28 @@
 	box-sizing: border-box;
 }
 
+/* Не left:-9999px: в RTL раздувает scrollWidth и уезжает вправо при узком viewport (админ-бар / DevTools). */
 .ai-calculator-hp {
 	position: absolute !important;
-	left: -9999px !important;
 	width: 1px !important;
 	height: 1px !important;
+	margin: -1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	clip-path: inset(50%) !important;
+	border: 0 !important;
 	opacity: 0 !important;
 	pointer-events: none !important;
+	white-space: nowrap !important;
 }
 
 .ai-wh__inner {
-
+	position: relative;
 	margin: 0 auto;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
 }
 
 .ai-wh__title {

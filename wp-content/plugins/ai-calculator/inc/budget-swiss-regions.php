@@ -145,9 +145,7 @@ function ai_calculator_budget_swiss_regions( $lang = '' ) {
 	$lang   = '' !== (string) $lang ? ai_calculator_normalize_lang_slug( (string) $lang ) : ai_calculator_polylang_slug();
 	$labels = ai_calculator_budget_swiss_region_labels_by_lang();
 
-	if ( 'ar' === $lang && isset( $labels['he'] ) ) {
-		$lang = 'he';
-	} elseif ( ! isset( $labels[ $lang ] ) ) {
+	if ( ! isset( $labels[ $lang ] ) ) {
 		$lang = 'ar';
 	}
 

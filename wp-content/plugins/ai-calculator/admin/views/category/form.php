@@ -7,6 +7,9 @@
  * @var array       $languages
  * @var array       $parent_categories
  * @var array       $manufacturer_options
+ * @var int         $family_comfort_manufacturer_id
+ * @var int         $family_comfort_root_category_id
+ * @var bool        $is_family_comfort_root
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -17,10 +20,17 @@ $id       = $category ? (int) $category->category_id : 0;
 $form_id  = 'ai-calculator-form-category';
 $save_url = AI_Calculator_Router::url( 'category', 'save' );
 $mfr_id   = $category ? (int) $category->manufacturer_id : 0;
-if ( ! $mfr_id && isset( $_GET['filter_manufacturer'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-	$mfr_id = (int) $_GET['filter_manufacturer'];
-}
 $parent_id = $category ? (int) $category->parent_id : 0;
+$family_comfort_manufacturer_id  = isset( $family_comfort_manufacturer_id ) ? (int) $family_comfort_manufacturer_id : 0;
+$family_comfort_root_category_id = isset( $family_comfort_root_category_id ) ? (int) $family_comfort_root_category_id : 0;
+$is_family_comfort_root          = ! empty( $is_family_comfort_root );
+$is_family_comfort               = $mfr_id > 0 && $family_comfort_manufacturer_id > 0 && $mfr_id === $family_comfort_manufacturer_id;
+if ( ! $is_family_comfort && $id > 0 && $family_comfort_root_category_id > 0 ) {
+	$is_family_comfort = true;
+}
+if ( $is_family_comfort && ! $is_family_comfort_root && $family_comfort_root_category_id > 0 && $parent_id <= 0 ) {
+	$parent_id = $family_comfort_root_category_id;
+}
 ?>
 <form id="<?php echo esc_attr( $form_id ); ?>" method="post" action="<?php echo esc_url( $save_url ); ?>" class="form-horizontal ai-calculator-form">
 	<?php wp_nonce_field( 'ai_calculator_category_save' ); ?>
@@ -43,24 +53,35 @@ $parent_id = $category ? (int) $category->parent_id : 0;
 			<div class="form-group">
 				<label class="control-label" for="cat-manufacturer"><?php esc_html_e( 'Калькулятор', 'ai-calculator' ); ?></label>
 				<select name="manufacturer_id" id="cat-manufacturer" class="form-control" required>
+					<option value="" <?php selected( $mfr_id, 0 ); ?>><?php esc_html_e( '— Выберите калькулятор —', 'ai-calculator' ); ?></option>
 					<?php foreach ( $manufacturer_options as $mid => $label ) : ?>
-						<?php if ( (int) $mid <= 0 ) : ?>
-							<?php continue; ?>
-						<?php endif; ?>
-						<option value="<?php echo (int) $mid; ?>" <?php selected( $mfr_id, (int) $mid ); ?>>
+						<?php
+						$is_fc_option = $family_comfort_manufacturer_id > 0 && (int) $mid === $family_comfort_manufacturer_id;
+						if ( ! $is_fc_option && function_exists( 'ai_calculator_family_comfort_name_matches' ) ) {
+							$is_fc_option = ai_calculator_family_comfort_name_matches( $label );
+						}
+						?>
+						<option
+							value="<?php echo (int) $mid; ?>"
+							data-family-comfort="<?php echo $is_fc_option ? '1' : '0'; ?>"
+							<?php selected( $mfr_id, (int) $mid ); ?>
+						>
 							<?php echo esc_html( $label ); ?>
 						</option>
 					<?php endforeach; ?>
 				</select>
 			</div>
-			<div class="form-group">
+			<div
+				class="form-group"
+				id="cat-parent-group"
+				data-family-comfort-manufacturer-id="<?php echo (int) $family_comfort_manufacturer_id; ?>"
+				data-family-comfort-root-category-id="<?php echo (int) $family_comfort_root_category_id; ?>"
+				data-is-family-comfort-root="<?php echo $is_family_comfort_root ? '1' : '0'; ?>"
+			>
 				<label class="control-label" for="cat-parent"><?php esc_html_e( 'Parent', 'ai-calculator' ); ?></label>
 				<select name="parent_id" id="cat-parent" class="form-control">
 					<option value="0" data-manufacturer-id="0"><?php esc_html_e( '— None —', 'ai-calculator' ); ?></option>
 					<?php foreach ( $parent_categories as $parent_cat ) : ?>
-						<?php if ( (int) $parent_cat->category_id === $id ) : ?>
-							<?php continue; ?>
-						<?php endif; ?>
 						<option
 							value="<?php echo (int) $parent_cat->category_id; ?>"
 							data-manufacturer-id="<?php echo (int) $parent_cat->manufacturer_id; ?>"
@@ -70,6 +91,12 @@ $parent_id = $category ? (int) $category->parent_id : 0;
 				</select>
 				<p class="help-block" id="cat-parent-empty" style="display:none;">
 					<?php esc_html_e( 'Нет родительских категорий для этого калькулятора.', 'ai-calculator' ); ?>
+				</p>
+				<p class="help-block" id="cat-parent-family-comfort-root" <?php echo $is_family_comfort_root ? '' : 'style="display:none;"'; ?>>
+					<?php esc_html_e( 'Это корневая категория калькулятора семейного комфорта. Родитель не задаётся.', 'ai-calculator' ); ?>
+				</p>
+				<p class="help-block" id="cat-parent-family-comfort-child" <?php echo ( $is_family_comfort && ! $is_family_comfort_root ) ? '' : 'style="display:none;"'; ?>>
+					<?php esc_html_e( 'Для калькулятора семейного комфорта родителем может быть только корневая категория калькулятора.', 'ai-calculator' ); ?>
 				</p>
 			</div>
 			<div class="form-group">

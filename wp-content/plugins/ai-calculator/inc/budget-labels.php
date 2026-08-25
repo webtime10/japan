@@ -67,8 +67,15 @@ function ai_calculator_budget_label( $key, $default ) {
  * @return array<string, string>
  */
 function ai_calculator_budget_ui_labels() {
+	$default_title = ai_calculator_budget_label(
+		'budget_title',
+		'Калькулятор стоимости поездки'
+	);
+
+	$custom_title  = ai_calculator_get_custom_title( 'budget', $default_title );
+
 	return array(
-		'title'                  => ai_calculator_budget_label( 'budget_title', 'Калькулятор стоимости поездки' ),
+		'title'                  => $custom_title,
 		'question'               => ai_calculator_budget_label( 'budget_question', 'Вопрос' ),
 		'of'                     => ai_calculator_budget_label( 'budget_of', 'из' ),
 		'next'                   => ai_calculator_budget_label( 'budget_next', 'Далее' ),

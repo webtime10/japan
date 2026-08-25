@@ -189,10 +189,10 @@ final class AI_Calculator_Weather_Ajax {
 			wp_send_json_error( array( 'message' => __( 'Spam detected.', 'ai-calculator' ) ), 400 );
 		}
 
-		$region_id = isset( $_POST['region'] ) ? absint( wp_unslash( $_POST['region'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$month_id  = isset( $_POST['month'] ) ? absint( wp_unslash( $_POST['month'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$region_value = isset( $_POST['region'] ) ? sanitize_text_field( wp_unslash( (string) $_POST['region'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$month_id     = isset( $_POST['month'] ) ? absint( wp_unslash( $_POST['month'] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-		if ( $region_id <= 0 || $month_id <= 0 ) {
+		if ( '' === $region_value || $month_id <= 0 ) {
 			wp_send_json_error(
 				array( 'message' => __( 'Choose month and region.', 'ai-calculator' ) ),
 				400
@@ -200,7 +200,7 @@ final class AI_Calculator_Weather_Ajax {
 		}
 
 		$model = new AI_Calculator_Weather_Model();
-		$sent  = $model->build_laravel_payload( $month_id, $region_id );
+		$sent  = $model->build_laravel_payload( $month_id, $region_value );
 
 		if ( '' === $sent['month_name'] || '' === $sent['region_name'] ) {
 			wp_send_json_error(

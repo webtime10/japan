@@ -1,6 +1,6 @@
 <?php
 /**
- * Vue 3 CDN — только если ещё не подключён на странице.
+ * Vue 3 — локальный файл, если на странице ещё не подключён.
  *
  * @package ai-calculator
  */
@@ -13,9 +13,7 @@ final class AI_Calculator_Vue3_Assets {
 
 	const HANDLE = 'ai-calculator-vue3';
 
-	const CDN_VERSION = '3.5.13';
-
-	const CDN_URL = 'https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js';
+	const VERSION = '3.5.13';
 
 	/** @var array<int, string> */
 	private static $known_handles = array(
@@ -28,7 +26,16 @@ final class AI_Calculator_Vue3_Assets {
 	);
 
 	/**
-	 * Зарегистрировать Vue 3 CDN (без enqueue).
+	 * URL локального Vue 3 (assets/js/front/vue.js).
+	 *
+	 * @return string
+	 */
+	public static function script_url() {
+		return plugins_url( 'assets/js/front/vue.js', AI_CALCULATOR_FILE );
+	}
+
+	/**
+	 * Зарегистрировать Vue 3 локально (без enqueue).
 	 *
 	 * @return void
 	 */
@@ -39,9 +46,9 @@ final class AI_Calculator_Vue3_Assets {
 
 		wp_register_script(
 			self::HANDLE,
-			self::CDN_URL,
+			self::script_url(),
 			array(),
-			self::CDN_VERSION,
+			self::VERSION,
 			true
 		);
 	}

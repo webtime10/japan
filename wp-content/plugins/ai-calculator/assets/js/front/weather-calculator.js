@@ -55,7 +55,8 @@ jQuery(document).ready(function ($) {
 		var month = $root.find('[data-ai-wh-month]').val();
 		var sentLocal = {
 			month_name: $.trim($root.find('[data-ai-wh-month] option:selected').text()),
-			region_name: $.trim($root.find('[data-ai-wh-region] option:selected').text())
+			// В value региона — русское название из админки («Наз. на русск.»).
+			region_name: $.trim($root.find('[data-ai-wh-region]').val() || '')
 		};
 
 		if (!region || !month) {

@@ -543,3 +543,199 @@
 	background: #f0f6fc;
 	outline: none;
 }
+
+
+.ai-calculator-product-attributes .ai-calculator-attribute-group {
+	margin-bottom: 20px;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-group:last-child {
+	margin-bottom: 0;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-group-title {
+	margin: 0 0 10px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-checklist {
+	margin: 0;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-checklist li {
+	margin-bottom: 12px;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: flex-start;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #eee;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-row:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-row__check {
+	flex: 0 0 220px;
+	min-width: 180px;
+	padding-top: 6px;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-row__text {
+	flex: 1 1 280px;
+	min-width: 0;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-lang-block + .ai-calculator-attribute-lang-block {
+	margin-top: 12px;
+	padding-top: 12px;
+	border-top: 1px dashed #e5e5e5;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-lang-block__inner {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: flex-start;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-row__side {
+	flex: 0 0 220px;
+	min-width: 180px;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-row__main {
+	flex: 1 1 260px;
+	min-width: 0;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-row__side .form-group {
+	margin-bottom: 8px;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-field-label {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 12px;
+	color: #666;
+	font-weight: 600;
+}
+
+.ai-calculator-media-field__controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	align-items: center;
+}
+
+.ai-calculator-media-field__controls .ai-calculator-media-input {
+	flex: 1 1 120px;
+	min-width: 0;
+}
+
+.ai-calculator-media-field__controls .button {
+	margin: 0;
+	height: 34px;
+	line-height: 32px;
+	padding: 0 10px;
+}
+
+.ai-calculator-media-preview {
+	margin-top: 8px;
+}
+
+.ai-calculator-media-preview img {
+	display: block;
+	max-width: 120px;
+	max-height: 80px;
+	width: auto;
+	height: auto;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background: #fff;
+}
+
+.prod-general-images {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px 20px;
+	margin-bottom: 8px;
+}
+
+@media (max-width: 782px) {
+	.prod-general-images {
+		grid-template-columns: 1fr;
+	}
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-text-field + .ai-calculator-attribute-text-field {
+	margin-top: 8px;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-text-label {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 12px;
+	color: #666;
+	font-weight: normal;
+}
+
+.ai-calculator-product-attributes .ai-calculator-attribute-checklist label {
+	font-weight: normal;
+	margin: 0;
+}
+
+.ai-calculator-attribute-checklist--simple .ai-calculator-attribute-row--simple {
+	margin-bottom: 6px;
+}
+
+.ai-calculator-family-comfort-card {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: flex-start;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
+	position: relative;
+	z-index: 1;
+}
+
+.ai-calculator-family-comfort-card__media {
+	flex: 0 0 220px;
+	min-width: 180px;
+}
+
+.ai-calculator-family-comfort-card__content {
+	flex: 1 1 320px;
+	min-width: 0;
+}
+
+.ai-calculator-family-comfort-card__inner {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: flex-start;
+}
+
+.ai-calculator-family-comfort-card__side {
+	flex: 0 0 220px;
+	min-width: 180px;
+}
+
+.ai-calculator-family-comfort-card__main {
+	flex: 1 1 260px;
+	min-width: 0;
+}
+
+.ai-calculator-family-comfort-card__side .form-group,
+.ai-calculator-family-comfort-card__main .form-group {
+	margin-bottom: 10px;
+}

@@ -21,6 +21,7 @@ $result_data = isset( $ai_budget['catalog_cards'] ) && is_array( $ai_budget['cat
 	: array();
 
 $order_modal_meta = ai_calculator_budget_order_modal_meta();
+$labels            = ai_calculator_budget_ui_labels();
 ?>
 <section class="ai-calculator ai-calculator-budget ai-bg<?php echo $is_rtl ? ' ai-bg--rtl' : ''; ?>" data-ai-bg-step="1"<?php echo $is_rtl ? ' dir="rtl"' : ''; ?>>
 	<div class="container-4">
@@ -682,8 +683,8 @@ $order_modal_meta = ai_calculator_budget_order_modal_meta();
 			>
 				<div class="ai-bg__submit-box">
 					<span class="ai-bg__submit-spinner" aria-hidden="true"></span>
-					<span class="ai-bg__submit-title">מחשב את התקציב</span>
-					<span class="ai-bg__submit-text">אנא המתן, הנתונים נשלחים ומעובדים</span>
+					<span class="ai-bg__submit-title">جاري حساب الميزانية</span>
+					<span class="ai-bg__submit-text">يرجى الانتظار، يتم إرسال البيانات ومعالجتها</span>
 				</div>
 			</div>
 

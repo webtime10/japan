@@ -125,7 +125,7 @@ final class AI_Calculator_Admin_Ajax {
 		$field       = isset( $_POST['field'] ) ? sanitize_key( wp_unslash( $_POST['field'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$value       = isset( $_POST['value'] ) ? wp_unslash( $_POST['value'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-		if ( $product_id <= 0 || $language_id <= 0 || ! in_array( $field, array( 'name', 'description' ), true ) ) {
+		if ( $product_id <= 0 || $language_id <= 0 || ! in_array( $field, array( 'name', 'description', 'block6' ), true ) ) {
 			wp_send_json_error( array( 'message' => __( 'Invalid product field.', 'ai-calculator' ) ), 400 );
 		}
 

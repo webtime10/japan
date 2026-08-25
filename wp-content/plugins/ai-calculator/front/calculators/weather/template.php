@@ -21,11 +21,16 @@ $stat_temp          = ai_calculator_translate( 'weather_stat_temp' );
 $stat_precip        = ai_calculator_translate( 'weather_stat_precip' );
 $stat_sunny         = ai_calculator_translate( 'weather_stat_sunny' );
 $stat_season        = ai_calculator_translate( 'weather_stat_season' );
+
+$calculator_title = ai_calculator_get_custom_title(
+	'weather',
+	ai_calculator_translate( 'weather_title' )
+);
 ?>
 <section class="ai-wh" data-ai-wh data-ai-remote-url="<?php echo esc_attr( ai_calculator_remote_url() ); ?>">
 	<div class="container-4">
 		<div class="ai-wh__inner">
-			<h2 class="ai-wh__title"><?php echo esc_html( ai_calculator_translate( 'weather_title' ) ); ?></h2>
+			<h2 class="ai-wh__title"><?php echo esc_html( (string) $calculator_title ); ?></h2>
 			<input
 				type="text"
 				class="ai-calculator-hp"
@@ -57,10 +62,17 @@ $stat_season        = ai_calculator_translate( 'weather_stat_season' );
 							<label class="ai-wh__label" for="ai-wh-region"><?php echo esc_html( $placeholder_region ); ?></label>
 							<div class="ai-wh__select-wrap">
 								<select class="ai-wh__select" id="ai-wh-region" name="ai_wh_region" data-ai-wh-region>
-									<option value="" <?php selected( (int) $defaults['region'], 0 ); ?>><?php echo esc_html( $placeholder_region ); ?></option>
-									<?php foreach ( $regions as $key => $label ) : ?>
-										<option value="<?php echo esc_attr( (string) $key ); ?>" <?php selected( (int) $defaults['region'], (int) $key ); ?>>
-											<?php echo esc_html( $label ); ?>
+									<option value="" <?php selected( (string) $defaults['region'], '' ); ?>><?php echo esc_html( $placeholder_region ); ?></option>
+									<?php foreach ( $regions as $key => $region ) : ?>
+										<?php
+										$option_label = is_array( $region ) ? (string) ( $region['label'] ?? '' ) : (string) $region;
+										$option_value = is_array( $region ) ? (string) ( $region['value'] ?? '' ) : (string) $key;
+										if ( $option_value === '' ) {
+											$option_value = (string) $key;
+										}
+										?>
+										<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( (string) $defaults['region'], $option_value ); ?>>
+											<?php echo esc_html( $option_label ); ?>
 										</option>
 									<?php endforeach; ?>
 								</select>
