@@ -26,7 +26,7 @@ if ( $layout === 's_flexibol_country_text' ) :
 					<img class="floating-mountains" src="<?php echo esc_url( $image_1_url ); ?>" alt="">
 				</div>
 				<div class="text-end">
-					<h1><?php echo esc_html( $title ); ?></h1>
+					
 					<?php if ( $text_1 ) : ?>
 						<div class="short-text-1">
 							<?php echo wp_kses_post( $text_1 ); ?>

@@ -279,7 +279,7 @@ a{
     justify-content: center;
 }
 .into-site-main-2{
-    padding-bottom: 97px;
+    padding-bottom: 442px;
 }
 
 .landing-hero-text>img{
@@ -1432,10 +1432,20 @@ font-size: 22px;
 }
 
 /* Responsive */
+
+@media (max-width: 1200px) { 
+    .site-main-2 .container-4 {
+        overflow: unset !important;
+    }
+ }
+
 @media (max-width: 1024px) {
     .oleksandr-wrap {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
+    }
+    .into-site-main-2 {
+        padding-bottom: 137px;
     }
 }
 

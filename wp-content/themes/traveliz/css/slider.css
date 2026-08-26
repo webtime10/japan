@@ -85,7 +85,7 @@ font-size: 23px;
 }
 .container-5 h2{
 
-       direction: ltr !important;
+       direction: rtl !important;
     unicode-bidi: bidi-override;
     font-weight: 700;
     font-size: 42px;

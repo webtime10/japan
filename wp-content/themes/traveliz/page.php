@@ -42,28 +42,12 @@ get_header();
         src="<?php echo esc_url( $shadow_url ? $shadow_url : ( get_template_directory_uri() . '/img/Ellipse35.webp' ) ); ?>"
         alt=""
     >
-    <h2>
-        <span><?php echo esc_html( $h1_1 ); ?></span>
-        <span><?php echo esc_html( $h1_2 ); ?></span>
-    </h2>
-    <div class="site-main-title-2">
-        <strong><?php echo esc_html( $sub ); ?></strong>
-    </div>
-<?php if ( $btn_type === 'popup' ) : ?>
-	<button type="button" class="yl-region js-open-popup modal-trigger_wt" data-source="general_request">
-		<span><?php echo esc_html( $btn_t ); ?></span>
-		<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"/>
-		</svg>
-	</button>
-<?php else : ?>
-	<a class="yl-region" href="<?php echo esc_url( $btn_link ); ?>">
-		<span><?php echo esc_html( $btn_t ); ?></span>
-		<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"/>
-		</svg>
-	</a>
-<?php endif; ?>
+    <h1>
+        <?php echo esc_html( $h1_1 ); ?>
+
+    </h1>
+    
+
 </div>
 
 
@@ -160,24 +144,6 @@ get_header();
     endif;
 
     ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="comment-wrap">
 <div class="container-4">    
