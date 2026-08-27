@@ -162,6 +162,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	require_once get_template_directory() . '/inc/acf/s_flexibol_constructor.php';
 	require_once get_template_directory() . '/inc/acf/page.php';
 	require_once get_template_directory() . '/inc/acf/footer.php';
+	require_once get_template_directory() . '/inc/acf/what_we_offer.php';
+	require_once get_template_directory() . '/inc/acf/shortcodes_help.php';
+	require_once get_template_directory() . '/inc/acf/how_it_works_rename.php';
 }
 
 

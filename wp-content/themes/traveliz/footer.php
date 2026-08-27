@@ -111,21 +111,7 @@ if ($green_group) :
                 <?php if ( $ua_footer_sitemap_title ) : ?>
                     <h3 class="footer-heading"><?php echo esc_html( $ua_footer_sitemap_title ); ?></h3>
                 <?php endif; ?>
-                <?php if ( ! empty( $ua_footer_sitemap_links ) && is_array( $ua_footer_sitemap_links ) ) : ?>
-                <nav class="footer-nav">
-                    <?php foreach ( $ua_footer_sitemap_links as $sitemap_item ) :
-                        $link_title = isset( $sitemap_item['ua_footer_sitemap_link_title'] ) ? trim( (string) $sitemap_item['ua_footer_sitemap_link_title'] ) : '';
-                        $link_url   = isset( $sitemap_item['ua_footer_sitemap_link_url'] ) ? trim( (string) $sitemap_item['ua_footer_sitemap_link_url'] ) : '';
-                        if ( '' === $link_title && '' === $link_url ) {
-                            continue;
-                        }
-                        ?>
-                    <a href="<?php echo esc_url( $link_url ? $link_url : '#' ); ?>" class="footer-nav-link">
-                        <span class="nav-text"><?php echo esc_html( $link_title ); ?></span>
-                    </a>
-                    <?php endforeach; ?>
-                </nav>
-                <?php endif; ?>
+       
             </div>
 
             <!-- Column 3: Symbol/Logo -->

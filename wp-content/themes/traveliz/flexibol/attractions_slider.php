@@ -86,7 +86,13 @@ $shadow_url     = traveliz_attractions_image_url( $shadow_image );
 											<?php endif; ?>
 
 											<?php if ( ! empty( $a_text ) ) : ?>
-												<p><?php echo esc_html( $a_text ); ?></p>
+												<div class="attractions-card-text"><?php
+													$a_text_out = (string) $a_text;
+													if ( false === strpos( $a_text_out, '<' ) ) {
+														$a_text_out = wpautop( $a_text_out );
+													}
+													echo wp_kses_post( $a_text_out );
+												?></div>
 											<?php endif; ?>
 
 											<?php if ( ! empty( $a_btn_text ) ) : ?>

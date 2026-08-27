@@ -279,7 +279,7 @@ html[dir="rtl"] .work {
     background-position: center center;
 }
 
-html[dir="rtl"] .wrap-img-work-right {
+ .wrap-img-work-right {
     display: grid;
     grid-template-columns: 1fr 244px;
 

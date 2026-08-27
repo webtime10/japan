@@ -62,7 +62,8 @@ add_action( 'wp_enqueue_scripts', 'traveliz_scripts' );
 function enqueue_my_region_styles() {
     // Если это НЕ главная страница
     if ( !is_front_page() ) {
-        wp_enqueue_style( 'region-style', get_template_directory_uri() . '/css/region.css' );
+        wp_enqueue_style( 'traveliz-vars', get_template_directory_uri() . '/css/vars.css', array(), _S_VERSION );
+        wp_enqueue_style( 'region-style', get_template_directory_uri() . '/css/region.css', array( 'traveliz-vars' ), _S_VERSION );
         wp_enqueue_style( 'reviews', get_template_directory_uri() . '/css/reviews.css');
 		wp_enqueue_style( 'fontavesome', get_template_directory_uri() . '/css/fontawesome-all.css');
     }
@@ -1260,5 +1261,6 @@ function traveliz_resolve_video_embed( $short_raw, $regular_raw ) {
 // Shortcodes
 require_once get_template_directory() . '/shortcode/reviews.php';
 require_once get_template_directory() . '/shortcode/web_expert.php';
+require_once get_template_directory() . '/shortcode/what_we_offer.php';
 
 

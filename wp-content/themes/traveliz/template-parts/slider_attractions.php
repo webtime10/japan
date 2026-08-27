@@ -53,7 +53,13 @@ $button_slider_text = get_field('button_atraction', 'option');
                                             <?php endif; ?>
 
                                             <?php if ( $a_text ) : ?>
-                                                <p><?php echo esc_html( $a_text ); ?></p>
+                                                <div class="attractions-card-text"><?php
+													$a_text_out = (string) $a_text;
+													if ( false === strpos( $a_text_out, '<' ) ) {
+														$a_text_out = wpautop( $a_text_out );
+													}
+													echo wp_kses_post( $a_text_out );
+												?></div>
                                             <?php endif; ?>
 
                                             <?php if ( $button_slider_text ) : ?>

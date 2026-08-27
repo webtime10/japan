@@ -93,6 +93,10 @@ get_header();
             's_flexibol_country_text'  => 'text_cuntry', // file has typo: text_cuntry.php
             's_flexibol_map'           => 'map',
             's_flexibol_custom_reviews' => 'custom_reviews',
+            's_flexibol_what_you_will_get' => 'what_you_will_get',
+            's_flexibol_what_we_offer'  => 'what_we_offer',
+            's_flexibol_how_it_works'   => 'how_it_works',
+            's_flexibol_route_example'  => 'route_example',
             's_flexibol_custom_regions' => 'custom_regions',
             's_flexibol_custom_city_slider' => 'custom_city_slider',
             's_flexibol_attractions_slider' => 'attractions_slider',

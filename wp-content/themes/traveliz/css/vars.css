@@ -1,0 +1,14 @@
+/**
+ * Повторяющиеся серые цвета region.css (только если встречаются ≥2 раз).
+ */
+:root {
+	--gray-text: #36383bea;
+	--gray-heading: #192D37;
+	--gray-muted: #575f65;
+	--gray-ink: #111827;
+	--gray-dark: #333333;
+	--gray-near-black: #222222;
+	--gray-mid: #666666;
+	--gray-border: #E5E7EB;
+	--gray-border-soft: #EAEAEA;
+}

@@ -302,8 +302,6 @@ if ( class_exists( 'AI_Calculator_Manager' ) ) {
 									<?php
 									$ir_fields = array(
 										'title'                 => __( 'H2 заголовок: Ваш идеальный регион', 'ai-calculator' ),
-										'question'              => __( 'Перед «N из 8»: Вопрос', 'ai-calculator' ),
-										'of'                    => __( 'Перед «N из 8»: из', 'ai-calculator' ),
 										'next'                  => __( 'Кнопка: Далее', 'ai-calculator' ),
 										'back'                  => __( 'Кнопка: Назад', 'ai-calculator' ),
 										'choose'                => __( 'Селект: Выберите вариант', 'ai-calculator' ),

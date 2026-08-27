@@ -580,6 +580,22 @@ display: none !important;
     padding: 0 44px;
     margin-top: 9px;
 }
+.what-will-happen-blocks>.will-item>.will-item-text{
+    display: block;
+    color: #626E79;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    padding: 0 44px;
+    margin-top: 9px;
+}
+.what-will-happen-blocks>.will-item>.will-item-text p{
+    margin: 0 0 0.5em;
+}
+.what-will-happen-blocks>.will-item>.will-item-text p:last-child{
+    margin-bottom: 0;
+}
     
 
 

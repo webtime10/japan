@@ -1653,6 +1653,8 @@ html[dir="rtl"] .sm-blue a .menu-item-thumbnail {
     font-weight: 700;
     padding: 8px 10px;
     font-size: 22px;
+    direction: rtl;
+    text-align: right;
 }
      .tabs_box {
     width: 100%;
