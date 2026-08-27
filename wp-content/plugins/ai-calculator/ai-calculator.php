@@ -74,6 +74,7 @@ final class AI_Calculator_Plugin {
 		ai_calculator_maybe_create_attribute_tables( $prefix );
 		ai_calculator_maybe_add_product_description_block_columns( $prefix );
 		ai_calculator_maybe_add_product_description_dop1_column( $prefix );
+		ai_calculator_maybe_add_product_description_dop2_column( $prefix );
 		ai_calculator_maybe_add_attribute_extended_columns( $prefix );
 		ai_calculator_maybe_add_product_attribute_columns( $prefix );
 		ai_calculator_drop_prompt_tables( $prefix );

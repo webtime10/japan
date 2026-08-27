@@ -359,12 +359,36 @@ function ai_calculator_maybe_add_product_description_dop1_column( $prefix ) {
 			'dop1'
 		)
 	);
+	if ( empty( $exists ) ) {
+		$wpdb->query(
+			"ALTER TABLE `{$table}` ADD COLUMN `dop1` varchar(255) NOT NULL DEFAULT '' AFTER `block8`" // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		);
+	}
+
+	ai_calculator_maybe_add_product_description_dop2_column( $prefix );
+}
+
+/**
+ * Текст счётчика шага Ideal Region (dop2): «Вопрос» в «Вопрос 1 из 8».
+ *
+ * @param string $prefix
+ */
+function ai_calculator_maybe_add_product_description_dop2_column( $prefix ) {
+	global $wpdb;
+
+	$table  = $prefix . 'product_description';
+	$exists = $wpdb->get_results(
+		$wpdb->prepare(
+			"SHOW COLUMNS FROM `{$table}` LIKE %s", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			'dop2'
+		)
+	);
 	if ( ! empty( $exists ) ) {
 		return;
 	}
 
 	$wpdb->query(
-		"ALTER TABLE `{$table}` ADD COLUMN `dop1` varchar(255) NOT NULL DEFAULT '' AFTER `block8`" // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		"ALTER TABLE `{$table}` ADD COLUMN `dop2` varchar(255) NOT NULL DEFAULT '' AFTER `dop1`" // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 	);
 }
 

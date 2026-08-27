@@ -72,14 +72,23 @@ if ( is_admin() && current_user_can( 'manage_options' ) && 'POST' === strtoupper
 
 		if ( isset( $_POST['ai_calculator_ideal_region_labels'] ) && is_array( $_POST['ai_calculator_ideal_region_labels'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$ir_labels_raw = wp_unslash( $_POST['ai_calculator_ideal_region_labels'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
-			$ir_labels     = array();
-			foreach ( array( 'user_goal_placeholder', 'results_title', 'other_variants' ) as $ir_key ) {
-				$val = isset( $ir_labels_raw[ $ir_key ] ) ? sanitize_text_field( (string) $ir_labels_raw[ $ir_key ] ) : '';
-				if ( '' !== $val ) {
-					$ir_labels[ $ir_key ] = $val;
+			if ( function_exists( 'ai_calculator_save_ideal_region_labels' ) ) {
+				$ideal_region_labels = ai_calculator_save_ideal_region_labels( $ir_labels_raw );
+			} else {
+				$ir_labels = array();
+				foreach ( array( 'user_goal_placeholder', 'results_title', 'other_variants', 'more', 'hide' ) as $ir_key ) {
+					$val = isset( $ir_labels_raw[ $ir_key ] ) ? sanitize_text_field( (string) $ir_labels_raw[ $ir_key ] ) : '';
+					if ( '' !== $val ) {
+						$ir_labels[ $ir_key ] = $val;
+					}
 				}
+				update_option( 'ai_calculator_ideal_region_labels', $ir_labels, false );
+				$ideal_region_labels = $ir_labels;
 			}
-			update_option( 'ai_calculator_ideal_region_labels', $ir_labels, false );
+			$calculator_titles = get_option( 'ai_calculator_titles', array() );
+			if ( ! is_array( $calculator_titles ) ) {
+				$calculator_titles = array();
+			}
 		}
 	}
 
@@ -100,6 +109,23 @@ if ( is_admin() && current_user_can( 'manage_options' ) && 'POST' === strtoupper
 			),
 			false
 		);
+
+		if ( '' !== $bg_label ) {
+			$ir_labels = get_option( 'ai_calculator_ideal_region_labels', array() );
+			if ( ! is_array( $ir_labels ) ) {
+				$ir_labels = array();
+			}
+			$ir_labels['title'] = $bg_label;
+			update_option( 'ai_calculator_ideal_region_labels', $ir_labels, false );
+
+			$titles = get_option( 'ai_calculator_titles', array() );
+			if ( ! is_array( $titles ) ) {
+				$titles = array();
+			}
+			$titles['ideal_region'] = $bg_label;
+			update_option( 'ai_calculator_titles', $titles, false );
+			$calculator_titles = $titles;
+		}
 	}
 }
 
@@ -114,11 +140,15 @@ $ideal_region_labels          = get_option( 'ai_calculator_ideal_region_labels',
 if ( ! is_array( $ideal_region_labels ) ) {
 	$ideal_region_labels = array();
 }
-$ideal_region_label_defaults = array(
-	'user_goal_placeholder' => 'Ваш результат',
-	'results_title'         => 'Мы подобрали для вас лучшие регионы',
-	'other_variants'        => 'Ещё {n} варианта',
-);
+$ideal_region_label_defaults = function_exists( 'ai_calculator_ideal_region_label_defaults' )
+	? ai_calculator_ideal_region_label_defaults()
+	: array(
+		'user_goal_placeholder' => 'Ваш результат',
+		'results_title'         => 'Мы подобрали для вас лучшие регионы',
+		'other_variants'        => 'Ещё {n} варианта',
+		'more'                  => 'Подробнее',
+		'hide'                  => 'Скрыть',
+	);
 $chat_labels = function_exists( 'ai_calculator_get_chat_labels' )
 	? ai_calculator_get_chat_labels()
 	: array();
@@ -266,15 +296,35 @@ if ( class_exists( 'AI_Calculator_Manager' ) ) {
 								</div>
 
 								<div style="margin-top:16px;display:grid;gap:10px;">
+									<p class="description" style="margin:0;">
+										<?php esc_html_e( 'Подписи на карточке квиза. Пустое поле = перевод из languages-data (иврит/EN).', 'ai-calculator' ); ?>
+									</p>
 									<?php
 									$ir_fields = array(
+										'title'                 => __( 'H2 заголовок: Ваш идеальный регион', 'ai-calculator' ),
+										'question'              => __( 'Перед «N из 8»: Вопрос', 'ai-calculator' ),
+										'of'                    => __( 'Перед «N из 8»: из', 'ai-calculator' ),
+										'next'                  => __( 'Кнопка: Далее', 'ai-calculator' ),
+										'back'                  => __( 'Кнопка: Назад', 'ai-calculator' ),
+										'choose'                => __( 'Селект: Выберите вариант', 'ai-calculator' ),
+										'submit'                => __( 'Кнопка финала: Подобрать регион', 'ai-calculator' ),
+										'submitting'            => __( 'Пока грузится: Подбираем регион…', 'ai-calculator' ),
+										'more'                  => __( 'Кнопка: Подробнее (иврит: לפרטים נוספים)', 'ai-calculator' ),
+										'hide'                  => __( 'Кнопка: Скрыть', 'ai-calculator' ),
 										'user_goal_placeholder' => __( 'Плейсхолдер инпута: Ваш результат', 'ai-calculator' ),
 										'results_title'         => __( 'Заголовок результатов: Мы подобрали…', 'ai-calculator' ),
 										'other_variants'        => __( 'Подпись доп. вариантов: Ещё {n} варианта', 'ai-calculator' ),
 									);
 									foreach ( $ir_fields as $ir_key => $ir_label ) :
 										$ir_default = isset( $ideal_region_label_defaults[ $ir_key ] ) ? $ideal_region_label_defaults[ $ir_key ] : '';
-										$ir_value   = isset( $ideal_region_labels[ $ir_key ] ) ? $ideal_region_labels[ $ir_key ] : $ir_default;
+										$ir_value   = isset( $ideal_region_labels[ $ir_key ] ) ? $ideal_region_labels[ $ir_key ] : '';
+										if ( 'title' === $ir_key && '' === $ir_value ) {
+											if ( ! empty( $ideal_region_bg['label'] ) ) {
+												$ir_value = (string) $ideal_region_bg['label'];
+											} elseif ( ! empty( $calculator_titles['ideal_region'] ) ) {
+												$ir_value = (string) $calculator_titles['ideal_region'];
+											}
+										}
 									?>
 										<label style="display:block;">
 											<span style="display:block;margin-bottom:4px;"><strong><?php echo esc_html( $ir_label ); ?></strong></span>

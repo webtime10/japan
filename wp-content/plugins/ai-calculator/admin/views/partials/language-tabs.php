@@ -124,7 +124,7 @@ $product_images = array_slice( $product_images, 0, 6 );
 						<input type="text" name="<?php echo esc_attr( $description_post_key ); ?>[<?php echo esc_attr( (string) $lid ); ?>][block6_1]" value="<?php echo esc_attr( $d && isset( $d->block7 ) ? $d->block7 : '' ); ?>" class="form-control">
 					</div>
 					<div class="form-group">
-						<label class="control-label"><?php esc_html_e( 'dop1', 'ai-calculator' ); ?></label>
+						<label class="control-label"><?php esc_html_e( 'dop1 — подсказка выбора', 'ai-calculator' ); ?></label>
 						<input
 							type="text"
 							name="<?php echo esc_attr( $description_post_key ); ?>[<?php echo esc_attr( (string) $lid ); ?>][dop1]"
@@ -133,6 +133,17 @@ $product_images = array_slice( $product_images, 0, 6 );
 							placeholder="<?php esc_attr_e( 'Один вариант ответа / До двух вариантов ответа / До трёх вариантов ответа', 'ai-calculator' ); ?>"
 						>
 						<p class="description"><?php esc_html_e( 'Подсказка слева у вопроса на фронте Ideal Region.', 'ai-calculator' ); ?></p>
+					</div>
+					<div class="form-group">
+						<label class="control-label"><?php esc_html_e( 'dop2 — счётчик шага «Вопрос»', 'ai-calculator' ); ?></label>
+						<input
+							type="text"
+							name="<?php echo esc_attr( $description_post_key ); ?>[<?php echo esc_attr( (string) $lid ); ?>][dop2]"
+							value="<?php echo esc_attr( $d && isset( $d->dop2 ) ? $d->dop2 : '' ); ?>"
+							class="form-control"
+							placeholder="<?php esc_attr_e( 'Вопрос / Question / שאלה', 'ai-calculator' ); ?>"
+						>
+						<p class="description"><?php esc_html_e( 'Текст перед номером шага: «Вопрос 1 из 8». Пишите на языке вкладки — подтянется с карточки.', 'ai-calculator' ); ?></p>
 					</div>
 					<?php if ( $show_product_image && 0 === $i ) : ?>
 					<div class="prod-general-images">

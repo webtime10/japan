@@ -115,6 +115,19 @@
 				return 'Один вариант ответа';
 			},
 
+			/**
+			 * «Вопрос» в «Вопрос N из 8» — с текущей карточки (dop2), иначе глобальный label.
+			 */
+			stepQuestionLabel: function () {
+				var card = this.currentStepCard;
+				var fromCard = card && card.dop2 ? String(card.dop2).trim() : '';
+				if (fromCard) {
+					return fromCard;
+				}
+
+				return this.uiLabel('question', 'Question');
+			},
+
 			otherVariantsLabel: function () {
 				var count = Math.max(0, (this.matchedRegions || []).length - 1);
 				var tpl = this.uiLabel('other_variants', 'Ещё {n} варианта');
@@ -662,6 +675,70 @@
 				}
 
 				return raw.slice(0, max).trim() + '…';
+			},
+
+			/**
+			 * Делит description_html на превью + «Подробнее».
+			 * По структуре: после первого </ul> — блок «что включить» (RU/EN/AR/HE).
+			 */
+			splitDescriptionHtml: function (html) {
+				try {
+					var raw = String(html || '');
+					if (!raw.trim()) {
+						return { preview: '', more: '', hasMore: false };
+					}
+
+					// Ищем второй заголовок секции: <p>…<strong>… после первого списка.
+					var ulClose = raw.search(/<\/ul>/i);
+					if (ulClose === -1) {
+						return { preview: raw, more: '', hasMore: false };
+					}
+
+					var afterUl = ulClose + 5;
+					var rest = raw.slice(afterUl);
+					var nextBlock = rest.match(/<(?:p|h[1-6]|strong|ul)\b/i);
+					if (!nextBlock || typeof nextBlock.index !== 'number') {
+						return { preview: raw, more: '', hasMore: false };
+					}
+
+					var moreStart = afterUl + nextBlock.index;
+					var preview = raw.slice(0, moreStart).trim();
+					var more = raw.slice(moreStart).replace(/^(?:\s*<p\b[^>]*>\s*<\/p>\s*)+/i, '').trim();
+
+					if (!preview || !more) {
+						return { preview: raw, more: '', hasMore: false };
+					}
+
+					return { preview: preview, more: more, hasMore: true };
+				} catch (e) {
+					return { preview: String(html || ''), more: '', hasMore: false };
+				}
+			},
+
+			descriptionHtmlPreview: function (region) {
+				try {
+					var html = region && region.description_html ? String(region.description_html) : '';
+					var parts = this.splitDescriptionHtml(html);
+					return parts.preview || html;
+				} catch (e) {
+					return region && region.description_html ? String(region.description_html) : '';
+				}
+			},
+
+			descriptionHtmlMore: function (region) {
+				try {
+					return this.splitDescriptionHtml(region && region.description_html ? String(region.description_html) : '').more;
+				} catch (e) {
+					return '';
+				}
+			},
+
+			descriptionHtmlHasMore: function (region) {
+				try {
+					return !!this.splitDescriptionHtml(region && region.description_html ? String(region.description_html) : '').hasMore;
+				} catch (e) {
+					return false;
+				}
 			},
 
 			isRegionExpanded: function (region) {

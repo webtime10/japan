@@ -494,8 +494,9 @@ class AI_Calculator_Product_Model extends AI_Calculator_Model {
 					'block7'       => isset( $desc['block7'] ) ? $desc['block7'] : '',
 					'block8'       => isset( $desc['block8'] ) ? $desc['block8'] : '',
 					'dop1'         => isset( $desc['dop1'] ) ? $desc['dop1'] : '',
+					'dop2'         => isset( $desc['dop2'] ) ? $desc['dop2'] : '',
 				),
-				array( '%d', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
+				array( '%d', '%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s' )
 			);
 		}
 

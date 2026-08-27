@@ -134,7 +134,7 @@ class AI_Calculator_Ideal_Region_Controller extends AI_Calculator_Controller_Bas
 			'ai-calculator-ideal-region-vue',
 			$vue_base . 'components/IdealRegion.js',
 			array( $vue_handle, 'ai-calculator-ideal-region-constants' ),
-			AI_CALCULATOR_VERSION . '.ir-media-3',
+			AI_CALCULATOR_VERSION . '.ir-more-he-1',
 			true
 		);
 
@@ -142,7 +142,7 @@ class AI_Calculator_Ideal_Region_Controller extends AI_Calculator_Controller_Bas
 			'ai-calculator-ideal-region-app',
 			$vue_base . 'app.js',
 			array( $vue_handle, 'ai-calculator-ideal-region-vue', 'ai_calculator_ideal_region' ),
-			AI_CALCULATOR_VERSION . '.ir-media-3',
+			AI_CALCULATOR_VERSION . '.ir-more-he-1',
 			true
 		);
 	}
@@ -151,38 +151,12 @@ class AI_Calculator_Ideal_Region_Controller extends AI_Calculator_Controller_Bas
 	 * @return array<string, string>
 	 */
 	private function get_ui_labels(): array {
-		$saved = get_option( 'ai_calculator_ideal_region_labels', array() );
-		if ( ! is_array( $saved ) ) {
-			$saved = array();
+		if ( function_exists( 'ai_calculator_ideal_region_ui_labels' ) ) {
+			return ai_calculator_ideal_region_ui_labels();
 		}
 
-		$defaults = array(
-			'question'              => __( 'Вопрос', 'ai-calculator' ),
-			'of'                    => __( 'из', 'ai-calculator' ),
-			'next'                  => __( 'Далее', 'ai-calculator' ),
-			'back'                  => __( 'Назад', 'ai-calculator' ),
-			'choose'                => __( 'Выберите вариант', 'ai-calculator' ),
-			'submit'                => __( 'Подобрать регион', 'ai-calculator' ),
-			'submitting'            => __( 'Подбираем регион…', 'ai-calculator' ),
-			'submit_success'        => __( 'Ответы отправлены.', 'ai-calculator' ),
-			'submit_error'          => __( 'Не удалось отправить ответы. Попробуйте ещё раз.', 'ai-calculator' ),
-			'no_data'               => __( 'Нет вариантов для этого шага. Добавьте категорию и товары в админке.', 'ai-calculator' ),
-			'results_title'         => __( 'Мы подобрали для вас лучшие регионы', 'ai-calculator' ),
-			'user_goal_placeholder' => __( 'Ваш результат', 'ai-calculator' ),
-			'other_variants'        => __( 'Ещё {n} варианта', 'ai-calculator' ),
-			'more'                  => __( 'Подробнее', 'ai-calculator' ),
-			'hide'                  => __( 'Скрыть', 'ai-calculator' ),
-			'no_regions'            => __( 'Не удалось подобрать регионы.', 'ai-calculator' ),
-			'match'                 => __( 'Совпадение', 'ai-calculator' ),
-		);
-
-		// Перезаписываем только те ключи, которые явно сохранены в админке.
-		foreach ( array( 'user_goal_placeholder', 'results_title', 'other_variants' ) as $key ) {
-			if ( ! empty( $saved[ $key ] ) ) {
-				$defaults[ $key ] = (string) $saved[ $key ];
-			}
-		}
-
-		return $defaults;
+		return function_exists( 'ai_calculator_ideal_region_label_defaults' )
+			? ai_calculator_ideal_region_label_defaults()
+			: array();
 	}
 }

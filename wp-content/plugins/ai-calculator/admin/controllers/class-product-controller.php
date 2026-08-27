@@ -306,6 +306,7 @@ class AI_Calculator_Product_Controller extends AI_Calculator_Controller {
 				'block7' => $this->parse_product_block6_1( $row ),
 				'block8' => isset( $row['block8'] ) ? sanitize_text_field( wp_unslash( $row['block8'] ) ) : '',
 				'dop1'   => isset( $row['dop1'] ) ? sanitize_text_field( wp_unslash( $row['dop1'] ) ) : '',
+				'dop2'   => isset( $row['dop2'] ) ? sanitize_text_field( wp_unslash( $row['dop2'] ) ) : '',
 			);
 		}
 		return $out;

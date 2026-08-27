@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once AI_CALCULATOR_PATH . 'inc/budget-swiss-regions.php';
 require_once AI_CALCULATOR_PATH . 'inc/budget-images.php';
 require_once AI_CALCULATOR_PATH . 'inc/budget-labels.php';
+require_once AI_CALCULATOR_PATH . 'inc/ideal-region-labels.php';
 require_once AI_CALCULATOR_PATH . 'inc/budget-result-labels.php';
 
 /**

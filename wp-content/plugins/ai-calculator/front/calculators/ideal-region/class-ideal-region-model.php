@@ -87,6 +87,7 @@ class AI_Calculator_Ideal_Region_Model extends AI_Calculator_Model {
 				'category_title' => $category->category_title ? (string) $category->category_title : '#' . $category_id,
 				'sort'           => $sort,
 				'dop1'           => '',
+				'dop2'           => '',
 				'max_answers'    => self::max_answers_for_step( $sort ),
 				'block1'         => '',
 				'block2'         => '',
@@ -124,7 +125,7 @@ class AI_Calculator_Ideal_Region_Model extends AI_Calculator_Model {
 			$this->wpdb->prepare(
 				"SELECT p.product_id, p.sort_order, p.image, p.image2, p.image3, p.image4, p.image5, p.image6,
 					d.name, d.description,
-					d.block1, d.block2, d.block3, d.block4, d.block5, d.block7, d.dop1
+					d.block1, d.block2, d.block3, d.block4, d.block5, d.block7, d.dop1, d.dop2
 				FROM `{$p2c}` p2c
 				INNER JOIN `{$p_table}` p ON p.product_id = p2c.product_id AND p.status = 1
 				LEFT JOIN `{$pd_table}` d ON d.product_id = p.product_id AND d.language_id = %d
@@ -177,6 +178,11 @@ class AI_Calculator_Ideal_Region_Model extends AI_Calculator_Model {
 			$card['dop1'] = self::default_dop1_for_step( (int) $card['sort'] );
 		}
 
+		$dop2 = isset( $row->dop2 ) ? trim( (string) $row->dop2 ) : '';
+		if ( '' !== $dop2 ) {
+			$card['dop2'] = $dop2;
+		}
+
 		for ( $n = 1; $n <= 6; $n++ ) {
 			$block_key = $block_keys[ $n - 1 ];
 			$image_key = $image_keys[ $n - 1 ];
@@ -210,6 +216,7 @@ class AI_Calculator_Ideal_Region_Model extends AI_Calculator_Model {
 				'label'        => $product_name,
 				'image'        => ! empty( $slots[0]['image'] ) ? $slots[0]['image'] : '',
 				'dop1'         => isset( $card['dop1'] ) ? (string) $card['dop1'] : '',
+				'dop2'         => isset( $card['dop2'] ) ? (string) $card['dop2'] : '',
 				'slots'        => $slots,
 			),
 		);

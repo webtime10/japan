@@ -22,12 +22,14 @@ $catalog_cards = isset( $ai_ideal_region['catalog_cards'] ) && is_array( $ai_ide
 
 $labels = isset( $ai_ideal_region['labels'] ) && is_array( $ai_ideal_region['labels'] )
 	? $ai_ideal_region['labels']
-	: array(
-		'question' => 'Question',
-		'of'       => 'of',
-		'next'     => 'Next',
-		'back'     => 'Back',
-	);
+	: ( function_exists( 'ai_calculator_ideal_region_ui_labels' )
+		? ai_calculator_ideal_region_ui_labels()
+		: array(
+			'question' => 'Question',
+			'of'       => 'of',
+			'next'     => 'Next',
+			'back'     => 'Back',
+		) );
 
 $max_step = isset( $ai_ideal_region['max_step'] ) ? max( 1, (int) $ai_ideal_region['max_step'] ) : 1;
 
@@ -35,9 +37,17 @@ $ideal_region_bg = function_exists( 'ai_calculator_get_ideal_region_background' 
 	? ai_calculator_get_ideal_region_background()
 	: array( 'image' => '', 'label' => '' );
 $bg_image = isset( $ideal_region_bg['image'] ) ? (string) $ideal_region_bg['image'] : '';
-$bg_title = isset( $ideal_region_bg['label'] ) ? trim( (string) $ideal_region_bg['label'] ) : '';
+
+// Заголовок: labels.title → фон → custom title.
+$bg_title = '';
+if ( ! empty( $labels['title'] ) ) {
+	$bg_title = trim( (string) $labels['title'] );
+}
+if ( '' === $bg_title && ! empty( $ideal_region_bg['label'] ) ) {
+	$bg_title = trim( (string) $ideal_region_bg['label'] );
+}
 if ( '' === $bg_title ) {
-	$bg_title = (string) $calculator_title;
+	$bg_title = trim( (string) $calculator_title );
 }
 $show_hero = ( '' !== $bg_image || '' !== $bg_title );
 
@@ -189,7 +199,7 @@ if ( '' !== $bg_image ) {
 				<div class="ai-ir__progress" aria-hidden="true" v-if="!showResults">
 					<div class="ai-ir__progress-meta">
 						<span class="ai-ir__progress-step">
-							{{ uiLabel('question', 'Question') }} {{ step }} {{ uiLabel('of', 'of') }} {{ totalSteps }}
+							{{ stepQuestionLabel }} {{ step }} {{ uiLabel('of', 'of') }} {{ totalSteps }}
 						</span>
 						<span class="ai-ir__progress-percent">{{ progressPercent }}%</span>
 					</div>
@@ -327,9 +337,9 @@ if ( '' !== $bg_image ) {
 								</span>
 							</div>
 								<div v-if="matchedRegions[0].description_html" class="ai-ir__result-text" dir="auto">
-									<div class="ai-ir__result-text-preview" v-html="matchedRegions[0].description_html.split('<strong>Что включить')[0]"></div>
-									<div v-show="isRegionExpanded(matchedRegions[0])" class="ai-ir__result-text-more" v-html="'<strong>Что включить' + matchedRegions[0].description_html.split('<strong>Что включить').slice(1).join('<strong>Что включить')"></div>
-									<button v-if="matchedRegions[0].description_html.includes('Что включить')" type="button" class="ai-ir__result-more-btn" @click="toggleRegionDescription(matchedRegions[0])">
+									<div class="ai-ir__result-text-preview" v-html="descriptionHtmlPreview(matchedRegions[0])"></div>
+									<div v-show="isRegionExpanded(matchedRegions[0])" class="ai-ir__result-text-more" v-html="descriptionHtmlMore(matchedRegions[0])"></div>
+									<button v-if="descriptionHtmlHasMore(matchedRegions[0])" type="button" class="ai-ir__result-more-btn" @click="toggleRegionDescription(matchedRegions[0])">
 										{{ isRegionExpanded(matchedRegions[0]) ? uiLabel('hide', 'Скрыть') : uiLabel('more', 'Подробнее') }}
 									</button>
 								</div>
@@ -358,9 +368,9 @@ if ( '' !== $bg_image ) {
 											</span>
 										</div>
 										<div v-if="region.description_html" class="ai-ir__result-text ai-ir__result-text--small" dir="auto">
-											<div class="ai-ir__result-text-preview" v-html="region.description_html.split('<strong>Что включить')[0]"></div>
-											<div v-show="isRegionExpanded(region)" class="ai-ir__result-text-more" v-html="'<strong>Что включить' + region.description_html.split('<strong>Что включить').slice(1).join('<strong>Что включить')"></div>
-											<button v-if="region.description_html.includes('Что включить')" type="button" class="ai-ir__result-more-btn" @click="toggleRegionDescription(region)">
+											<div class="ai-ir__result-text-preview" v-html="descriptionHtmlPreview(region)"></div>
+											<div v-show="isRegionExpanded(region)" class="ai-ir__result-text-more" v-html="descriptionHtmlMore(region)"></div>
+											<button v-if="descriptionHtmlHasMore(region)" type="button" class="ai-ir__result-more-btn" @click="toggleRegionDescription(region)">
 												{{ isRegionExpanded(region) ? uiLabel('hide', 'Скрыть') : uiLabel('more', 'Подробнее') }}
 											</button>
 										</div>
