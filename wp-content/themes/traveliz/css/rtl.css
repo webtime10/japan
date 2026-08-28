@@ -116,6 +116,56 @@ html[dir="rtl"] .now-carousel-button-right {
     right: -3px;
 }
 
+/* Weather slider: LTR temperature line on RTL pages (Hebrew / Arabic) */
+html[dir="rtl"] .now-carousel-caption strong,
+html[dir="rtl"] .now-carousel-title + strong {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
+/* Weather slider: chronological months right-to-left (Jan → Dec) */
+html[dir="rtl"] .now-carousel .now-carousel-items,
+html[dir="rtl"] .now-carousel-items[dir="rtl"] {
+    direction: rtl;
+}
+
+/* Price table: bottom cards RTL order + Bi-Di prices */
+html[dir="rtl"] .price-cards-bottom,
+html[dir="rtl"] .price-cards-bottom[dir="rtl"] {
+    direction: rtl;
+}
+
+.price-amount-ltr {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
+.price-period-ltr {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
+.price-period-rtl {
+    direction: rtl;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
+/* Hotels block: RTL card order + LTR English titles in parentheses */
+html[dir="rtl"] .google-otel-cards,
+html[dir="rtl"] .google-otel-cards[dir="rtl"] {
+    direction: rtl;
+}
+
+.google-otel-card-title .hotel-title-en {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
 
 html[dir="rtl"] .into-r{
     position: relative;

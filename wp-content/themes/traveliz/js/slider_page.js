@@ -1,15 +1,33 @@
 jQuery(function($) {
+    function isCarouselRtl(carusel) {
+        var $items = $(carusel).find('.now-carousel-items').first();
+        if ($items.length) {
+            if ($items.attr('dir') === 'rtl' || $items.css('direction') === 'rtl') {
+                return true;
+            }
+        }
+        return document.documentElement.getAttribute('dir') === 'rtl';
+    }
+
     // Обработка клика на стрелку вправо
     $(document).on('click', ".now-carousel-button-right", function () {
         var carusel = $(this).parents('.now-carousel');
-        right_carusel(carusel);
+        if (isCarouselRtl(carusel)) {
+            left_carusel(carusel);
+        } else {
+            right_carusel(carusel);
+        }
         return false;
     });
 
     // Обработка клика на стрелку влево
     $(document).on('click', ".now-carousel-button-left", function () {
         var carusel = $(this).parents('.now-carousel');
-        left_carusel(carusel);
+        if (isCarouselRtl(carusel)) {
+            right_carusel(carusel);
+        } else {
+            left_carusel(carusel);
+        }
         return false;
     });
 

@@ -86,6 +86,7 @@ function ai_calculator_ideal_region_language_keys() {
 		'other_variants'        => 'ideal_region_other_variants',
 		'more'                  => 'ideal_region_more',
 		'hide'                  => 'ideal_region_hide',
+		'match'                 => 'ideal_region_match',
 	);
 }
 

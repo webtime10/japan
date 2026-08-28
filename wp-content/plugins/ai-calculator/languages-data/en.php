@@ -45,4 +45,5 @@ return array(
 	'ideal_region_other_variants'        => '{n} more options',
 	'ideal_region_more'                  => 'More details',
 	'ideal_region_hide'                  => 'Hide',
+	'ideal_region_match'                 => 'Match',
 );

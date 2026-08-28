@@ -436,6 +436,18 @@ position: relative;
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+html[dir="rtl"] .google-otel-cards,
+html[dir="rtl"] .google-otel-cards[dir="rtl"] {
+    direction: rtl;
+}
+
+.google-otel-card-title .hotel-title-en {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
 .google-otel-card{
     width: 350px;
 
@@ -636,7 +648,7 @@ font-size: 23px;
     font-size: 16px;
     font-weight: 600;
     color: #000;
-    margin-left: 6px;
+    margin-inline-start: 6px;
 }
 
 /* Нижний ряд из трёх карточек */
@@ -644,6 +656,29 @@ font-size: 23px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+}
+
+html[dir="rtl"] .price-cards-bottom,
+html[dir="rtl"] .price-cards-bottom[dir="rtl"] {
+    direction: rtl;
+}
+
+.price-amount-ltr {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
+.price-period-ltr {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
+}
+
+.price-period-rtl {
+    direction: rtl;
+    display: inline-block;
+    unicode-bidi: isolate;
 }
 
 .price-card-small {
@@ -724,11 +759,12 @@ width: auto;
 
 }
 
-.price-card-small-price span {
+.price-card-small-price span,
+.price-card-small-price .price-period-rtl {
     font-size: 16px;
     font-weight: 500;
     color: var(--gray-muted);
-    margin-left: 6px;
+    margin-inline-start: 6px;
 }
 
 @media (max-width: 1024px) {
@@ -990,6 +1026,11 @@ width: auto;
   align-items: center;
 }
 
+html[dir="rtl"] .now-carousel .now-carousel-items,
+html[dir="rtl"] .now-carousel-items[dir="rtl"] {
+  direction: rtl;
+}
+
 .now-carousel-block {
   /* базовая ширина всех слайдов: 173px, базовая высота 212px */
   flex: 0 0 173px;
@@ -1063,16 +1104,24 @@ font-weight: 600;
     font-weight: 600;
     font-size: 16px;
 }
+.is-active .now-carousel-caption strong,
 .is-active .now-carousel-title + strong {
     color: #695729;
     font-weight: 600;
     font-size: 16px;
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
 }
+.now-carousel-caption strong,
 .now-carousel-title + strong{
     color: #695729;
     font-weight: 600;
     font-size: 15px;
     padding-left: 5px;
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: isolate;
 }
 .now-carousel-title {
   margin: 0;

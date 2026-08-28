@@ -54,6 +54,7 @@ $months = array(
 $default_active_index = 2;
 $background_url       = traveliz_image_url( $background_image );
 $shadow_url           = traveliz_image_url( $shadow_image );
+$carousel_dir         = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_rtl() ? 'rtl' : 'ltr';
 ?>
 
 <section
@@ -87,7 +88,7 @@ $shadow_url           = traveliz_image_url( $shadow_image );
 				</div>
 
 				<div class="now-carousel-wrapper">
-					<div class="now-carousel-items">
+					<div class="now-carousel-items" dir="<?php echo esc_attr( $carousel_dir ); ?>">
 						<?php foreach ( $months as $idx => $m ) : ?>
 							<?php
 							$month_title       = get_sub_field( 's_flexibol_season_' . $m . '_title' );
@@ -116,7 +117,7 @@ $shadow_url           = traveliz_image_url( $shadow_image );
 								</h3>
 
 								<?php if ( ! empty( $month_subtitle ) ) : ?>
-									<strong><?php echo wp_kses_post( $month_subtitle ); ?></strong>
+									<strong><?php echo wp_kses_post( traveliz_isolate_bidi_temp_subtitle( $month_subtitle ) ); ?></strong>
 								<?php endif; ?>
 
 								<?php if ( ! empty( $month_short_text ) ) : ?>

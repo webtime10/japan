@@ -311,6 +311,7 @@ if ( class_exists( 'AI_Calculator_Manager' ) ) {
 										'hide'                  => __( 'Кнопка: Скрыть', 'ai-calculator' ),
 										'user_goal_placeholder' => __( 'Плейсхолдер инпута: Ваш результат', 'ai-calculator' ),
 										'results_title'         => __( 'Заголовок результатов: Мы подобрали…', 'ai-calculator' ),
+										'match'                 => __( 'Бейдж совпадения: Совпадение (иврит: התאמה)', 'ai-calculator' ),
 										'other_variants'        => __( 'Подпись доп. вариантов: Ещё {n} варианта', 'ai-calculator' ),
 									);
 									foreach ( $ir_fields as $ir_key => $ir_label ) :

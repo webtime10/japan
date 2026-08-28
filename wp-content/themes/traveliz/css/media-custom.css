@@ -263,6 +263,11 @@ width: 100%;
     width: 430px;
 }
 
+.slider-pogoda-dop{
+    background: #eeeeeed1;
+    padding: 7px 5px 1px;
+}
+
   .see-video text, .see-video textPath {
 
     display: none !important;
@@ -3155,6 +3160,10 @@ font-size: 16px;
 }
 .price-cards-bottom {
         grid-template-columns: 1fr 1fr;
+    }
+    html[dir="rtl"] .price-cards-bottom,
+    html[dir="rtl"] .price-cards-bottom[dir="rtl"] {
+        direction: rtl;
     }
     .price-cards-bottom .price-card-small:nth-child(3){
   grid-column: span 2;

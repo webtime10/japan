@@ -45,4 +45,5 @@ return array(
 	'ideal_region_other_variants'        => 'עוד {n} אפשרויות',
 	'ideal_region_more'                  => 'לפרטים נוספים',
 	'ideal_region_hide'                  => 'הסתר',
+	'ideal_region_match'                 => 'התאמה',
 );

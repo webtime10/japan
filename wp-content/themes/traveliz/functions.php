@@ -11,7 +11,7 @@ require get_template_directory() . '/inc/page-comments.php';
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.4' );
+	define( '_S_VERSION', '1.0.7' );
 }
 
 
@@ -1255,6 +1255,129 @@ function traveliz_resolve_video_embed( $short_raw, $regular_raw ) {
 	return array(
 		'src'   => '',
 		'modal' => '',
+	);
+}
+
+/**
+ * Wrap Hebrew/Arabic runs in <bdi> for mixed LTR temperature strings.
+ * Example: ≈ 23°C ביום / 16°C בלילה
+ *          ≈ 23°م نهاراً / 16°م ليلاً
+ *
+ * @param string $text
+ * @return string
+ */
+function traveliz_isolate_bidi_temp_subtitle( $text ) {
+	if ( ! is_string( $text ) || '' === $text ) {
+		return '';
+	}
+
+	if ( false !== stripos( $text, '<bdi' ) ) {
+		return $text;
+	}
+
+	$pattern = '/(?:\p{Script=Hebrew}|\p{Script=Arabic})+/u';
+
+	return preg_replace_callback(
+		$pattern,
+		static function ( $matches ) {
+			return '<bdi>' . $matches[0] . '</bdi>';
+		},
+		$text
+	);
+}
+
+/**
+ * LTR-isolated price amount (e.g. 70–105 ₪).
+ *
+ * @param string $text
+ * @return string
+ */
+function traveliz_price_amount_html( $text ) {
+	if ( ! is_string( $text ) || '' === trim( $text ) ) {
+		return '';
+	}
+
+	return '<bdi class="price-amount-ltr">' . esc_html( $text ) . '</bdi>';
+}
+
+/**
+ * RTL-isolated price period label (e.g. לאדם / יום).
+ *
+ * @param string $text
+ * @return string
+ */
+function traveliz_price_period_html( $text ) {
+	if ( ! is_string( $text ) || '' === trim( $text ) ) {
+		return '';
+	}
+
+	$inner = traveliz_isolate_bidi_temp_subtitle( $text );
+
+	return '<bdi class="price-period-rtl">' . wp_kses( $inner, array( 'bdi' => array() ) ) . '</bdi>';
+}
+
+/**
+ * LTR-isolated secondary price range (e.g. ¥50,000–53,000).
+ *
+ * @param string $text
+ * @return string
+ */
+function traveliz_price_period_ltr_html( $text ) {
+	if ( ! is_string( $text ) || '' === trim( $text ) ) {
+		return '';
+	}
+
+	return '<bdi class="price-period-ltr">' . esc_html( $text ) . '</bdi>';
+}
+
+/**
+ * Split mixed hotel title into local (RTL) + English in parentheses (LTR).
+ *
+ * @param string $title
+ * @return string
+ */
+function traveliz_hotel_card_title_html( $title ) {
+	$title = trim( (string) $title );
+	if ( '' === $title ) {
+		return '';
+	}
+
+	if ( preg_match( '/hotel-title-en|<bdi/i', $title ) ) {
+		return wp_kses_post( $title );
+	}
+
+	$paren_pos = mb_strpos( $title, '(', 0, 'UTF-8' );
+	if ( false !== $paren_pos ) {
+		$local = trim( mb_substr( $title, 0, $paren_pos, 'UTF-8' ) );
+		$latin = trim( mb_substr( $title, $paren_pos, null, 'UTF-8' ) );
+
+		if ( '' !== $latin && preg_match( '/[A-Za-z]/', $latin ) ) {
+			$html = '';
+			if ( '' !== $local ) {
+				$html .= '<span class="hotel-title-he">' . esc_html( $local ) . '</span> ';
+			}
+			$html .= '<bdi class="hotel-title-en">' . esc_html( $latin ) . '</bdi>';
+
+			return $html;
+		}
+	}
+
+	if ( preg_match( '/[A-Za-z]/', $title ) && ! preg_match( '/\p{Script=Hebrew}|\p{Script=Arabic}/u', $title ) ) {
+		return '<bdi class="hotel-title-en">' . esc_html( $title ) . '</bdi>';
+	}
+
+	return esc_html( $title );
+}
+
+/**
+ * Allowed tags for hotel card titles.
+ *
+ * @return array<string, array<string, bool>>
+ */
+function traveliz_hotel_card_title_allowed_html() {
+	return array(
+		'span' => array( 'class' => true ),
+		'bdi'  => array( 'class' => true ),
 	);
 }
 

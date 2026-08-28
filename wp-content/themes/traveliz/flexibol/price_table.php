@@ -71,7 +71,8 @@ $bb3_ex  = isset( $bb3['s_flexibol_price_bb3_extra'] ) ? (string) $bb3['s_flexib
 $bb3_pr  = isset( $bb3['s_flexibol_price_bb3_button_price'] ) ? (string) $bb3['s_flexibol_price_bb3_button_price'] : '';
 $bb3_day = isset( $bb3['s_flexibol_price_bb3_button_day'] ) ? (string) $bb3['s_flexibol_price_bb3_button_day'] : '';
 
-$uri = get_template_directory_uri() . '/img/table/';
+$uri              = get_template_directory_uri() . '/img/table/';
+$price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_rtl() ? 'rtl' : 'ltr';
 ?>
 
 <section
@@ -169,9 +170,11 @@ $uri = get_template_directory_uri() . '/img/table/';
 									</div>
 									<div class="price-row-right">
 										<?php if ( ! empty( $price ) || ! empty( $night ) ) : ?>
-											<?php echo esc_html( $price ); ?>
+											<?php if ( ! empty( $price ) ) : ?>
+												<?php echo traveliz_price_amount_html( $price ); ?>
+											<?php endif; ?>
 											<?php if ( ! empty( $night ) ) : ?>
-												  <span class="price-period">/ <?php echo esc_html( $night ); ?></span>
+												<span class="price-period">/ <?php echo traveliz_price_period_ltr_html( $night ); ?></span>
 											<?php endif; ?>
 										<?php endif; ?>
 									</div>
@@ -183,7 +186,7 @@ $uri = get_template_directory_uri() . '/img/table/';
 					</div>
 				</div>
 
-				<div class="price-cards-bottom">
+				<div class="price-cards-bottom" dir="<?php echo esc_attr( $price_cards_dir ); ?>">
 
 					<!-- Транспорт -->
 					<div class="price-card-small">
@@ -207,9 +210,11 @@ $uri = get_template_directory_uri() . '/img/table/';
 							</div>
 							<?php if ( ! empty( $bb1_pr ) || ! empty( $bb1_day ) ) : ?>
 								<div class="price-card-small-price">
-									<?php echo esc_html( $bb1_pr ); ?>
+									<?php if ( ! empty( $bb1_pr ) ) : ?>
+										<?php echo traveliz_price_amount_html( $bb1_pr ); ?>
+									<?php endif; ?>
 									<?php if ( ! empty( $bb1_day ) ) : ?>
-										<span><?php echo esc_html( $bb1_day ); ?></span>
+										<?php echo traveliz_price_period_html( $bb1_day ); ?>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
@@ -235,9 +240,11 @@ $uri = get_template_directory_uri() . '/img/table/';
 							</div>
 							<?php if ( ! empty( $bb2_pr ) || ! empty( $bb2_day ) ) : ?>
 								<div class="price-card-small-price">
-									<?php echo esc_html( $bb2_pr ); ?>
+									<?php if ( ! empty( $bb2_pr ) ) : ?>
+										<?php echo traveliz_price_amount_html( $bb2_pr ); ?>
+									<?php endif; ?>
 									<?php if ( ! empty( $bb2_day ) ) : ?>
-										<span><?php echo esc_html( $bb2_day ); ?></span>
+										<?php echo traveliz_price_period_html( $bb2_day ); ?>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
@@ -266,9 +273,11 @@ $uri = get_template_directory_uri() . '/img/table/';
 							</div>
 							<?php if ( ! empty( $bb3_pr ) || ! empty( $bb3_day ) ) : ?>
 								<div class="price-card-small-price">
-									<?php echo esc_html( $bb3_pr ); ?>
+									<?php if ( ! empty( $bb3_pr ) ) : ?>
+										<?php echo traveliz_price_amount_html( $bb3_pr ); ?>
+									<?php endif; ?>
 									<?php if ( ! empty( $bb3_day ) ) : ?>
-										<span><?php echo esc_html( $bb3_day ); ?></span>
+										<?php echo traveliz_price_period_html( $bb3_day ); ?>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
