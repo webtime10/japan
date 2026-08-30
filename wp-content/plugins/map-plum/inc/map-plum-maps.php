@@ -23,7 +23,45 @@ function map_plum_map_marker_icon_config() {
 }
 
 /**
- * Строки интерфейса карты для текущего языка сайта.
+ * CARTO Basemaps API key (https://carto.com/basemaps/apikey).
+ * Source: CARTO_API_KEY in .env, or CARTO_API_KEY / MAP_PLUM_CARTO_API_KEY constants.
+ *
+ * @return string
+ */
+function map_plum_get_carto_api_key() {
+	$from_env = getenv( 'CARTO_API_KEY' );
+	if ( is_string( $from_env ) && '' !== trim( $from_env ) ) {
+		return trim( $from_env );
+	}
+
+	if ( defined( 'CARTO_API_KEY' ) && is_string( CARTO_API_KEY ) && '' !== trim( CARTO_API_KEY ) ) {
+		return trim( CARTO_API_KEY );
+	}
+
+	if ( defined( 'MAP_PLUM_CARTO_API_KEY' ) && is_string( MAP_PLUM_CARTO_API_KEY ) && '' !== trim( MAP_PLUM_CARTO_API_KEY ) ) {
+		return trim( MAP_PLUM_CARTO_API_KEY );
+	}
+
+	return trim( (string) get_option( 'map_plum_carto_api_key', '' ) );
+}
+
+/**
+ * Leaflet tile URL template for CARTO dark raster basemap (with ?key= when configured).
+ *
+ * @return string
+ */
+function map_plum_get_carto_tile_url_template() {
+	$base = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
+	$key  = map_plum_get_carto_api_key();
+
+	if ( '' === $key ) {
+		return $base;
+	}
+
+	return $base . '?key=' . rawurlencode( $key );
+}
+
+/**
  *
  * @return array{readMore: string, panelEmpty: string, panelClose: string}
  */
@@ -209,6 +247,18 @@ function map_plum_maps_enqueue_assets( $slug, $cfg ) {
 		);
 		$queued = true;
 	}
+
+	$carto_key = map_plum_get_carto_api_key();
+	wp_add_inline_script(
+		'map-plum-maps',
+		'window.mapPlumCartoConfig = ' . wp_json_encode(
+			array(
+				'apiKey'           => $carto_key,
+				'tileUrlTemplate'  => map_plum_get_carto_tile_url_template(),
+			)
+		) . ';',
+		'before'
+	);
 
 	$marker_icon = map_plum_map_marker_icon_config();
 	$payload     = array(

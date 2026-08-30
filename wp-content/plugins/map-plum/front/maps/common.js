@@ -224,8 +224,18 @@
     function initMap() {
       map = L.map(mapEl, { zoomControl: true, attributionControl: true }).setView(mapCenter, mapZoom);
 
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      var cartoConfig = window.mapPlumCartoConfig || {};
+      var cartoKey = cartoConfig.apiKey || window.mapPlumCartoApiKey || "";
+      var tileUrl =
+        cartoConfig.tileUrlTemplate ||
+        "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png";
+
+      if (cartoKey && tileUrl.indexOf("key=") === -1) {
+        tileUrl += (tileUrl.indexOf("?") >= 0 ? "&" : "?") + "key=" + encodeURIComponent(cartoKey);
+      }
+
+      L.tileLayer(tileUrl, {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: "abcd",
         maxZoom: 19,
       }).addTo(map);
