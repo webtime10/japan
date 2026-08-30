@@ -14,6 +14,7 @@ $t_uri         = get_template_directory_uri();
 
 <section class="active-otd">
 	<div class="container-4">
+		
 		<div class="active-otd-into">
 			<?php if ( ! empty( $section_title ) ) : ?>
 				<h2 class="active-otd-title"><?php echo wp_kses_post( $section_title ); ?></h2>
