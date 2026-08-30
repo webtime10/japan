@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'MAP_PLUM_FILE', __FILE__ );
 define( 'MAP_PLUM_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MAP_PLUM_URL', plugin_dir_url( __FILE__ ) );
-define( 'MAP_PLUM_VERSION', '1.4.2' );
+define( 'MAP_PLUM_VERSION', '1.4.3' );
 
 require_once MAP_PLUM_PATH . 'admin/core/class-map-plum-model.php';
 require_once MAP_PLUM_PATH . 'admin/models/class-language-model.php';

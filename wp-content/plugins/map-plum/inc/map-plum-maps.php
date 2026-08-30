@@ -257,15 +257,6 @@ function map_plum_maps_enqueue_assets( $slug, $cfg ) {
 			true
 		);
 
-		wp_localize_script(
-			'map-plum-maps',
-			'cartoSettings',
-			array(
-				'apiKey'          => defined( 'CARTO_API_KEY' ) ? (string) CARTO_API_KEY : map_plum_get_carto_api_key(),
-				'tileUrlTemplate' => map_plum_get_carto_tile_url_template(),
-			)
-		);
-
 		$queued = true;
 	}
 

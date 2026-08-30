@@ -1,0 +1,40 @@
+# 1. Игнорируем вообще всё в корне
+/*
+!/.gitignore
+
+# 2. Делаем исключение для wp-content
+!/wp-content/
+
+# 3. Игнорируем всё внутри wp-content
+/wp-content/*
+
+# 4. Разрешаем нужные папки
+!/wp-content/themes/
+!/wp-content/plugins/
+!/wp-content/mu-plugins/
+
+# 4.1 CARTO / map-plum: ключ подложки (деплой на прод)
+!/wp-content/carto-config.php
+
+# 4.2 Загрузчик .env для локальной разработки
+!/inc/
+!/inc/load-env.php
+
+# 4.3 Пример .env (секреты — только локально, не в git)
+!/.env.example
+.env
+
+# 5. Игнорируем чужие темы (оставляем только traveliz)
+/wp-content/themes/*
+!/wp-content/themes/traveliz/
+
+# 6. Игнорируем сторонние плагины (оставляем только ваши)
+/wp-content/plugins/*
+!/wp-content/plugins/ai-calculator/
+!/wp-content/plugins/map-plum/
+!/wp-content/plugins/my-acf-ai-importer/
+!/wp-content/plugins/weather-image/
+!/wp-content/plugins/wt-reviews/
+
+# 7. Разрешаем всю папку mu-plugins
+!/wp-content/mu-plugins/***.geojson

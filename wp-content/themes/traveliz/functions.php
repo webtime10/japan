@@ -76,23 +76,55 @@ function enqueue_media_custom_last() {
 add_action( 'wp_enqueue_scripts', 'enqueue_media_custom_last', 999 );
 
 /**
- * CARTO basemap API key for map-plum (shortcode enqueues script in content, so localize in footer).
+ * Resolve CARTO Basemaps API key (wp-config / carto-config.php / .env).
+ *
+ * @return string
+ */
+function traveliz_get_carto_api_key() {
+	if ( defined( 'CARTO_API_KEY' ) && is_string( CARTO_API_KEY ) && '' !== trim( CARTO_API_KEY ) ) {
+		return trim( CARTO_API_KEY );
+	}
+
+	if ( function_exists( 'map_plum_get_carto_api_key' ) ) {
+		$key = map_plum_get_carto_api_key();
+		if ( '' !== $key ) {
+			return $key;
+		}
+	}
+
+	return '';
+}
+
+/**
+ * CARTO tile URL for Leaflet (single localization point for map-plum).
+ *
+ * @return string
+ */
+function traveliz_get_carto_tile_url_template() {
+	$base = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
+	$key  = traveliz_get_carto_api_key();
+
+	if ( '' === $key ) {
+		return $base;
+	}
+
+	return $base . '?key=' . rawurlencode( $key );
+}
+
+/**
+ * CARTO basemap settings for map-plum (shortcode enqueues script in content).
  */
 function traveliz_localize_carto_map_settings() {
 	if ( ! wp_script_is( 'map-plum-maps', 'enqueued' ) ) {
 		return;
 	}
 
-	$api_key = defined( 'CARTO_API_KEY' ) ? (string) CARTO_API_KEY : '';
-	$base    = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
-	$tile_url = '' !== $api_key ? $base . '?key=' . rawurlencode( $api_key ) : $base;
-
 	wp_localize_script(
 		'map-plum-maps',
 		'cartoSettings',
 		array(
-			'apiKey'          => $api_key,
-			'tileUrlTemplate' => $tile_url,
+			'apiKey'          => traveliz_get_carto_api_key(),
+			'tileUrlTemplate' => traveliz_get_carto_tile_url_template(),
 		)
 	);
 }
