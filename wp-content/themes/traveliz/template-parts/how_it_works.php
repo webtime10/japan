@@ -11,7 +11,6 @@ $hiw_item_6 = get_field( 'item_6', 'option' );
 $title_form   = get_field( 'title_form_home', 'option' );
 $hiw_bg_array = get_field( 'background_image_how_it_works', 'option' );
 $bg_bg        = ( is_array( $hiw_bg_array ) && ! empty( $hiw_bg_array['url'] ) ) ? $hiw_bg_array['url'] : '';
-
 // Одна форма на сайт (без he/en/ar).
 $cf7_form_id = 'f2e5507';
 ?>
@@ -20,22 +19,22 @@ $cf7_form_id = 'f2e5507';
 	<div class="container-8">
 		<div class="into-work">
 			<?php if ( $hiw_title ) : ?>
-				<h2><?php echo esc_html( (string) $hiw_title ); ?></h2>
+				<h2><?php echo wp_kses_post( (string) $hiw_title ); ?></h2>
 			<?php endif; ?>
 			<div class="wrap-work">
 				<div class="left-work">
 					<div class="wrap-img-work">
-						<p><?php echo esc_html( (string) $hiw_item_1 ); ?></p>
+						<p><?php echo wp_kses_post( (string) $hiw_item_1 ); ?></p>
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/img/a1.png' ); ?>" alt="" />
 					</div>
 					<img class="st1" src="<?php echo esc_url( get_template_directory_uri() . '/img/Vector11.png' ); ?>" alt="" />
 					<div class="wrap-img-work">
-						<p><?php echo esc_html( (string) $hiw_item_2 ); ?></p>
+						<p><?php echo wp_kses_post( (string) $hiw_item_2 ); ?></p>
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/img/a2.png' ); ?>" alt="" />
 					</div>
 					<img class="st2" src="<?php echo esc_url( get_template_directory_uri() . '/img/Vector22.png' ); ?>" alt="" />
 					<div class="wrap-img-work">
-						<p><?php echo esc_html( (string) $hiw_item_3 ); ?></p>
+						<p><?php echo wp_kses_post( (string) $hiw_item_3 ); ?></p>
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/img/a3.png' ); ?>" alt="" />
 					</div>
 				</div>
@@ -43,7 +42,7 @@ $cf7_form_id = 'f2e5507';
 				<div class="center-work">
 					<div class="form-wrapper">
 						<?php if ( $title_form ) : ?>
-							<h3><?php echo esc_html( (string) $title_form ); ?></h3>
+							<h3><?php echo wp_kses_post( (string) $title_form ); ?></h3>
 						<?php endif; ?>
 						<?php
 						if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
@@ -69,17 +68,17 @@ $cf7_form_id = 'f2e5507';
 				<div class="right-work">
 					<div class="wrap-img-work-right">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/img/a4.png' ); ?>" alt="" />
-						<p><?php echo esc_html( (string) $hiw_item_4 ); ?></p>
+						<p><?php echo wp_kses_post( (string) $hiw_item_4 ); ?></p>
 					</div>
 					<img class="st3" src="<?php echo esc_url( get_template_directory_uri() . '/img/Vector33.png' ); ?>" alt="" />
 					<div class="wrap-img-work-right">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/img/a5.png' ); ?>" alt="" />
-						<p><?php echo esc_html( (string) $hiw_item_5 ); ?></p>
+						<p><?php echo wp_kses_post( (string) $hiw_item_5 ); ?></p>
 					</div>
 					<img class="st4" src="<?php echo esc_url( get_template_directory_uri() . '/img/Vector44.png' ); ?>" alt="" />
 					<div class="wrap-img-work-right st44">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/img/a6.png' ); ?>" alt="" />
-						<p><?php echo esc_html( (string) $hiw_item_6 ); ?></p>
+						<p><?php echo wp_kses_post( (string) $hiw_item_6 ); ?></p>
 					</div>
 				</div>
 			</div>

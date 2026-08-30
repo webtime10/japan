@@ -41,13 +41,13 @@ if ( $title === '' && $text === '' ) {
 <section class="web-expert">
 	<div class="container-4">
 		<div class="web-expert-into">
-			<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
+			<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $img_alt ) ); ?>">
 			<div class="the_web">
 				<?php if ( $title !== '' ) : ?>
-					<h3><?php echo esc_html( $title ); ?></h3>
+					<h3><?php echo wp_kses_post( $title ); ?></h3>
 				<?php endif; ?>
 				<?php if ( $text !== '' ) : ?>
-					<p><?php echo nl2br( esc_html( $text ) ); ?></p>
+					<p><?php echo wp_kses_post( $text ); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>

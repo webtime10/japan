@@ -254,7 +254,7 @@ position: relative;
 position: relative;
 }
 .сomparison_of_regions .container-4 {
-    max-width: 1219px;
+    max-width: 1223px;
     margin: 0 auto;
 }
 .comparison_of_regions_dop_text {
@@ -663,24 +663,6 @@ html[dir="rtl"] .price-cards-bottom[dir="rtl"] {
     direction: rtl;
 }
 
-.price-amount-ltr {
-    direction: ltr;
-    display: inline-block;
-    unicode-bidi: isolate;
-}
-
-.price-period-ltr {
-    direction: ltr;
-    display: inline-block;
-    unicode-bidi: isolate;
-}
-
-.price-period-rtl {
-    direction: rtl;
-    display: inline-block;
-    unicode-bidi: isolate;
-}
-
 .price-card-small {
     background: #FFFFFF;
     border-radius: 24px;
@@ -760,7 +742,7 @@ width: auto;
 }
 
 .price-card-small-price span,
-.price-card-small-price .price-period-rtl {
+.price-card-small-price .price-period {
     font-size: 16px;
     font-weight: 500;
     color: var(--gray-muted);
@@ -1649,7 +1631,7 @@ right: 50%;
     position: relative;
     border-radius: 32px;
     overflow: hidden;
-  height: 159px;
+
 }
 
 .active-otd-banner-bg img {
@@ -1663,7 +1645,7 @@ right: 50%;
 
 .active-otd-banner-content p {
 max-width: 830px;
-    margin: 27px 81px 0px auto;
+    margin: 27px 81px 9px auto;
     font-size: 21px;
     font-weight: 600;
     color: white;

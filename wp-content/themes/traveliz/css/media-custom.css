@@ -160,6 +160,14 @@ order: 4;
         height: 45px;
 
     }
+    .active-otd-banner-content p {
+        max-width: 830px;
+        margin: 24px 52px 0px 313px;
+        font-size: 21px;
+        font-weight: 600;
+        color: white;
+        line-height: 38px;
+    }
 .img-text-rew {
     display: grid;
     grid-template-columns: 160px 1fr;
@@ -678,6 +686,32 @@ width: 951px;
     padding-left: 0px;
    
 }
+.holiday {
+
+    font-size: 17px;
+
+}
+
+.active-otd-banner {
+    background: none;
+
+}
+.active-otd-banner{
+    position: relative;
+}
+.active-otd-banner-img{
+   display: block !important;
+        position: absolute;
+        width: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: revert-rule;
+}
+.active-otd-banner-content{
+    position: relative;
+    z-index: 2;
+}
+
 .contact-into h1 {
     color: white;
     font-weight: 700;
@@ -928,8 +962,8 @@ position: relative;
     margin-bottom: 40px;
 }
 .active-otd-banner-content p {
-         max-width: 830px;
-        margin: 20px 7px 0px 150px;
+        max-width: 830px;
+        margin: 8px 14px 0px 152px;
         font-size: 18px;
         font-weight: 600;
         color: white;
@@ -1109,7 +1143,7 @@ html[dir="rtl"] .v-1-one {
     height: 63px !important;
 }
     .active-otd-banner {
-    background: url(../img/Rectangle28.webp);
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: 133%;
@@ -1161,7 +1195,7 @@ html[dir="rtl"] .v-1-one {
 @media (max-width: 1008px) {
 .active-otd-banner-content p {
         max-width: 830px;
-        margin: 26px 7px 0px 171px;
+        margin: 8px 18px 0px 171px;
         font-size: 18px;
         font-weight: 600;
         color: white;
@@ -2056,7 +2090,7 @@ html[dir="rtl"] .carousel-button-left_d3 {
 }
 
     .active-otd-banner {
-        background: url(../img/Group22268.webp);
+  
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
@@ -3307,7 +3341,7 @@ html[dir="rtl"] .now-carousel .now-carousel-items{
 }
     .active-otd-banner-content p {
         max-width: 830px;
-        margin: 18px 33px 0px 122px;
+        margin: 7px 33px 0px 122px;
         font-size: 15px;
         font-weight: 600;
         color: white;
@@ -4184,8 +4218,9 @@ width: 29px;
    html[dir="rtl"]  .item-block-2 span {
         display: block;
         position: relative;
-        left: -32px;
+        left: -26px;
         top: -11px;
+        font-size: 13px;
     }
 
 .item-block-2 img {
@@ -4309,7 +4344,7 @@ width: 29px;
 
     .active-otd-banner-content p {
         max-width: 830px;
-        margin: 31px 33px 0px 119px;
+        margin: 14px 33px 0px 119px;
         font-size: 15px;
         font-weight: 600;
         color: white;
@@ -4505,7 +4540,7 @@ html[dir="ltr"] .into-reviews-block-1 h1 {
 
     .active-otd-banner-content p {
         max-width: 830px;
-        margin: 30px 27px 0px 88px;
+                margin: 11px 27px 5px 88px;
         font-size: 15px;
         font-weight: 600;
         color: white;
@@ -4523,9 +4558,9 @@ html[dir="rtl"] .now-carousel .now-carousel-items {
 }
 .item-block-2 {
         background-image: url(../img/2012.webp);
-        background-repeat: no-repeat;
-        width: 200px;
-        background-size: 180px 90px;
+           background-repeat: no-repeat;
+        width: 199px;
+        background-size: 189px 90px;
         background-position: 0px 2px;
         min-height: 95px;
         display: flex;
@@ -4605,14 +4640,14 @@ html[dir="rtl"] .now-carousel .now-carousel-items {
     margin-top: 45px;
 }
 .active-otd-banner {
-    background: url(../img/Group222681.webp);
+
 
 }
 .active-otd-banner {
     position: relative;
     border-radius: 32px;
     overflow: hidden;
-    height: 152px;
+    height: auto;
 }
 
 
@@ -4644,6 +4679,20 @@ html[dir="rtl"] .now-carousel .now-carousel-items {
 display: none;
     }
   }
+@media (max-width: 416px) {  
+  .item-block-2 {
+        background-image: url(../img/2012.webp);
+        background-repeat: no-repeat;
+        width: 188px;
+        background-size: 180px 90px;
+        background-position: 0px 2px;
+        min-height: 95px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: right;
+        align-items: center;
+    }
+    }
 @media (max-width: 420px) { 
     .into-slider-pogoda {
         background: url(../img/Group2824.png);
@@ -4728,7 +4777,7 @@ display: none;
     }
     .item-block-2 img {
         position: relative;
-        left: -21px;
+        left: -14px;
         top: -9px;
     }
     .wrap-button-swiss {
@@ -4792,7 +4841,7 @@ display: none;
 @media (max-width: 411px) { 
     .active-otd-banner-content p {
         max-width: 830px;
-        margin: 26px 33px 0px 98px;
+        margin: 8px 33px 0px 98px;
         font-size: 15px;
         font-weight: 600;
         color: white;
@@ -4939,7 +4988,7 @@ display: none;
         @media (max-width: 386px) { 
             .active-otd-banner-content p {
                 max-width: 830px;
-                margin: 18px 28px 0px 98px;
+                margin: 9px 28px 0px 98px;
                 font-size: 15px;
                 font-weight: 600;
                 color: white;
@@ -5161,6 +5210,8 @@ display: none;
 
 
 
-
-
-
+/* Локальное выравнивание только для элементов внутри таймлайна */
+.timeline-item .event-description {
+    direction: rtl !important;
+    text-align: right !important;
+}

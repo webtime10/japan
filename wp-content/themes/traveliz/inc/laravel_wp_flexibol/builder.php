@@ -27,8 +27,7 @@ if (! function_exists('traveliz_laravel_build_flexible_rows_from_ai')) {
                 if (! is_array($section)) {
                     continue;
                 }
-                $layout = isset($section['layout']) ? (string) $section['layout'] : '';
-                $data = [];
+                $layout = isset($section['layout']) ? (string) $section['layout'] : '';                $data = [];
                 if (isset($section['data']) && is_array($section['data'])) {
                     $data = $section['data'];
                 } elseif ($layout !== '' && $section !== []) {

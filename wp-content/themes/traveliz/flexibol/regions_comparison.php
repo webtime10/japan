@@ -60,9 +60,9 @@ if ( empty( $label_price ) ) {
 
 <section class='сomparison_of_regions'>
 	<div class='container-4'>
-		<h2><?php echo esc_html( $section_title ); ?></h2>
+		<h2><?php echo wp_kses_post( $section_title ); ?></h2>
 		<?php if ( ! empty( $dop_text ) ) : ?>
-			<div class="comparison_of_regions_dop_text"><?php echo nl2br( esc_html( $dop_text ) ); ?></div>
+			<div class="comparison_of_regions_dop_text"><?php echo wp_kses_post( $dop_text ); ?></div>
 		<?php endif; ?>
 
 		<div class="cats-wrap_r">
@@ -72,19 +72,19 @@ if ( empty( $label_price ) ) {
 						<div class="vibor-wrap1 one-v">
 							<div class="vibor-reg vibor-reg2">
 								<div class="vibor-f">
-									<h3><?php echo esc_html( $left_title ); ?></h3>
-									<p><?php echo esc_html( $left_subtitle ); ?></p>
+									<h3><?php echo wp_kses_post( $left_title ); ?></h3>
+									<p><?php echo wp_kses_post( $left_subtitle ); ?></p>
 								</div>
 
 								<img class="dio" src="<?php echo esc_url( get_template_directory_uri() . '/img/Rectangle-272.png' ); ?>" alt="">
 							</div>
 
 							<div class="wrap-pogoda wrap-grid">
-								<div class="pogoda"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image830.webp' ); ?>" alt=""><span><?php echo esc_html( $label_weather ); ?></span></div>
-								<div class="razvlechenie"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image357.webp' ); ?>" alt=""><span><?php echo esc_html( $label_entertainment ); ?></span></div>
-								<div class="transpert"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image1519.webp' ); ?>" alt=""><span><?php echo esc_html( $label_transport ); ?></span></div>
-								<div class="detsk-razvl"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image1292.webp' ); ?>" alt=""><span><?php echo esc_html( $label_kids ); ?></span></div>
-								<div class="cena"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image1025.webp' ); ?>" alt=""><span><?php echo esc_html( $label_price ); ?></span></div>
+								<div class="pogoda"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image830.webp' ); ?>" alt=""><span><?php echo wp_kses_post( $label_weather ); ?></span></div>
+								<div class="razvlechenie"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image357.webp' ); ?>" alt=""><span><?php echo wp_kses_post( $label_entertainment ); ?></span></div>
+								<div class="transpert"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image1519.webp' ); ?>" alt=""><span><?php echo wp_kses_post( $label_transport ); ?></span></div>
+								<div class="detsk-razvl"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image1292.webp' ); ?>" alt=""><span><?php echo wp_kses_post( $label_kids ); ?></span></div>
+								<div class="cena"><img src="<?php echo esc_url( get_template_directory_uri() . '/img/image1025.webp' ); ?>" alt=""><span><?php echo wp_kses_post( $label_price ); ?></span></div>
 							</div>
 						</div>
 					</div>
@@ -114,7 +114,7 @@ if ( empty( $label_price ) ) {
 										<div class="reg-img-v">
 										    <img src="<?php echo esc_url( $region_image_url ); ?>" alt="">
 										</div>
-										<h3><?php echo esc_html( $city_name ); ?></h3>
+										<h3><?php echo wp_kses_post( $city_name ); ?></h3>
 									</div>
 
 								<div class="wrap-pogoda wrap-flex">

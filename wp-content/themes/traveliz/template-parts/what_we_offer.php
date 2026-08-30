@@ -15,7 +15,7 @@ if ( ! $title ) {
 <section class="what-will-happen-section what-we-offer-section l">
 	<div class="container-4">
 		<div class="into-what-will-happen">
-			<h2><?php echo esc_html( $title ); ?></h2>
+			<h2><?php echo wp_kses_post( $title ); ?></h2>
 
 			<div class="what-will-happen-blocks">
 				<?php if ( have_rows( 'item_what_we_offer', 'option' ) ) : ?>
@@ -38,12 +38,12 @@ if ( ! $title ) {
 						<div class="will-item">
 							<?php if ( $item_img_url ) : ?>
 								<div>
-									<img width="245" height="245" src="<?php echo esc_url( $item_img_url ); ?>" alt="<?php echo $item_title ? esc_attr( $item_title ) : ''; ?>" />
+									<img width="245" height="245" src="<?php echo esc_url( $item_img_url ); ?>" alt="<?php echo $item_title ? esc_attr( wp_strip_all_tags( $item_title ) ) : ''; ?>" />
 								</div>
 							<?php endif; ?>
 
 							<?php if ( $item_title ) : ?>
-								<h3><?php echo esc_html( $item_title ); ?></h3>
+								<h3><?php echo wp_kses_post( $item_title ); ?></h3>
 							<?php endif; ?>
 
 							<?php if ( $item_text ) : ?>

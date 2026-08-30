@@ -62,8 +62,7 @@ if ( is_array( $photo ) && ! empty( $photo['url'] ) ) {
 }
 if ( $photo_url === '' ) {
 	$photo_url = get_template_directory_uri() . '/img/expert/expert.webp';
-	$photo_alt = $name ? (string) $name : '';
-}
+	$photo_alt = $name ? (string) $name : '';}
 
 $t_uri    = get_template_directory_uri();
 $expert_u = $t_uri . '/img/expert/';
@@ -88,31 +87,31 @@ $has_bottom_cards = ( $item1_title !== '' || $item1_text !== '' || $item2_title 
 		<img class="ellipse372" src="<?php echo esc_url( $shadow_url ? $shadow_url : ( $t_uri . '/img/Ellipse372.webp' ) ); ?>" alt="">
 		<div class="expert-into">
 			<?php if ( ! empty( $section_title ) ) : ?>
-				<h2 class="expert-title"><?php echo esc_html( $section_title ); ?></h2>
+				<h2 class="expert-title"><?php echo wp_kses_post( $section_title ); ?></h2>
 			<?php endif; ?>
 
 			<div class="expert-card">
 				<div class="expert-main">
 					<div class="expert-left">
 						<div class="expert-photo">
-							<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $photo_alt ); ?>">
+							<img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $photo_alt ) ); ?>">
 						</div>
 						<div class="expert-person">
 							<?php if ( ! empty( $name ) ) : ?>
-								<h3 class="expert-name"><?php echo esc_html( $name ); ?></h3>
+								<h3 class="expert-name"><?php echo wp_kses_post( $name ); ?></h3>
 							<?php endif; ?>
 							<?php if ( ! empty( $role ) ) : ?>
-								<p class="expert-role"><?php echo esc_html( $role ); ?></p>
+								<p class="expert-role"><?php echo wp_kses_post( $role ); ?></p>
 							<?php endif; ?>
 							<?php if ( ! empty( $stat_strong ) || ! empty( $stat_text ) ) : ?>
 								<p class="expert-stat">
 									<img src="<?php echo esc_url( $expert_u . 'image 1666.webp' ); ?>" alt="">
 									<span class="marshrut-w">
 										<?php if ( ! empty( $stat_strong ) ) : ?>
-											<strong><?php echo esc_html( $stat_strong ); ?></strong>
+											<strong><?php echo wp_kses_post( $stat_strong ); ?></strong>
 										<?php endif; ?>
 										<?php if ( ! empty( $stat_text ) ) : ?>
-											<?php echo esc_html( $stat_text ); ?>
+											<?php echo wp_kses_post( $stat_text ); ?>
 										<?php endif; ?>
 									</span>
 								</p>
@@ -126,7 +125,7 @@ $has_bottom_cards = ( $item1_title !== '' || $item1_text !== '' || $item2_title 
 							</div>
 							<?php if ( ! empty( $quote ) ) : ?>
 								<div class="expert-quote">
-									<p><?php echo nl2br( esc_html( $quote ) ); ?></p>
+									<p><?php echo wp_kses_post( $quote ); ?></p>
 								</div>
 							<?php endif; ?>
 
@@ -137,7 +136,7 @@ $has_bottom_cards = ( $item1_title !== '' || $item1_text !== '' || $item2_title 
 
 						<?php if ( ! empty( $body ) ) : ?>
 							<div class="expert-text">
-								<p><?php echo nl2br( esc_html( $body ) ); ?></p>
+								<p><?php echo wp_kses_post( $body ); ?></p>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -149,14 +148,14 @@ $has_bottom_cards = ( $item1_title !== '' || $item1_text !== '' || $item2_title 
 						<?php if ( $item1_title !== '' || $item1_text !== '' ) : ?>
 							<div class="expert-bottom-card">
 								<div class="expert-bottom-icon">
-									<img src="<?php echo esc_url( $expert_u . $expert_bottom_icons[0] ); ?>" alt="<?php echo esc_attr( $item1_title ); ?>">
+									<img src="<?php echo esc_url( $expert_u . $expert_bottom_icons[0] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $item1_title ) ); ?>">
 									<?php if ( $item1_title !== '' ) : ?>
-										<h4><?php echo esc_html( $item1_title ); ?></h4>
+										<h4><?php echo wp_kses_post( $item1_title ); ?></h4>
 									<?php endif; ?>
 								</div>
 								<?php if ( $item1_text !== '' ) : ?>
 									<div class="expert-bottom-content">
-										<p><?php echo nl2br( esc_html( $item1_text ) ); ?></p>
+										<p><?php echo wp_kses_post( $item1_text ); ?></p>
 									</div>
 								<?php endif; ?>
 							</div>
@@ -165,14 +164,14 @@ $has_bottom_cards = ( $item1_title !== '' || $item1_text !== '' || $item2_title 
 						<?php if ( $item2_title !== '' || $item2_text !== '' ) : ?>
 							<div class="expert-bottom-card">
 								<div class="expert-bottom-icon">
-									<img src="<?php echo esc_url( $expert_u . $expert_bottom_icons[1] ); ?>" alt="<?php echo esc_attr( $item2_title ); ?>">
+									<img src="<?php echo esc_url( $expert_u . $expert_bottom_icons[1] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $item2_title ) ); ?>">
 									<?php if ( $item2_title !== '' ) : ?>
-										<h4><?php echo esc_html( $item2_title ); ?></h4>
+										<h4><?php echo wp_kses_post( $item2_title ); ?></h4>
 									<?php endif; ?>
 								</div>
 								<?php if ( $item2_text !== '' ) : ?>
 									<div class="expert-bottom-content">
-										<p><?php echo nl2br( esc_html( $item2_text ) ); ?></p>
+										<p><?php echo wp_kses_post( $item2_text ); ?></p>
 									</div>
 								<?php endif; ?>
 							</div>
@@ -181,14 +180,14 @@ $has_bottom_cards = ( $item1_title !== '' || $item1_text !== '' || $item2_title 
 						<?php if ( $item3_title !== '' || $item3_text !== '' ) : ?>
 							<div class="expert-bottom-card">
 								<div class="expert-bottom-icon">
-									<img src="<?php echo esc_url( $expert_u . $expert_bottom_icons[2] ); ?>" alt="<?php echo esc_attr( $item3_title ); ?>">
+									<img src="<?php echo esc_url( $expert_u . $expert_bottom_icons[2] ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $item3_title ) ); ?>">
 									<?php if ( $item3_title !== '' ) : ?>
-										<h4><?php echo esc_html( $item3_title ); ?></h4>
+										<h4><?php echo wp_kses_post( $item3_title ); ?></h4>
 									<?php endif; ?>
 								</div>
 								<?php if ( $item3_text !== '' ) : ?>
 									<div class="expert-bottom-content">
-										<p><?php echo nl2br( esc_html( $item3_text ) ); ?></p>
+										<p><?php echo wp_kses_post( $item3_text ); ?></p>
 									</div>
 								<?php endif; ?>
 							</div>

@@ -15,10 +15,7 @@ $v1_image = get_sub_field( 's_flexibol_video_1_image' );
 $v2_image = get_sub_field( 's_flexibol_video_2_image' );
 $v3_image = get_sub_field( 's_flexibol_video_3_image' );
 
-$v1_img_url = ( is_array( $v1_image ) && ! empty( $v1_image['url'] ) ) ? $v1_image['url'] : '';
-$v2_img_url = ( is_array( $v2_image ) && ! empty( $v2_image['url'] ) ) ? $v2_image['url'] : '';
-$v3_img_url = ( is_array( $v3_image ) && ! empty( $v3_image['url'] ) ) ? $v3_image['url'] : '';
-
+$v1_img_url = ( is_array( $v1_image ) && ! empty( $v1_image['url'] ) ) ? $v1_image['url'] : '';$v2_img_url = ( is_array( $v2_image ) && ! empty( $v2_image['url'] ) ) ? $v2_image['url'] : '';$v3_img_url = ( is_array( $v3_image ) && ! empty( $v3_image['url'] ) ) ? $v3_image['url'] : '';
 $embed1  = get_sub_field( 's_flexibol_video_1_embed' );
 $embed2  = get_sub_field( 's_flexibol_video_2_embed' );
 $embed3  = get_sub_field( 's_flexibol_video_3_embed' );
@@ -33,8 +30,7 @@ $video3 = traveliz_resolve_video_embed( $short3, $embed3 );
 $extra_text = get_sub_field( 's_flexibol_extra_text' );
 
 $row_ix        = function_exists( 'get_row_index' ) ? (int) get_row_index() : 0;
-$modal_suffix  = $row_ix ? '-' . $row_ix : '';
-$stationary_id = 'video-stationary-panels' . $modal_suffix;
+$modal_suffix  = $row_ix ? '-' . $row_ix : '';$stationary_id = 'video-stationary-panels' . $modal_suffix;
 
 /**
  * @param array{src: string, modal: string} $video
@@ -67,7 +63,7 @@ $render_video_click = static function ( array $video ) {
 										<?php $render_video_click( $video1 ); ?>
 										<div class="video-otziv">
 											<?php if ( $v1_title ) : ?>
-												<p><?php echo esc_html( $v1_title ); ?></p>
+												<p><?php echo wp_kses_post( $v1_title ); ?></p>
 											<?php else : ?>
 												<p></p>
 											<?php endif; ?>
@@ -79,7 +75,7 @@ $render_video_click = static function ( array $video ) {
 										<?php $render_video_click( $video2 ); ?>
 										<div class="video-otziv">
 											<?php if ( $v2_title ) : ?>
-												<p><?php echo esc_html( $v2_title ); ?></p>
+												<p><?php echo wp_kses_post( $v2_title ); ?></p>
 											<?php else : ?>
 												<p></p>
 											<?php endif; ?>
@@ -94,7 +90,7 @@ $render_video_click = static function ( array $video ) {
 									<?php $render_video_click( $video3 ); ?>
 									<div class="video-otziv">
 										<?php if ( $v3_title ) : ?>
-											<p><?php echo esc_html( $v3_title ); ?></p>
+											<p><?php echo wp_kses_post( $v3_title ); ?></p>
 										<?php else : ?>
 											<p></p>
 										<?php endif; ?>

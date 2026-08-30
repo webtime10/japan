@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Получаем текущий язык через Polylang
 $current_lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
 
@@ -41,13 +41,13 @@ foreach ($map_posts as $map_item) {
             <img src="<?= esc_url($img_url) ?>" alt="<?= esc_attr($map_item->post_title) ?>" class="map-post-image">
         <?php endif; ?>
 
-        <h3 class="map-post-title"><?= esc_html($map_item->post_title) ?></h3>
+        <h3 class="map-post-title"><?= wp_kses_post($map_item->post_title) ?></h3>
         
         <div class="map-post-text"><?= wpautop(wp_kses_post($post_text)) ?></div>
 
         <?php if ($btn_text && $btn_link): ?>
             <a href="<?= esc_url($btn_link) ?>" class="map-post-btn">
-                <?= esc_html($btn_text) ?>
+                <?= wp_kses_post($btn_text) ?>
             </a>
         <?php endif; ?>
     </div>
@@ -455,8 +455,8 @@ $map_title = get_field('title_map_setting', 'option');
             $anchor =  get_sub_field( 'anchor' ); 
             if ( $tab_text ) : ?>
                 <li>
-                    <a data-name="<?php echo esc_html( $anchor ); ?>" href="#tab<?php echo $count; ?>">
-                        <?php echo esc_html( $tab_text ); ?>
+                    <a data-name="<?php echo esc_attr( wp_strip_all_tags( $anchor ) ); ?>" href="#tab<?php echo $count; ?>">
+                        <?php echo wp_kses_post( $tab_text ); ?>
                     </a>
                 </li>
                 <?php 
@@ -6287,16 +6287,16 @@ $map_title = get_field('title_map_setting', 'option');
             <div class="tab" id="tab<?php echo $count; ?>" style="display:none;">
                 
                 <div class="static-post">
-                    <h3><?php echo esc_html($title); ?></h3>
+                    <h3><?php echo wp_kses_post($title); ?></h3>
                     
                     <?php if ( $img ) : ?>
                         <img src="<?php echo is_array($img) ? $img['url'] : $img; ?>" alt="">
                     <?php endif; ?>
 
                     <?php if ( $btn_text && $btn_link ) : ?>
-                        <a href="<?php echo esc_url($btn_link); ?>"><?php echo esc_html($btn_text); ?></a>
+                        <a href="<?php echo esc_url($btn_link); ?>"><?php echo wp_kses_post($btn_text); ?></a>
                     <?php endif; ?>
-                    <p><?php echo nl2br(esc_html($text)); ?></p>
+                    <p><?php echo wp_kses_post( $text ); ?></p>
                 </div>
                 
                 <div class="hidden-posts-bundle" style="display: none;">

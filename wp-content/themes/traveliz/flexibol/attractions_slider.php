@@ -39,10 +39,10 @@ $shadow_url     = traveliz_attractions_image_url( $shadow_image );
 >
 	<div class="container-4">
 		<?php if ( ! empty( $title ) ) : ?>
-			<h2><?php echo esc_html( $title ); ?></h2>
+			<h2><?php echo wp_kses_post( $title ); ?></h2>
 		<?php endif; ?>
 		<?php if ( ! empty( $dop_text_landmark ) ) : ?>
-			<div class="dop_text_landmark"><?php echo nl2br( esc_html( $dop_text_landmark ) ); ?></div>
+			<div class="dop_text_landmark"><?php echo wp_kses_post( $dop_text_landmark ); ?></div>
 		<?php endif; ?>
 
 		<div class="landpark-into">
@@ -61,9 +61,7 @@ $shadow_url     = traveliz_attractions_image_url( $shadow_image );
 								$a_img_url = '';
 								$a_img_alt = '';
 								if ( is_array( $a_img ) ) {
-									$a_img_url = isset( $a_img['url'] ) ? (string) $a_img['url'] : '';
-									$a_img_alt = isset( $a_img['alt'] ) ? (string) $a_img['alt'] : '';
-								} elseif ( is_numeric( $a_img ) ) {
+									$a_img_url = isset( $a_img['url'] ) ? (string) $a_img['url'] : '';									$a_img_alt = isset( $a_img['alt'] ) ? (string) $a_img['alt'] : '';								} elseif ( is_numeric( $a_img ) ) {
 									$a_img_url = (string) wp_get_attachment_image_url( (int) $a_img, 'full' );
 								} elseif ( is_string( $a_img ) ) {
 									$a_img_url = $a_img;
@@ -77,12 +75,12 @@ $shadow_url     = traveliz_attractions_image_url( $shadow_image );
 									<div>
 										<a class="attractions-r" href="<?php echo esc_url( $a_btn_link ?: '#' ); ?>">
 											<img class="forma11" src="<?php echo esc_url( get_template_directory_uri() . '/img/forma1.webp' ); ?>" alt="">
-											<img class="attractions-img" src="<?php echo esc_url( $a_img_url ); ?>" alt="<?php echo esc_attr( $a_img_alt ); ?>" />
+											<img class="attractions-img" src="<?php echo esc_url( $a_img_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $a_img_alt ) ); ?>" />
 										</a>
 
 										<div>
 											<?php if ( ! empty( $a_title ) ) : ?>
-												<h3><?php echo esc_html( $a_title ); ?></h3>
+												<h3><?php echo wp_kses_post( $a_title ); ?></h3>
 											<?php endif; ?>
 
 											<?php if ( ! empty( $a_text ) ) : ?>
@@ -97,7 +95,7 @@ $shadow_url     = traveliz_attractions_image_url( $shadow_image );
 
 											<?php if ( ! empty( $a_btn_text ) ) : ?>
 												<a href="<?php echo esc_url( $a_btn_link ?: '#' ); ?>">
-													<?php echo esc_html( $a_btn_text ); ?>
+													<?php echo wp_kses_post( $a_btn_text ); ?>
 												</a>
 											<?php endif; ?>
 										</div>

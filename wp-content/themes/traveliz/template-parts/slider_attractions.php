@@ -8,7 +8,7 @@ $button_slider_text = get_field('button_atraction', 'option');
 <?php if($slider_atr): ?>
 <section class="landmark">
     <div class="container-4">
-        <h2><?php echo esc_html($slider_atr); ?></h2>
+        <h2><?php echo wp_kses_post($slider_atr); ?></h2>
 
         <div class="landpark-into">
             <div class="carousel_m shadow_m"> 
@@ -45,11 +45,11 @@ $button_slider_text = get_field('button_atraction', 'option');
                                         <a class="attractions-r" href="<?php echo esc_url($button_slider_link); ?>">
                                            
                                         <img class="forma11" src="<?php echo get_template_directory_uri(); ?>/img/forma1.webp" alt="">
-                                        <img class="attractions-img" src="<?php echo esc_url( $a_img_url ); ?>" alt="<?php echo esc_attr( $a_title ); ?>" />
+                                        <img class="attractions-img" src="<?php echo esc_url( $a_img_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $a_title ) ); ?>" />
                                         </a>
                                         <div>
                                             <?php if ( $a_title ) : ?>
-                                                <h3><?php echo esc_html( $a_title ); ?></h3>
+                                                <h3><?php echo wp_kses_post( $a_title ); ?></h3>
                                             <?php endif; ?>
 
                                             <?php if ( $a_text ) : ?>
@@ -64,7 +64,7 @@ $button_slider_text = get_field('button_atraction', 'option');
 
                                             <?php if ( $button_slider_text ) : ?>
                                                 <a class="button-slider-text" href="<?php echo esc_url($button_slider_link); ?>">
-                                                    <span><?php echo esc_html($button_slider_text); ?></span>
+                                                    <span><?php echo wp_kses_post($button_slider_text); ?></span>
                                                 </a>
                                             <?php endif; ?>
                                         </div>

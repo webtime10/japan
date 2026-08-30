@@ -11,9 +11,7 @@ if ( $layout === 's_flexibol_country_text' ) :
 		$text_2  = get_sub_field( 's_flexibol_text_2' );
 		$image_2 = get_sub_field( 's_flexibol_image_2' );
 
-		$image_1_url = ( is_array( $image_1 ) && ! empty( $image_1['url'] ) ) ? $image_1['url'] : '';
-		$image_2_url = ( is_array( $image_2 ) && ! empty( $image_2['url'] ) ) ? $image_2['url'] : '';
-		if ( $image_1_url === '' ) {
+		$image_1_url = ( is_array( $image_1 ) && ! empty( $image_1['url'] ) ) ? $image_1['url'] : '';		$image_2_url = ( is_array( $image_2 ) && ! empty( $image_2['url'] ) ) ? $image_2['url'] : '';		if ( $image_1_url === '' ) {
 			$image_1_url = get_template_directory_uri() . '/img/no.webp';
 		}
 		?>

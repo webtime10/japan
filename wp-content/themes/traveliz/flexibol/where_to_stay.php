@@ -26,10 +26,10 @@ $otel_cards_dir = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_rt
 	<div class="container-4">
 		<div class="google-otel-into">
 			<?php if ( ! empty( $title ) ) : ?>
-				<h2 class="google-otel-title"><?php echo esc_html( $title ); ?></h2>
+				<h2 class="google-otel-title"><?php echo wp_kses_post( $title ); ?></h2>
 			<?php endif; ?>
 			<?php if ( ! empty( $lead_text ) ) : ?>
-				<p class="google-otel-subtitle"><?php echo nl2br( esc_html( $lead_text ) ); ?></p>
+				<p class="google-otel-subtitle"><?php echo wp_kses_post( $lead_text ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( have_rows( 's_flexibol_where_stay_cards' ) ) : ?>
@@ -48,7 +48,7 @@ $otel_cards_dir = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_rt
 								<h3 class="google-otel-card-title"><?php echo wp_kses( traveliz_hotel_card_title_html( $c_title ), traveliz_hotel_card_title_allowed_html() ); ?></h3>
 							<?php endif; ?>
 							<?php if ( ! empty( $c_text ) ) : ?>
-								<p class="google-otel-card-text"><?php echo nl2br( esc_html( $c_text ) ); ?></p>
+								<p class="google-otel-card-text"><?php echo wp_kses_post( $c_text ); ?></p>
 							<?php endif; ?>
 						</div>
 					<?php endwhile; ?>

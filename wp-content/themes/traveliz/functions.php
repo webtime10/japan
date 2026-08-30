@@ -11,7 +11,7 @@ require get_template_directory() . '/inc/page-comments.php';
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.7' );
+	define( '_S_VERSION', '1.4.0' );
 }
 
 
@@ -76,6 +76,152 @@ function enqueue_media_custom_last() {
 add_action( 'wp_enqueue_scripts', 'enqueue_media_custom_last', 999 );
 
 
+add_filter( 'acf/format_value', 'traveliz_universal_bidi_filter', 10, 3 );
+
+
+function traveliz_universal_bidi_filter( $value, $post_id = null, $field = null ) {
+    if ( is_admin() || ! is_string( $value ) || '' === trim( $value ) ) {
+        return $value;
+    }
+
+    // URL, email, телефоны и поля ссылок — не обрабатываем (href, mailto:, tel:).
+    if ( is_array( $field ) ) {
+        $field_type = $field['type'] ?? '';
+        $field_name = $field['name'] ?? '';
+
+        $skip_types = array( 'url', 'link', 'email', 'image', 'file', 'page_link', 'oembed' );
+        if ( in_array( $field_type, $skip_types, true ) ) {
+            return $value;
+        }
+
+        if ( preg_match( '/(?:_url|_link|email|phone|tel|viber|insta|telegram|yotube|whatsapp|href)/i', $field_name ) ) {
+            return $value;
+        }
+    }
+
+    $trimmed = trim( $value );
+
+    // Защита: если поле состоит исключительно из цифр (счетчики, статистика как 31 или 84), отдаем как есть
+    if ( ctype_digit( $trimmed ) ) {
+        return $value;
+    }
+
+    if (
+        '#' === $trimmed
+        || preg_match( '/^(?:https?:\/\/|\/\/|mailto:|tel:|javascript:|#)/i', $trimmed )
+        || filter_var( $trimmed, FILTER_VALIDATE_EMAIL )
+        || preg_match( '/^\+?[\d\s\-\(\)\.]{7,}$/', $trimmed )
+    ) {
+        return $value;
+    }
+
+    // Жёсткий стоп: если есть HTML (ссылки <a>, абзацы <p>, атрибуты) — не трогаем строку.
+    $decoded_for_check = html_entity_decode( wp_specialchars_decode( $value, ENT_QUOTES ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+
+    if (
+        $value !== strip_tags( $value )
+        || $decoded_for_check !== strip_tags( $decoded_for_check )
+        || false !== stripos( $value, '<a' )
+        || false !== stripos( $value, '</a' )
+        || false !== stripos( $decoded_for_check, '<a' )
+        || false !== stripos( $decoded_for_check, '</a' )
+        || false !== stripos( $value, '<p' )
+        || false !== stripos( $decoded_for_check, '<p' )
+        || false !== stripos( $value, '&lt;a' )
+        || false !== stripos( $value, '&lt;/a' )
+        || false !== stripos( $value, '&lt;p' )
+    ) {
+        return $value;
+    }
+
+    if ( false !== stripos( $value, '<bdi' ) ) {
+        return $value;
+    }
+
+    // 1. Декодируем ВСЕ сущности в чистые символы
+    $value = wp_specialchars_decode( $value, ENT_QUOTES );
+    $value = html_entity_decode( $value, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+    $value = str_ireplace( array( '&rlm;', '&amp;rlm;', '&#8207;', '&#x200f;', '&#xfeff;', '&FEFF;' ), '', $value );
+
+    // 2. Универсальный паттерн: таймлайны, цены с префиксами, температуры, скобки и слова
+    $pattern = '/
+        (?<timeline>
+            [0-9]{1,2}:[0-9]{2}\s*[\–\-]\s*[0-9]{1,2}:[0-9]{2}
+        )
+        |
+        (?<full_price>
+            (?:[\x{0590}-\x{05FF}]\-)?
+            (?:[\₪\¥\$]\s*)?
+            [0-9]+(?:\.[0-9]+)?(?:\s*[\–\-]\s*[0-9]+(?:\.[0-9]+)?)?
+            (?:\s*[\₪\¥\$])?
+        )
+        |
+        (?<temp>
+            [0-9]+(?:\.[0-9]+)?(?:\s*°\s*[CFcf])
+        )
+        |
+        (?<paren>\(\s*[a-zA-Z0-9]+(?:[\s\-\.\'\(\)]+[a-zA-Z0-9\']+)*\s*\))
+        |
+        (?<word>[a-zA-Z0-9]+(?:[\s\-\.\'\(\)]+[a-zA-Z0-9\']+)*)
+    /ux';
+
+    $result = preg_replace_callback(
+        $pattern,
+        static function ( $m ) {
+            $matched = '';
+            
+            if ( ! empty( $m['timeline'] ) ) {
+                $matched = $m['timeline'];
+            } elseif ( ! empty( $m['full_price'] ) ) {
+                $matched = $m['full_price'];
+            } elseif ( ! empty( $m['temp'] ) ) {
+                $matched = $m['temp'];
+            } elseif ( ! empty( $m['paren'] ) ) {
+                $matched = $m['paren'];
+            } elseif ( ! empty( $m['word'] ) ) {
+                $matched = $m['word'];
+            }
+
+            if ( empty( $matched ) ) {
+                return $m[0];
+            }
+
+            $safe_content = htmlspecialchars( $matched, ENT_NOQUOTES, 'UTF-8' );
+
+            return '<bdi dir="ltr">' . $safe_content . '</bdi>';
+        },
+        $value
+    );
+
+    return '<bdi dir="rtl">' . nl2br( $result, false ) . '</bdi>';
+}
+
+function traveliz_allow_bdi_tag_in_kses( $allowedtags, $context ) {
+	if ( 'post' === $context ) {
+		$allowedtags['bdi'] = array(
+			'dir'   => true,
+			'class' => true,
+		);
+	}
+
+	return $allowedtags;
+}
+
+add_filter(
+	'wp_kses_allowed_html',
+	static function ( $allowedtags, $context ) {
+		if ( 'post' === $context ) {
+			$allowedtags['bdi'] = array(
+				'dir'   => true,
+				'class' => true,
+			);
+		}
+
+		return $allowedtags;
+	},
+	10,
+	2
+);
 
 /*
 function traveliz_scripts() {
@@ -733,7 +879,7 @@ function polylang_slug_model_post_where_clause( $lang = '' ) {
 }
 
 /**
- * Slug языка по умолчанию. Для одноязычной арабской версии используем ar.
+ * Slug языка по умолчанию (одноязычный сайт — иврит).
  */
 function traveliz_pll_default_slug(): string
 {
@@ -744,11 +890,11 @@ function traveliz_pll_default_slug(): string
         }
     }
 
-    return 'ar';
+    return 'he';
 }
 
 /**
- * Текущий язык (Polylang) или дефолт сайта.
+ * Текущий язык или дефолт (he).
  */
 function traveliz_pll_current_slug(): string
 {
@@ -780,6 +926,9 @@ function traveliz_get_lang_logo_url( string $lang = '' ): string {
         'logo_' . $lang . '.png',
         'logo_' . $lang . '.jpg',
         'logo_' . $lang . '.webp',
+        'logo_he.png',
+        'logo_he.jpg',
+        'logo_he.webp',
         'logo_ar.jpg',
         'logo_ar.png',
         'logo_en.jpg',
@@ -809,11 +958,11 @@ function traveliz_get_lang_logo_url( string $lang = '' ): string {
         return $img_uri . 'logo.svg';
     }
 
-    return $img_uri . 'logo_ar.jpg';
+    return $img_uri . 'logo_he.png';
 }
 
 /**
- * URL второго логотипа (logo2) для текущего или переданного языка Polylang.
+ * URL второго логотипа (logo2) для текущего или переданного языка.
  * Файлы: img/logo2_{slug}.svg|png|webp (he, en, ar …).
  *
  * @param string $lang Slug языка (he, en, ar …). Пусто — текущий язык.
@@ -830,6 +979,8 @@ function traveliz_get_lang_logo2_url( string $lang = '' ): string {
         'logo2_' . $lang . '.svg',
         'logo2_' . $lang . '.png',
         'logo2_' . $lang . '.webp',
+        'logo2_he.svg',
+        'logo2_he.png',
         'logo2_en.svg',
         'logo2_en.png',
     );
@@ -845,11 +996,15 @@ function traveliz_get_lang_logo2_url( string $lang = '' ): string {
 }
 
 /**
- * RTL для UI: флаг is_rtl языка в Polylang (Languages → язык → RTL).
+ * RTL для UI (одноязычный ивритский сайт — всегда RTL без Polylang).
  *
- * @param string $lang Slug языка. Пусто — текущий язык Polylang.
+ * @param string $lang Slug языка. Пусто — текущий.
  */
 function traveliz_pll_is_rtl( string $lang = '' ): bool {
+    if ( ! function_exists( 'PLL' ) ) {
+        return true;
+    }
+
     if ( $lang === '' ) {
         $lang = traveliz_pll_current_slug();
     }
@@ -883,39 +1038,63 @@ function traveliz_pll_is_rtl( string $lang = '' ): bool {
  */
 function traveliz_resolve_cf7_form_id(array $forms, string $lang): string
 {
-    if (isset($forms[$lang])) {
-        return (string) $forms[$lang];
-    }
-    $def = traveliz_pll_default_slug();
-    if (isset($forms[$def])) {
-        return (string) $forms[$def];
-    }
-    $first = reset($forms);
+    $candidates = array();
 
-    return is_string($first) ? $first : '';
+    if ( isset( $forms[ $lang ] ) ) {
+        $candidates[] = (string) $forms[ $lang ];
+    }
+
+    $def = traveliz_pll_default_slug();
+    if ( isset( $forms[ $def ] ) ) {
+        $candidates[] = (string) $forms[ $def ];
+    }
+
+    foreach ( $forms as $form_id ) {
+        $candidates[] = (string) $form_id;
+    }
+
+    foreach ( array_unique( $candidates ) as $form_id ) {
+        if ( '' === $form_id ) {
+            continue;
+        }
+
+        if ( function_exists( 'wpcf7_get_contact_form_by_hash' ) && wpcf7_get_contact_form_by_hash( $form_id ) ) {
+            return $form_id;
+        }
+
+        if ( ctype_digit( $form_id ) && function_exists( 'wpcf7_contact_form' ) && wpcf7_contact_form( (int) $form_id ) ) {
+            return $form_id;
+        }
+    }
+
+    return '';
 }
 
 
 /* мультиязычность */
 
 /**
- * Slug файла переводов themes/languages-data (ar → he на japan.loc).
+ * Slug файла переводов themes/languages-data (одноязычный сайт — he).
  */
 function traveliz_language_data_slug( string $lang = '' ): string {
-	if ( $lang === '' ) {
-		$lang = traveliz_pll_current_slug();
-	}
+	unset( $lang );
 
-	return ( 'ar' === $lang ) ? 'he' : $lang;
+	return 'he';
 }
 
 /**
- * Polylang slug ar на этом сайте — UI на иврите.
+ * Локаль фронтенда — иврит (без Polylang).
  */
 add_filter(
 	'locale',
 	static function ( $locale ) {
+		if ( is_admin() ) {
+			return $locale;
+		}
 		if ( function_exists( 'pll_current_language' ) && 'ar' === pll_current_language( 'slug' ) ) {
+			return 'he_IL';
+		}
+		if ( ! function_exists( 'pll_current_language' ) ) {
 			return 'he_IL';
 		}
 		return $locale;
@@ -1287,7 +1466,21 @@ function traveliz_isolate_bidi_temp_subtitle( $text ) {
 }
 
 /**
- * LTR-isolated price amount (e.g. 70–105 ₪).
+ * LTR-isolated value: <bdi dir="ltr">…</bdi>
+ *
+ * @param string $text
+ * @return string
+ */
+function traveliz_price_ltr_bdi_html( $text ) {
+	if ( ! is_string( $text ) || '' === trim( $text ) ) {
+		return '';
+	}
+
+	return '<bdi dir="ltr">' . esc_html( trim( $text ) ) . '</bdi>';
+}
+
+/**
+ * Price with Hebrew prefix (מ-, כ-) outside LTR isolation.
  *
  * @param string $text
  * @return string
@@ -1297,11 +1490,44 @@ function traveliz_price_amount_html( $text ) {
 		return '';
 	}
 
-	return '<bdi class="price-amount-ltr">' . esc_html( $text ) . '</bdi>';
+	$text = trim( $text );
+
+	if ( preg_match( '/^(\p{Hebrew}+-)(\s*)(.+)$/u', $text, $matches ) ) {
+		$amount = trim( $matches[3] );
+		if ( '' !== $amount ) {
+			return '<span>' . esc_html( $matches[1] ) . '</span>' . traveliz_price_ltr_bdi_html( $amount );
+		}
+	}
+
+	return traveliz_price_ltr_bdi_html( $text );
 }
 
 /**
- * RTL-isolated price period label (e.g. לאדם / יום).
+ * Space-separated price tokens, each wrapped for Bi-Di (e.g. ₪35–55 ₪60–100).
+ *
+ * @param string $text
+ * @return string
+ */
+function traveliz_price_ranges_ltr_html( $text ) {
+	if ( ! is_string( $text ) || '' === trim( $text ) ) {
+		return '';
+	}
+
+	$parts = preg_split( '/\s+/u', trim( $text ) );
+	$html  = array();
+
+	foreach ( $parts as $part ) {
+		$part = trim( $part );
+		if ( '' !== $part ) {
+			$html[] = traveliz_price_amount_html( $part );
+		}
+	}
+
+	return implode( ' ', $html );
+}
+
+/**
+ * RTL period label (e.g. לאדם / יום).
  *
  * @param string $text
  * @return string
@@ -1311,23 +1537,17 @@ function traveliz_price_period_html( $text ) {
 		return '';
 	}
 
-	$inner = traveliz_isolate_bidi_temp_subtitle( $text );
-
-	return '<bdi class="price-period-rtl">' . wp_kses( $inner, array( 'bdi' => array() ) ) . '</bdi>';
+	return '<span class="price-period">' . esc_html( trim( $text ) ) . '</span>';
 }
 
 /**
- * LTR-isolated secondary price range (e.g. ¥50,000–53,000).
+ * LTR secondary range next to main price (e.g. ¥50,000–53,000).
  *
  * @param string $text
  * @return string
  */
 function traveliz_price_period_ltr_html( $text ) {
-	if ( ! is_string( $text ) || '' === trim( $text ) ) {
-		return '';
-	}
-
-	return '<bdi class="price-period-ltr">' . esc_html( $text ) . '</bdi>';
+	return traveliz_price_amount_html( $text );
 }
 
 /**

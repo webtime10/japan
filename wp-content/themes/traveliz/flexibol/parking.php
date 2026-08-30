@@ -47,10 +47,10 @@ $parking_map_btn_svg = '<svg width="11" height="14" viewBox="0 0 11 14" fill="no
 		<img class="ellipse374" src="<?php echo esc_url( $shadow_url ? $shadow_url : ( $t_uri . '/img/Ellipse374.webp' ) ); ?>" alt="">
 		<div class="parking-into">
 			<?php if ( ! empty( $title ) ) : ?>
-				<h2 class="parking-title"><?php echo esc_html( $title ); ?></h2>
+				<h2 class="parking-title"><?php echo wp_kses_post( $title ); ?></h2>
 			<?php endif; ?>
 			<?php if ( ! empty( $subtitle ) ) : ?>
-				<p class="parking-subtitle"><?php echo nl2br( esc_html( $subtitle ) ); ?></p>
+				<p class="parking-subtitle"><?php echo wp_kses_post( $subtitle ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( have_rows( 's_flexibol_parking_cards' ) ) : ?>
@@ -68,22 +68,22 @@ $parking_map_btn_svg = '<svg width="11" height="14" viewBox="0 0 11 14" fill="no
 						?>
 						<div class="parking-card">
 							<div class="parking-card-icon">
-								<img src="<?php echo esc_url( $t_uri . '/img/parkovка.webp' ); ?>" alt="<?php echo esc_attr( $c_title ); ?>">
+								<img src="<?php echo esc_url( $t_uri . '/img/parkovка.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $c_title ) ); ?>">
 							</div>
 							<?php if ( ! empty( $c_title ) ) : ?>
-								<h3 class="parking-card-title"><?php echo esc_html( $c_title ); ?></h3>
+								<h3 class="parking-card-title"><?php echo wp_kses_post( $c_title ); ?></h3>
 							<?php endif; ?>
 							<?php if ( ! empty( $c_text ) ) : ?>
-								<p class="parking-card-text"><?php echo nl2br( esc_html( $c_text ) ); ?></p>
+								<p class="parking-card-text"><?php echo wp_kses_post( $c_text ); ?></p>
 							<?php endif; ?>
 							<?php if ( ! empty( $map_link ) ) : ?>
 								<a class="parking-card-button" href="<?php echo esc_url( $map_link ); ?>" target="_blank" rel="noopener noreferrer">
-									<span><?php echo esc_html( $btn_lbl ); ?></span>
+									<span><?php echo wp_kses_post( $btn_lbl ); ?></span>
 									<?php echo $parking_map_btn_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed SVG markup. ?>
 								</a>
 							<?php else : ?>
 								<button type="button" class="parking-card-button">
-									<span><?php echo esc_html( $btn_lbl ); ?></span>
+									<span><?php echo wp_kses_post( $btn_lbl ); ?></span>
 									<?php echo $parking_map_btn_svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed SVG markup. ?>
 								</button>
 							<?php endif; ?>
@@ -94,7 +94,7 @@ $parking_map_btn_svg = '<svg width="11" height="14" viewBox="0 0 11 14" fill="no
 
 			<?php if ( ! empty( $footer_text ) ) : ?>
 				<div class="holiday">
-					<p><?php echo nl2br( esc_html( $footer_text ) ); ?></p>
+					<p><?php echo wp_kses_post( $footer_text ); ?></p>
 				</div>
 			<?php endif; ?>
 		</div>

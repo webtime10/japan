@@ -26,7 +26,7 @@ if ( is_array( $tourist_reviews_background ) && ! empty( $tourist_reviews_backgr
                     $tourist_reviews_title = get_field( 'tourist_reviews_title', 'option' );
                 ?>
                   <?php if ( $tourist_reviews_title ) : ?>
-                      <h2 class="white"><?php echo esc_html( $tourist_reviews_title ); ?></h2>
+                      <h2 class="white"><?php echo wp_kses_post( $tourist_reviews_title ); ?></h2>
                   <?php endif; ?>
                  
                     <div class="reviews-container-into caruael_t reviews2_caruael_t googl2">
@@ -36,8 +36,7 @@ if ( is_array( $tourist_reviews_background ) && ! empty( $tourist_reviews_backgr
                                     <?php
                                     // Получаем отзывы из плагина WT Reviews (как [wt_reviews]), но выводим в этот слайдер
                                     global $wpdb;
-                                    $table_name = class_exists( 'WT_Reviews' ) ? WT_Reviews::get_table_name() : '';
-                                    $reviews    = array();
+                                    $table_name = class_exists( 'WT_Reviews' ) ? WT_Reviews::get_table_name() : '';                                    $reviews    = array();
 
                                     if ( $table_name ) {
                                         $db_name      = DB_NAME;
@@ -68,9 +67,7 @@ if ( is_array( $tourist_reviews_background ) && ! empty( $tourist_reviews_backgr
                                                 $photo_url = get_template_directory_uri() . '/img/avatar.webp';
                                             }
 
-                                            $review_name = ! empty( $item->name ) ? $item->name : '';
-                                            $review_text = ! empty( $item->text ) ? $item->text : '';
-                                            // 65% карточек — 5 звёзд, 35% — 4 звезды (цикл по 100 позициям).
+                                            $review_name = ! empty( $item->name ) ? $item->name : '';                                            $review_text = ! empty( $item->text ) ? $item->text : '';                                            // 65% карточек — 5 звёзд, 35% — 4 звезды (цикл по 100 позициям).
                                             $display_rating = ( ( $tourist_reviews_star_idx % 100 ) < 65 ) ? 5 : 4;
                                             ++$tourist_reviews_star_idx;
                                     ?>
@@ -78,9 +75,9 @@ if ( is_array( $tourist_reviews_background ) && ! empty( $tourist_reviews_backgr
                                         <div class="gogle3">
                                             <div class="image-rew2 googl3">
                                                  <div class="foto-otzv">
-                                                    <img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( $review_name ); ?>">
+                                                    <img src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $review_name ) ); ?>">
                                                     <?php if ( $review_name ) : ?>
-                                                        <span class="mg"><?php echo esc_html( $review_name ); ?></span>
+                                                        <span class="mg"><?php echo wp_kses_post( $review_name ); ?></span>
                                                     <?php endif; ?>
                                                  </div>
                                                  <div class="star-2 review-rating-display">
@@ -91,7 +88,7 @@ if ( is_array( $tourist_reviews_background ) && ! empty( $tourist_reviews_backgr
                                              </div>
                                             <?php if ( $review_text ) : ?>
                                                 <div class="sity-t">
-                                                    <?php echo esc_html( $review_text ); ?>
+                                                    <?php echo wp_kses_post( $review_text ); ?>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
@@ -114,7 +111,7 @@ if ( is_array( $tourist_reviews_background ) && ! empty( $tourist_reviews_backgr
                         ?>
                             <?php if ( $tourist_reviews_button ) : ?>
                                 <a class="order-mr gogle-button new_order-mr" href="#ex1">
-                                    <span><?php echo esc_html( $tourist_reviews_button ); ?></span>
+                                    <span><?php echo wp_kses_post( $tourist_reviews_button ); ?></span>
                                 </a>
                             <?php endif; ?>
                         </div>

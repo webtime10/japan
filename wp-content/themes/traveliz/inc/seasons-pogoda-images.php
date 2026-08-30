@@ -223,8 +223,7 @@ if ( ! function_exists( 'traveliz_pogoda_fill_seasons_line_images' ) ) {
 	 * @return array<string, mixed>
 	 */
 	function traveliz_pogoda_fill_seasons_line_images( array $row ): array {
-		$layout = isset( $row['acf_fc_layout'] ) ? (string) $row['acf_fc_layout'] : '';
-		if ( $layout !== '' && $layout !== 's_flexibol_seasons_line' ) {
+		$layout = isset( $row['acf_fc_layout'] ) ? (string) $row['acf_fc_layout'] : '';		if ( $layout !== '' && $layout !== 's_flexibol_seasons_line' ) {
 			return $row;
 		}
 

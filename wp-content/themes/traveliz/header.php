@@ -1,7 +1,7 @@
 <!doctype html>
-<?php 
-  $current_lang      = function_exists( 'traveliz_pll_current_slug' ) ? traveliz_pll_current_slug() : 'ar';
-  $current_direction = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_rtl( $current_lang ) ? 'rtl' : 'ltr';
+<?php
+$current_lang      = 'he';
+$current_direction = 'rtl';
 ?>
 <html lang="<?php echo esc_attr( $current_lang ); ?>" dir="<?php echo esc_attr( $current_direction ); ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,24 +16,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <?php wp_head(); ?>
 </head>
-<?php if (str_contains($_SERVER['REQUEST_URI'], '/ar/')): ?>
-    <style>
-        html[dir="rtl"] .logo2 img {
-    position: relative;
-    top: -3px;
-}
-
-    </style>
-<?php endif; ?>
-<?php if (str_contains($_SERVER['REQUEST_URI'], '/en/')): ?>
-    <style>
-      .logo2 img {
-        position: relative;
-        top: -3px;
-}
-
-    </style>
-<?php endif; ?>
 <body>
 <?php wp_body_open(); ?>
 <?php 
@@ -56,8 +38,8 @@ if ( $img_main ) {
 	}
 }
 
-$search_lang      = function_exists( 'traveliz_pll_current_slug' ) ? traveliz_pll_current_slug() : '';
-$search_is_rtl_ui = traveliz_pll_is_rtl( $search_lang );
+$search_lang      = 'he';
+$search_is_rtl_ui = true;
 $search_dir_class = $search_is_rtl_ui ? 'search-overlay--rtl' : 'search-overlay--ltr';
 ?>
 
@@ -127,9 +109,7 @@ $search_dir_class = $search_is_rtl_ui ? 'search-overlay--rtl' : 'search-overlay-
                         foreach ($languages as $lang) {
                             if (isset($lang['current_lang']) && $lang['current_lang']) {
                                 $current_lang = $lang['slug'];
-                                $current_lang_flag = isset($lang['flag']) ? $lang['flag'] : '';
-                                $current_lang_name = isset($lang['name']) ? $lang['name'] : '';
-                                if ($current_lang_flag) {
+                                $current_lang_flag = isset($lang['flag']) ? $lang['flag'] : '';                                $current_lang_name = isset($lang['name']) ? $lang['name'] : '';                                if ($current_lang_flag) {
                                     echo '<div class="current-language-display">';
                                     echo '<div class="lang-flag-circle">';
                                     echo '<img src="' . esc_url($current_lang_flag) . '" alt="" class="current-lang-flag" width="20" height="15" loading="lazy" />';
@@ -158,8 +138,7 @@ $search_dir_class = $search_is_rtl_ui ? 'search-overlay--rtl' : 'search-overlay-
                         if ($languages && is_array($languages)) {
                             echo '<ul class="lang-list">';
                             foreach ($languages as $lang) {
-                                $active_class = $lang['current_lang'] ? ' active-lang' : '';
-                                echo '<li class="lang-item' . $active_class . '">';
+                                $active_class = $lang['current_lang'] ? ' active-lang' : '';                                echo '<li class="lang-item' . $active_class . '">';
                                 echo '<a href="' . esc_url($lang['url']) . '" class="lang-item-link">';
                                 if (!empty($lang['flag'])) {
                                     echo '<img src="' . esc_url($lang['flag']) . '" alt="" class="lang-dropdown-flag" width="22" height="16" loading="lazy" />';
@@ -211,9 +190,7 @@ $search_dir_class = $search_is_rtl_ui ? 'search-overlay--rtl' : 'search-overlay-
                         foreach ($languages as $lang) {
                             if (isset($lang['current_lang']) && $lang['current_lang']) {
                                 $current_lang = $lang['slug'];
-                                $current_lang_flag = isset($lang['flag']) ? $lang['flag'] : '';
-                                $current_lang_name = isset($lang['name']) ? $lang['name'] : '';
-                                if ($current_lang_flag) {
+                                $current_lang_flag = isset($lang['flag']) ? $lang['flag'] : '';                                $current_lang_name = isset($lang['name']) ? $lang['name'] : '';                                if ($current_lang_flag) {
                                     echo '<div class="current-language-display">';
                                     echo '<div class="lang-flag-circle">';
                                     echo '<img src="' . esc_url($current_lang_flag) . '" alt="" class="current-lang-flag" width="20" height="15" loading="lazy" />';
@@ -242,8 +219,7 @@ $search_dir_class = $search_is_rtl_ui ? 'search-overlay--rtl' : 'search-overlay-
                         if ($languages && is_array($languages)) {
                             echo '<ul class="lang-list">';
                             foreach ($languages as $lang) {
-                                $active_class = $lang['current_lang'] ? ' active-lang' : '';
-                                echo '<li class="lang-item' . $active_class . '">';
+                                $active_class = $lang['current_lang'] ? ' active-lang' : '';                                echo '<li class="lang-item' . $active_class . '">';
                                 echo '<a href="' . esc_url($lang['url']) . '" class="lang-item-link">';
                                 if (!empty($lang['flag'])) {
                                     echo '<img src="' . esc_url($lang['flag']) . '" alt="" class="lang-dropdown-flag" width="22" height="16" loading="lazy" />';

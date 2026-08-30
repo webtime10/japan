@@ -41,23 +41,23 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
                 
             <img class="ellips10" src="<?php echo get_template_directory_uri(); ?>/img/Ellipse110.webp" alt="">
             <?php if ( $title_reviews ) : ?>
-            <h1><?php echo esc_html( $title_reviews ); ?></h1>
+            <h1><?php echo wp_kses_post( $title_reviews ); ?></h1>
             <?php endif; ?>
             <?php if ( $text_reviews ) : ?>
-            <p><?php echo esc_html( $text_reviews ); ?></p>
+            <p><?php echo wp_kses_post( $text_reviews ); ?></p>
             <?php endif; ?>
             <div class="wrap-order-rew">
             <?php if ( $yellow_button_text_r2 ) : ?>
                 <?php if ( $yellow_button_switcher_r2 !== 'link' ) : ?>
                     <button type="button" data-source="general_request" class="order-mr js-open-popup modal-trigger_wt">
-                        <span><?php echo esc_html( $yellow_button_text_r2 ); ?></span>
+                        <span><?php echo wp_kses_post( $yellow_button_text_r2 ); ?></span>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"></path>
                         </svg>
                     </button>
                 <?php else : ?>
                     <a class="order-mr" href="<?php echo esc_url( $yellow_button_link_r2 ); ?>">
-                        <span><?php echo esc_html( $yellow_button_text_r2 ); ?></span>
+                        <span><?php echo wp_kses_post( $yellow_button_text_r2 ); ?></span>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"></path>
                         </svg>
@@ -82,10 +82,10 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
             <section class="reviews-section reviews2 reviewsn">
                 <div class="container-3 gimp-1">
 					<?php if ( $title_video_reviews ) : ?>
-						<h2><?php echo esc_html( $title_video_reviews ); ?></h2>
+						<h2><?php echo wp_kses_post( $title_video_reviews ); ?></h2>
 					<?php endif; ?>
 					<?php if ( $text_video_reviews ) : ?>
-						<div class="real"><?php echo esc_html( $text_video_reviews ); ?></div>
+						<div class="real"><?php echo wp_kses_post( $text_video_reviews ); ?></div>
 					<?php endif; ?>
 
 					<div class="video-reviews-block" id="page-reviews-video-slider">
@@ -128,22 +128,22 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
 																data-video-modal="<?php echo esc_attr( $video_modal_type ); ?>"
 															>
 																<?php if ( $img_url ) : ?>
-																	<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $title_reviews_video ? $title_reviews_video : '' ); ?>">
+																	<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $title_reviews_video ? wp_strip_all_tags( $title_reviews_video ) : '' ); ?>">
 																<?php endif; ?>
 															</div>
 														<?php else : ?>
 															<div class="image-rew image-rew--no-video">
 																<?php if ( $img_url ) : ?>
-																	<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $title_reviews_video ? $title_reviews_video : '' ); ?>">
+																	<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $title_reviews_video ? wp_strip_all_tags( $title_reviews_video ) : '' ); ?>">
 																<?php endif; ?>
 															</div>
 														<?php endif; ?>
 														<div class="sity-t">
 															<?php if ( $title_reviews_video ) : ?>
-																<h3><?php echo esc_html( $title_reviews_video ); ?></h3>
+																<h3><?php echo wp_kses_post( $title_reviews_video ); ?></h3>
 															<?php endif; ?>
 															<?php if ( $text_reviews_video ) : ?>
-																<p><?php echo esc_html( $text_reviews_video ); ?></p>
+																<p><?php echo wp_kses_post( $text_reviews_video ); ?></p>
 															<?php endif; ?>
 														</div>
 													</div>
@@ -160,7 +160,7 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
 							<div class="wrap-order-t gogle-button-open3">
 								<?php if ( $yellow_button_text_video ) : ?>
 									<a class="order-mr" href="<?php echo esc_url( $yllow_button_link_r2 ); ?>">
-										<span><?php echo esc_html( $yellow_button_text_video ); ?></span>
+										<span><?php echo wp_kses_post( $yellow_button_text_video ); ?></span>
 										<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"></path>
 										</svg>
@@ -206,10 +206,10 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
             <section class="reviews-section google reviews2">
                 <div class="container-3">
                   <?php if ( $google_maps ) : ?>
-                  <h2><?php echo esc_html( $google_maps ); ?></h2>
+                  <h2><?php echo wp_kses_post( $google_maps ); ?></h2>
                   <?php endif; ?>
                   <?php if ( $rewiew_platforma ) : ?>
-                  <div class="real"><?php echo esc_html( $rewiew_platforma ); ?></div>
+                  <div class="real"><?php echo wp_kses_post( $rewiew_platforma ); ?></div>
                   <?php endif; ?>
                     <div class="reviews-container-into caruael_t reviews2_caruael_t googl2">
                         <div class="carousel_m shadow_m">
@@ -248,10 +248,10 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
                                                     <div class="image-rew2 googl3">
                                                         <div class="foto-otzv">
                                                             <?php if ( $img_url ) : ?>
-                                                                <img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $google_rew_title ? $google_rew_title : '' ); ?>">
+                                                                <img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $google_rew_title ? wp_strip_all_tags( $google_rew_title ) : '' ); ?>">
                                                             <?php endif; ?>
                                                             <?php if ( $google_rew_title ) : ?>
-                                                                <span class="mg"><?php echo esc_html( $google_rew_title ); ?></span>
+                                                                <span class="mg"><?php echo wp_kses_post( $google_rew_title ); ?></span>
                                                             <?php endif; ?>
                                                         </div>
                                                         <?php if ( $star_url ) : ?>
@@ -262,7 +262,7 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
                                                     </div>
                                                     <?php if ( $google_rew_text ) : ?>
                                                         <div class="sity-t">
-                                                            <?php echo esc_html( $google_rew_text ); ?>
+                                                            <?php echo wp_kses_post( $google_rew_text ); ?>
                                                         </div>
                                                     <?php endif; ?>
                                                     <img src="<?php echo get_template_directory_uri(); ?>/img/goole.webp" alt="" />
@@ -280,7 +280,7 @@ $yllow_button_link_r2 = get_field( 'yllow_button_link_r2' );
                         <div class="wrap-order-t">
                             <a class="order-mr gogle-button gogle-button-open" href="<?php echo esc_url( $button_google_link ); ?>">
                                 <img src="<?php echo get_template_directory_uri(); ?>/img/google.webp" alt="" />
-                                <span><?php echo esc_html( $button_google ); ?></span>
+                                <span><?php echo wp_kses_post( $button_google ); ?></span>
                                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"/>
                                 </svg>

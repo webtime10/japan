@@ -7,7 +7,7 @@ $source = 'option'; // Источник данных
 <section class="region l">
     <div class="container-5">
         <?php if ($title_11): ?>
-            <h2><?php echo esc_html($title_11); ?></h2>
+            <h2><?php echo wp_kses_post($title_11); ?></h2>
         <?php endif; ?>
 
         <div class="into-region">
@@ -31,15 +31,15 @@ $source = 'option'; // Источник данных
                                         <div class="experience-img">
                                             
                                            
-                                            <img src="<?php echo esc_url( $slide_img_url ); ?>" alt="<?php echo esc_attr( $slide_title ); ?>" />
+                                            <img src="<?php echo esc_url( $slide_img_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $slide_title ) ); ?>" />
                                         </div>
                                         <?php if ( $slide_title || $slide_text ) : ?>
                                             <div class="carusel-wrap-t">
                                                 <?php if ( $slide_title ) : ?>
-                                                    <div class="title-carusel"><?php echo esc_html( $slide_title ); ?></div>
+                                                    <div class="title-carusel"><?php echo wp_kses_post( $slide_title ); ?></div>
                                                 <?php endif; ?>
                                                 <?php if ( $slide_text ) : ?>
-                                                    <div class="text-carusel2"><?php echo esc_html( $slide_text ); ?></div>
+                                                    <div class="text-carusel2"><?php echo wp_kses_post( $slide_text ); ?></div>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>

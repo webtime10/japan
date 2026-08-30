@@ -7,7 +7,7 @@ $faq_title = get_field('title_faq', 'option');
 <section class="faq l">
     <div class="container-6">
         <?php if ( $faq_title ) : ?>
-            <h2><?php echo esc_html( $faq_title ); ?></h2>
+            <h2><?php echo wp_kses_post( $faq_title ); ?></h2>
       
         <?php endif; ?>
 
@@ -21,7 +21,7 @@ $faq_title = get_field('title_faq', 'option');
                 ?>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span class="title-text"><?php echo esc_html( $question ); ?></span>
+                            <span class="title-text"><?php echo wp_kses_post( $question ); ?></span>
                             <div class="status-box"></div>
                         </div>
                         <div class="faq-answer">

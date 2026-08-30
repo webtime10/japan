@@ -6,7 +6,7 @@ $title_main = get_field('title_22', 'option');
 <section class="region region2">
     <div class="container-5">
         <?php if ( $title_main ) : ?>
-            <h2><?php echo esc_html( $title_main ); ?></h2>
+            <h2><?php echo wp_kses_post( $title_main ); ?></h2>
         <?php endif; ?>
 
         <div class="into-region">
@@ -41,16 +41,16 @@ $title_main = get_field('title_22', 'option');
                                 
                                 <div class="carousel-block">
                                     <div class="wrap-carusel-block-into">
-                                        <img src="<?php echo esc_url( $s_img_url ); ?>" alt="<?php echo esc_attr( $s_title ); ?>">
+                                        <img src="<?php echo esc_url( $s_img_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $s_title ) ); ?>">
                                         
                                         <?php if ( $s_title || $s_text ) : ?>
                                             <div class="carusel-wrap-t">
                                                 <?php if ( $s_title ) : ?>
-                                                    <div class="title-carusel"><?php echo esc_html( $s_title ); ?></div>
+                                                    <div class="title-carusel"><?php echo wp_kses_post( $s_title ); ?></div>
                                                 <?php endif; ?>
                                                 
                                                 <?php if ( $s_text ) : ?>
-                                                    <div class="text-carusel2"><?php echo esc_html( $s_text ); ?></div>
+                                                    <div class="text-carusel2"><?php echo wp_kses_post( $s_text ); ?></div>
                                                 <?php endif; ?>
                                             </div>
                                         <?php endif; ?>

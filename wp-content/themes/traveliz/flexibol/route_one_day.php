@@ -15,10 +15,10 @@ $rout_dop_text = get_sub_field( 'rout_dop_text' );
 	<div class="container-4">
 		<div class="itinerary-container">
 			<?php if ( ! empty( $section_title ) ) : ?>
-				<h2 class="main-title"><?php echo esc_html( $section_title ); ?></h2>
+				<h2 class="main-title"><?php echo wp_kses_post( $section_title ); ?></h2>
 			<?php endif; ?>
 			<?php if ( ! empty( $rout_dop_text ) ) : ?>
-				<div class="rout_dop_text"><?php echo nl2br( esc_html( $rout_dop_text ) ); ?></div>
+				<div class="rout_dop_text"><?php echo wp_kses_post( $rout_dop_text ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( have_rows( 's_flexibol_route_days' ) ) : ?>
@@ -33,10 +33,10 @@ $rout_dop_text = get_sub_field( 'rout_dop_text' );
 						<?php if ( ! empty( $day_badge ) || ! empty( $day_subtitle ) ) : ?>
 						<div class="day-header">
 							<?php if ( ! empty( $day_badge ) ) : ?>
-								<span class="day-badge y"><?php echo esc_html( $day_badge ); ?></span>
+								<span class="day-badge y"><?php echo wp_kses_post( $day_badge ); ?></span>
 							<?php endif; ?>
 							<?php if ( ! empty( $day_subtitle ) ) : ?>
-								<span class="day-title"><?php echo esc_html( $day_subtitle ); ?></span>
+								<span class="day-title"><?php echo wp_kses_post( $day_subtitle ); ?></span>
 							<?php endif; ?>
 						</div>
 						<?php endif; ?>
@@ -46,15 +46,15 @@ $rout_dop_text = get_sub_field( 'rout_dop_text' );
 								<?php
 								while ( have_rows( 's_flexibol_route_day_timeline' ) ) :
 									the_row();
-									$item_time = get_sub_field( 's_flexibol_route_time' );
+									$item_time = get_sub_field( 's_flexibol_route_time', false );
 									$item_text = get_sub_field( 's_flexibol_route_text' );
 									?>
 								<div class="timeline-item">
 									<?php if ( ! empty( $item_time ) ) : ?>
-										<h4 class="event-time-title"><?php echo wp_kses_post( $item_time ); ?></h4>
+										<h4 class="event-time-title"><bdi dir="ltr"><?php echo esc_html( $item_time ); ?></bdi></h4>
 									<?php endif; ?>
 									<?php if ( ! empty( $item_text ) ) : ?>
-										<p class="event-description"><?php echo nl2br( esc_html( $item_text ) ); ?></p>
+										<p class="event-description"><?php echo wp_kses_post( $item_text ); ?></p>
 									<?php endif; ?>
 								</div>
 								<?php endwhile; ?>

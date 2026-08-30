@@ -18,17 +18,17 @@ $ready_button_2_link  = get_field('ready_button_2_link', 'option');
 <?php if ($ready_title) : ?>
 <section class="ready l">
     <div class="container-4">
-        <h2><?php echo esc_html($ready_title); ?></h2>
+        <h2><?php echo wp_kses_post($ready_title); ?></h2>
         
         <div class="ready-buttons">
             <?php if ($ready_button_1_text) : ?>
                 <?php if ($ready_button_1_type === 'link' && $ready_button_1_link) : ?>
                     <a href="<?php echo esc_url($ready_button_1_link); ?>" class="btn-action btn-yellow">
-                        <span class="btn-text"><?php echo esc_html($ready_button_1_text); ?></span>
+                        <span class="btn-text"><?php echo wp_kses_post($ready_button_1_text); ?></span>
                     </a>
                 <?php elseif ($ready_button_1_type === 'popup') : ?>
                     <a href="#" class="btn-action btn-yellow popup-trigger" data-popup="ready-button1">
-                        <span class="btn-text"><?php echo esc_html($ready_button_1_text); ?></span>
+                        <span class="btn-text"><?php echo wp_kses_post($ready_button_1_text); ?></span>
                     </a>
                 <?php endif; ?>
             <?php endif; ?>
@@ -36,11 +36,11 @@ $ready_button_2_link  = get_field('ready_button_2_link', 'option');
             <?php if ($ready_button_2_text) : ?>
                 <?php if ($ready_button_2_type === 'link' && $ready_button_2_link) : ?>
                     <a href="<?php echo esc_url($ready_button_2_link); ?>" class="btn-action btn-blue">
-                        <span class="btn-text"><?php echo esc_html($ready_button_2_text); ?></span>
+                        <span class="btn-text"><?php echo wp_kses_post($ready_button_2_text); ?></span>
                     </a>
                 <?php elseif ($ready_button_2_type === 'popup') : ?>
                     <a href="#" class="btn-action btn-blue popup-trigger" data-popup="ready-button2">
-                        <span class="btn-text"><?php echo esc_html($ready_button_2_text); ?></span>
+                        <span class="btn-text"><?php echo wp_kses_post($ready_button_2_text); ?></span>
                     </a>
                 <?php endif; ?>
             <?php endif; ?>

@@ -45,12 +45,12 @@ if ( $header_background ) {
                             <img class="ellipse312" src="<?php echo get_template_directory_uri(); ?>/img/ellipse312.webp" alt="">
 
                             <?php if ( $hero_title ) : ?>
-                                <h1><?php echo esc_html( $hero_title ); ?></h1>
+                                <h1><?php echo wp_kses_post( $hero_title ); ?></h1>
                                 <?php endif; ?>
 
                                     <?php if ( $hero_subtitle ) : ?>
                                         <p>
-                                            <?php echo esc_html( $hero_subtitle ); ?>
+                                            <?php echo wp_kses_post( $hero_subtitle ); ?>
                                         </p>
                                         <?php endif; ?>
 
@@ -60,12 +60,12 @@ if ( $header_background ) {
                                                         <?php if ( $button_1_text ) : ?>
                                                             <?php if ( $button_1_type == 'popup' ) : ?>
                                                                 <button class="order-mr landing_link modal-trigger_wt" data-popup="button-1">
-                                                                    <span class="btn-text"><?php echo esc_html( $button_1_text ); ?></span>
+                                                                    <span class="btn-text"><?php echo wp_kses_post( $button_1_text ); ?></span>
                                                                     <img src="<?php echo get_template_directory_uri(); ?>/img/plus-circle.svg" alt="">
                                                                 </button>
                                                                 <?php else : ?>
                                                                     <a href="<?php echo esc_url( $button_1_link ); ?>" class="order-mr landing_link">
-                                                                        <span class="btn-text"><?php echo esc_html( $button_1_text ); ?></span>
+                                                                        <span class="btn-text"><?php echo wp_kses_post( $button_1_text ); ?></span>
                                                                         <img src="<?php echo get_template_directory_uri(); ?>/img/plus-circle.svg" alt="">
                                                                     </a>
                                                                     <?php endif; ?>
@@ -75,7 +75,7 @@ if ( $header_background ) {
                                                                                 <?php if ( $button_2_type == 'popup' ) : ?>
                                                                                     <button class="whatsapp-button land_w modal-trigger_wt" data-popup="button-2">
 
-                                                                                        <span class="btn-text"><?php echo esc_html( $button_2_text ); ?></span>
+                                                                                        <span class="btn-text"><?php echo wp_kses_post( $button_2_text ); ?></span>
                                                                                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                             <path d="M17.3492 2.96406C15.4372 1.05859 12.888 0 10.1971 0C4.60284 0 0.0708119 4.51666 0.0708119 10.0919C0.0708119 11.8562 0.566504 13.6205 1.41626 15.1026L0 20.325L5.38179 18.9135C6.86886 19.6898 8.49756 20.1132 10.1971 20.1132C15.7913 20.1132 20.3233 15.5966 20.3233 10.0213C20.2525 7.41014 19.2611 4.86952 17.3492 2.96406ZM15.0832 13.6911C14.8707 14.2557 13.8793 14.8203 13.3837 14.8909C12.9588 14.9614 12.3923 14.9614 11.8258 14.8203C11.4717 14.6791 10.976 14.538 10.4095 14.2557C7.86024 13.1971 6.23155 10.6565 6.08992 10.4448C5.94829 10.3036 5.02773 9.10389 5.02773 7.83358C5.02773 6.56327 5.66504 5.99868 5.87748 5.71639C6.08992 5.4341 6.37317 5.4341 6.58561 5.4341C6.72723 5.4341 6.93967 5.4341 7.0813 5.4341C7.22292 5.4341 7.43537 5.36353 7.6478 5.85754C7.86024 6.35155 8.35593 7.62186 8.42675 7.69243C8.49756 7.83358 8.49756 7.97472 8.42675 8.11587C8.35593 8.25701 8.28512 8.39816 8.14349 8.5393C8.00187 8.68045 7.86024 8.89217 7.78943 8.96274C7.6478 9.10389 7.50618 9.24503 7.6478 9.45675C7.78943 9.73904 8.28512 10.5153 9.06406 11.2211C10.0554 12.0679 10.8344 12.3502 11.1176 12.4914C11.4009 12.6325 11.5425 12.562 11.6841 12.4208C11.8258 12.2797 12.3215 11.7151 12.4631 11.4328C12.6047 11.1505 12.8172 11.2211 13.0296 11.2916C13.242 11.3622 14.5167 11.9974 14.7291 12.1385C15.0124 12.2797 15.154 12.3502 15.2248 12.4208C15.2956 12.6325 15.2956 13.1265 15.0832 13.6911Z" fill="white" />
                                                                                         </svg>
@@ -83,7 +83,7 @@ if ( $header_background ) {
                                                                                     <?php else : ?>
                                                                                         <a href="<?php echo esc_url( $button_2_link ); ?>" class="whatsapp-button land_w">
 
-                                                                                            <span class="btn-text"><?php echo esc_html( $button_2_text ); ?></span>
+                                                                                            <span class="btn-text"><?php echo wp_kses_post( $button_2_text ); ?></span>
                                                                                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                                 <path d="M17.3492 2.96406C15.4372 1.05859 12.888 0 10.1971 0C4.60284 0 0.0708119 4.51666 0.0708119 10.0919C0.0708119 11.8562 0.566504 13.6205 1.41626 15.1026L0 20.325L5.38179 18.9135C6.86886 19.6898 8.49756 20.1132 10.1971 20.1132C15.7913 20.1132 20.3233 15.5966 20.3233 10.0213C20.2525 7.41014 19.2611 4.86952 17.3492 2.96406ZM15.0832 13.6911C14.8707 14.2557 13.8793 14.8203 13.3837 14.8909C12.9588 14.9614 12.3923 14.9614 11.8258 14.8203C11.4717 14.6791 10.976 14.538 10.4095 14.2557C7.86024 13.1971 6.23155 10.6565 6.08992 10.4448C5.94829 10.3036 5.02773 9.10389 5.02773 7.83358C5.02773 6.56327 5.66504 5.99868 5.87748 5.71639C6.08992 5.4341 6.37317 5.4341 6.58561 5.4341C6.72723 5.4341 6.93967 5.4341 7.0813 5.4341C7.22292 5.4341 7.43537 5.36353 7.6478 5.85754C7.86024 6.35155 8.35593 7.62186 8.42675 7.69243C8.49756 7.83358 8.49756 7.97472 8.42675 8.11587C8.35593 8.25701 8.28512 8.39816 8.14349 8.5393C8.00187 8.68045 7.86024 8.89217 7.78943 8.96274C7.6478 9.10389 7.50618 9.24503 7.6478 9.45675C7.78943 9.73904 8.28512 10.5153 9.06406 11.2211C10.0554 12.0679 10.8344 12.3502 11.1176 12.4914C11.4009 12.6325 11.5425 12.562 11.6841 12.4208C11.8258 12.2797 12.3215 11.7151 12.4631 11.4328C12.6047 11.1505 12.8172 11.2211 13.0296 11.2916C13.242 11.3622 14.5167 11.9974 14.7291 12.1385C15.0124 12.2797 15.154 12.3502 15.2248 12.4208C15.2956 12.6325 15.2956 13.1265 15.0832 13.6911Z" fill="white" />
                                                                                             </svg>
@@ -146,13 +146,13 @@ $travelers_stories_query = new WP_Query( $travelers_stories_args );
                                 <section class="reviews-section history">
                                     <div class="container-4">
                                         <?php if ( $travelers_title ) : ?>
-                                            <h2 class="gip-0"><?php echo esc_html( $travelers_title ); ?></h2>
+                                            <h2 class="gip-0"><?php echo wp_kses_post( $travelers_title ); ?></h2>
                                         <?php else : ?>
                                             <h2 class="gip-0">Истории путешественников</h2>
                                         <?php endif; ?>
                                         
                                         <?php if ( $travelers_subtitle ) : ?>
-                                            <p class="gip-1"><?php echo esc_html( $travelers_subtitle ); ?></p>
+                                            <p class="gip-1"><?php echo wp_kses_post( $travelers_subtitle ); ?></p>
                                         <?php else : ?>
                                             <p class="gip-1">Реальные истории наших клиентов. Вдохновляйтесь и планируйте свою мечту!</p>
                                         <?php endif; ?>
@@ -194,12 +194,12 @@ $travelers_stories_query = new WP_Query( $travelers_stories_args );
                                                                     <img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
                                                                     <div class="absolut-rew">
                                                                         <p>
-                                                                            <span class="anna"><?php echo esc_html( get_the_title() ); ?></span>
+                                                                            <span class="anna"><?php echo wp_kses_post( get_the_title() ); ?></span>
                                                                             <?php if ( $route ) : ?>
-                                                                                <span class="anna_route"><?php echo esc_html( $route ); ?></span>
+                                                                                <span class="anna_route"><?php echo wp_kses_post( $route ); ?></span>
                                                                             <?php endif; ?>
                                                                         </p>
-                                                                        <span class="story-card-btn"><?php echo esc_html( $story_btn_label ); ?></span>
+                                                                        <span class="story-card-btn"><?php echo wp_kses_post( $story_btn_label ); ?></span>
                                                                     </div>
                                                                 </a>
                                                             </div>
@@ -228,12 +228,12 @@ $travelers_stories_query = new WP_Query( $travelers_stories_args );
                         <div class="container-4">
                             <div class="into-plat-carta">
                                 <?php if ( $garanty_title ) : ?>
-                                    <h2><?php echo esc_html( $garanty_title ); ?></h2>
+                                    <h2><?php echo wp_kses_post( $garanty_title ); ?></h2>
                                     <?php endif; ?>
 
                                         <?php if ( $garanty_subtitle ) : ?>
                                             <p class="plat-carta-subtitle">
-                                                <?php echo esc_html( $garanty_subtitle ); ?>
+                                                <?php echo wp_kses_post( $garanty_subtitle ); ?>
                                             </p>
                                             <?php endif; ?>
 
@@ -244,11 +244,11 @@ $travelers_stories_query = new WP_Query( $travelers_stories_args );
                                                                 <img class="get_template1" src="<?php echo get_template_directory_uri(); ?>/img/ico/1.webp" alt="">
                                                             </div>
                                                             <?php if ( $garanty_card_1_title ) : ?>
-                                                                <h3><?php echo esc_html( $garanty_card_1_title ); ?></h3>
+                                                                <h3><?php echo wp_kses_post( $garanty_card_1_title ); ?></h3>
                                                                 <?php endif; ?>
                                                                     <?php if ( $garanty_card_1_text ) : ?>
                                                                         <p>
-                                                                            <?php echo esc_html( $garanty_card_1_text ); ?>
+                                                                            <?php echo wp_kses_post( $garanty_card_1_text ); ?>
                                                                         </p>
                                                                         <?php endif; ?>
                                                         </div>
@@ -260,11 +260,11 @@ $travelers_stories_query = new WP_Query( $travelers_stories_args );
                                                                         <img class="get_template2" src="<?php echo get_template_directory_uri(); ?>/img/ico/2.webp" alt="">
                                                                     </div>
                                                                     <?php if ( $garanty_card_2_title ) : ?>
-                                                                        <h3><?php echo esc_html( $garanty_card_2_title ); ?></h3>
+                                                                        <h3><?php echo wp_kses_post( $garanty_card_2_title ); ?></h3>
                                                                         <?php endif; ?>
                                                                             <?php if ( $garanty_card_2_text ) : ?>
                                                                                 <p>
-                                                                                    <?php echo esc_html( $garanty_card_2_text ); ?>
+                                                                                    <?php echo wp_kses_post( $garanty_card_2_text ); ?>
                                                                                 </p>
                                                                                 <?php endif; ?>
                                                                 </div>
@@ -276,11 +276,11 @@ $travelers_stories_query = new WP_Query( $travelers_stories_args );
                                                                                 <img class="get_template3" src="<?php echo get_template_directory_uri(); ?>/img/ico/3.webp" alt="">
                                                                             </div>
                                                                             <?php if ( $garanty_card_3_title ) : ?>
-                                                                                <h3><?php echo esc_html( $garanty_card_3_title ); ?></h3>
+                                                                                <h3><?php echo wp_kses_post( $garanty_card_3_title ); ?></h3>
                                                                                 <?php endif; ?>
                                                                                     <?php if ( $garanty_card_3_text ) : ?>
                                                                                         <p>
-                                                                                            <?php echo esc_html( $garanty_card_3_text ); ?>
+                                                                                            <?php echo wp_kses_post( $garanty_card_3_text ); ?>
                                                                                         </p>
                                                                                         <?php endif; ?>
                                                                         </div>
@@ -289,7 +289,7 @@ $travelers_stories_query = new WP_Query( $travelers_stories_args );
 
                                                 <?php if ( $garanty_trust_text ) : ?>
                                                     <p class="plat-carta-trust">
-                                                        <?php echo esc_html( $garanty_trust_text ); ?>
+                                                        <?php echo wp_kses_post( $garanty_trust_text ); ?>
                                                     </p>
                                                     <?php endif; ?>
 
@@ -377,10 +377,10 @@ $into_ready_style = $ready_background_url
                                         >
 
                                             <?php if ($ready_decor_url) : ?>
-                                                <img class="elips11" src="<?php echo esc_url($ready_decor_url); ?>" alt="<?php echo esc_attr($ready_decor_alt); ?>">
+                                                <img class="elips11" src="<?php echo esc_url($ready_decor_url); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $ready_decor_alt ) ); ?>">
                                             <?php endif; ?>
                                             <?php if ($ready_title) : ?>
-                                                <h2><?php echo esc_html($ready_title); ?></h2>
+                                                <h2><?php echo wp_kses_post($ready_title); ?></h2>
                                             <?php else : ?>
                                                 <h2>Готовы создать маршрут мечты по Швейцарии?</h2>
                                             <?php endif; ?>
@@ -389,12 +389,12 @@ $into_ready_style = $ready_background_url
                                                 <?php if ($ready_button_1_text) : ?>
                                                     <?php if ($ready_button_1_type === 'popup') : ?>
                                                         <button class="order-mr landing_link modal-trigger_wt" data-popup="button-1">
-                                                            <span class="btn-text"><?php echo esc_html($ready_button_1_text); ?></span>
+                                                            <span class="btn-text"><?php echo wp_kses_post($ready_button_1_text); ?></span>
                                                             <img src="<?php echo get_template_directory_uri(); ?>/img/plus-circle.svg" alt="">
                                                         </button>
                                                     <?php else : ?>
                                                         <a href="<?php echo esc_url($ready_button_1_link); ?>" class="order-mr landing_link">
-                                                            <span class="btn-text"><?php echo esc_html($ready_button_1_text); ?></span>
+                                                            <span class="btn-text"><?php echo wp_kses_post($ready_button_1_text); ?></span>
                                                             <img src="<?php echo get_template_directory_uri(); ?>/img/plus-circle.svg" alt="">
                                                         </a>
                                                     <?php endif; ?>
@@ -403,11 +403,11 @@ $into_ready_style = $ready_background_url
                                                 <?php if ($ready_button_2_text) : ?>
                                                     <?php if ($ready_button_2_type === 'popup') : ?>
                                                         <button class="btn-action btn-blue landblue modal-trigger_wt" data-popup="button-2">
-                                                            <span class="btn-text"><?php echo esc_html($ready_button_2_text); ?></span>
+                                                            <span class="btn-text"><?php echo wp_kses_post($ready_button_2_text); ?></span>
                                                         </button>
                                                     <?php else : ?>
                                                         <a href="<?php echo esc_url($ready_button_2_link); ?>" class="btn-action btn-blue landblue">
-                                                            <span class="btn-text"><?php echo esc_html($ready_button_2_text); ?></span>
+                                                            <span class="btn-text"><?php echo wp_kses_post($ready_button_2_text); ?></span>
                                                         </a>
                                                     <?php endif; ?>
                                                 <?php endif; ?>

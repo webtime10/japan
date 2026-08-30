@@ -54,11 +54,9 @@ if ( is_array( $reviews_background ) && ! empty( $reviews_background['url'] ) ) 
 
 if ( ! $reviews_background_url ) {
 	$reviews_background_id  = (int) get_option( 'wt_reviews_custom_background_image_id', 0 );
-	$reviews_background_url = $reviews_background_id ? wp_get_attachment_image_url( $reviews_background_id, 'full' ) : '';
-}
+	$reviews_background_url = $reviews_background_id ? wp_get_attachment_image_url( $reviews_background_id, 'full' ) : '';}
 
 $reviews_background_style = $reviews_background_url ? 'background-image: url(' . esc_url( $reviews_background_url ) . '); background-size: cover; background-repeat: no-repeat; background-position: center center;' : '';
-
 if ( ! $block_title && ! $block_subtitle && ! $has_slider_opt && ! $button_text ) {
 	$slider_rows_post = function_exists( 'get_field' ) ? get_field( 'reviews_slider' ) : null;
 	$has_slider_post  = is_array( $slider_rows_post ) && count( $slider_rows_post ) > 0;
@@ -71,10 +69,10 @@ if ( ! $block_title && ! $block_subtitle && ! $has_slider_opt && ! $button_text 
 <section style="<?php echo esc_attr( $reviews_background_style ); ?>" class="reviews-section custom-rew rrrr">
 	<div class="container-4">
 		<?php if ( $block_title ) : ?>
-			<h2><?php echo esc_html( $block_title ); ?></h2>
+			<h2><?php echo wp_kses_post( $block_title ); ?></h2>
 		<?php endif; ?>
 		<?php if ( $block_subtitle ) : ?>
-			<p class="reviews-section-subtitle"><?php echo esc_html( $block_subtitle ); ?></p>
+			<p class="reviews-section-subtitle"><?php echo wp_kses_post( $block_subtitle ); ?></p>
 		<?php endif; ?>
 
 		<div class="reviews-container-into caruael_t">
@@ -83,7 +81,6 @@ if ( ! $block_title && ! $block_subtitle && ! $has_slider_opt && ! $button_text 
 					<div class="carousel-items_m caruael_tt">
 						<?php
 						$img_alt = $block_title ? $block_title : '';
-
 						$render_slide = function () use ( $img_alt ) {
 							$img = get_sub_field( 'img_reviews' );
 							if ( ! $img ) {
@@ -129,13 +126,13 @@ if ( ! $block_title && ! $block_subtitle && ! $has_slider_opt && ! $button_text 
 							<div class="carousel-block_m">
 								<div>
 									<?php if ( $img_url ) : ?>
-										<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $alt ); ?>">
+										<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $alt ) ); ?>">
 									<?php endif; ?>
 									<?php if ( $slide_title ) : ?>
-										<div class="reviews-slide-title"><?php echo esc_html( $slide_title ); ?></div>
+										<div class="reviews-slide-title"><?php echo wp_kses_post( $slide_title ); ?></div>
 									<?php endif; ?>
 									<?php if ( $slide_text ) : ?>
-										<div class="reviews-slide-text"><?php echo nl2br( esc_html( $slide_text ) ); ?></div>
+										<div class="reviews-slide-text"><?php echo wp_kses_post( $slide_text ); ?></div>
 									<?php endif; ?>
 								</div>
 							</div>
@@ -165,9 +162,9 @@ if ( ! $block_title && ! $block_subtitle && ! $has_slider_opt && ! $button_text 
 			</div>
 
 			<?php if ( $button_text && $button_link ) : ?>
-				<a class="more-all-re" href="<?php echo esc_url( $button_link ); ?>"><?php echo esc_html( $button_text ); ?></a>
+				<a class="more-all-re" href="<?php echo esc_url( $button_link ); ?>"><?php echo wp_kses_post( $button_text ); ?></a>
 			<?php elseif ( $button_text ) : ?>
-				<span class="more-all-re"><?php echo esc_html( $button_text ); ?></span>
+				<span class="more-all-re"><?php echo wp_kses_post( $button_text ); ?></span>
 			<?php endif; ?>
 		</div>
 	</div>

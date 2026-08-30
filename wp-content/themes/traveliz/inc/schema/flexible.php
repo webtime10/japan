@@ -100,8 +100,7 @@ if ( ! function_exists( 'traveliz_schema_process_flexible_layout' ) ) {
  * @return array|array<int, array>|null
  */
 function traveliz_schema_from_flexible_row( $layout, array $row ) {
-	$page_url      = function_exists( 'get_permalink' ) ? get_permalink() : '';
-	$section_index = 1;
+	$page_url      = function_exists( 'get_permalink' ) ? get_permalink() : '';	$section_index = 1;
 	if ( $page_url === false || $page_url === '' ) {
 		return null;
 	}
@@ -588,8 +587,7 @@ function traveliz_schema_process_row_attractions_slider( array $row, $page_url, 
 		}
 		$n = traveliz_schema_clean_text( $it['s_flexibol_attractions_card_title'] ?? '' );
 		$d = traveliz_schema_clean_text( $it['s_flexibol_attractions_text'] ?? '' );
-		$u = isset( $it['s_flexibol_attractions_button_link'] ) ? esc_url_raw( (string) $it['s_flexibol_attractions_button_link'] ) : '';
-		if ( $n === '' && $d === '' ) {
+		$u = isset( $it['s_flexibol_attractions_button_link'] ) ? esc_url_raw( (string) $it['s_flexibol_attractions_button_link'] ) : '';		if ( $n === '' && $d === '' ) {
 			continue;
 		}
 		++$pos;
@@ -1011,8 +1009,7 @@ function traveliz_schema_process_row_parking( array $row, $page_url, $section_in
 		}
 		$n = traveliz_schema_clean_text( $it['s_flexibol_parking_card_title'] ?? '' );
 		$d = traveliz_schema_clean_text( $it['s_flexibol_parking_card_text'] ?? '' );
-		$map = isset( $it['s_flexibol_parking_card_map_link'] ) ? esc_url_raw( (string) $it['s_flexibol_parking_card_map_link'] ) : '';
-		if ( $n === '' && $d === '' ) {
+		$map = isset( $it['s_flexibol_parking_card_map_link'] ) ? esc_url_raw( (string) $it['s_flexibol_parking_card_map_link'] ) : '';		if ( $n === '' && $d === '' ) {
 			continue;
 		}
 		++$pos;
@@ -1105,8 +1102,7 @@ if ( ! function_exists( 'traveliz_schema_collect_flexible_blocks' ) ) {
 			if ( ! is_array( $row ) ) {
 				continue;
 			}
-			$layout = isset( $row['acf_fc_layout'] ) ? (string) $row['acf_fc_layout'] : '';
-			if ( $layout === '' ) {
+			$layout = isset( $row['acf_fc_layout'] ) ? (string) $row['acf_fc_layout'] : '';			if ( $layout === '' ) {
 				continue;
 			}
 			$before = count( $graph );

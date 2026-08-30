@@ -66,9 +66,9 @@ $carousel_dir         = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll
 	<div class="container-4">
 		<div class="slider-pogoda-dop">
 				<img class="Ellipse523" src="<?php echo esc_url( $shadow_url ? $shadow_url : ( get_template_directory_uri() . '/img/Ellipse523.webp' ) ); ?>" alt="">
-				<h2><?php echo esc_html( $section_title ); ?></h2>
+				<h2><?php echo wp_kses_post( $section_title ); ?></h2>
 				<?php if ( ! empty( $pod_zag_pogoda ) ) : ?>
-				<div class="pod-zag-pogoda"><?php echo nl2br( esc_html( $pod_zag_pogoda ) ); ?></div>
+				<div class="pod-zag-pogoda"><?php echo wp_kses_post( $pod_zag_pogoda ); ?></div>
 			    <?php endif; ?>
 		</div>		
 		<div class="into-slider-pogoda">

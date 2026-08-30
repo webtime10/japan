@@ -1,3 +1,13 @@
+bdi[dir="ltr"] {
+    display: inline;
+    unicode-bidi: isolate;
+    word-break: break-word;
+}
+.event-time-title {
+    direction: ltr;
+    unicode-bidi: embed;
+    text-align: right; /* если нужно выровнять по правому краю */
+}
 html[dir="rtl"] .carousel-button-right_m a {
     background-image: url(../images/carousel-right.png);
     transform: rotate(180deg);
@@ -130,28 +140,10 @@ html[dir="rtl"] .now-carousel-items[dir="rtl"] {
     direction: rtl;
 }
 
-/* Price table: bottom cards RTL order + Bi-Di prices */
+/* Price table: bottom cards RTL order */
 html[dir="rtl"] .price-cards-bottom,
 html[dir="rtl"] .price-cards-bottom[dir="rtl"] {
     direction: rtl;
-}
-
-.price-amount-ltr {
-    direction: ltr;
-    display: inline-block;
-    unicode-bidi: isolate;
-}
-
-.price-period-ltr {
-    direction: ltr;
-    display: inline-block;
-    unicode-bidi: isolate;
-}
-
-.price-period-rtl {
-    direction: rtl;
-    display: inline-block;
-    unicode-bidi: isolate;
 }
 
 /* Hotels block: RTL card order + LTR English titles in parentheses */

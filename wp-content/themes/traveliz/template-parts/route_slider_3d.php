@@ -17,7 +17,6 @@
         }
 
         $route_slider_3d_background_style = $route_slider_3d_background_url ? 'background-image: url(' . esc_url( $route_slider_3d_background_url ) . '); background-size: cover; background-repeat: no-repeat; background-position: center center;' : '';
-
         // Один раз собираем слайды из repeater Options — та же логика URL, что в desktop carousel_d3 ниже.
         $route_slider_3d_slide_urls = array();
         if ( function_exists( 'have_rows' ) && have_rows( 'slider_route_slider_3d', 'option' ) ) {

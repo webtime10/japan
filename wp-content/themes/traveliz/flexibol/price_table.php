@@ -35,8 +35,7 @@ $top_img_url = '';
 $top_img_alt = '';
 if ( is_array( $top_image ) && ! empty( $top_image['url'] ) ) {
 	$top_img_url = (string) $top_image['url'];
-	$top_img_alt = ! empty( $top_image['alt'] ) ? (string) $top_image['alt'] : '';
-} elseif ( is_numeric( $top_image ) ) {
+	$top_img_alt = ! empty( $top_image['alt'] ) ? (string) $top_image['alt'] : '';} elseif ( is_numeric( $top_image ) ) {
 	$top_img_url = (string) wp_get_attachment_image_url( (int) $top_image, 'full' );
 	$top_img_alt = (string) get_post_meta( (int) $top_image, '_wp_attachment_image_alt', true );
 } elseif ( is_string( $top_image ) && $top_image !== '' ) {
@@ -53,24 +52,9 @@ $bb1 = is_array( $bb1 ) ? $bb1 : array();
 $bb2 = is_array( $bb2 ) ? $bb2 : array();
 $bb3 = is_array( $bb3 ) ? $bb3 : array();
 
-$bb1_top = isset( $bb1['s_flexibol_price_bb1_top'] ) ? (string) $bb1['s_flexibol_price_bb1_top'] : '';
-$bb1_mid = isset( $bb1['s_flexibol_price_bb1_middle'] ) ? (string) $bb1['s_flexibol_price_bb1_middle'] : '';
-$bb1_ex  = isset( $bb1['s_flexibol_price_bb1_extra'] ) ? (string) $bb1['s_flexibol_price_bb1_extra'] : '';
-$bb1_pr  = isset( $bb1['s_flexibol_price_bb1_button_price'] ) ? (string) $bb1['s_flexibol_price_bb1_button_price'] : '';
-$bb1_day = isset( $bb1['s_flexibol_price_bb1_button_day'] ) ? (string) $bb1['s_flexibol_price_bb1_button_day'] : '';
-
-$bb2_top = isset( $bb2['s_flexibol_price_bb2_top'] ) ? (string) $bb2['s_flexibol_price_bb2_top'] : '';
-$bb2_mid = isset( $bb2['s_flexibol_price_bb2_middle'] ) ? (string) $bb2['s_flexibol_price_bb2_middle'] : '';
-$bb2_ex  = isset( $bb2['s_flexibol_price_bb2_extra'] ) ? (string) $bb2['s_flexibol_price_bb2_extra'] : '';
-$bb2_pr  = isset( $bb2['s_flexibol_price_bb2_button_price'] ) ? (string) $bb2['s_flexibol_price_bb2_button_price'] : '';
-$bb2_day = isset( $bb2['s_flexibol_price_bb2_button_day'] ) ? (string) $bb2['s_flexibol_price_bb2_button_day'] : '';
-
-$bb3_top = isset( $bb3['s_flexibol_price_bb3_top'] ) ? (string) $bb3['s_flexibol_price_bb3_top'] : '';
-$bb3_mid = isset( $bb3['s_flexibol_price_bb3_middle'] ) ? (string) $bb3['s_flexibol_price_bb3_middle'] : '';
-$bb3_ex  = isset( $bb3['s_flexibol_price_bb3_extra'] ) ? (string) $bb3['s_flexibol_price_bb3_extra'] : '';
-$bb3_pr  = isset( $bb3['s_flexibol_price_bb3_button_price'] ) ? (string) $bb3['s_flexibol_price_bb3_button_price'] : '';
-$bb3_day = isset( $bb3['s_flexibol_price_bb3_button_day'] ) ? (string) $bb3['s_flexibol_price_bb3_button_day'] : '';
-
+$bb1_top = isset( $bb1['s_flexibol_price_bb1_top'] ) ? (string) $bb1['s_flexibol_price_bb1_top'] : '';$bb1_mid = isset( $bb1['s_flexibol_price_bb1_middle'] ) ? (string) $bb1['s_flexibol_price_bb1_middle'] : '';$bb1_ex  = isset( $bb1['s_flexibol_price_bb1_extra'] ) ? (string) $bb1['s_flexibol_price_bb1_extra'] : '';$bb1_pr  = isset( $bb1['s_flexibol_price_bb1_button_price'] ) ? (string) $bb1['s_flexibol_price_bb1_button_price'] : '';$bb1_day = isset( $bb1['s_flexibol_price_bb1_button_day'] ) ? (string) $bb1['s_flexibol_price_bb1_button_day'] : '';
+$bb2_top = isset( $bb2['s_flexibol_price_bb2_top'] ) ? (string) $bb2['s_flexibol_price_bb2_top'] : '';$bb2_mid = isset( $bb2['s_flexibol_price_bb2_middle'] ) ? (string) $bb2['s_flexibol_price_bb2_middle'] : '';$bb2_ex  = isset( $bb2['s_flexibol_price_bb2_extra'] ) ? (string) $bb2['s_flexibol_price_bb2_extra'] : '';$bb2_pr  = isset( $bb2['s_flexibol_price_bb2_button_price'] ) ? (string) $bb2['s_flexibol_price_bb2_button_price'] : '';$bb2_day = isset( $bb2['s_flexibol_price_bb2_button_day'] ) ? (string) $bb2['s_flexibol_price_bb2_button_day'] : '';
+$bb3_top = isset( $bb3['s_flexibol_price_bb3_top'] ) ? (string) $bb3['s_flexibol_price_bb3_top'] : '';$bb3_mid = isset( $bb3['s_flexibol_price_bb3_middle'] ) ? (string) $bb3['s_flexibol_price_bb3_middle'] : '';$bb3_ex  = isset( $bb3['s_flexibol_price_bb3_extra'] ) ? (string) $bb3['s_flexibol_price_bb3_extra'] : '';$bb3_pr  = isset( $bb3['s_flexibol_price_bb3_button_price'] ) ? (string) $bb3['s_flexibol_price_bb3_button_price'] : '';$bb3_day = isset( $bb3['s_flexibol_price_bb3_button_day'] ) ? (string) $bb3['s_flexibol_price_bb3_button_day'] : '';
 $uri              = get_template_directory_uri() . '/img/table/';
 $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_rtl() ? 'rtl' : 'ltr';
 ?>
@@ -86,7 +70,7 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 		<div class="table-into">
 
 			<?php if ( ! empty( $section_title ) ) : ?>
-				<h2 class="price-table-title"><?php echo esc_html( $section_title ); ?></h2>
+				<h2 class="price-table-title"><?php echo wp_kses_post( $section_title ); ?></h2>
 			<?php endif; ?>
 
 			<div class="price-table-wrapper">
@@ -94,9 +78,9 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 				<div class="price-card-main">
 					<div class="price-card-main-header">
 						<div class="price-card-main-header-left">
-							<img src="<?php echo esc_url( $top_img_url ); ?>" alt="<?php echo esc_attr( $top_img_alt ?: $top_input ); ?>">
+							<img src="<?php echo esc_url( $top_img_url ); ?>" alt="<?php echo esc_attr( $top_img_alt ?: wp_strip_all_tags( $top_input ) ); ?>">
 							<?php if ( ! empty( $top_input ) ) : ?>
-								<span><?php echo esc_html( $top_input ); ?></span>
+								<span><?php echo wp_kses_post( $top_input ); ?></span>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -133,8 +117,7 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 								$star_alt  = '';
 								if ( is_array( $img2 ) && ! empty( $img2['url'] ) ) {
 									$star_url = (string) $img2['url'];
-									$star_alt = ! empty( $img2['alt'] ) ? (string) $img2['alt'] : '';
-								} elseif ( is_numeric( $img2 ) ) {
+									$star_alt = ! empty( $img2['alt'] ) ? (string) $img2['alt'] : '';								} elseif ( is_numeric( $img2 ) ) {
 									$star_url = (string) wp_get_attachment_image_url( (int) $img2, 'full' );
 									$star_alt = (string) get_post_meta( (int) $img2, '_wp_attachment_image_alt', true );
 								} elseif ( is_string( $img2 ) && $img2 !== '' ) {
@@ -145,23 +128,23 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 									<div class="price-row-left">
 										<?php if ( $icon_url !== '' ) : ?>
 											<div class="price-row-icon">
-												<img src="<?php echo esc_url( $icon_url ); ?>" alt="<?php echo esc_attr( $icon_alt ); ?>">
+												<img src="<?php echo esc_url( $icon_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $icon_alt ) ); ?>">
 											</div>
 										<?php endif; ?>
 										<div class="price-row-text">
 											<?php if ( ! empty( $title ) ) : ?>
-												<div class="price-row-text-title"><img class="price-row-star active-mobile" src="<?php echo esc_url( $icon_url ); ?>" alt="<?php echo esc_attr( $icon_alt ); ?>" width="16" height="16" loading="lazy" decoding="async"> <span><?php echo esc_html( $title ); ?></span></div>
+												<div class="price-row-text-title"><img class="price-row-star active-mobile" src="<?php echo esc_url( $icon_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $icon_alt ) ); ?>" width="16" height="16" loading="lazy" decoding="async"> <span><?php echo wp_kses_post( $title ); ?></span></div>
 											<?php endif; ?>
 											<?php if ( ! empty( $inp1 ) || ! empty( $inp2 ) || $star_url !== '' ) : ?>
 												<div class="price-row-text-subtitle">
 													<?php if ( ! empty( $inp1 ) ) : ?>
-														<?php echo esc_html( $inp1 ); ?>
+														<?php echo wp_kses_post( $inp1 ); ?>
 													<?php endif; ?>
 													<?php if ( $star_url !== '' ) : ?>
-														<img class="price-row-star" src="<?php echo esc_url( $star_url ); ?>" alt="<?php echo esc_attr( $star_alt ); ?>" width="16" height="16" loading="lazy" decoding="async">
+														<img class="price-row-star" src="<?php echo esc_url( $star_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $star_alt ) ); ?>" width="16" height="16" loading="lazy" decoding="async">
 													<?php endif; ?>
 													<?php if ( ! empty( $inp2 ) ) : ?>
-														<?php echo esc_html( $inp2 ); ?>
+														<?php echo wp_kses_post( $inp2 ); ?>
 													<?php endif; ?>
 												</div>
 											<?php endif; ?>
@@ -171,10 +154,10 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 									<div class="price-row-right">
 										<?php if ( ! empty( $price ) || ! empty( $night ) ) : ?>
 											<?php if ( ! empty( $price ) ) : ?>
-												<?php echo traveliz_price_amount_html( $price ); ?>
+												<?php echo wp_kses_post( $price ); ?>
 											<?php endif; ?>
 											<?php if ( ! empty( $night ) ) : ?>
-												<span class="price-period">/ <?php echo traveliz_price_period_ltr_html( $night ); ?></span>
+												<span class="price-period">/ <?php echo wp_kses_post( $night ); ?></span>
 											<?php endif; ?>
 										<?php endif; ?>
 									</div>
@@ -191,9 +174,9 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 					<!-- Транспорт -->
 					<div class="price-card-small">
 						<div class="price-card-small-header price-card-small-header--transport">
-							<img src="<?php echo esc_url( $uri . 'transport.webp' ); ?>" alt="<?php echo esc_attr( $bb1_top ); ?>">
+							<img src="<?php echo esc_url( $uri . 'transport.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $bb1_top ) ); ?>">
 							<?php if ( ! empty( $bb1_top ) ) : ?>
-								<span><?php echo esc_html( $bb1_top ); ?></span>
+								<span><?php echo wp_kses_post( $bb1_top ); ?></span>
 							<?php endif; ?>
 						</div>
 						<div class="price-card-small-body">
@@ -201,20 +184,20 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 								<?php if ( ! empty( $bb1_mid ) ) : ?>
 									<div class="price-card-desc-title">
 										<img src="<?php echo esc_url( $uri . 'arenda_avto.webp' ); ?>" alt="">
-										<span><?php echo esc_html( $bb1_mid ); ?></span>
+										<span><?php echo wp_kses_post( $bb1_mid ); ?></span>
 									</div>
 								<?php endif; ?>
 								<?php if ( ! empty( $bb1_ex ) ) : ?>
-									<div class="price-card-desc-subtitle"><?php echo esc_html( $bb1_ex ); ?></div>
+									<div class="price-card-desc-subtitle"><?php echo wp_kses_post( $bb1_ex ); ?></div>
 								<?php endif; ?>
 							</div>
 							<?php if ( ! empty( $bb1_pr ) || ! empty( $bb1_day ) ) : ?>
 								<div class="price-card-small-price">
 									<?php if ( ! empty( $bb1_pr ) ) : ?>
-										<?php echo traveliz_price_amount_html( $bb1_pr ); ?>
+										<?php echo wp_kses_post( $bb1_pr ); ?>
 									<?php endif; ?>
 									<?php if ( ! empty( $bb1_day ) ) : ?>
-										<?php echo traveliz_price_period_html( $bb1_day ); ?>
+										<span class="price-period"><?php echo wp_kses_post( $bb1_day ); ?></span>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
@@ -224,27 +207,27 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 					<!-- Питание -->
 					<div class="price-card-small">
 						<div class="price-card-small-header price-card-small-header--food">
-							<img src="<?php echo esc_url( $uri . 'pitanie.webp' ); ?>" alt="<?php echo esc_attr( $bb2_top ); ?>">
+							<img src="<?php echo esc_url( $uri . 'pitanie.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $bb2_top ) ); ?>">
 							<?php if ( ! empty( $bb2_top ) ) : ?>
-								<span><?php echo esc_html( $bb2_top ); ?></span>
+								<span><?php echo wp_kses_post( $bb2_top ); ?></span>
 							<?php endif; ?>
 						</div>
 						<div class="price-card-small-body">
 							<div>
 								<?php if ( ! empty( $bb2_mid ) ) : ?>
-									<div class="price-card-desc-title"><span><?php echo esc_html( $bb2_mid ); ?></span></div>
+									<div class="price-card-desc-title"><span><?php echo wp_kses_post( $bb2_mid ); ?></span></div>
 								<?php endif; ?>
 								<?php if ( ! empty( $bb2_ex ) ) : ?>
-									<div class="price-card-desc-subtitle"><?php echo esc_html( $bb2_ex ); ?></div>
+									<div class="price-card-desc-subtitle"><?php echo wp_kses_post( $bb2_ex ); ?></div>
 								<?php endif; ?>
 							</div>
 							<?php if ( ! empty( $bb2_pr ) || ! empty( $bb2_day ) ) : ?>
 								<div class="price-card-small-price">
 									<?php if ( ! empty( $bb2_pr ) ) : ?>
-										<?php echo traveliz_price_amount_html( $bb2_pr ); ?>
+										<?php echo wp_kses_post( $bb2_pr ); ?>
 									<?php endif; ?>
 									<?php if ( ! empty( $bb2_day ) ) : ?>
-										<?php echo traveliz_price_period_html( $bb2_day ); ?>
+										<span class="price-period"><?php echo wp_kses_post( $bb2_day ); ?></span>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>
@@ -254,9 +237,9 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 					<!-- Дополнительно -->
 					<div class="price-card-small">
 						<div class="price-card-small-header price-card-small-header--extra">
-							<img src="<?php echo esc_url( $uri . 'dopolnitelno.webp' ); ?>" alt="<?php echo esc_attr( $bb3_top ); ?>">
+							<img src="<?php echo esc_url( $uri . 'dopolnitelno.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $bb3_top ) ); ?>">
 							<?php if ( ! empty( $bb3_top ) ) : ?>
-								<span><?php echo esc_html( $bb3_top ); ?></span>
+								<span><?php echo wp_kses_post( $bb3_top ); ?></span>
 							<?php endif; ?>
 						</div>
 						<div class="price-card-small-body">
@@ -264,20 +247,20 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 								<?php if ( ! empty( $bb3_mid ) ) : ?>
 									<div class="price-card-desc-title">
 										<img src="<?php echo esc_url( $uri . 'znak_parkovki.webp' ); ?>" alt="">
-										<span><?php echo esc_html( $bb3_mid ); ?></span>
+										<span><?php echo wp_kses_post( $bb3_mid ); ?></span>
 									</div>
 								<?php endif; ?>
 								<?php if ( ! empty( $bb3_ex ) ) : ?>
-									<div class="price-card-desc-subtitle"><?php echo esc_html( $bb3_ex ); ?></div>
+									<div class="price-card-desc-subtitle"><?php echo wp_kses_post( $bb3_ex ); ?></div>
 								<?php endif; ?>
 							</div>
 							<?php if ( ! empty( $bb3_pr ) || ! empty( $bb3_day ) ) : ?>
 								<div class="price-card-small-price">
 									<?php if ( ! empty( $bb3_pr ) ) : ?>
-										<?php echo traveliz_price_amount_html( $bb3_pr ); ?>
+										<?php echo wp_kses_post( $bb3_pr ); ?>
 									<?php endif; ?>
 									<?php if ( ! empty( $bb3_day ) ) : ?>
-										<?php echo traveliz_price_period_html( $bb3_day ); ?>
+										<span class="price-period"><?php echo wp_kses_post( $bb3_day ); ?></span>
 									<?php endif; ?>
 								</div>
 							<?php endif; ?>

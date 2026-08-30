@@ -42,7 +42,7 @@ $flex_mod_msg = function_exists( 'get_theme_translation' ) ? get_theme_translati
 	<div class="df-reviews2">
 		<div class="container-3">
 			<?php if ( $block_title ) : ?>
-				<h2 class="white"><?php echo esc_html( $block_title ); ?></h2>
+				<h2 class="white"><?php echo wp_kses_post( $block_title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $has_items ) : ?>
@@ -75,9 +75,9 @@ $flex_mod_msg = function_exists( 'get_theme_translation' ) ? get_theme_translati
 										<div class="gogle3">
 											<div class="image-rew2 googl3 s-flexibol-tourist-card">
 												<div class="foto-otzv">
-													<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $name ? $name : '' ); ?>">
+													<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $name ? wp_strip_all_tags( $name ) : '' ); ?>">
 													<?php if ( $name ) : ?>
-														<span class="mg"><?php echo esc_html( $name ); ?></span>
+														<span class="mg"><?php echo wp_kses_post( $name ); ?></span>
 													<?php endif; ?>
 												</div>
 												<div class="star-2 review-rating-display">
@@ -88,7 +88,7 @@ $flex_mod_msg = function_exists( 'get_theme_translation' ) ? get_theme_translati
 											</div>
 											<?php if ( $text ) : ?>
 												<div class="sity-t">
-													<?php echo esc_html( $text ); ?>
+													<?php echo wp_kses_post( $text ); ?>
 												</div>
 											<?php endif; ?>
 										</div>
@@ -103,7 +103,7 @@ $flex_mod_msg = function_exists( 'get_theme_translation' ) ? get_theme_translati
 					</div>
 					<div class="wrap-order-t s-flexibol-review-open">
 						<a class="order-mr gogle-button new_order-mr flexibol-toggle" href="#ex1-flex-tourist">
-							<span><?php echo esc_html( $tourist_reviews_button_flex ); ?></span>
+							<span><?php echo wp_kses_post( $tourist_reviews_button_flex ); ?></span>
 						</a>
 					</div>
 				</div>
@@ -111,7 +111,7 @@ $flex_mod_msg = function_exists( 'get_theme_translation' ) ? get_theme_translati
 				<div class="reviews-container-into caruael_t reviews2_caruael_t googl2">
 					<div class="wrap-order-t s-flexibol-review-open">
 						<a class="order-mr gogle-button new_order-mr flexibol-toggle" href="#ex1-flex-tourist">
-							<span><?php echo esc_html( $tourist_reviews_button_flex ); ?></span>
+							<span><?php echo wp_kses_post( $tourist_reviews_button_flex ); ?></span>
 						</a>
 					</div>
 				</div>
@@ -208,7 +208,7 @@ $flex_mod_msg = function_exists( 'get_theme_translation' ) ? get_theme_translati
                                             <img id="cropper-image" src="" style="max-width: 100%; display: block;">
                                         </div>
                                         <div class="cropper-actions">
-                                            <button id="crop-upload-btn" style="background: #333; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 16px; font-family: 'Heebo', sans-serif; display: none;"><?php echo esc_html(get_theme_translation('feedback_crop_upload')); ?></button>
+                                            <button id="crop-upload-btn" style="background: #333; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 16px; font-family: 'Heebo', sans-serif; display: none;"><?php echo esc_html( get_theme_translation( 'feedback_crop_upload' ) ); ?></button>
                                         </div>
                                     </div>
                                 </div>

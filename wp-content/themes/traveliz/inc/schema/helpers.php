@@ -286,8 +286,7 @@ if ( ! function_exists( 'traveliz_schema_video_embed_src' ) ) {
 	 * @return string
 	 */
 	function traveliz_schema_video_embed_src( $raw ) {
-		$raw = is_string( $raw ) ? trim( $raw ) : '';
-		if ( $raw === '' ) {
+		$raw = is_string( $raw ) ? trim( $raw ) : '';		if ( $raw === '' ) {
 			return '';
 		}
 		if ( stripos( $raw, '<iframe' ) !== false ) {
@@ -317,8 +316,7 @@ if ( ! function_exists( 'traveliz_schema_build_item_list' ) ) {
 			}
 			$item_name = traveliz_schema_clean_text( $li['name'] ?? '' );
 			$item_desc = traveliz_schema_clean_text( $li['description'] ?? '' );
-			$item_url  = isset( $li['url'] ) ? esc_url_raw( (string) $li['url'] ) : '';
-			if ( $item_name === '' && $item_desc === '' ) {
+			$item_url  = isset( $li['url'] ) ? esc_url_raw( (string) $li['url'] ) : '';			if ( $item_name === '' && $item_desc === '' ) {
 				continue;
 			}
 			++$pos;
@@ -398,8 +396,7 @@ if ( ! function_exists( 'traveliz_schema_build_person' ) ) {
 		if ( $job !== '' ) {
 			$node['jobTitle'] = $job;
 		}
-		$img = isset( $fields['image_url'] ) ? esc_url_raw( (string) $fields['image_url'] ) : '';
-		if ( $img !== '' ) {
+		$img = isset( $fields['image_url'] ) ? esc_url_raw( (string) $fields['image_url'] ) : '';		if ( $img !== '' ) {
 			$node['image'] = $img;
 		}
 		$desc = traveliz_schema_clean_text( $fields['description'] ?? '' );

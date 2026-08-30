@@ -16,13 +16,14 @@ $t_uri         = get_template_directory_uri();
 	<div class="container-4">
 		<div class="active-otd-into">
 			<?php if ( ! empty( $section_title ) ) : ?>
-				<h2 class="active-otd-title"><?php echo esc_html( $section_title ); ?></h2>
+				<h2 class="active-otd-title"><?php echo wp_kses_post( $section_title ); ?></h2>
 			<?php endif; ?>
 		    <?php if ( ! empty( $bottom_text ) ) : ?>
 				<div class="active-otd-banner">
-					<div class="active-otd-banner-content">
-						
-						<p><?php echo nl2br( esc_html( $bottom_text ) ); ?></p>
+					
+				<img style="display:none;" class="active-otd-banner-img" src="<?php echo get_template_directory_uri(); ?>/img/Rectangle28.webp" alt="" />
+					<div class="active-otd-banner-content">	
+						<p><?php echo wp_kses_post( $bottom_text ); ?></p>
 					</div>
 				</div>
 			<?php endif; ?>
@@ -59,14 +60,14 @@ $t_uri         = get_template_directory_uri();
 						?>
 						<div class="active-otd-card">
 							<div class="active-otd-image">
-								<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>">
+								<img src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $img_alt ) ); ?>">
 							</div>
 							<div class="active-otd-content">
 								<?php if ( ! empty( $c_title ) ) : ?>
-									<h3 class="active-otd-card-title"><?php echo esc_html( $c_title ); ?></h3>
+									<h3 class="active-otd-card-title"><?php echo wp_kses_post( $c_title ); ?></h3>
 								<?php endif; ?>
 								<?php if ( ! empty( $c_text ) ) : ?>
-									<p class="active-otd-card-text"><?php echo nl2br( esc_html( $c_text ) ); ?></p>
+									<p class="active-otd-card-text"><?php echo wp_kses_post( $c_text ); ?></p>
 								<?php endif; ?>
 							</div>
 						</div>

@@ -109,7 +109,7 @@ if ($green_group) :
             <!-- Column 2: Site Map -->
             <div class="footer-column footer-sitemap">
                 <?php if ( $ua_footer_sitemap_title ) : ?>
-                    <h3 class="footer-heading"><?php echo esc_html( $ua_footer_sitemap_title ); ?></h3>
+                    <h3 class="footer-heading"><?php echo wp_kses_post( $ua_footer_sitemap_title ); ?></h3>
                 <?php endif; ?>
        
             </div>
@@ -124,14 +124,14 @@ if ($green_group) :
                 </div>
                 <div class="symbol-logo"></div>
                 <?php if ( $about_us_below_logo ) : ?>
-                <p class="symbol-text"><?php echo esc_html( $about_us_below_logo ); ?></p>
+                <p class="symbol-text"><?php echo wp_kses_post( $about_us_below_logo ); ?></p>
                 <?php endif; ?>
             </div>
 
             <!-- Column 4: Ratings -->
             <div class="footer-column footer-ratings">
                 <?php if ( $ua_footer_ratings_heading ) : ?>
-                <h3 class="footer-heading"><?php echo esc_html( $ua_footer_ratings_heading ); ?></h3>
+                <h3 class="footer-heading"><?php echo wp_kses_post( $ua_footer_ratings_heading ); ?></h3>
                 <?php endif; ?>
                 <div class="rating-card google-rating">
                     <div class="rating-logo google-logo">
@@ -146,7 +146,7 @@ if ($green_group) :
                     <span class="reviews-text">
                         <span class="reviews-number"><a href="">1324</a></span>
                         <?php if ( $ua_footer_reviews_label ) : ?>
-                            <?php echo esc_html( $ua_footer_reviews_label ); ?>
+                            <?php echo wp_kses_post( $ua_footer_reviews_label ); ?>
                         <?php endif; ?>
                     </span>
                 </div>

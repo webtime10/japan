@@ -19,7 +19,7 @@ while ( have_posts() ) :
 			<header class="traveler-story-single__header">
 				<h1 class="traveler-story-single__title gip-0"><?php the_title(); ?></h1>
 				<?php if ( $route ) : ?>
-					<p class="traveler-story-single__route anna_route"><?php echo esc_html( $route ); ?></p>
+					<p class="traveler-story-single__route anna_route"><?php echo wp_kses_post( $route ); ?></p>
 				<?php endif; ?>
 			</header>
 

@@ -19,11 +19,9 @@ $img_2_digit_home = get_field('img_2_digit_home', 'option');
 $video_swiss = get_field('video_swiss', 'option');
 $video_embed_url = function_exists( 'traveliz_youtube_embed_url' )
 	? traveliz_youtube_embed_url( (string) $video_swiss )
-	: '';
-$video_id = function_exists( 'traveliz_youtube_video_id_from_url' )
+	: '';$video_id = function_exists( 'traveliz_youtube_video_id_from_url' )
 	? traveliz_youtube_video_id_from_url( (string) $video_swiss )
-	: '';
-$mini_img_ytub = get_field('mini_img_ytub', 'option');
+	: '';$mini_img_ytub = get_field('mini_img_ytub', 'option');
 $text_under_the_video = get_field('text_under_the_video', 'option');
 
 $forma112_url = get_template_directory_uri() . '/img/deva.webp';
@@ -44,17 +42,17 @@ if ( is_array( $mini_img_ytub ) && ! empty( $mini_img_ytub['url'] ) ) {
 <?php if($title_block2_home):?>
 <section class="swiss-experience">
    <div class="container-4">
-   <h2><?php echo esc_html($title_block2_home); ?></h2>
+   <h2><?php echo wp_kses_post($title_block2_home); ?></h2>
             <div class="into-swiss">
                  <div class="left-into-swiss">
                     <div class="wrap-left-into-swiss">
                         <div class="attractions-r2">
                             <img class="forma111" src="<?php echo esc_url( get_template_directory_uri() . '/img/forma1.webp' ); ?>" alt="">
-                            <img class="forma112"  src="<?php echo esc_url( $forma112_url ); ?>" alt="<?php echo esc_attr( $forma112_alt ); ?>"/> 
+                            <img class="forma112"  src="<?php echo esc_url( $forma112_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $forma112_alt ) ); ?>"/> 
                         </div>
                         <div class="wrap-button-swiss">      
                             <button class="button-swiss modal-trigger_vt modal-trigger_vt--swiss" <?php if ( $video_id ) : ?>data-video-id="<?php echo esc_attr( $video_id ); ?>"<?php endif; ?>>
-                                <img class="zamok-webp" src="<?php echo esc_url( $mini_img_ytub_url ); ?>" alt="<?php echo esc_attr( $mini_img_ytub_alt ); ?>" />
+                                <img class="zamok-webp" src="<?php echo esc_url( $mini_img_ytub_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $mini_img_ytub_alt ) ); ?>" />
                                 <svg width="41" height="47" viewBox="0 0 41 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M39.7461 21.1878C41.352 22.115 41.352 24.4329 39.7461 25.36L3.61297 46.2215C2.00709 47.1487 -0.000276915 45.9897 -0.000275834 44.1354L-0.00027501 2.41244C-0.000274929 0.558123 2.00709 -0.60083 3.61298 0.32633L39.7461 21.1878Z" fill="white"/>
                                 </svg>
@@ -82,7 +80,7 @@ if ( is_array( $mini_img_ytub ) && ! empty( $mini_img_ytub['url'] ) ) {
 
     <text direction="rtl" unicode-bidi="bidi-override">
       <textPath href="#text-curve-swiss-rtl" startOffset="50%" text-anchor="middle">
-      <?php echo $text_under_the_video ? esc_html($text_under_the_video) : ''; ?> 
+      <?php echo $text_under_the_video ? wp_kses_post($text_under_the_video) : ''; ?> 
       </textPath>
     </text>
   </svg>
@@ -93,8 +91,8 @@ if ( is_array( $mini_img_ytub ) && ! empty( $mini_img_ytub['url'] ) ) {
                  </div>
                  <div class="right-into-swiss">
                     <div class="right-into-sw">
-                        <h3><?php echo esc_html($title_h3_home); ?></h3>
-                         <p><?php echo esc_html($text_h3_block2_home); ?></p>
+                        <h3><?php echo wp_kses_post($title_h3_home); ?></h3>
+                         <p><?php echo wp_kses_post($text_h3_block2_home); ?></p>
                     </div>
 
                     
@@ -103,15 +101,15 @@ if ( is_array( $mini_img_ytub ) && ! empty( $mini_img_ytub['url'] ) ) {
                                     <img class="ltr-1" width="68px" height="48px" src="<?php echo get_template_directory_uri(); ?>/img/vecteezy_train-png-with-ai-generated_26773229.webp" alt="" />
                                     <img style="display:none;" class="rtl-1" width="68px" height="48px" src="<?php echo get_template_directory_uri(); ?>/img/vecteezy_tra.webp" alt=""/>
                                     <div>
-                                        <p><?php echo esc_html($img_1_digit_home); ?></p>
-                                       <span><?php echo esc_html($img_1_text_home); ?></span>
+                                        <p><?php echo wp_kses_post($img_1_digit_home); ?></p>
+                                       <span><?php echo wp_kses_post($img_1_text_home); ?></span>
                                     </div>
                                 </div>
                                 <div class="flag-swiss">
                                     <img width="111px" height="62" src="<?php echo get_template_directory_uri(); ?>/img/vecteezy_switzerland.webp" alt="" />
                                     <div>
-                                        <p><?php echo esc_html($img_2_digit_home); ?></p>
-                                        <span><?php echo esc_html($img_2_text_home); ?></span> 
+                                        <p><?php echo wp_kses_post($img_2_digit_home); ?></p>
+                                        <span><?php echo wp_kses_post($img_2_text_home); ?></span> 
                                     </div>
                                 </div>
                        </div> 
@@ -149,7 +147,7 @@ if ( is_array( $mini_img_ytub ) && ! empty( $mini_img_ytub['url'] ) ) {
                     <div>
                         <h3><?php echo $slide_title; ?></h3>
                         <?php if ( $slide_text ) : ?>
-                            <span class="span-te"><?php echo esc_html( $slide_text ); ?></span>
+                            <span class="span-te"><?php echo wp_kses_post( $slide_text ); ?></span>
                         <?php endif; ?>
                     </div>
                 </div>

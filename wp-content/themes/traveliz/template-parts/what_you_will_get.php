@@ -30,16 +30,16 @@ if($title_what_you_will_get):?>
 							<div class="will-item">
 								<?php if ( $item_img_url ) : ?>
 									<div>
-										<img width="245" height="245" src="<?php echo esc_url( $item_img_url ); ?>" alt="<?php echo $item_title ? esc_attr( $item_title ) : ''; ?>" />
+										<img width="245" height="245" src="<?php echo esc_url( $item_img_url ); ?>" alt="<?php echo $item_title ? esc_attr( wp_strip_all_tags( $item_title ) ) : ''; ?>" />
 									</div>
 								<?php endif; ?>
 								
 								<?php if ( $item_title ) : ?>
-									<h3><?php echo esc_html( $item_title ); ?></h3>
+									<h3><?php echo wp_kses_post( $item_title ); ?></h3>
 								<?php endif; ?>
 								
 								<?php if ( $item_text ) : ?>
-									<p><?php echo esc_html( $item_text ); ?></p>
+									<p><?php echo wp_kses_post( $item_text ); ?></p>
 								<?php endif; ?>
 							</div>
 						<?php endwhile; ?>
@@ -62,16 +62,16 @@ if($title_what_you_will_get):?>
 							<div class="will-item">
 								<?php if ( $item_img_url ) : ?>
 									<div>
-										<img width="255" height="255" src="<?php echo esc_url( $item_img_url ); ?>" alt="<?php echo $item_title ? esc_attr( $item_title ) : ''; ?>" />
+										<img width="255" height="255" src="<?php echo esc_url( $item_img_url ); ?>" alt="<?php echo $item_title ? esc_attr( wp_strip_all_tags( $item_title ) ) : ''; ?>" />
 									</div>
 								<?php endif; ?>
 								
 								<?php if ( $item_title ) : ?>
-									<h3><?php echo esc_html( $item_title ); ?></h3>
+									<h3><?php echo wp_kses_post( $item_title ); ?></h3>
 								<?php endif; ?>
 								
 								<?php if ( $item_text ) : ?>
-									<p><?php echo esc_html( $item_text ); ?></p>
+									<p><?php echo wp_kses_post( $item_text ); ?></p>
 								<?php endif; ?>
 							</div>
 						<?php endwhile; ?>

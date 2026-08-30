@@ -21,7 +21,6 @@ get_header();
 	$page_top_button_link = get_field( 'page_top_button_link' );
 
 	$shadow_url = is_array( $shadow_under_letters ) && ! empty( $shadow_under_letters['url'] ) ? $shadow_under_letters['url'] : '';
-
 	$page_top_defaults = array(
 		'title_1'     => 'יפן: חופשות בהתאמה אישית',
 		'title_2'     => 'ערים, מסלולים וחוויות ביפן',
@@ -43,7 +42,7 @@ get_header();
         alt=""
     >
     <h1>
-        <?php echo esc_html( $h1_1 ); ?>
+        <?php echo wp_kses_post( $h1_1 ); ?>
 
     </h1>
     

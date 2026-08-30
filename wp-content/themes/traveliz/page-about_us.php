@@ -115,22 +115,22 @@ if ( $img_elips_video_ob ) {
     <div class="container-3">
         <div class="into-reviews-block-1" <?php if ( $header_bg_url ) : ?>style="background-image: url('<?php echo esc_url( $header_bg_url ); ?>');"<?php endif; ?>>
 <?php if ( $h1_r ) : ?>
-<h1><?php echo esc_html( $h1_r ); ?></h1>
+<h1><?php echo wp_kses_post( $h1_r ); ?></h1>
 <?php endif; ?>
 <?php if ( $text_under_h1_r ) : ?>
-<p><?php echo esc_html( $text_under_h1_r ); ?></p>
+<p><?php echo wp_kses_post( $text_under_h1_r ); ?></p>
 <?php endif; ?>
 <?php if ( $yellow_button_text_r ) : ?>
     <?php if ( $yellow_button_switcher_r !== 'link' ) : ?>
         <button type="button" data-source="general_request" class="order-mr js-open-popup modal-trigger_wt">
-            <span><?php echo esc_html( $yellow_button_text_r ); ?></span>
+            <span><?php echo wp_kses_post( $yellow_button_text_r ); ?></span>
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"></path>
             </svg>
         </button>
     <?php else : ?>
         <a class="order-mr" href="<?php echo esc_url( $yellow_button_link_r ); ?>">
-            <span><?php echo esc_html( $yellow_button_text_r ); ?></span>
+            <span><?php echo wp_kses_post( $yellow_button_text_r ); ?></span>
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"></path>
             </svg>
@@ -152,12 +152,12 @@ if ( $img_elips_video_ob ) {
 <div class='reviews-oleksandr'>
    <div class='container-3'>
     <?php if ( $title_block2 ) : ?>
-    <h2><?php echo esc_html( $title_block2 ); ?></h2>
+    <h2><?php echo wp_kses_post( $title_block2 ); ?></h2>
     <?php endif; ?>
       <div class='reviews-oleksandr-into'>
              <?php if ( $text_under_title_block2_r ) : ?>
              <div class="oleksandr-text">
-                 <?php echo esc_html( $text_under_title_block2_r ); ?>
+                 <?php echo wp_kses_post( $text_under_title_block2_r ); ?>
              </div>
              
              <?php endif; ?>
@@ -186,15 +186,15 @@ if ( $img_elips_video_ob ) {
                      <div class="oleksandr-card">
                          <?php if ( $img_r_block2_url ) : ?>
                              <div class="oleksandr-card-image">
-                                 <img src="<?php echo esc_url( $img_r_block2_url ); ?>" alt="<?php echo esc_attr( $title_r_block2 ); ?>">
+                                 <img src="<?php echo esc_url( $img_r_block2_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $title_r_block2 ) ); ?>">
                              </div>
                          <?php endif; ?>
                          <div class="oleksandr-card-content">
                              <?php if ( $title_r_block2 ) : ?>
-                                 <h3 class="oleksandr-card-title"><?php echo esc_html( $title_r_block2); ?></h3>
+                                 <h3 class="oleksandr-card-title"><?php echo wp_kses_post( $title_r_block2); ?></h3>
                              <?php endif; ?>
                              <?php if ( $text_r_block2 ) : ?>
-                                 <p class="oleksandr-card-text"><?php echo esc_html( $text_r_block2 ); ?></p>
+                                 <p class="oleksandr-card-text"><?php echo wp_kses_post( $text_r_block2 ); ?></p>
                              <?php endif; ?>
                          </div>
                      </div>
@@ -223,53 +223,53 @@ if ( $img_elips_video_ob ) {
 <div class="map-b ee">
     <div class="container-4">
         <?php if ( $title_expert ) : ?>
-        <h2 ><?php echo esc_html( $title_expert ); ?></h2>
+        <h2 ><?php echo wp_kses_post( $title_expert ); ?></h2>
         <?php endif; ?>
         <?php if ( $text_expert ) : ?>
-        <p><?php echo esc_html( $text_expert ); ?></p>
+        <p><?php echo wp_kses_post( $text_expert ); ?></p>
         <?php endif; ?>
         <div class="into-map-b">
             <?php if ( $img_expert_url ) : ?>
-            <img src="<?php echo esc_url( $img_expert_url ); ?>" alt="<?php echo esc_attr( $title_expert ); ?>"/>
+            <img src="<?php echo esc_url( $img_expert_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $title_expert ) ); ?>"/>
             <?php endif; ?>
             
             <div class="work-map">
                 <div class="work-map-card">
                     <div class="work-map-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/image1855.webp" alt="<?php echo esc_attr( $year10_text ); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/image1855.webp" alt="<?php echo esc_attr( wp_strip_all_tags( $year10_text ) ); ?>">
                     </div>
                     <div class="work-map-content">
                         <?php if ( $year10_digit ) : ?>
-                        <span class="work-map-number"><?php echo esc_html( $year10_digit ); ?></span>
+                        <span class="work-map-number"><?php echo wp_kses_post( $year10_digit ); ?></span>
                         <?php endif; ?>
                         <?php if ( $year10_text ) : ?>
-                        <span class="work-map-text"><?php echo esc_html( $year10_text ); ?></span>
+                        <span class="work-map-text"><?php echo wp_kses_post( $year10_text ); ?></span>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="work-map-card">
                     <div class="work-map-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/image1856.webp" alt="<?php echo esc_attr( $countries_text ); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/image1856.webp" alt="<?php echo esc_attr( wp_strip_all_tags( $countries_text ) ); ?>">
                     </div>
                     <div class="work-map-content">
                         <?php if ( $countries_digit ) : ?>
-                        <span class="work-map-number"><?php echo esc_html( $countries_digit ); ?></span>
+                        <span class="work-map-number"><?php echo wp_kses_post( $countries_digit ); ?></span>
                         <?php endif; ?>
                         <?php if ( $countries_text ) : ?>
-                        <span class="work-map-text"><?php echo esc_html( $countries_text ); ?></span>
+                        <span class="work-map-text"><?php echo wp_kses_post( $countries_text ); ?></span>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="work-map-card">
                     <div class="work-map-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/image1857.webp" alt="<?php echo esc_attr( $rout_7000_text ); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/image1857.webp" alt="<?php echo esc_attr( wp_strip_all_tags( $rout_7000_text ) ); ?>">
                     </div>
                     <div class="work-map-content">
                         <?php if ( $rout_7000_digit ) : ?>
-                        <span class="work-map-number"><?php echo esc_html( $rout_7000_digit ); ?></span>
+                        <span class="work-map-number"><?php echo wp_kses_post( $rout_7000_digit ); ?></span>
                         <?php endif; ?>
                         <?php if ( $rout_7000_text ) : ?>
-                        <span class="work-map-text"><?php echo esc_html( $rout_7000_text ); ?></span>
+                        <span class="work-map-text"><?php echo wp_kses_post( $rout_7000_text ); ?></span>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -280,11 +280,11 @@ if ( $img_elips_video_ob ) {
 <div class='five-video-ob'>
    <div class='container-4'>
     <?php if ( $title_video_message ) : ?>
-    <h2><?php echo esc_html( $title_video_message ); ?></h2>
+    <h2><?php echo wp_kses_post( $title_video_message ); ?></h2>
     <?php endif; ?>
       <div class='five-into-video-ob'>
         <?php if ( $img_video_v_url ) : ?>
-        <img src="<?php echo esc_url( $img_video_v_url ); ?>" alt="<?php echo esc_attr( $title_video_message ); ?>">
+        <img src="<?php echo esc_url( $img_video_v_url ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $title_video_message ) ); ?>">
         <?php endif; ?>
         <div class="video-button-ot modal-trigger_vt">
             <svg width="77" height="87" viewBox="0 0 77 87" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -294,20 +294,20 @@ if ( $img_elips_video_ob ) {
      </div>
      <?php if ( $text_video_message ) : ?>
      <div class="obr-text">
-        <?php echo esc_html( $text_video_message ); ?>
+        <?php echo wp_kses_post( $text_video_message ); ?>
      </div>
      <?php endif; ?>
      <?php if ( $yellow_button_text_v ) : ?>
         <?php if ( $yellow_button_switcher_v !== 'link' ) : ?>
             <button type="button" data-source="general_request" class="btn-video js-open-popup modal-trigger_wt">
-                <span><?php echo esc_html( $yellow_button_text_v ); ?></span>
+                <span><?php echo wp_kses_post( $yellow_button_text_v ); ?></span>
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"/>
                 </svg>
             </button>
         <?php else : ?>
             <a class="btn-video" href="<?php echo esc_url( $yellow_button_link_v ); ?>">
-                <span><?php echo esc_html( $yellow_button_text_v ); ?></span>
+                <span><?php echo wp_kses_post( $yellow_button_text_v ); ?></span>
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.707 1C12.707 0.447715 12.2593 2.00008e-07 11.707 -5.28728e-08L2.70703 7.47917e-07C2.15475 4.10743e-07 1.70703 0.447716 1.70703 1C1.70703 1.55228 2.15475 2 2.70703 2L10.707 2L10.707 10C10.707 10.5523 11.1547 11 11.707 11C12.2593 11 12.707 10.5523 12.707 10L12.707 1ZM0.707031 12L1.41414 12.7071L12.4141 1.70711L11.707 1L10.9999 0.292894L-7.55191e-05 11.2929L0.707031 12Z" fill="#695729"/>
                 </svg>
