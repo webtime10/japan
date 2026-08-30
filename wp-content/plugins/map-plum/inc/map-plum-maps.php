@@ -29,6 +29,10 @@ function map_plum_map_marker_icon_config() {
  * @return string
  */
 function map_plum_get_carto_api_key() {
+	if ( defined( 'CARTO_API_KEY' ) && is_string( CARTO_API_KEY ) && '' !== trim( CARTO_API_KEY ) ) {
+		return trim( CARTO_API_KEY );
+	}
+
 	$sources = array(
 		isset( $_ENV['CARTO_API_KEY'] ) ? $_ENV['CARTO_API_KEY'] : null,
 		isset( $_SERVER['CARTO_API_KEY'] ) ? $_SERVER['CARTO_API_KEY'] : null,
@@ -257,7 +261,7 @@ function map_plum_maps_enqueue_assets( $slug, $cfg ) {
 			'map-plum-maps',
 			'cartoSettings',
 			array(
-				'apiKey'          => map_plum_get_carto_api_key(),
+				'apiKey'          => defined( 'CARTO_API_KEY' ) ? (string) CARTO_API_KEY : map_plum_get_carto_api_key(),
 				'tileUrlTemplate' => map_plum_get_carto_tile_url_template(),
 			)
 		);

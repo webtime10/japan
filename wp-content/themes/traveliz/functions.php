@@ -75,6 +75,28 @@ function enqueue_media_custom_last() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_media_custom_last', 999 );
 
+/**
+ * CARTO basemap API key for map-plum (shortcode enqueues script in content, so localize in footer).
+ */
+function traveliz_localize_carto_map_settings() {
+	if ( ! wp_script_is( 'map-plum-maps', 'enqueued' ) ) {
+		return;
+	}
+
+	$api_key = defined( 'CARTO_API_KEY' ) ? (string) CARTO_API_KEY : '';
+	$base    = 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png';
+	$tile_url = '' !== $api_key ? $base . '?key=' . rawurlencode( $api_key ) : $base;
+
+	wp_localize_script(
+		'map-plum-maps',
+		'cartoSettings',
+		array(
+			'apiKey'          => $api_key,
+			'tileUrlTemplate' => $tile_url,
+		)
+	);
+}
+add_action( 'wp_print_footer_scripts', 'traveliz_localize_carto_map_settings', 1 );
 
 add_filter( 'acf/format_value', 'traveliz_universal_bidi_filter', 10, 3 );
 
