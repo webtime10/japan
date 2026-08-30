@@ -224,10 +224,10 @@
     function initMap() {
       map = L.map(mapEl, { zoomControl: true, attributionControl: true }).setView(mapCenter, mapZoom);
 
-      var cartoConfig = window.mapPlumCartoConfig || {};
-      var cartoKey = cartoConfig.apiKey || window.mapPlumCartoApiKey || "";
+      var cartoSettings = window.cartoSettings || {};
+      var cartoKey = cartoSettings.apiKey || "";
       var tileUrl =
-        cartoConfig.tileUrlTemplate ||
+        cartoSettings.tileUrlTemplate ||
         "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png";
 
       if (cartoKey && tileUrl.indexOf("key=") === -1) {

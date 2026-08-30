@@ -29,9 +29,16 @@ function map_plum_map_marker_icon_config() {
  * @return string
  */
 function map_plum_get_carto_api_key() {
-	$from_env = getenv( 'CARTO_API_KEY' );
-	if ( is_string( $from_env ) && '' !== trim( $from_env ) ) {
-		return trim( $from_env );
+	$sources = array(
+		isset( $_ENV['CARTO_API_KEY'] ) ? $_ENV['CARTO_API_KEY'] : null,
+		isset( $_SERVER['CARTO_API_KEY'] ) ? $_SERVER['CARTO_API_KEY'] : null,
+		getenv( 'CARTO_API_KEY' ),
+	);
+
+	foreach ( $sources as $value ) {
+		if ( is_string( $value ) && '' !== trim( $value ) ) {
+			return trim( $value );
+		}
 	}
 
 	if ( defined( 'CARTO_API_KEY' ) && is_string( CARTO_API_KEY ) && '' !== trim( CARTO_API_KEY ) ) {
@@ -245,20 +252,18 @@ function map_plum_maps_enqueue_assets( $slug, $cfg ) {
 			MAP_PLUM_VERSION,
 			true
 		);
+
+		wp_localize_script(
+			'map-plum-maps',
+			'cartoSettings',
+			array(
+				'apiKey'          => map_plum_get_carto_api_key(),
+				'tileUrlTemplate' => map_plum_get_carto_tile_url_template(),
+			)
+		);
+
 		$queued = true;
 	}
-
-	$carto_key = map_plum_get_carto_api_key();
-	wp_add_inline_script(
-		'map-plum-maps',
-		'window.mapPlumCartoConfig = ' . wp_json_encode(
-			array(
-				'apiKey'           => $carto_key,
-				'tileUrlTemplate'  => map_plum_get_carto_tile_url_template(),
-			)
-		) . ';',
-		'before'
-	);
 
 	$marker_icon = map_plum_map_marker_icon_config();
 	$payload     = array(
