@@ -84,11 +84,12 @@ add_action(
 						'type'  => 'text',
 					),
 					array(
-						'key'   => 'field_swiss_video_swiss',
-						'label' => 'Video URL (YouTube)',
-						'name'  => 'video_swiss',
-						'type'  => 'text',
-						'instructions' => 'Enter YouTube video URL',
+						'key'          => 'field_swiss_video_swiss',
+						'label'        => 'Video URL (YouTube)',
+						'name'         => 'video_swiss',
+						'type'         => 'text',
+						'placeholder'  => 'https://www.youtube.com/watch?v=XXXXXXXXXXX',
+						'instructions' => 'Ссылка на YouTube: watch, youtu.be, shorts или embed. Пример: https://www.youtube.com/watch?v=dQw4w9WgXcQ. Если поле пустое — кнопка Play не откроет видео.',
 					),
 					array(
 						'key'           => 'field_swiss_mini_img_ytub',

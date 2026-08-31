@@ -18,9 +18,10 @@ class Modal {
         if (triggerBtn && triggerBtn.classList.contains('modal-trigger_vt--swiss')) {
             const swissModal = document.getElementById('swiss-video-modal_vt');
             const swissOverlay = document.getElementById('swiss-video-overlay_vt');
-            if (swissModal && swissOverlay) {
-                return { modal: swissModal, overlay: swissOverlay };
-            }
+            return {
+                modal: swissModal || null,
+                overlay: swissOverlay || null,
+            };
         }
 
         return {
@@ -31,7 +32,6 @@ class Modal {
 
     bindMedia(modal) {
         this.modal = modal;
-        this.overlay = null;
         this.form = modal ? modal.querySelector('form') : null;
         this.iframe = modal ? modal.querySelector('iframe') : null;
         this.iframeSrc = '';
@@ -78,6 +78,13 @@ class Modal {
         if (e) e.preventDefault();
 
         const triggerBtn = e ? e.currentTarget : null;
+
+        if (triggerBtn && triggerBtn.classList.contains('modal-trigger_vt--swiss')) {
+            if (!triggerBtn.dataset.videoId) {
+                return;
+            }
+        }
+
         const targets = this.resolveTargets(triggerBtn);
         if (!targets.modal) {
             return;
