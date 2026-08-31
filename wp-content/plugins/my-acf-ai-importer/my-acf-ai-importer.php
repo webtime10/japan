@@ -2,7 +2,7 @@
 /**
  * Plugin Name: My ACF AI Importer
  * Description: Admin JSON importer for ACF Flexible Content fields.
- * Version: 1.0.12
+ * Version: 1.0.14
  * Author: Custom
  */
 

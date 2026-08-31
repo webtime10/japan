@@ -403,6 +403,262 @@
             .replace(/"/g, '&quot;');
     }
 
+    var INVISIBLE_CHARS_RE = /[\uFEFF\u200B-\u200F\u202A-\u202E\u2060-\u2069]/g;
+    var SKIP_CLEAN_KEY_RE = /(?:^|_)(url|link|email|phone|tel|href|image|photo|avatar|insta|telegram|whatsapp|yotube|viber)(?:$|_)/i;
+
+    function shouldSkipCleanValue(key) {
+        return !!key && SKIP_CLEAN_KEY_RE.test(String(key));
+    }
+
+    function decodeHtmlEntities(str) {
+        var ta = document.createElement('textarea');
+        ta.innerHTML = str;
+        return ta.value;
+    }
+
+    function stripLiteralEntities(str) {
+        return str
+            .replace(/&rlm;/gi, '')
+            .replace(/&amp;rlm;/gi, '')
+            .replace(/&#0*8207;/gi, '')
+            .replace(/&#x200f;/gi, '')
+            .replace(/&#0*xfeff;/gi, '')
+            .replace(/&nbsp;/gi, ' ');
+    }
+
+    function stripAccidentalHtml(str) {
+        return str
+            .replace(/<br\s*\/?>/gi, '\n')
+            .replace(/<\/?(p|div|span|bdi|strong|em|b|i)\b[^>]*>/gi, '')
+            .replace(/<[^>]+>/g, '');
+    }
+
+    function normalizeCleanWhitespace(str) {
+        return str
+            .replace(/\r\n/g, '\n')
+            .replace(/\r/g, '\n')
+            .replace(/[ \t]+\n/g, '\n')
+            .replace(/\n{3,}/g, '\n\n')
+            .replace(/[ \t]{2,}/g, ' ')
+            .trim();
+    }
+
+    function countInvisibleChars(str) {
+        var n = 0;
+        var m = str.match(INVISIBLE_CHARS_RE);
+        if (m) n += m.length;
+        return n;
+    }
+
+    function cleanTextValue(str, key) {
+        if (typeof str !== 'string' || str === '') {
+            return { value: str, changed: false, removed: 0, issues: [] };
+        }
+        if (shouldSkipCleanValue(key)) {
+            return { value: str, changed: false, removed: 0, issues: [] };
+        }
+
+        var original = str;
+        var issues = [];
+        var removed = countInvisibleChars(str);
+
+        if (removed > 0) {
+            issues.push('невидимые символы (' + removed + ')');
+        }
+        if (/&rlm;|&amp;rlm;|&#0*8207;|&#x200f;|&#0*xfeff;|&nbsp;/i.test(original)) {
+            issues.push('HTML-сущности');
+        }
+        if (/<[a-z][\s\S]*?>/i.test(original)) {
+            issues.push('HTML-теги');
+        }
+        if (/[\u201C\u201D\u2018\u2019]/.test(original)) {
+            issues.push('«умные» кавычки');
+        }
+        if (/\r|\n{3,}|[ \t]{2,}/.test(original)) {
+            issues.push('лишние пробелы/переносы');
+        }
+
+        var value = decodeHtmlEntities(str);
+        value = stripLiteralEntities(value);
+        value = value.replace(INVISIBLE_CHARS_RE, '');
+        value = value.replace(/[\u201C\u201D]/g, '"').replace(/[\u2018\u2019]/g, "'");
+        value = stripAccidentalHtml(value);
+        value = normalizeCleanWhitespace(value);
+
+        removed += Math.max(0, original.length - value.length);
+
+        return {
+            value: value,
+            changed: value !== original,
+            removed: removed,
+            issues: issues
+        };
+    }
+
+    function buildCleanFieldPath(basePath, key) {
+        if (!basePath) {
+            return String(key);
+        }
+        if (typeof key === 'number' || /^\d+$/.test(String(key))) {
+            return basePath + '[' + key + ']';
+        }
+        return basePath + '.' + key;
+    }
+
+    function cleanJsonValueDeep(node, key, stats, path) {
+        var currentPath = path ? buildCleanFieldPath(path, key) : String(key || '');
+
+        if (typeof node === 'string') {
+            var cleaned = cleanTextValue(node, key);
+            if (cleaned.changed) {
+                stats.fieldsChanged += 1;
+                stats.details.push({
+                    path: currentPath,
+                    issues: cleaned.issues,
+                    removed: cleaned.removed
+                });
+            }
+            stats.charsRemoved += cleaned.removed;
+            stats.invisibleRemoved += countInvisibleChars(node);
+            if (/&rlm;|&amp;rlm;|&#0*8207;/i.test(node)) {
+                stats.entitiesFound += 1;
+            }
+            if (/<[a-z]/i.test(node)) {
+                stats.htmlFound += 1;
+            }
+            return cleaned.value;
+        }
+        if (Array.isArray(node)) {
+            return node.map(function (item, index) {
+                return cleanJsonValueDeep(item, index, stats, currentPath);
+            });
+        }
+        if (node && typeof node === 'object') {
+            var out = {};
+            Object.keys(node).forEach(function (childKey) {
+                out[childKey] = cleanJsonValueDeep(node[childKey], childKey, stats, currentPath);
+            });
+            return out;
+        }
+        return node;
+    }
+
+    function createCleanStats() {
+        return {
+            fieldsChanged: 0,
+            charsRemoved: 0,
+            invisibleRemoved: 0,
+            entitiesFound: 0,
+            htmlFound: 0,
+            rawIssues: [],
+            details: []
+        };
+    }
+
+    function cleanRawJsonText(raw, stats) {
+        var text = String(raw || '').trim();
+        var original = text;
+
+        if (/^\uFEFF/.test(text)) {
+            text = text.replace(/^\uFEFF+/, '');
+            stats.rawIssues.push('BOM в начале файла');
+        }
+
+        var fenced = text.match(/^```(?:json)?\s*([\s\S]*?)```\s*$/i);
+        if (fenced) {
+            text = fenced[1].trim();
+            stats.rawIssues.push('обёртка ```json ... ```');
+        }
+
+        var firstBrace = text.indexOf('{');
+        var lastBrace = text.lastIndexOf('}');
+        if (firstBrace > 0 || (lastBrace >= 0 && lastBrace < text.length - 1)) {
+            if (firstBrace >= 0 && lastBrace > firstBrace) {
+                var trimmed = text.slice(firstBrace, lastBrace + 1);
+                if (trimmed !== text) {
+                    stats.rawIssues.push('лишний текст вокруг JSON');
+                    text = trimmed;
+                }
+            }
+        }
+
+        if (text !== original && stats.rawIssues.length === 0) {
+            stats.rawIssues.push('нормализация пробелов вокруг JSON');
+        }
+
+        return text;
+    }
+
+    function formatCleanAlertMessage(result) {
+        var stats = result.stats;
+        var lines = ['Чистка JSON завершена', ''];
+
+        if (stats.rawIssues.length) {
+            lines.push('До разбора:');
+            stats.rawIssues.forEach(function (issue) {
+                lines.push('• ' + issue);
+            });
+            lines.push('');
+        }
+
+        lines.push('Итого:');
+        lines.push('• изменено полей: ' + stats.fieldsChanged);
+        lines.push('• убрано символов: ' + stats.charsRemoved);
+        lines.push('• невидимых символов: ' + stats.invisibleRemoved);
+        lines.push('• полей с HTML-сущностями: ' + stats.entitiesFound);
+        lines.push('• полей с HTML-тегами: ' + stats.htmlFound);
+
+        if (stats.details.length) {
+            lines.push('');
+            lines.push('Изменённые поля (до ' + Math.min(stats.details.length, 12) + '):');
+            stats.details.slice(0, 12).forEach(function (item) {
+                var issueText = item.issues.length ? item.issues.join(', ') : 'нормализация';
+                lines.push('• ' + item.path + ' — ' + issueText);
+            });
+            if (stats.details.length > 12) {
+                lines.push('• … и ещё ' + (stats.details.length - 12) + ' полей');
+            }
+        } else if (!stats.rawIssues.length) {
+            lines.push('');
+            lines.push('Мусор не найден — JSON уже чистый.');
+        }
+
+        lines.push('');
+        lines.push('Нажмите OK, затем «Запустить импорт».');
+
+        return lines.join('\n');
+    }
+
+    function prepareJsonFromTextarea(updateTextarea) {
+        var raw = $('#ai-json').val() || '';
+        if (!String(raw).trim()) {
+            return { error: new Error('Текстовое поле JSON пустое — вставьте объект с ключом sections.') };
+        }
+
+        var stats = createCleanStats();
+        var cleanedRaw = cleanRawJsonText(raw, stats);
+        var parsed;
+
+        try {
+            parsed = JSON.parse(cleanedRaw);
+        } catch (e) {
+            return { error: e, stats: stats };
+        }
+
+        parsed = cleanJsonValueDeep(parsed, '', stats, '');
+        var pretty = JSON.stringify(parsed, null, 2);
+
+        if (updateTextarea !== false) {
+            $('#ai-json').val(pretty);
+        }
+
+        return {
+            parsed: parsed,
+            stats: stats,
+            cleanedRaw: pretty
+        };
+    }
+
     function toArray(v) { return Array.isArray(v) ? v : [v]; }
 
     function normalizeImportKey(k) {
@@ -955,7 +1211,9 @@
                 '#my-acf-ai-importer-box .hndle{padding:10px 12px;margin:0;border-bottom:1px solid #dcdcde;}' +
                 '#my-acf-ai-importer-box .inside{padding:12px;}' +
                 '#my-acf-ai-importer-box #ai-json{width:100%;min-height:180px;resize:vertical;box-sizing:border-box;font-family:monospace;}' +
-                '#my-acf-ai-importer-box #ai-btn{margin-top:10px;}' +
+                '#my-acf-ai-importer-box .ai-importer-actions{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}' +
+                '#my-acf-ai-importer-box #ai-clean-btn{background:#00a32a;border-color:#00a32a;color:#fff;}' +
+                '#my-acf-ai-importer-box #ai-clean-btn:hover,#my-acf-ai-importer-box #ai-clean-btn:focus{background:#008a20;border-color:#008a20;color:#fff;}' +
                 '#my-acf-ai-importer-box #my-acf-ai-importer-log{display:none;margin-top:10px;max-height:220px;overflow:auto;background:#f6f7f7;padding:10px;border:1px solid #dcdcde;font-family:monospace;font-size:12px;line-height:1.4;}' +
                 '#submitdiv,#publishing-action,#publish,#save-post{position:relative;z-index:100060;pointer-events:auto !important;}' +
                 '</style>'
@@ -967,7 +1225,10 @@
                 '<h2 class="hndle"><span>AI Importer (Flexibol)</span></h2>' +
                 '<div class="inside">' +
                     '<textarea id="ai-json" placeholder="Вставьте JSON сюда..."></textarea>' +
-                    '<p><button type="button" class="button button-primary" id="ai-btn">Запустить импорт</button></p>' +
+                    '<p class="ai-importer-actions">' +
+                        '<button type="button" class="button button-primary" id="ai-btn">Запустить импорт</button>' +
+                        '<button type="button" class="button" id="ai-clean-btn">Чистка</button>' +
+                    '</p>' +
                     '<div id="my-acf-ai-importer-log"></div>' +
                 '</div>' +
             '</div>'
@@ -978,6 +1239,15 @@
         if (!$target.length) $target = $('.wrap');
         if (!$target.length) $target = $('body');
         $target.first().append($box);
+
+        $(document).off('click', '#ai-clean-btn').on('click', '#ai-clean-btn', function () {
+            var result = prepareJsonFromTextarea(true);
+            if (result.error) {
+                window.alert('Ошибка чистки\n\n' + result.error.message);
+                return;
+            }
+            window.alert(formatCleanAlertMessage(result));
+        });
 
         $(document).off('click', '#ai-btn').on('click', '#ai-btn', function () {
             var raw = ($('#ai-json').val() || '').trim();
