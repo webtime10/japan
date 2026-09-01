@@ -16,7 +16,7 @@ get_header();
 		<?php echo do_shortcode( '[ai_budget_calculator]' ); ?>
 
 
-		<?php echo do_shortcode( '[family_comfort_calculator]' ); ?>
+		<?php echo do_shortcode( '[fcc_family_directions]' ); ?>
 
 		<?php echo do_shortcode( '[ai_ideal_region_calculator]' ); ?>
 

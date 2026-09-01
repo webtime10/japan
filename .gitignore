@@ -31,6 +31,7 @@
 # 6. Игнорируем сторонние плагины (оставляем только ваши)
 /wp-content/plugins/*
 !/wp-content/plugins/ai-calculator/
+!/wp-content/plugins/family-comfort-calc/
 !/wp-content/plugins/map-plum/
 !/wp-content/plugins/my-acf-ai-importer/
 !/wp-content/plugins/weather-image/
