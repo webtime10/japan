@@ -40,8 +40,8 @@ add_action(
 			),
 			array(
 				'code'  => '[what_we_offer]',
-				'block' => 'Что мы предлагаем (также flexible)',
-				'where' => 'Settings → What we offer',
+				'block' => 'Что мы предлагаем',
+				'where' => 'Settings → What we offer · шорткод [what_we_offer]',
 			),
 			array(
 				'code'  => '— (только flexible)',

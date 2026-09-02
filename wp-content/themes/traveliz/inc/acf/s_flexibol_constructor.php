@@ -106,23 +106,6 @@ function s_flexibol_register_constructor_fields() {
 							),
 						),
 					),
-					'layout_s_flexibol_what_we_offer' => array(
-						'key'     => 'layout_s_flexibol_what_we_offer',
-						'name'    => 's_flexibol_what_we_offer',
-						'label'   => 'Что мы предлагаем (из общих)',
-						'display' => 'block',
-						'sub_fields' => array(
-							array(
-								'key'           => 'field_s_flexibol_what_we_offer_toggle',
-								'label'         => 'Показывать блок',
-								'name'          => 'what_we_offer_show',
-								'type'          => 'true_false',
-								'ui'            => 1,
-								'default_value' => 1,
-								'instructions'  => 'Контент: Settings → What we offer',
-							),
-						),
-					),
 					'layout_s_flexibol_how_it_works' => array(
 						'key'     => 'layout_s_flexibol_how_it_works',
 						'name'    => 's_flexibol_how_it_works',

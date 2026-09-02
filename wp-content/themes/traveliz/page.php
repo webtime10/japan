@@ -9,7 +9,7 @@ get_header();
 
 		<div class="main-block-22">	
 <?php
-	// PageTop (from ACF: inc/acf/page.php).
+
 	$page_top_title_1   = get_field( 'page_top_title_1' );
 
 
@@ -28,7 +28,7 @@ get_header();
 		'button_text' => 'לפרטים נוספים',
 	);
 
-	// Defaults for japan.loc hero; custom ACF values override when filled in.
+	
 	$h1_1     = trim( (string) $page_top_title_1 ) !== '' ? $page_top_title_1 : $page_top_defaults['title_1'];
 	$h1_2     = trim( (string) $page_top_title_2 ) !== '' ? $page_top_title_2 : $page_top_defaults['title_2'];
 	$sub      = trim( (string) $page_top_subtitle ) !== '' ? $page_top_subtitle : $page_top_defaults['subtitle'];
@@ -84,7 +84,6 @@ get_header();
             's_flexibol_map'           => 'map',
             's_flexibol_custom_reviews' => 'custom_reviews',
             's_flexibol_what_you_will_get' => 'what_you_will_get',
-            's_flexibol_what_we_offer'  => 'what_we_offer',
             's_flexibol_how_it_works'   => 'how_it_works',
             's_flexibol_route_example'  => 'route_example',
             's_flexibol_custom_regions' => 'custom_regions',

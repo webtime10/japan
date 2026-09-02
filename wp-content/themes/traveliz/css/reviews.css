@@ -279,9 +279,11 @@ a{
     justify-content: center;
 }
 .into-site-main-2{
-    padding-bottom: 272px;
+    padding-bottom: 220px;
 }
-
+.site-main-2{
+    overflow: hidden;
+}
 .landing-hero-text>img{
     position: absolute;
     top: -188px;

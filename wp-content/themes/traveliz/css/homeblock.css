@@ -693,12 +693,12 @@ display: none !important;
     z-index: 1;
 }
 .dop_text_landmark {
-    text-align: center;
+    text-align: right;
     font-size: 18px;
     line-height: 1.6;
     font-weight: 500;
     color: #000;
-    max-width: 900px;
+    max-width: 100%;
     margin: 12px auto 24px;
     position: relative;
     z-index: 1;

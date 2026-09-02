@@ -78,7 +78,7 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 				<div class="price-card-main">
 					<div class="price-card-main-header">
 						<div class="price-card-main-header-left">
-							<img src="<?php echo esc_url( $top_img_url ); ?>" alt="<?php echo esc_attr( $top_img_alt ?: wp_strip_all_tags( $top_input ) ); ?>">
+							
 							<?php if ( ! empty( $top_input ) ) : ?>
 								<span><?php echo wp_kses_post( $top_input ); ?></span>
 							<?php endif; ?>
@@ -87,30 +87,31 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 
 					<div class="price-card-main-rows">
 						<?php
+						$price_row_icons = array(
+							'prozivanie.webp',
+							'eda.webp',
+							'transport.webp',
+							'bilet.png',
+							'platnii_meropiatia.webp',
+						);
+						$price_row_index = 0;
+						$img_base        = get_template_directory_uri() . '/img/';
+
 						if ( have_rows( 's_flexibol_price_items' ) ) :
 							while ( have_rows( 's_flexibol_price_items' ) ) :
 								the_row();
-								$img1   = get_sub_field( 's_flexibol_price_image_1' );
 								$title  = get_sub_field( 's_flexibol_price_title' );
 								$inp1   = get_sub_field( 's_flexibol_price_input' );
 								$inp2   = get_sub_field( 's_flexibol_price_input_2' );
 								$price  = get_sub_field( 's_flexibol_price_item_price' );
 								$night  = get_sub_field( 's_flexibol_price_item_night' );
 
-								$icon_url = '';
-								$icon_alt = '';
-								if ( is_array( $img1 ) && ! empty( $img1['url'] ) ) {
-									$icon_url = (string) $img1['url'];
-									$icon_alt = ! empty( $img1['alt'] ) ? (string) $img1['alt'] : (string) $title;
-								} elseif ( is_numeric( $img1 ) ) {
-									$icon_url = (string) wp_get_attachment_image_url( (int) $img1, 'full' );
-									$icon_alt = (string) get_post_meta( (int) $img1, '_wp_attachment_image_alt', true );
-								} elseif ( is_string( $img1 ) && $img1 !== '' ) {
-									$icon_url = $img1;
-								}
-								if ( $icon_url === '' ) {
-									$icon_url = get_template_directory_uri() . '/img/table/budzetniii_otel.webp';
-								}
+								$icon_file = isset( $price_row_icons[ $price_row_index ] )
+									? $price_row_icons[ $price_row_index ]
+									: $price_row_icons[0];
+								$icon_url  = $img_base . $icon_file;
+								$icon_alt  = is_string( $title ) ? (string) $title : '';
+								$price_row_index++;
 
 								$img2      = get_sub_field( 's_flexibol_price_image_2' );
 								$star_url  = '';
@@ -171,10 +172,11 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 
 				<div class="price-cards-bottom" dir="<?php echo esc_attr( $price_cards_dir ); ?>">
 
-					<!-- Транспорт -->
+			
 					<div class="price-card-small">
 						<div class="price-card-small-header price-card-small-header--transport">
-							<img src="<?php echo esc_url( $uri . 'transport.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $bb1_top ) ); ?>">
+							
+						<img src="<?php echo get_template_directory_uri(); ?>/img/kpmfort.webp" alt="<?php echo esc_attr( wp_strip_all_tags( $bb1_top ) ); ?>" />
 							<?php if ( ! empty( $bb1_top ) ) : ?>
 								<span><?php echo wp_kses_post( $bb1_top ); ?></span>
 							<?php endif; ?>
@@ -183,7 +185,7 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 							<div>
 								<?php if ( ! empty( $bb1_mid ) ) : ?>
 									<div class="price-card-desc-title">
-										<img src="<?php echo esc_url( $uri . 'arenda_avto.webp' ); ?>" alt="">
+										
 										<span><?php echo wp_kses_post( $bb1_mid ); ?></span>
 									</div>
 								<?php endif; ?>
@@ -204,10 +206,11 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 						</div>
 					</div>
 
-					<!-- Питание -->
+	
 					<div class="price-card-small">
 						<div class="price-card-small-header price-card-small-header--food">
-							<img src="<?php echo esc_url( $uri . 'pitanie.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $bb2_top ) ); ?>">
+							
+						<img src="<?php echo get_template_directory_uri(); ?>/img/srednii.webp" alt="<?php echo esc_attr( wp_strip_all_tags( $bb2_top ) ); ?>">
 							<?php if ( ! empty( $bb2_top ) ) : ?>
 								<span><?php echo wp_kses_post( $bb2_top ); ?></span>
 							<?php endif; ?>
@@ -234,10 +237,11 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 						</div>
 					</div>
 
-					<!-- Дополнительно -->
+		
 					<div class="price-card-small">
 						<div class="price-card-small-header price-card-small-header--extra">
-							<img src="<?php echo esc_url( $uri . 'dopolnitelno.webp' ); ?>" alt="<?php echo esc_attr( wp_strip_all_tags( $bb3_top ) ); ?>">
+							
+						<img src="<?php echo get_template_directory_uri(); ?>/img/budzet.webp" alt="<?php echo esc_attr( wp_strip_all_tags( $bb3_top ) ); ?>" />
 							<?php if ( ! empty( $bb3_top ) ) : ?>
 								<span><?php echo wp_kses_post( $bb3_top ); ?></span>
 							<?php endif; ?>
@@ -246,7 +250,7 @@ $price_cards_dir  = function_exists( 'traveliz_pll_is_rtl' ) && traveliz_pll_is_
 							<div>
 								<?php if ( ! empty( $bb3_mid ) ) : ?>
 									<div class="price-card-desc-title">
-										<img src="<?php echo esc_url( $uri . 'znak_parkovki.webp' ); ?>" alt="">
+									
 										<span><?php echo wp_kses_post( $bb3_mid ); ?></span>
 									</div>
 								<?php endif; ?>

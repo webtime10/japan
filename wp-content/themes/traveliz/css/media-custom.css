@@ -262,6 +262,11 @@ width: 100%;
 
     overflow: hidden;
 }
+.main-block-22 h1{
+
+    margin-top: 47px;
+
+}
 .attractions-img{
     padding: 1px;
 }
@@ -1518,7 +1523,7 @@ html[dir="rtl"] .now-carousel-items{
         position: absolute;
         right: 50%;
         bottom: auto;
-        top: -71px !important;
+        top: -89px !important;
         transform: translate(50%, 0%);
         width: 658px !important;
     }

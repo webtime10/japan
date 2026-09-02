@@ -258,12 +258,12 @@ position: relative;
     margin: 0 auto;
 }
 .comparison_of_regions_dop_text {
-    text-align: center;
+    text-align: right;
     font-size: 18px;
     line-height: 1.6;
     font-weight: 500;
     color: #000;
-    max-width: 900px;
+    max-width: 100%;
     margin: 12px auto 0;
 }
 .wrap-flex>div{
@@ -274,7 +274,8 @@ align-items: center;
 }
 .wrap-flex>div span
 {
-    font-weight: 500;
+       font-weight: 500;
+    line-height: 18.5px;
 }
 .into-cats_r{
         padding-bottom: 24px !important; 
@@ -406,11 +407,11 @@ position: relative;
 }
 
 .google-otel-subtitle {
-    text-align: center;
+text-align: right;
     font-size: 18px;
     line-height: 1.6;
     color: var(--gray-text);
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto 40px;
 }
 
@@ -687,6 +688,9 @@ html[dir="rtl"] .price-cards-bottom[dir="rtl"] {
 width: auto;
     height: auto;
     object-fit: contain;
+    height: auto;
+    object-fit: contain;
+    width: 35px;
 }
 
 .price-card-small-header--transport {
@@ -808,12 +812,12 @@ width: auto;
             margin-bottom: 60px;
         }
 .rout_dop_text {
-    text-align: center;
+    text-align: right;
     font-size: 18px;
     line-height: 1.6;
     font-weight: 500;
     color: #000;
-    max-width: 900px;
+    max-width: 100%;
     margin: -44px auto 40px;
 }
 
@@ -1437,7 +1441,7 @@ color: #fff;
 }
 .main-block-22 h1{
     font-size: 60px;
-    margin-top: 81px;
+    margin-top: 132px;
     margin-bottom: 11px;
     position: relative;
 }
