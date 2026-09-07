@@ -256,6 +256,7 @@ class AI_Calculator_Weather_Model extends AI_Calculator_Model {
 			'month'       => $month_id,
 			'region'      => $names['region_name'],
 			'language'    => $this->get_current_language_code(),
+			'country'     => 'jp',
 		);
 	}
 

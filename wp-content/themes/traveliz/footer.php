@@ -108,13 +108,15 @@ if ($green_group) :
 
             <!-- Column 2: Site Map -->
             <div class="footer-column footer-sitemap">
+
+            
                 <?php if ( $ua_footer_sitemap_title ) : ?>
                     <h3 class="footer-heading"><?php echo wp_kses_post( $ua_footer_sitemap_title ); ?></h3>
                 <?php endif; ?>
        
             </div>
-
-            <!-- Column 3: Symbol/Logo -->
+ 
+             
             <div class="footer-column footer-symbol">
                 <div class="logo-footer">
                        <?php 

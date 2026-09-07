@@ -2845,6 +2845,12 @@ width: 100%;
 .ai-wh__stat--temperature .ai-wh__stat-value {
         font-size: 54px;
     }
+.ai-wh__temp-range {
+        font-size: 22px;
+    }
+.ai-wh__temp-caption {
+        font-size: 13px;
+    }
 .ai-wh__select {
 
     font-size: 16px;

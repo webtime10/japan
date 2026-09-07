@@ -218,8 +218,9 @@
 
 .ai-wh__stat--temperature .ai-wh__stat-body {
     justify-content: center;
-    padding: 27px 24px 15px;
-    height: 165px;
+    padding: 22px 24px 18px;
+    height: auto;
+    min-height: 165px;
 }
 
 .ai-wh__stat-label {
@@ -230,6 +231,40 @@
     line-height: 1.25;
     color: var(--ai-wh-text);
     color: #192D37;
+}
+
+.ai-wh__temp-pair {
+	display: grid;
+    grid-template-columns: 170px 218px;
+    gap: 12px 20px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.ai-wh__temp-item {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.ai-wh__temp-caption {
+	display: block;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.2;
+	color: #626e79;
+	text-transform: none;
+}
+
+.ai-wh__temp-range {
+	display: block;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	color: #4a6986;
+	word-break: break-word;
 }
 
 .ai-wh__stat--temperature .ai-wh__stat-value {
@@ -282,6 +317,13 @@
 }
 
 @media (max-width: 680px) {
+	.ai-wh__temp-pair {
+	
+		grid-template-columns: 1fr;
+
+	}
+
+	
 	.ai-wh {
 		padding: 32px 0;
 		--ai-wh-frame-padding: 16px;
@@ -308,6 +350,26 @@
 
 	.ai-wh__stat--temperature .ai-wh__stat-value {
 		font-size: 34px;
+	}
+
+	.ai-wh__temp-pair {
+		gap: 10px 14px;
+		margin-top: 8px;
+	}
+
+	.ai-wh__temp-range {
+		font-size: 28px;
+	}
+
+	.ai-wh__select {
+
+		font-size: 17px;
+
+	}
+
+
+	.ai-wh__temp-caption {
+		font-size: 12px;
 	}
 
 	.ai-wh__stat-row .ai-wh__stat-value {

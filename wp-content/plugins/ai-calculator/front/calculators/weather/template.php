@@ -17,7 +17,6 @@ $defaults = isset( $ai_weather['defaults'] ) ? $ai_weather['defaults'] : array( 
 
 $placeholder_month  = ai_calculator_translate( 'weather_select_month' );
 $placeholder_region = ai_calculator_translate( 'weather_select_region' );
-$stat_temp          = ai_calculator_translate( 'weather_stat_temp' );
 $stat_precip        = ai_calculator_translate( 'weather_stat_precip' );
 $stat_sunny         = ai_calculator_translate( 'weather_stat_sunny' );
 $stat_season        = ai_calculator_translate( 'weather_stat_season' );
@@ -46,19 +45,6 @@ $calculator_title = ai_calculator_get_custom_title(
 				<div class="ai-wh__widget">
 					<div class="ai-wh__filters">
 						<div class="ai-wh__field">
-							<label class="ai-wh__label" for="ai-wh-month"><?php echo esc_html( $placeholder_month ); ?></label>
-							<div class="ai-wh__select-wrap">
-								<select class="ai-wh__select" id="ai-wh-month" name="ai_wh_month" data-ai-wh-month>
-									<option value="" <?php selected( (int) $defaults['month'], 0 ); ?>><?php echo esc_html( $placeholder_month ); ?></option>
-									<?php foreach ( $months as $key => $label ) : ?>
-										<option value="<?php echo esc_attr( (string) $key ); ?>" <?php selected( (int) $defaults['month'], (int) $key ); ?>>
-											<?php echo esc_html( $label ); ?>
-										</option>
-									<?php endforeach; ?>
-								</select>
-							</div>
-						</div>
-						<div class="ai-wh__field">
 							<label class="ai-wh__label" for="ai-wh-region"><?php echo esc_html( $placeholder_region ); ?></label>
 							<div class="ai-wh__select-wrap">
 								<select class="ai-wh__select" id="ai-wh-region" name="ai_wh_region" data-ai-wh-region>
@@ -78,6 +64,19 @@ $calculator_title = ai_calculator_get_custom_title(
 								</select>
 							</div>
 						</div>
+						<div class="ai-wh__field">
+							<label class="ai-wh__label" for="ai-wh-month"><?php echo esc_html( $placeholder_month ); ?></label>
+							<div class="ai-wh__select-wrap">
+								<select class="ai-wh__select" id="ai-wh-month" name="ai_wh_month" data-ai-wh-month>
+									<option value="" <?php selected( (int) $defaults['month'], 0 ); ?>><?php echo esc_html( $placeholder_month ); ?></option>
+									<?php foreach ( $months as $key => $label ) : ?>
+										<option value="<?php echo esc_attr( (string) $key ); ?>" <?php selected( (int) $defaults['month'], (int) $key ); ?>>
+											<?php echo esc_html( $label ); ?>
+										</option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+						</div>
 					</div>
 
 					<div class="ai-wh__stats" data-ai-wh-stats aria-live="polite">
@@ -88,7 +87,16 @@ $calculator_title = ai_calculator_get_custom_title(
 							<img class="ai-wh__stat-bg" src="<?php echo esc_url( plugins_url( 'img/weather-calculator/nebo.webp', AI_CALCULATOR_FILE ) ); ?>" alt="" loading="lazy" decoding="async">
 							<div class="ai-wh__stat-body">
 								<span class="ai-wh__stat-label"><?php echo esc_html( ai_calculator_translate( 'weather_label_avg_temperature' ) ); ?></span>
-								<strong class="ai-wh__stat-value" data-ai-wh-temp><?php echo esc_html( $stat_temp ); ?></strong>
+								<div class="ai-wh__temp-pair" data-ai-wh-temp>
+									<div class="ai-wh__temp-item ai-wh__temp-item--day">
+										<span class="ai-wh__temp-caption"><?php echo esc_html( ai_calculator_translate( 'weather_label_temp_day' ) ); ?></span>
+										<strong class="ai-wh__temp-range" data-ai-wh-temp-day><?php echo esc_html( ai_calculator_translate( 'weather_stat_temp_day' ) ); ?></strong>
+									</div>
+									<div class="ai-wh__temp-item ai-wh__temp-item--night">
+										<span class="ai-wh__temp-caption"><?php echo esc_html( ai_calculator_translate( 'weather_label_temp_night' ) ); ?></span>
+										<strong class="ai-wh__temp-range" data-ai-wh-temp-night><?php echo esc_html( ai_calculator_translate( 'weather_stat_temp_night' ) ); ?></strong>
+									</div>
+								</div>
 							</div>
 						</div>
 

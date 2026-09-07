@@ -1,13 +1,89 @@
 jQuery(document).ready(function ($) {
 	'use strict';
 
+	function escapeHtml(text) {
+		return String(text)
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(/"/g, '&quot;');
+	}
+
+	/**
+	 * Разбор температуры на день / ночь.
+	 * Поддерживает:
+	 * - temperature_day / temperature_night
+	 * - "+12° +8°|+3° -2°"
+	 * - "+12° +8° / +3° -2°"
+	 * - "+15° +6°" (день и ночь одним числом каждое)
+	 *
+	 * @return {{day: string, night: string}}
+	 */
+	function splitTemperature(weather) {
+		var day = '';
+		var night = '';
+
+		if (weather && weather.temperature_day) {
+			day = String(weather.temperature_day).trim();
+		}
+		if (weather && weather.temperature_night) {
+			night = String(weather.temperature_night).trim();
+		}
+		if (day && night) {
+			return { day: day, night: night };
+		}
+
+		var raw = String((weather && weather.temperature) || '').trim();
+		if (!raw) {
+			return { day: day, night: night };
+		}
+
+		if (raw.indexOf('|') !== -1) {
+			var pipeParts = raw.split('|');
+			return {
+				day: String(pipeParts[0] || '').trim(),
+				night: String(pipeParts[1] || '').trim()
+			};
+		}
+
+		if (raw.indexOf('/') !== -1) {
+			var slashParts = raw.split('/');
+			return {
+				day: String(slashParts[0] || '').trim().replace(/^(день|day|نهار|יום)\s*/i, ''),
+				night: String(slashParts[1] || '').trim().replace(/^(ночь|night|ليل|לילה)\s*/i, '')
+			};
+		}
+
+		var nums = raw.match(/[+-]?\d+\s*°?/g);
+		if (nums && nums.length >= 4) {
+			return {
+				day: (nums[0] + ' ' + nums[1]).replace(/\s+/g, ' ').trim(),
+				night: (nums[2] + ' ' + nums[3]).replace(/\s+/g, ' ').trim()
+			};
+		}
+		if (nums && nums.length === 2) {
+			return {
+				day: String(nums[0]).trim(),
+				night: String(nums[1]).trim()
+			};
+		}
+
+		return { day: raw, night: '' };
+	}
+
 	function applyWeatherStats($root, weather) {
 		if (!weather || !$root.length) {
 			return;
 		}
-		if (weather.temperature) {
-			$root.find('[data-ai-wh-temp]').text(weather.temperature);
+
+		var parts = splitTemperature(weather);
+		if (parts.day) {
+			$root.find('[data-ai-wh-temp-day]').text(parts.day);
 		}
+		if (parts.night) {
+			$root.find('[data-ai-wh-temp-night]').text(parts.night);
+		}
+
 		if (weather.precipitation) {
 			$root.find('[data-ai-wh-precip]').text(weather.precipitation);
 		}

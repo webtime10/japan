@@ -164,11 +164,11 @@ final class AI_Calculator_Weather_Ajax {
 
 	/**
 	 * @param array<string, mixed> $weather
-	 * @return array{temperature?: string, precipitation?: string, sunny_days?: string, season?: string, summary?: string}
+	 * @return array{temperature?: string, temperature_day?: string, temperature_night?: string, precipitation?: string, sunny_days?: string, season?: string, summary?: string}
 	 */
 	private static function sanitize_weather_stats( array $weather ) {
 		$out = array();
-		$keys = array( 'temperature', 'precipitation', 'sunny_days', 'season', 'summary' );
+		$keys = array( 'temperature', 'temperature_day', 'temperature_night', 'precipitation', 'sunny_days', 'season', 'summary' );
 		foreach ( $keys as $key ) {
 			if ( isset( $weather[ $key ] ) && is_scalar( $weather[ $key ] ) ) {
 				$value = trim( (string) $weather[ $key ] );
@@ -178,7 +178,62 @@ final class AI_Calculator_Weather_Ajax {
 			}
 		}
 
+		// Если Laravel отдал только temperature — разложим на день/ночь.
+		if ( empty( $out['temperature_day'] ) && empty( $out['temperature_night'] ) && ! empty( $out['temperature'] ) ) {
+			$split = self::split_temperature_string( $out['temperature'] );
+			if ( '' !== $split['day'] ) {
+				$out['temperature_day'] = $split['day'];
+			}
+			if ( '' !== $split['night'] ) {
+				$out['temperature_night'] = $split['night'];
+			}
+		}
+
 		return $out;
+	}
+
+	/**
+	 * @return array{day: string, night: string}
+	 */
+	private static function split_temperature_string( $raw ) {
+		$raw = trim( (string) $raw );
+		if ( '' === $raw ) {
+			return array( 'day' => '', 'night' => '' );
+		}
+
+		if ( str_contains( $raw, '|' ) ) {
+			$parts = array_map( 'trim', explode( '|', $raw, 2 ) );
+			return array(
+				'day'   => $parts[0] ?? '',
+				'night' => $parts[1] ?? '',
+			);
+		}
+
+		if ( str_contains( $raw, '/' ) ) {
+			$parts = array_map( 'trim', explode( '/', $raw, 2 ) );
+			$day   = preg_replace( '/^(день|day|نهار|יום)\s*/ui', '', $parts[0] ?? '' );
+			$night = preg_replace( '/^(ночь|night|ليل|לילה)\s*/ui', '', $parts[1] ?? '' );
+			return array(
+				'day'   => trim( (string) $day ),
+				'night' => trim( (string) $night ),
+			);
+		}
+
+		if ( preg_match_all( '/[+-]?\d+\s*°?/u', $raw, $m ) && count( $m[0] ) >= 4 ) {
+			return array(
+				'day'   => trim( $m[0][0] . ' ' . $m[0][1] ),
+				'night' => trim( $m[0][2] . ' ' . $m[0][3] ),
+			);
+		}
+
+		if ( preg_match_all( '/[+-]?\d+\s*°?/u', $raw, $m ) && 2 === count( $m[0] ) ) {
+			return array(
+				'day'   => trim( $m[0][0] ),
+				'night' => trim( $m[0][1] ),
+			);
+		}
+
+		return array( 'day' => $raw, 'night' => '' );
 	}
 
 	public static function handle() {
