@@ -234,8 +234,8 @@
 }
 
 .ai-wh__temp-pair {
-	display: grid;
-    grid-template-columns: 170px 218px;
+    display: grid;
+    grid-template-columns: 190px 219px;
     gap: 12px 20px;
     margin-top: 10px;
     width: 100%;
