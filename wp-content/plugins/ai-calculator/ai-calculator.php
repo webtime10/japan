@@ -120,8 +120,8 @@ final class AI_Calculator_Plugin {
 			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 			'nonce'      => wp_create_nonce( 'ai_calculator_admin' ),
 			'saveEscape' => '',
-			'mediaTitle' => __( 'Р’С‹Р±РµСЂРёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ', 'ai-calculator' ),
-			'mediaButton' => __( 'РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ', 'ai-calculator' ),
+			'mediaTitle' => __( 'Выберите изображение', 'ai-calculator' ),
+			'mediaButton' => __( 'Использовать', 'ai-calculator' ),
 		);
 
 		if ( isset( $_GET['action'] ) && 'save' === sanitize_key( wp_unslash( $_GET['action'] ) ) && isset( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -207,8 +207,8 @@ final class AI_Calculator_Plugin {
 
 		add_submenu_page(
 			'ai_calculator',
-			__( 'РљР°Р»СЊРєСѓР»СЏС‚РѕСЂС‹', 'ai-calculator' ),
-			__( 'РљР°Р»СЊРєСѓР»СЏС‚РѕСЂС‹', 'ai-calculator' ),
+			__( 'Калькуляторы', 'ai-calculator' ),
+			__( 'Калькуляторы', 'ai-calculator' ),
 			'manage_options',
 			'ai_calculator_manufacturers',
 			array( $this, 'admin_page_manufacturers' )
@@ -225,8 +225,8 @@ final class AI_Calculator_Plugin {
 
 		add_submenu_page(
 			'ai_calculator',
-			__( 'Р“СЂСѓРїРїС‹ Р°С‚СЂРёР±СѓС‚РѕРІ', 'ai-calculator' ),
-			__( 'Р“СЂСѓРїРїС‹ Р°С‚СЂРёР±СѓС‚РѕРІ', 'ai-calculator' ),
+			__( 'Группы атрибутов', 'ai-calculator' ),
+			__( 'Группы атрибутов', 'ai-calculator' ),
 			'manage_options',
 			'ai_calculator_attribute_groups',
 			array( $this, 'admin_page_attribute_groups' )
@@ -234,8 +234,8 @@ final class AI_Calculator_Plugin {
 
 		add_submenu_page(
 			'ai_calculator',
-			__( 'РђС‚СЂРёР±СѓС‚С‹', 'ai-calculator' ),
-			__( 'РђС‚СЂРёР±СѓС‚С‹', 'ai-calculator' ),
+			__( 'Атрибуты', 'ai-calculator' ),
+			__( 'Атрибуты', 'ai-calculator' ),
 			'manage_options',
 			'ai_calculator_attributes',
 			array( $this, 'admin_page_attributes' )
