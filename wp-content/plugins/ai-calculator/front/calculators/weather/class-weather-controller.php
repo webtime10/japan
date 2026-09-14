@@ -71,11 +71,12 @@ class AI_Calculator_Weather_Controller extends AI_Calculator_Controller_Base {
 
 		wp_enqueue_style( 'ai_calculator_style' );
 
+		$weather_js = AI_CALCULATOR_PATH . 'assets/js/front/weather-calculator.js';
 		wp_enqueue_script(
 			'ai_calculator_weather',
 			plugins_url( 'assets/js/front/weather-calculator.js', AI_CALCULATOR_FILE ),
 			array( 'jquery' ),
-			AI_CALCULATOR_VERSION,
+			file_exists( $weather_js ) ? (string) filemtime( $weather_js ) : AI_CALCULATOR_VERSION,
 			true
 		);
 

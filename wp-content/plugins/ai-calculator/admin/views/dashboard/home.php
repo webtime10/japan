@@ -90,6 +90,13 @@ if ( is_admin() && current_user_can( 'manage_options' ) && 'POST' === strtoupper
 				$calculator_titles = array();
 			}
 		}
+
+		if ( isset( $_POST['ai_calculator_weather_labels'] ) && is_array( $_POST['ai_calculator_weather_labels'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$weather_labels_raw = wp_unslash( $_POST['ai_calculator_weather_labels'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
+			if ( function_exists( 'ai_calculator_save_weather_labels' ) ) {
+				ai_calculator_save_weather_labels( $weather_labels_raw );
+			}
+		}
 	}
 
 	// Фон Ideal Region: фото + надпись.
@@ -155,6 +162,16 @@ $chat_labels = function_exists( 'ai_calculator_get_chat_labels' )
 $chat_label_defaults = function_exists( 'ai_calculator_chat_label_defaults' )
 	? ai_calculator_chat_label_defaults()
 	: array();
+
+$weather_labels_saved = function_exists( 'ai_calculator_get_weather_labels_saved' )
+	? ai_calculator_get_weather_labels_saved()
+	: array();
+$weather_label_fields = function_exists( 'ai_calculator_weather_label_fields' )
+	? ai_calculator_weather_label_fields()
+	: array();
+$weather_label_langs  = function_exists( 'ai_calculator_weather_label_lang_slugs' )
+	? ai_calculator_weather_label_lang_slugs()
+	: array( 'he', 'en', 'ar' );
 
 if ( class_exists( 'AI_Calculator_Manager' ) ) {
 	foreach ( AI_Calculator_Manager::slugs() as $slug ) {
@@ -274,6 +291,34 @@ if ( class_exists( 'AI_Calculator_Manager' ) ) {
 										<?php endforeach; ?>
 									</div>
 								<?php endif; ?>
+
+							<?php if ( 'weather' === $slug && ! empty( $weather_label_fields ) ) : ?>
+								<div style="margin-top:16px;display:grid;gap:8px;">
+									<?php
+									$w_lang      = (string) ( $weather_label_langs[0] ?? 'he' );
+									$w_saved_row = isset( $weather_labels_saved[ $w_lang ] ) && is_array( $weather_labels_saved[ $w_lang ] )
+										? $weather_labels_saved[ $w_lang ]
+										: array();
+									foreach ( $weather_label_fields as $w_key => $w_label ) :
+										$w_default = function_exists( 'ai_calculator_weather_label_default' )
+											? ai_calculator_weather_label_default( $w_key, $w_lang )
+											: '';
+										$w_value = isset( $w_saved_row[ $w_key ] ) ? (string) $w_saved_row[ $w_key ] : '';
+										?>
+										<label style="display:block;">
+											<span style="display:block;margin-bottom:4px;"><strong><?php echo esc_html( $w_label ); ?></strong></span>
+											<input
+												type="text"
+												class="regular-text"
+												name="ai_calculator_weather_labels[<?php echo esc_attr( $w_lang ); ?>][<?php echo esc_attr( $w_key ); ?>]"
+												value="<?php echo esc_attr( $w_value ); ?>"
+												placeholder="<?php echo esc_attr( $w_default ); ?>"
+												dir="auto"
+											/>
+										</label>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
 
 							<?php if ( 'ideal_region' === $slug ) : ?>
 								<div style="margin-top:12px;">

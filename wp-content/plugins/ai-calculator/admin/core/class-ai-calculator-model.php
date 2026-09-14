@@ -143,9 +143,29 @@ abstract class AI_Calculator_Model {
 
 		$id = $this->resolve_language_id_from_polylang( $this->get_polylang_current_language() );
 
+		// Без Polylang: берём locale WordPress (he_IL → he).
+		if ( $id <= 0 ) {
+			$locale = function_exists( 'get_locale' ) ? (string) get_locale() : '';
+			$short  = strtolower( (string) strtok( $locale, '_' ) );
+			if ( 'iw' === $short ) {
+				$short = 'he';
+			}
+			if ( $short !== '' ) {
+				$table = $this->table( 'language' );
+				$id    = (int) $this->wpdb->get_var(
+					$this->wpdb->prepare(
+						"SELECT language_id FROM `{$table}` WHERE status = 1 AND language_id > 0 AND (LOWER(code) = LOWER(%s) OR LOWER(locale) = LOWER(%s) OR LOWER(locale) LIKE %s) ORDER BY sort_order ASC, language_id ASC LIMIT 1",
+						$short,
+						$locale,
+						$short . '_%'
+					)
+				);
+			}
+		}
+
 		if ( $id <= 0 ) {
 			$table = $this->table( 'language' );
-			$id    = (int) $this->wpdb->get_var( "SELECT language_id FROM `{$table}` WHERE status = 1 ORDER BY sort_order ASC LIMIT 1" ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			$id    = (int) $this->wpdb->get_var( "SELECT language_id FROM `{$table}` WHERE status = 1 AND language_id > 0 ORDER BY sort_order ASC, language_id ASC LIMIT 1" ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		}
 
 		$cached = $id > 0 ? $id : 1;

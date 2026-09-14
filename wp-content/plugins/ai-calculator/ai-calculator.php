@@ -2,8 +2,8 @@
 /**
  * Plugin Name: AI Calculator
  * Plugin URI: https://example.com/
- * Description: Travel calculators — catalog in WP, data via REST to Laravel.
- * Version: 1.8.7
+ * Description: Travel calculators вЂ” catalog in WP, data via REST to Laravel.
+ * Version: 1.8.12
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: Nordic
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'AI_CALCULATOR_FILE', __FILE__ );
 define( 'AI_CALCULATOR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AI_CALCULATOR_URL', plugin_dir_url( __FILE__ ) );
-define( 'AI_CALCULATOR_VERSION', '1.8.7' );
+define( 'AI_CALCULATOR_VERSION', '1.8.12' );
 
 require_once AI_CALCULATOR_PATH . 'admin/core/class-ai-calculator-model.php';
 require_once AI_CALCULATOR_PATH . 'inc/class-ai-calculator-settings.php';
@@ -120,8 +120,8 @@ final class AI_Calculator_Plugin {
 			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 			'nonce'      => wp_create_nonce( 'ai_calculator_admin' ),
 			'saveEscape' => '',
-			'mediaTitle' => __( 'Выберите изображение', 'ai-calculator' ),
-			'mediaButton' => __( 'Использовать', 'ai-calculator' ),
+			'mediaTitle' => __( 'Р’С‹Р±РµСЂРёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ', 'ai-calculator' ),
+			'mediaButton' => __( 'РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ', 'ai-calculator' ),
 		);
 
 		if ( isset( $_GET['action'] ) && 'save' === sanitize_key( wp_unslash( $_GET['action'] ) ) && isset( $_GET['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -207,8 +207,8 @@ final class AI_Calculator_Plugin {
 
 		add_submenu_page(
 			'ai_calculator',
-			__( 'Калькуляторы', 'ai-calculator' ),
-			__( 'Калькуляторы', 'ai-calculator' ),
+			__( 'РљР°Р»СЊРєСѓР»СЏС‚РѕСЂС‹', 'ai-calculator' ),
+			__( 'РљР°Р»СЊРєСѓР»СЏС‚РѕСЂС‹', 'ai-calculator' ),
 			'manage_options',
 			'ai_calculator_manufacturers',
 			array( $this, 'admin_page_manufacturers' )
@@ -225,8 +225,8 @@ final class AI_Calculator_Plugin {
 
 		add_submenu_page(
 			'ai_calculator',
-			__( 'Группы атрибутов', 'ai-calculator' ),
-			__( 'Группы атрибутов', 'ai-calculator' ),
+			__( 'Р“СЂСѓРїРїС‹ Р°С‚СЂРёР±СѓС‚РѕРІ', 'ai-calculator' ),
+			__( 'Р“СЂСѓРїРїС‹ Р°С‚СЂРёР±СѓС‚РѕРІ', 'ai-calculator' ),
 			'manage_options',
 			'ai_calculator_attribute_groups',
 			array( $this, 'admin_page_attribute_groups' )
@@ -234,8 +234,8 @@ final class AI_Calculator_Plugin {
 
 		add_submenu_page(
 			'ai_calculator',
-			__( 'Атрибуты', 'ai-calculator' ),
-			__( 'Атрибуты', 'ai-calculator' ),
+			__( 'РђС‚СЂРёР±СѓС‚С‹', 'ai-calculator' ),
+			__( 'РђС‚СЂРёР±СѓС‚С‹', 'ai-calculator' ),
 			'manage_options',
 			'ai_calculator_attributes',
 			array( $this, 'admin_page_attributes' )
@@ -284,7 +284,7 @@ final class AI_Calculator_Plugin {
 			wp_die( esc_html__( 'Insufficient permissions.', 'ai-calculator' ) );
 		}
 		echo '<div class="wrap">';
-		echo '<h1>' . esc_html__( 'AI Calculator — DB Dump', 'ai-calculator' ) . '</h1>';
+		echo '<h1>' . esc_html__( 'AI Calculator вЂ” DB Dump', 'ai-calculator' ) . '</h1>';
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo ( new AI_Calculator_Db_Dump_Tool() )->render();
 		echo '</div>';

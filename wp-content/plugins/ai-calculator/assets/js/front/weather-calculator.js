@@ -71,17 +71,84 @@ jQuery(document).ready(function ($) {
 		return { day: raw, night: '' };
 	}
 
+	/**
+	 * Диапазон температур для RTL/LTR.
+	 * API обычно отдаёт «макс мин» (+12° +8°).
+	 * В RTL: справа min, слева max, разделитель « / », каждое значение в dir=ltr.
+	 */
+	function formatTempHtml(value, isRtl) {
+		var raw = String(value || '').trim();
+		if (!raw) {
+			return '';
+		}
+
+		var tokens = raw
+			.replace(/\//g, ' ')
+			.split(/\s+/)
+			.filter(Boolean)
+			.map(function (token) {
+				return token.replace(/,$/, '');
+			});
+
+		if (tokens.length >= 2) {
+			var first = tokens[0];
+			var second = tokens[1];
+			var firstNum = parseFloat(String(first).replace(/[^\d.+-]/g, ''));
+			var secondNum = parseFloat(String(second).replace(/[^\d.+-]/g, ''));
+			var minTok = first;
+			var maxTok = second;
+			if (!isNaN(firstNum) && !isNaN(secondNum)) {
+				if (firstNum <= secondNum) {
+					minTok = first;
+					maxTok = second;
+				} else {
+					minTok = second;
+					maxTok = first;
+				}
+			} else {
+				// Fallback: API «макс мин»
+				maxTok = first;
+				minTok = second;
+			}
+
+			if (isRtl) {
+				// DOM: min, max → в RTL min справа, max слева
+				tokens = [minTok, maxTok];
+			} else {
+				tokens = [maxTok, minTok];
+			}
+		}
+
+		var parts = tokens.map(function (token) {
+			return '<span class="ai-wh__temp-ltr" dir="ltr" style="unicode-bidi:isolate">' + escapeHtml(token) + '</span>';
+		});
+
+		if (parts.length === 2) {
+			return parts[0] + '<span class="ai-wh__temp-sep" aria-hidden="true">/</span>' + parts[1];
+		}
+		return parts.join('');
+	}
+
 	function applyWeatherStats($root, weather) {
 		if (!weather || !$root.length) {
 			return;
 		}
 
+		var isRtl =
+			(document.documentElement.getAttribute('dir') || '').toLowerCase() === 'rtl' ||
+			(document.body && (document.body.getAttribute('dir') || '').toLowerCase() === 'rtl') ||
+			/^(he|ar|fa|ur|iw)\b/i.test(document.documentElement.getAttribute('lang') || '');
+		var $pair = $root.find('[data-ai-wh-temp]');
+		if ($pair.length) {
+			$pair.attr('dir', isRtl ? 'rtl' : 'ltr');
+		}
+
 		var parts = splitTemperature(weather);
 		if (parts.day) {
-			$root.find('[data-ai-wh-temp-day]').text(parts.day);
+			$root.find('[data-ai-wh-temp-day]').html(formatTempHtml(parts.day, isRtl));
 		}
 		if (parts.night) {
-			$root.find('[data-ai-wh-temp-night]').text(parts.night);
+			$root.find('[data-ai-wh-temp-night]').html(formatTempHtml(parts.night, isRtl));
 		}
 
 		if (weather.precipitation) {

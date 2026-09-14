@@ -13,6 +13,7 @@ require_once AI_CALCULATOR_PATH . 'inc/budget-swiss-regions.php';
 require_once AI_CALCULATOR_PATH . 'inc/budget-images.php';
 require_once AI_CALCULATOR_PATH . 'inc/budget-labels.php';
 require_once AI_CALCULATOR_PATH . 'inc/ideal-region-labels.php';
+require_once AI_CALCULATOR_PATH . 'inc/weather-labels.php';
 require_once AI_CALCULATOR_PATH . 'inc/budget-result-labels.php';
 
 /**
@@ -105,6 +106,34 @@ function ai_calculator_polylang_slug() {
 }
 
 /**
+ * RTL для калькуляторов: WP is_rtl() часто false на he_IL, если text_direction не выставлен.
+ *
+ * @return bool
+ */
+function ai_calculator_is_rtl() {
+	if ( function_exists( 'is_rtl' ) && is_rtl() ) {
+		return true;
+	}
+
+	$slug = ai_calculator_polylang_slug();
+	if ( in_array( $slug, array( 'he', 'ar', 'fa', 'ur', 'iw' ), true ) ) {
+		return true;
+	}
+
+	$picker = ai_calculator_datetimepicker_lang( $slug );
+	if ( ! empty( $picker['rtl'] ) ) {
+		return true;
+	}
+
+	$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
+	if ( is_string( $locale ) && (bool) preg_match( '/^(he|ar|fa|ur|iw)([_-]|$)/i', $locale ) ) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * Локаль jquery.datetimepicker по языку Polylang.
  *
  * @param string $slug Код языка Polylang.
@@ -181,6 +210,13 @@ function ai_calculator_translate( $key, $fallback = '' ) {
 	$key = (string) $key;
 	if ( '' === $key ) {
 		return $fallback;
+	}
+
+	if ( function_exists( 'ai_calculator_weather_label_override' ) ) {
+		$override = ai_calculator_weather_label_override( $key );
+		if ( '' !== $override ) {
+			return $override;
+		}
 	}
 
 	$slug = ai_calculator_polylang_slug();

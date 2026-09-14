@@ -75,6 +75,23 @@ function enqueue_media_custom_last() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_media_custom_last', 999 );
 
+function traveliz_enqueue_404_styles() {
+	if ( ! is_404() ) {
+		return;
+	}
+
+	$path = get_template_directory() . '/css/error-404.css';
+	$ver  = file_exists( $path ) ? (string) filemtime( $path ) : _S_VERSION;
+
+	wp_enqueue_style(
+		'traveliz-error-404',
+		get_template_directory_uri() . '/css/error-404.css',
+		array( 'traveliz-front-page-style' ),
+		$ver
+	);
+}
+add_action( 'wp_enqueue_scripts', 'traveliz_enqueue_404_styles', 40 );
+
 /**
  * Resolve CARTO Basemaps API key (wp-config / carto-config.php / .env).
  *

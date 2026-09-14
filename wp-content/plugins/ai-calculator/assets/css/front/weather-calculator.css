@@ -218,6 +218,7 @@
 
 .ai-wh__stat--temperature .ai-wh__stat-body {
     justify-content: center;
+    align-items: flex-start;
     padding: 22px 24px 18px;
     height: auto;
     min-height: 165px;
@@ -234,18 +235,33 @@
 }
 
 .ai-wh__temp-pair {
-    display: grid;
-    grid-template-columns: 190px 219px;
-    gap: 12px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px 28px;
     margin-top: 10px;
-    width: 100%;
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.ai-wh__temp-pair[dir="rtl"] {
+	direction: rtl;
+}
+
+.ai-wh__temp-pair[dir="ltr"] {
+	direction: ltr;
 }
 
 .ai-wh__temp-item {
 	display: flex;
 	flex-direction: column;
+	align-items: stretch;
 	gap: 4px;
 	min-width: 0;
+	flex: 0 0 auto;
 }
 
 .ai-wh__temp-caption {
@@ -255,16 +271,42 @@
 	line-height: 1.2;
 	color: #626e79;
 	text-transform: none;
+	text-align: start;
 }
 
 .ai-wh__temp-range {
-	display: block;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: baseline;
+	gap: 0.35em;
 	font-size: 40px;
 	font-weight: 700;
 	line-height: 1.15;
 	letter-spacing: -0.02em;
 	color: #4a6986;
-	word-break: break-word;
+	white-space: nowrap;
+}
+
+.ai-wh__temp-pair[dir="rtl"] .ai-wh__temp-range {
+	direction: rtl;
+}
+
+.ai-wh__temp-pair[dir="ltr"] .ai-wh__temp-range {
+	direction: ltr;
+}
+
+.ai-wh__temp-ltr {
+	unicode-bidi: isolate;
+	direction: ltr;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.ai-wh__temp-sep {
+	unicode-bidi: isolate;
+	display: inline-block;
+	flex: 0 0 auto;
+	opacity: 0.85;
 }
 
 .ai-wh__stat--temperature .ai-wh__stat-value {
@@ -318,9 +360,8 @@
 
 @media (max-width: 680px) {
 	.ai-wh__temp-pair {
-	
-		grid-template-columns: 1fr;
-
+		flex-direction: column;
+		width: 100%;
 	}
 
 	

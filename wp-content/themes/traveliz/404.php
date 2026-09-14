@@ -1,60 +1,51 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ * 404 — Japan brand, logo centered.
  *
  * @package traveliz
  */
 
 get_header();
+
+$lang = function_exists( 'traveliz_pll_current_slug' ) ? traveliz_pll_current_slug() : 'he';
+
+$copy = array(
+	'he' => array(
+		'code'    => '404',
+		'title'   => 'העמוד לא נמצא',
+		'text'    => 'נראה שהגעתם לנתיב שלא קיים. בואו נחזור להתחיל את המסע ביפן.',
+		'cta'     => 'חזרה לדף הבית',
+	),
+	'en' => array(
+		'code'    => '404',
+		'title'   => 'Page not found',
+		'text'    => 'This path doesn’t exist. Let’s head back and start your Japan journey.',
+		'cta'     => 'Back to home',
+	),
+	'ar' => array(
+		'code'    => '404',
+		'title'   => 'الصفحة غير موجودة',
+		'text'    => 'يبدو أن هذا المسار غير موجود. لنعد ونبدأ رحلتكم إلى اليابان.',
+		'cta'     => 'العودة للرئيسية',
+	),
+);
+
+$t = isset( $copy[ $lang ] ) ? $copy[ $lang ] : $copy['he'];
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main site-main--404">
+	<section class="error-404 error-404--japan not-found" aria-labelledby="error-404-title">
+		<div class="error-404__inner">
+			<p class="error-404__code" aria-hidden="true"><?php echo esc_html( $t['code'] ); ?></p>
+			<h1 id="error-404-title" class="error-404__title"><?php echo esc_html( $t['title'] ); ?></h1>
+			<p class="error-404__text"><?php echo esc_html( $t['text'] ); ?></p>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'traveliz' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'traveliz' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'traveliz' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$traveliz_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'traveliz' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$traveliz_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+			<a class="error-404__cta yl" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<?php echo esc_html( $t['cta'] ); ?>
+			</a>
+		</div>
+	</section>
+</main>
 
 <?php
 get_footer();
