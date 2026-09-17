@@ -19,6 +19,7 @@ if (! function_exists('traveliz_laravel_ai_layout_to_acf_map')) {
             'rout-new' => 's_flexibol_route_one_day',
             'rout_new' => 's_flexibol_route_one_day',
             'price_table' => 's_flexibol_price_table',
+            'price_table_2' => 's_flexibol_price_table_2',
             'section_expert_advice_new' => 's_flexibol_advice',
             'expert' => 's_flexibol_expert',
             'active' => 's_flexibol_active_otd',

@@ -781,7 +781,7 @@ function traveliz_laravel_merge_flexible_rows(array $existing, array $incoming):
     }
 
     if ($incomingByLayout === []) {
-        return $existing;
+        return traveliz_laravel_reorder_flexible_sibling_rows($existing);
     }
 
     $merged = [];
@@ -803,7 +803,70 @@ function traveliz_laravel_merge_flexible_rows(array $existing, array $incoming):
         }
     }
 
-    return $merged;
+    return traveliz_laravel_reorder_flexible_sibling_rows($merged);
+}
+
+/**
+ * Держит «дочерние» layout сразу после «родительских» (Таблица цен 2 → после Таблицы цен).
+ *
+ * @param list<array<string, mixed>> $rows
+ * @return list<array<string, mixed>>
+ */
+function traveliz_laravel_reorder_flexible_sibling_rows(array $rows): array
+{
+    $pairs = apply_filters(
+        'traveliz_laravel_flexible_reorder_after',
+        array(
+            's_flexibol_price_table_2' => 's_flexibol_price_table',
+        )
+    );
+    if (! is_array($pairs) || $pairs === []) {
+        return $rows;
+    }
+
+    foreach ($pairs as $child => $parent) {
+        $child  = is_string($child) ? $child : '';
+        $parent = is_string($parent) ? $parent : '';
+        if ($child === '' || $parent === '') {
+            continue;
+        }
+
+        $child_rows = array();
+        $without    = array();
+        foreach ($rows as $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+            if (traveliz_laravel_flexible_row_layout($row) === $child) {
+                $child_rows[] = $row;
+            } else {
+                $without[] = $row;
+            }
+        }
+        if ($child_rows === []) {
+            continue;
+        }
+
+        $out    = array();
+        $placed = false;
+        foreach ($without as $row) {
+            $out[] = $row;
+            if (! $placed && traveliz_laravel_flexible_row_layout($row) === $parent) {
+                foreach ($child_rows as $child_row) {
+                    $out[] = $child_row;
+                }
+                $placed = true;
+            }
+        }
+        if (! $placed) {
+            foreach ($child_rows as $child_row) {
+                $out[] = $child_row;
+            }
+        }
+        $rows = $out;
+    }
+
+    return $rows;
 }
 
 /**

@@ -67,6 +67,8 @@ if ( ! function_exists( 'traveliz_schema_process_flexible_layout' ) ) {
 
 			case 's_flexibol_price_table':
 				return traveliz_schema_process_row_price_table( $row, $page_url, $section_index, $graph );
+			case 's_flexibol_price_table_2':
+				return traveliz_schema_process_row_price_table_2( $row, $page_url, $section_index, $graph );
 
 			case 's_flexibol_advice':
 				return traveliz_schema_process_row_advice( $row, $page_url, $section_index, $dest_id, $root_id, $graph );
@@ -756,15 +758,70 @@ function traveliz_schema_process_row_price_table( array $row, $page_url, $sectio
 		}
 		$n = traveliz_schema_clean_text( $it['s_flexibol_price_title'] ?? '' );
 		$p = traveliz_schema_clean_text( $it['s_flexibol_price_item_price'] ?? '' );
-		$i1 = traveliz_schema_clean_text( $it['s_flexibol_price_input'] ?? '' );
-		$i2 = traveliz_schema_clean_text( $it['s_flexibol_price_input_2'] ?? '' );
 		$night = traveliz_schema_clean_text( $it['s_flexibol_price_item_night'] ?? '' );
-		if ( $n === '' && $p === '' && $i1 === '' && $i2 === '' ) {
+		if ( $n === '' && $p === '' ) {
 			continue;
 		}
 		++$pos;
 		$offer_id = $page_url . '#offer-' . $section_index . '-' . $pos;
-		$desc     = trim( implode( ' ', array_filter( array( $i1, $i2, $night ) ) ) );
+		$offer    = array(
+			'@type' => 'Offer',
+			'@id'   => $offer_id,
+			'name'  => $n !== '' ? $n : 'Option',
+		);
+		if ( $night !== '' ) {
+			$offer['description'] = $night;
+		}
+		if ( $p !== '' ) {
+			$offer['price'] = $p;
+		}
+		$item_nodes[]  = $offer;
+		$offers_refs[] = array( '@id' => $offer_id );
+	}
+
+	$list_id = $page_url . '#price-list-' . $section_index;
+	if ( ! traveliz_schema_graph_append_item_list_with_nodes( $list_id, $title, $item_nodes, $graph, null ) ) {
+		return null;
+	}
+	return array_merge( array( array( '@id' => $list_id ) ), $offers_refs );
+}
+
+/**
+ * Price table 2 (items only).
+ *
+ * @param array  $row
+ * @param string $page_url
+ * @param int    $section_index
+ * @param array  $graph
+ * @return array|null
+ */
+function traveliz_schema_process_row_price_table_2( array $row, $page_url, $section_index, array &$graph ) {
+	$title = traveliz_schema_clean_text( $row['s_flexibol_price_table_2_section_title'] ?? '' );
+	if ( $title === '' ) {
+		$title = 'Prices';
+	}
+	$items_raw = $row['s_flexibol_price_table_2_items'] ?? array();
+	if ( empty( $items_raw ) || ! is_array( $items_raw ) ) {
+		return null;
+	}
+
+	$offers_refs = array();
+	$item_nodes  = array();
+	$pos         = 0;
+	foreach ( $items_raw as $it ) {
+		if ( ! is_array( $it ) ) {
+			continue;
+		}
+		$n       = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_title'] ?? '' );
+		$p       = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_item_price'] ?? '' );
+		$details = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_details'] ?? '' );
+		$night   = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_item_night'] ?? '' );
+		if ( $n === '' && $p === '' && $details === '' ) {
+			continue;
+		}
+		++$pos;
+		$offer_id = $page_url . '#offer2-' . $section_index . '-' . $pos;
+		$desc     = trim( implode( ' ', array_filter( array( $details, $night ) ) ) );
 		$offer    = array(
 			'@type' => 'Offer',
 			'@id'   => $offer_id,
@@ -780,7 +837,7 @@ function traveliz_schema_process_row_price_table( array $row, $page_url, $sectio
 		$offers_refs[] = array( '@id' => $offer_id );
 	}
 
-	$list_id = $page_url . '#price-list-' . $section_index;
+	$list_id = $page_url . '#price-list-2-' . $section_index;
 	if ( ! traveliz_schema_graph_append_item_list_with_nodes( $list_id, $title, $item_nodes, $graph, null ) ) {
 		return null;
 	}

@@ -608,6 +608,42 @@ font-size: 23px;
     border-top: 1px solid #E6E6E6;
 }
 
+.price-row-details {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #666;
+}
+
+/* Таблица цен 2: details в центре строки (всегда в ряд, не столбик) */
+.table-price--v2 .price-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.6fr) minmax(160px, 0.85fr) !important;
+    column-gap: 18px;
+    align-items: center;
+    height: auto !important;
+}
+
+.table-price--v2 .price-row-details {
+    grid-column: auto !important;
+    margin-top: 0;
+    font-size: 15px;
+    line-height: 1.45;
+    color: #73808B;
+    font-weight: 500;
+}
+
+.table-price--v2 .price-row-text-title {
+    display: block;
+    margin-bottom: 0;
+}
+
+.table-price--v2 .price-row-icon,
+.table-price--v2 .price-row-star {
+    display: none !important;
+}
+
 .price-row-left {
     display: flex;
     align-items: center;
@@ -759,6 +795,11 @@ width: auto;
         padding: 18px 20px;
     }
 
+    .table-price--v2 .price-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(140px, 0.7fr);
+        column-gap: 12px;
+    }
+
     .price-cards-bottom {
         grid-template-columns: 1fr;
     }
@@ -774,6 +815,27 @@ width: auto;
         row-gap: 12px;
         text-align: left;
                 padding: 7px 9px;
+    }
+
+    .table-price--v2 .price-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(110px, 0.75fr) !important;
+        column-gap: 10px;
+        row-gap: 0;
+    }
+
+    .table-price--v2 .price-row-left {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .table-price--v2 .price-row-right {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .table-price--v2 .price-row-details {
+        grid-column: auto !important;
+        grid-row: auto;
     }
     .price-row-right {
 

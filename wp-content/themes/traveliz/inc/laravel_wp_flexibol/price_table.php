@@ -66,20 +66,9 @@ if (! function_exists('traveliz_laravel_price_table_item_row_from_data')) {
                 'name',
                 'heading',
             ]),
-            's_flexibol_price_input' => traveliz_laravel_price_table_pick_scalar($item, [
-                's_flexibol_price_input',
-                'input',
-                'text',
-                'description',
-            ]),
             's_flexibol_price_image_2' => traveliz_laravel_price_table_pick_image($item, [
                 's_flexibol_price_image_2',
                 'image_2',
-            ]),
-            's_flexibol_price_input_2' => traveliz_laravel_price_table_pick_scalar($item, [
-                's_flexibol_price_input_2',
-                'input_2',
-                'subtitle',
             ]),
             's_flexibol_price_item_price' => traveliz_laravel_price_table_pick_scalar($item, [
                 's_flexibol_price_item_price',
@@ -90,6 +79,77 @@ if (! function_exists('traveliz_laravel_price_table_item_row_from_data')) {
                 'night',
                 'period',
             ]),
+        ];
+    }
+}
+
+if (! function_exists('traveliz_laravel_price_table_2_item_row_from_data')) {
+    /**
+     * @param array<string, mixed> $item
+     * @return array<string, mixed>
+     */
+    function traveliz_laravel_price_table_2_item_row_from_data(array $item): array
+    {
+        return [
+            's_flexibol_price_table_2_title' => traveliz_laravel_price_table_pick_scalar($item, [
+                's_flexibol_price_table_2_title',
+                's_flexibol_price_title',
+                'title',
+                'name',
+                'heading',
+            ]),
+            's_flexibol_price_table_2_item_price' => traveliz_laravel_price_table_pick_scalar($item, [
+                's_flexibol_price_table_2_item_price',
+                's_flexibol_price_item_price',
+                'price',
+            ]),
+            's_flexibol_price_table_2_item_night' => traveliz_laravel_price_table_pick_scalar($item, [
+                's_flexibol_price_table_2_item_night',
+                's_flexibol_price_item_night',
+                'night',
+                'period',
+            ]),
+            's_flexibol_price_table_2_details' => traveliz_laravel_price_table_pick_scalar($item, [
+                's_flexibol_price_table_2_details',
+                's_flexibol_price_details',
+                'details',
+                'input_2',
+            ]),
+        ];
+    }
+}
+
+if (! function_exists('traveliz_laravel_row_s_flexibol_price_table_2_from_data')) {
+    /**
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
+     */
+    function traveliz_laravel_row_s_flexibol_price_table_2_from_data(array $data): array
+    {
+        $itemsRaw = $data['items'] ?? $data['s_flexibol_price_table_2_items'] ?? [];
+        $items = [];
+        if (is_array($itemsRaw)) {
+            foreach ($itemsRaw as $item) {
+                if (! is_array($item)) {
+                    continue;
+                }
+                $items[] = traveliz_laravel_price_table_2_item_row_from_data($item);
+            }
+        }
+
+        return [
+            'acf_fc_layout' => 's_flexibol_price_table_2',
+            's_flexibol_price_table_2_section_title' => traveliz_laravel_price_table_pick_scalar($data, [
+                's_flexibol_price_table_2_section_title',
+                'title',
+                'heading',
+            ]),
+            's_flexibol_price_table_2_top_input' => traveliz_laravel_price_table_pick_scalar($data, [
+                's_flexibol_price_table_2_top_input',
+                'top_input',
+                'top_label',
+            ]),
+            's_flexibol_price_table_2_items' => $items,
         ];
     }
 }

@@ -190,11 +190,27 @@
                 repeaterMap: {
                     image_1: ['s_flexibol_price_image_1', 'image_1'],
                     title: ['s_flexibol_price_title', 'title'],
-                    input: ['s_flexibol_price_input', 'input', 'subtitle_left'],
-                    input_2: ['s_flexibol_price_input_2', 'input_2', 'subtitle_right'],
                     price: ['s_flexibol_price_item_price', 'price'],
                     night: ['s_flexibol_price_item_night', 'night', 'period'],
                     image_2: ['s_flexibol_price_image_2', 'image_2']
+                }
+            }
+        },
+        price_table_2: {
+            jsonKey: 'price_table_2',
+            layout: 's_flexibol_price_table_2',
+            fields: {
+                simple: {
+                    title: ['s_flexibol_price_table_2_section_title', 'title', 'heading'],
+                    top_input: ['s_flexibol_price_table_2_top_input', 'top_input', 'top_label']
+                },
+                repeater: 's_flexibol_price_table_2_items',
+                repeaterSource: ['items', 'rows'],
+                repeaterMap: {
+                    title: ['s_flexibol_price_table_2_title', 'title'],
+                    price: ['s_flexibol_price_table_2_item_price', 'price'],
+                    night: ['s_flexibol_price_table_2_item_night', 'night', 'period'],
+                    details: ['s_flexibol_price_table_2_details', 'details', 'input_2']
                 }
             }
         },

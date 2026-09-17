@@ -1258,12 +1258,6 @@ function s_flexibol_register_constructor_fields() {
 										'type'  => 'text',
 									),
 									array(
-										'key'   => 'field_s_flexibol_price_item_input',
-										'label' => 'Input',
-										'name'  => 's_flexibol_price_input',
-										'type'  => 'text',
-									),
-									array(
 										'key'           => 'field_s_flexibol_price_item_image_2',
 										'label'         => 'Image 2',
 										'name'          => 's_flexibol_price_image_2',
@@ -1271,12 +1265,6 @@ function s_flexibol_register_constructor_fields() {
 										'return_format' => 'array',
 										'preview_size'  => 'medium',
 										'library'       => 'all',
-									),
-									array(
-										'key'   => 'field_s_flexibol_price_item_input_2',
-										'label' => 'Input 2',
-										'name'  => 's_flexibol_price_input_2',
-										'type'  => 'text',
 									),
 									array(
 										'key'   => 'field_s_flexibol_price_item_price',
@@ -1408,6 +1396,81 @@ function s_flexibol_register_constructor_fields() {
 										'label' => 'Day',
 										'name'  => 's_flexibol_price_bb3_button_day',
 										'type'  => 'text',
+									),
+								),
+							),
+						),
+					),
+
+					// Layout: Price table 2 (items only)
+					'layout_s_flexibol_price_table_2' => array(
+						'key'     => 'layout_s_flexibol_price_table_2',
+						'name'    => 's_flexibol_price_table_2',
+						'label'   => 'Таблица цен 2',
+						'display' => 'block',
+						'sub_fields' => array(
+							array(
+								'key'   => 'field_s_flexibol_price_table_2_section_title',
+								'label' => 'Заголовок блока',
+								'name'  => 's_flexibol_price_table_2_section_title',
+								'type'  => 'text',
+							),
+							array(
+								'key'           => 'field_s_flexibol_price_table_2_background_image',
+								'label'         => 'Фотка бекграунда',
+								'name'          => 's_flexibol_price_table_2_background_image',
+								'type'          => 'image',
+								'return_format' => 'array',
+								'preview_size'  => 'medium',
+								'library'       => 'all',
+							),
+							array(
+								'key'           => 'field_s_flexibol_price_table_2_shadow_image',
+								'label'         => 'Фотка тени',
+								'name'          => 's_flexibol_price_table_2_shadow_image',
+								'type'          => 'image',
+								'return_format' => 'array',
+								'preview_size'  => 'medium',
+								'library'       => 'all',
+							),
+							array(
+								'key'   => 'field_s_flexibol_price_table_2_top_input',
+								'label' => 'Top: Input',
+								'name'  => 's_flexibol_price_table_2_top_input',
+								'type'  => 'text',
+							),
+							array(
+								'key'          => 'field_s_flexibol_price_table_2_items',
+								'label'        => 'Price items',
+								'name'         => 's_flexibol_price_table_2_items',
+								'type'         => 'repeater',
+								'layout'       => 'row',
+								'button_label' => 'Add price item',
+								'sub_fields'   => array(
+									array(
+										'key'   => 'field_s_flexibol_price_table_2_item_title',
+										'label' => 'Title',
+										'name'  => 's_flexibol_price_table_2_title',
+										'type'  => 'text',
+									),
+									array(
+										'key'   => 'field_s_flexibol_price_table_2_item_price',
+										'label' => 'Price',
+										'name'  => 's_flexibol_price_table_2_item_price',
+										'type'  => 'text',
+									),
+									array(
+										'key'   => 'field_s_flexibol_price_table_2_item_night',
+										'label' => 'Night',
+										'name'  => 's_flexibol_price_table_2_item_night',
+										'type'  => 'text',
+									),
+									array(
+										'key'   => 'field_s_flexibol_price_table_2_item_details',
+										'label' => 'Details',
+										'name'  => 's_flexibol_price_table_2_details',
+										'type'  => 'textarea',
+										'rows'  => 4,
 									),
 								),
 							),

@@ -96,6 +96,7 @@ get_header();
             's_flexibol_attractions_slider' => 'attractions_slider',
             's_flexibol_route_one_day' => 'route_one_day',
             's_flexibol_price_table'   => 'price_table',
+            's_flexibol_price_table_2' => 'price_table_2',
             's_flexibol_advice'        => 'advice',
             's_flexibol_expert'        => 'expert',
             's_flexibol_active_otd'    => 'active_otd',

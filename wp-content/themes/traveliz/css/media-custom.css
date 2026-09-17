@@ -572,6 +572,11 @@ width: 100%;
 
         display: block;
 }
+.table-price--v2 .price-row {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.6fr) minmax(140px, 0.85fr) !important;
+        height: auto !important;
+}
 .day-badge {
     background-color: #f7e9b9;
     padding: 6px 17px;
@@ -3158,6 +3163,11 @@ font-size: 16px;
         padding: 7px 9px;
         height: 117px;
     }
+    .table-price--v2 .price-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(120px, 0.8fr) !important;
+        height: auto !important;
+        row-gap: 0;
+    }
     .price-row-text-title span{
         text-align: right;
     }
@@ -4014,6 +4024,12 @@ width: 29px;
         text-align: left;
         padding: 7px 9px;
         height: auto;
+        padding-bottom: 13px;
+    }
+    .table-price--v2 .price-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(120px, 0.8fr) !important;
+        height: auto !important;
+        row-gap: 0;
         padding-bottom: 13px;
     }
         .price-row-right {

@@ -48,7 +48,7 @@ if (! function_exists('traveliz_laravel_build_flexible_rows_from_ai')) {
             }
         }
 
-        return apply_filters('traveliz_laravel_flexible_rows', $rows, $fields);
+        return apply_filters('traveliz_laravel_flexible_rows', traveliz_laravel_reorder_flexible_sibling_rows($rows), $fields);
     }
 }
 
@@ -92,6 +92,9 @@ if (! function_exists('traveliz_laravel_map_ai_section_to_acf_row')) {
         }
         if ($layout_key === 's_flexibol_price_table') {
             return traveliz_laravel_row_s_flexibol_price_table_from_data($data);
+        }
+        if ($layout_key === 's_flexibol_price_table_2') {
+            return traveliz_laravel_row_s_flexibol_price_table_2_from_data($data);
         }
         if ($layout_key === 's_flexibol_expert') {
             return traveliz_laravel_row_s_flexibol_expert_from_data($data);
@@ -155,6 +158,9 @@ if (! function_exists('traveliz_laravel_map_ai_section_to_acf_row')) {
             }
             if ($acf_layout === 's_flexibol_price_table') {
                 return traveliz_laravel_row_s_flexibol_price_table_from_data($data);
+            }
+            if ($acf_layout === 's_flexibol_price_table_2') {
+                return traveliz_laravel_row_s_flexibol_price_table_2_from_data($data);
             }
             if ($acf_layout === 's_flexibol_expert') {
                 return traveliz_laravel_row_s_flexibol_expert_from_data($data);
