@@ -805,7 +805,7 @@ width: auto;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
     .price-table-title {
         font-size: 28px;
     }
@@ -818,24 +818,21 @@ width: auto;
     }
 
     .table-price--v2 .price-row {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(110px, 0.75fr) !important;
-        column-gap: 10px;
-        row-gap: 0;
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        height: auto !important;
+        gap: 8px;
+        padding: 14px 12px !important;
     }
 
-    .table-price--v2 .price-row-left {
-        grid-column: auto;
-        grid-row: auto;
-    }
-
+    .table-price--v2 .price-row-left,
+    .table-price--v2 .price-row-details,
     .table-price--v2 .price-row-right {
-        grid-column: auto;
-        grid-row: auto;
-    }
-
-    .table-price--v2 .price-row-details {
-        grid-column: auto !important;
-        grid-row: auto;
+        width: 100%;
+        margin-top: 0;
+        text-align: start;
+        white-space: normal;
     }
     .price-row-right {
 
