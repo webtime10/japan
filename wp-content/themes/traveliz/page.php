@@ -42,7 +42,7 @@ get_header();
         alt=""
     >
     <h1>
-        <?php echo wp_kses_post( $h1_1 ); ?>
+        <?php echo esc_html( get_the_title() ); ?>
 
     </h1>
     

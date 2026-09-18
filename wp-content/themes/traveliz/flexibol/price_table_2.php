@@ -74,11 +74,6 @@ $shadow_url     = traveliz_price_table_image_url( $shadow_image );
 											<?php endif; ?>
 										</div>
 									</div>
-									<div class="price-row-details">
-										<?php if ( ! empty( $details ) ) : ?>
-											<?php echo nl2br( wp_kses_post( $details ) ); ?>
-										<?php endif; ?>
-									</div>
 									<div class="price-row-right">
 										<?php if ( ! empty( $price ) || ! empty( $night ) ) : ?>
 											<?php if ( ! empty( $price ) ) : ?>
@@ -87,6 +82,11 @@ $shadow_url     = traveliz_price_table_image_url( $shadow_image );
 											<?php if ( ! empty( $night ) ) : ?>
 												<span class="price-period">/ <?php echo wp_kses_post( $night ); ?></span>
 											<?php endif; ?>
+										<?php endif; ?>
+									</div>
+									<div class="price-row-details">
+										<?php if ( ! empty( $details ) ) : ?>
+											<?php echo nl2br( wp_kses_post( $details ) ); ?>
 										<?php endif; ?>
 									</div>
 								</div>
