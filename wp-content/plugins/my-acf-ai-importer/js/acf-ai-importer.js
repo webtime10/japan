@@ -209,7 +209,6 @@
                 repeaterMap: {
                     title: ['s_flexibol_price_table_2_title', 'title'],
                     price: ['s_flexibol_price_table_2_item_price', 'price'],
-                    night: ['s_flexibol_price_table_2_item_night', 'night', 'period'],
                     details: ['s_flexibol_price_table_2_details', 'details', 'input_2']
                 }
             }

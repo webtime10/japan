@@ -815,20 +815,18 @@ function traveliz_schema_process_row_price_table_2( array $row, $page_url, $sect
 		$n       = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_title'] ?? '' );
 		$p       = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_item_price'] ?? '' );
 		$details = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_details'] ?? '' );
-		$night   = traveliz_schema_clean_text( $it['s_flexibol_price_table_2_item_night'] ?? '' );
 		if ( $n === '' && $p === '' && $details === '' ) {
 			continue;
 		}
 		++$pos;
 		$offer_id = $page_url . '#offer2-' . $section_index . '-' . $pos;
-		$desc     = trim( implode( ' ', array_filter( array( $details, $night ) ) ) );
 		$offer    = array(
 			'@type' => 'Offer',
 			'@id'   => $offer_id,
 			'name'  => $n !== '' ? $n : 'Option',
 		);
-		if ( $desc !== '' ) {
-			$offer['description'] = $desc;
+		if ( $details !== '' ) {
+			$offer['description'] = $details;
 		}
 		if ( $p !== '' ) {
 			$offer['price'] = $p;

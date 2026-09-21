@@ -64,7 +64,6 @@ $shadow_url     = traveliz_price_table_image_url( $shadow_image );
 								$title   = get_sub_field( 's_flexibol_price_table_2_title' );
 								$details = get_sub_field( 's_flexibol_price_table_2_details' );
 								$price   = get_sub_field( 's_flexibol_price_table_2_item_price' );
-								$night   = get_sub_field( 's_flexibol_price_table_2_item_night' );
 								?>
 								<div class="price-row">
 									<div class="price-row-left">
@@ -75,13 +74,8 @@ $shadow_url     = traveliz_price_table_image_url( $shadow_image );
 										</div>
 									</div>
 									<div class="price-row-right">
-										<?php if ( ! empty( $price ) || ! empty( $night ) ) : ?>
-											<?php if ( ! empty( $price ) ) : ?>
-												<?php echo wp_kses_post( $price ); ?>
-											<?php endif; ?>
-											<?php if ( ! empty( $night ) ) : ?>
-												<span class="price-period">/ <?php echo wp_kses_post( $night ); ?></span>
-											<?php endif; ?>
+										<?php if ( ! empty( $price ) ) : ?>
+											<?php echo wp_kses_post( $price ); ?>
 										<?php endif; ?>
 									</div>
 									<div class="price-row-details">

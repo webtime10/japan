@@ -1460,12 +1460,6 @@ function s_flexibol_register_constructor_fields() {
 										'type'  => 'text',
 									),
 									array(
-										'key'   => 'field_s_flexibol_price_table_2_item_night',
-										'label' => 'Night',
-										'name'  => 's_flexibol_price_table_2_item_night',
-										'type'  => 'text',
-									),
-									array(
 										'key'   => 'field_s_flexibol_price_table_2_item_details',
 										'label' => 'Details',
 										'name'  => 's_flexibol_price_table_2_details',

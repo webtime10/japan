@@ -103,12 +103,6 @@ if (! function_exists('traveliz_laravel_price_table_2_item_row_from_data')) {
                 's_flexibol_price_item_price',
                 'price',
             ]),
-            's_flexibol_price_table_2_item_night' => traveliz_laravel_price_table_pick_scalar($item, [
-                's_flexibol_price_table_2_item_night',
-                's_flexibol_price_item_night',
-                'night',
-                'period',
-            ]),
             's_flexibol_price_table_2_details' => traveliz_laravel_price_table_pick_scalar($item, [
                 's_flexibol_price_table_2_details',
                 's_flexibol_price_details',
