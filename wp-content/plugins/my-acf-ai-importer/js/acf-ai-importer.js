@@ -419,95 +419,222 @@
             .replace(/"/g, '&quot;');
     }
 
-    var INVISIBLE_CHARS_RE = /[\uFEFF\u200B-\u200F\u202A-\u202E\u2060-\u2069]/g;
+    // Invisible / bidi / soft-hyphen / control (кроме \t \n). Не трогаем тире, …, кавычки, <p> и нормальный HTML.
+    var INVISIBLE_CHARS_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u00AD\uFEFF\u200B-\u200F\u202A-\u202E\u2060-\u2069]/g;
     var SKIP_CLEAN_KEY_RE = /(?:^|_)(url|link|email|phone|tel|href|image|photo|avatar|insta|telegram|whatsapp|yotube|viber)(?:$|_)/i;
+    var DANGEROUS_HTML_RE = /<(script|style|iframe|object|embed)\b[\s\S]*?<\/\1\s*>|<\/?(script|style|iframe|object|embed)\b[^>]*>/gi;
+    var INVISIBLE_CHAR_SHORT = {
+        '\u0000': 'NUL',
+        '\u0008': 'BS',
+        '\u000B': 'VT',
+        '\u000C': 'FF',
+        '\u001F': 'US',
+        '\u007F': 'DEL',
+        '\u00AD': 'SHY',
+        '\uFEFF': 'BOM',
+        '\u200B': 'ZWSP',
+        '\u200C': 'ZWNJ',
+        '\u200D': 'ZWJ',
+        '\u200E': 'LRM',
+        '\u200F': 'RLM',
+        '\u202A': 'LRE',
+        '\u202B': 'RLE',
+        '\u202C': 'PDF',
+        '\u202D': 'LRO',
+        '\u202E': 'RLO',
+        '\u2060': 'WJ',
+        '\u2066': 'LRI',
+        '\u2067': 'RLI',
+        '\u2068': 'FSI',
+        '\u2069': 'PDI'
+    };
 
     function shouldSkipCleanValue(key) {
         return !!key && SKIP_CLEAN_KEY_RE.test(String(key));
     }
 
-    function decodeHtmlEntities(str) {
-        var ta = document.createElement('textarea');
-        ta.innerHTML = str;
-        return ta.value;
+    function hexCodePoint(ch) {
+        var cp = ch.codePointAt(0);
+        var hex = cp.toString(16).toUpperCase();
+        while (hex.length < 4) {
+            hex = '0' + hex;
+        }
+        return 'U+' + hex;
     }
 
-    function stripLiteralEntities(str) {
-        return str
-            .replace(/&rlm;/gi, '')
-            .replace(/&amp;rlm;/gi, '')
-            .replace(/&#0*8207;/gi, '')
-            .replace(/&#x200f;/gi, '')
-            .replace(/&#0*xfeff;/gi, '')
-            .replace(/&nbsp;/gi, ' ');
+    function shortInvisibleName(ch) {
+        return INVISIBLE_CHAR_SHORT[ch] || hexCodePoint(ch);
     }
 
-    function stripAccidentalHtml(str) {
-        return str
-            .replace(/<br\s*\/?>/gi, '\n')
-            .replace(/<\/?(p|div|span|bdi|strong|em|b|i)\b[^>]*>/gi, '')
-            .replace(/<[^>]+>/g, '');
-    }
-
-    function normalizeCleanWhitespace(str) {
-        return str
+    function snippetForAlert(str, maxLen) {
+        maxLen = maxLen || 50;
+        var s = String(str || '')
             .replace(/\r\n/g, '\n')
             .replace(/\r/g, '\n')
-            .replace(/[ \t]+\n/g, '\n')
-            .replace(/\n{3,}/g, '\n\n')
-            .replace(/[ \t]{2,}/g, ' ')
-            .trim();
+            .replace(/\n/g, '↵');
+        if (s.length <= maxLen) {
+            return s;
+        }
+        return s.slice(0, maxLen - 1) + '…';
     }
 
-    function countInvisibleChars(str) {
-        var n = 0;
-        var m = str.match(INVISIBLE_CHARS_RE);
-        if (m) n += m.length;
-        return n;
+    function countMatches(str, re) {
+        var m = str.match(re);
+        return m ? m.length : 0;
+    }
+
+    function createCleanCategory() {
+        return { count: 0, parts: {}, paths: [] };
+    }
+
+    function createCleanStats() {
+        return {
+            fieldsChanged: 0,
+            charsRemoved: 0,
+            categories: {
+                invisible: createCleanCategory(),
+                entities: createCleanCategory(),
+                dangerousHtml: createCleanCategory(),
+                whitespace: createCleanCategory(),
+                rawWrap: createCleanCategory()
+            }
+        };
+    }
+
+    function addCleanHit(cat, label, n, path) {
+        if (!cat || !n) {
+            return;
+        }
+        cat.count += n;
+        cat.parts[label] = (cat.parts[label] || 0) + n;
+        if (path && cat.paths.indexOf(path) === -1) {
+            cat.paths.push(path);
+        }
+    }
+
+    function formatCategoryParts(cat) {
+        return Object.keys(cat.parts).map(function (label) {
+            return label + ' ×' + cat.parts[label];
+        }).join(', ');
+    }
+
+    function formatCategoryPaths(cat, maxPaths) {
+        maxPaths = maxPaths || 3;
+        if (!cat.paths.length) {
+            return '';
+        }
+        var shown = cat.paths.slice(0, maxPaths);
+        var extra = cat.paths.length - shown.length;
+        return shown.join(', ') + (extra > 0 ? ' +' + extra : '');
+    }
+
+    function summarizeInvisibleChars(str) {
+        var counts = {};
+        var total = 0;
+        String(str || '').replace(INVISIBLE_CHARS_RE, function (ch) {
+            var label = shortInvisibleName(ch);
+            counts[label] = (counts[label] || 0) + 1;
+            total += 1;
+            return '';
+        });
+        return { total: total, counts: counts };
+    }
+
+    function stripJunkEntities(str, hits) {
+        var value = str;
+        var entitySpecs = [
+            { re: /&rlm;/gi, label: '&rlm;' },
+            { re: /&amp;rlm;/gi, label: '&amp;rlm;' },
+            { re: /&#0*8207;/gi, label: '&#8207;' },
+            { re: /&#x0*200f;/gi, label: '&#x200f;' },
+            { re: /&#0*65279;/gi, label: '&#65279;' },
+            { re: /&#x0*feff;/gi, label: '&#xfeff;' }
+        ];
+        entitySpecs.forEach(function (spec) {
+            var n = countMatches(value, spec.re);
+            if (n > 0) {
+                value = value.replace(spec.re, '');
+                hits.push({ cat: 'entities', label: spec.label, n: n });
+            }
+        });
+        var nbspCount = countMatches(value, /&nbsp;/gi);
+        if (nbspCount > 0) {
+            value = value.replace(/&nbsp;/gi, ' ');
+            hits.push({ cat: 'entities', label: '&nbsp;→пробел', n: nbspCount });
+        }
+        return value;
+    }
+
+    function stripDangerousHtml(str, hits) {
+        var value = str;
+        var n = countMatches(value, DANGEROUS_HTML_RE);
+        if (n > 0) {
+            value = value.replace(DANGEROUS_HTML_RE, '');
+            hits.push({ cat: 'dangerousHtml', label: 'script/style/iframe', n: n });
+        }
+        var attrN = 0;
+        value = value.replace(/\s+on[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, function () {
+            attrN += 1;
+            return '';
+        });
+        if (attrN > 0) {
+            hits.push({ cat: 'dangerousHtml', label: 'on*=', n: attrN });
+        }
+        return value;
+    }
+
+    function normalizeSafeWhitespace(str, hits) {
+        var value = str;
+        if (/\r/.test(value)) {
+            value = value.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+            hits.push({ cat: 'whitespace', label: 'CR→LF', n: 1 });
+        }
+        if (/[ \t]+\n/.test(value)) {
+            value = value.replace(/[ \t]+\n/g, '\n');
+            hits.push({ cat: 'whitespace', label: 'хвост строк', n: 1 });
+        }
+        if (/\n{3,}/.test(value)) {
+            value = value.replace(/\n{3,}/g, '\n\n');
+            hits.push({ cat: 'whitespace', label: 'лишние \\n', n: 1 });
+        }
+        var trimmed = value.replace(/^\s+/, '').replace(/\s+$/, '');
+        if (trimmed !== value) {
+            hits.push({ cat: 'whitespace', label: 'края поля', n: 1 });
+            value = trimmed;
+        }
+        return value;
     }
 
     function cleanTextValue(str, key) {
         if (typeof str !== 'string' || str === '') {
-            return { value: str, changed: false, removed: 0, issues: [] };
+            return { value: str, changed: false, removed: 0, hits: [] };
         }
         if (shouldSkipCleanValue(key)) {
-            return { value: str, changed: false, removed: 0, issues: [] };
+            return { value: str, changed: false, removed: 0, hits: [] };
         }
 
         var original = str;
-        var issues = [];
-        var removed = countInvisibleChars(str);
+        var hits = [];
+        var value = str;
 
-        if (removed > 0) {
-            issues.push('невидимые символы (' + removed + ')');
-        }
-        if (/&rlm;|&amp;rlm;|&#0*8207;|&#x200f;|&#0*xfeff;|&nbsp;/i.test(original)) {
-            issues.push('HTML-сущности');
-        }
-        if (/<[a-z][\s\S]*?>/i.test(original)) {
-            issues.push('HTML-теги');
-        }
-        if (/[\u201C\u201D\u2018\u2019]/.test(original)) {
-            issues.push('«умные» кавычки');
-        }
-        if (/\r|\n{3,}|[ \t]{2,}/.test(original)) {
-            issues.push('лишние пробелы/переносы');
+        var invisible = summarizeInvisibleChars(value);
+        if (invisible.total > 0) {
+            value = value.replace(INVISIBLE_CHARS_RE, '');
+            Object.keys(invisible.counts).forEach(function (label) {
+                hits.push({ cat: 'invisible', label: label, n: invisible.counts[label] });
+            });
         }
 
-        var value = decodeHtmlEntities(str);
-        value = stripLiteralEntities(value);
-        value = value.replace(INVISIBLE_CHARS_RE, '');
-        value = value.replace(/[\u201C\u201D]/g, '"').replace(/[\u2018\u2019]/g, "'");
-        value = stripAccidentalHtml(value);
-        value = normalizeCleanWhitespace(value);
+        value = stripJunkEntities(value, hits);
+        value = stripDangerousHtml(value, hits);
+        value = normalizeSafeWhitespace(value, hits);
 
-        removed += Math.max(0, original.length - value.length);
-
+        var changed = value !== original;
         return {
             value: value,
-            changed: value !== original,
-            removed: removed,
-            issues: issues
+            changed: changed,
+            removed: changed ? Math.max(0, original.length - value.length) : 0,
+            hits: hits
         };
     }
 
@@ -528,19 +655,10 @@
             var cleaned = cleanTextValue(node, key);
             if (cleaned.changed) {
                 stats.fieldsChanged += 1;
-                stats.details.push({
-                    path: currentPath,
-                    issues: cleaned.issues,
-                    removed: cleaned.removed
+                stats.charsRemoved += cleaned.removed;
+                cleaned.hits.forEach(function (hit) {
+                    addCleanHit(stats.categories[hit.cat], hit.label, hit.n, currentPath || '(корень)');
                 });
-            }
-            stats.charsRemoved += cleaned.removed;
-            stats.invisibleRemoved += countInvisibleChars(node);
-            if (/&rlm;|&amp;rlm;|&#0*8207;/i.test(node)) {
-                stats.entitiesFound += 1;
-            }
-            if (/<[a-z]/i.test(node)) {
-                stats.htmlFound += 1;
             }
             return cleaned.value;
         }
@@ -559,47 +677,51 @@
         return node;
     }
 
-    function createCleanStats() {
-        return {
-            fieldsChanged: 0,
-            charsRemoved: 0,
-            invisibleRemoved: 0,
-            entitiesFound: 0,
-            htmlFound: 0,
-            rawIssues: [],
-            details: []
-        };
-    }
-
     function cleanRawJsonText(raw, stats) {
-        var text = String(raw || '').trim();
-        var original = text;
+        var text = String(raw || '');
+        var leadingTrim = text.replace(/^\s+/, '');
+        if (leadingTrim !== text) {
+            addCleanHit(stats.categories.rawWrap, 'пробелы в начале', 1, '');
+            text = leadingTrim;
+        }
+        var trailingTrim = text.replace(/\s+$/, '');
+        if (trailingTrim !== text) {
+            addCleanHit(stats.categories.rawWrap, 'пробелы в конце', 1, '');
+            text = trailingTrim;
+        }
 
         if (/^\uFEFF/.test(text)) {
-            text = text.replace(/^\uFEFF+/, '');
-            stats.rawIssues.push('BOM в начале файла');
+            var bomCount = 0;
+            text = text.replace(/^\uFEFF+/, function (m) {
+                bomCount = m.length;
+                return '';
+            });
+            addCleanHit(stats.categories.rawWrap, 'BOM', bomCount, '');
         }
 
         var fenced = text.match(/^```(?:json)?\s*([\s\S]*?)```\s*$/i);
         if (fenced) {
-            text = fenced[1].trim();
-            stats.rawIssues.push('обёртка ```json ... ```');
+            text = fenced[1].replace(/^\s+/, '').replace(/\s+$/, '');
+            addCleanHit(stats.categories.rawWrap, '```json', 1, '');
         }
 
         var firstBrace = text.indexOf('{');
         var lastBrace = text.lastIndexOf('}');
-        if (firstBrace > 0 || (lastBrace >= 0 && lastBrace < text.length - 1)) {
-            if (firstBrace >= 0 && lastBrace > firstBrace) {
+        if (firstBrace >= 0 && lastBrace > firstBrace) {
+            var before = text.slice(0, firstBrace);
+            var after = text.slice(lastBrace + 1);
+            if (before.trim() !== '' || after.trim() !== '') {
                 var trimmed = text.slice(firstBrace, lastBrace + 1);
-                if (trimmed !== text) {
-                    stats.rawIssues.push('лишний текст вокруг JSON');
-                    text = trimmed;
+                var detail = 'текст вокруг';
+                if (before.trim()) {
+                    detail += ' до: «' + snippetForAlert(before.trim(), 30) + '»';
                 }
+                if (after.trim()) {
+                    detail += ' после: «' + snippetForAlert(after.trim(), 30) + '»';
+                }
+                addCleanHit(stats.categories.rawWrap, detail, 1, '');
+                text = trimmed;
             }
-        }
-
-        if (text !== original && stats.rawIssues.length === 0) {
-            stats.rawIssues.push('нормализация пробелов вокруг JSON');
         }
 
         return text;
@@ -607,40 +729,37 @@
 
     function formatCleanAlertMessage(result) {
         var stats = result.stats;
-        var lines = ['Чистка JSON завершена', ''];
+        var cats = stats.categories;
+        var lines = [];
 
-        if (stats.rawIssues.length) {
-            lines.push('До разбора:');
-            stats.rawIssues.forEach(function (issue) {
-                lines.push('• ' + issue);
-            });
-            lines.push('');
-        }
-
-        lines.push('Итого:');
-        lines.push('• изменено полей: ' + stats.fieldsChanged);
-        lines.push('• убрано символов: ' + stats.charsRemoved);
-        lines.push('• невидимых символов: ' + stats.invisibleRemoved);
-        lines.push('• полей с HTML-сущностями: ' + stats.entitiesFound);
-        lines.push('• полей с HTML-тегами: ' + stats.htmlFound);
-
-        if (stats.details.length) {
-            lines.push('');
-            lines.push('Изменённые поля (до ' + Math.min(stats.details.length, 12) + '):');
-            stats.details.slice(0, 12).forEach(function (item) {
-                var issueText = item.issues.length ? item.issues.join(', ') : 'нормализация';
-                lines.push('• ' + item.path + ' — ' + issueText);
-            });
-            if (stats.details.length > 12) {
-                lines.push('• … и ещё ' + (stats.details.length - 12) + ' полей');
+        function pushCat(title, cat) {
+            if (!cat || cat.count <= 0) {
+                lines.push('Чистка на ' + title + ': 0');
+                return;
             }
-        } else if (!stats.rawIssues.length) {
-            lines.push('');
-            lines.push('Мусор не найден — JSON уже чистый.');
+            var line = 'Чистка на ' + title + ': ' + cat.count;
+            var parts = formatCategoryParts(cat);
+            if (parts) {
+                line += ' — найдено: ' + parts;
+            }
+            var paths = formatCategoryPaths(cat);
+            if (paths) {
+                line += ' (' + paths + ')';
+            }
+            lines.push(line);
         }
 
-        lines.push('');
-        lines.push('Нажмите OK, затем «Запустить импорт».');
+        pushCat('невидимые символы (RLM, LRM, BOM, ZWSP, ZWNJ, SHY, bidi-controls)', cats.invisible);
+        pushCat('сущности (&rlm;, &#8207;, &#xfeff;, &nbsp;→пробел)', cats.entities);
+        pushCat('опасный HTML (script, style, iframe, object, embed, on*=)', cats.dangerousHtml);
+        pushCat('обёртку JSON (```json, BOM файла, текст вокруг {}, края вставки)', cats.rawWrap);
+        pushCat('пробелы', cats.whitespace);
+
+        if (stats.fieldsChanged > 0) {
+            lines.push('Полей изменено: ' + stats.fieldsChanged + (stats.charsRemoved ? ' (−' + stats.charsRemoved + ' симв.)' : ''));
+        }
+
+        lines.push('«Запустить импорт»');
 
         return lines.join('\n');
     }
