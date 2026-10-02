@@ -1,0 +1,34 @@
+# ==============================================================================
+# КАСТОМНАЯ ЗАЩИТА ОТ БОТОВ И СКА
+# ==============================================================================
+
+# 1. Запрет доступа к служебным файлам
+<FilesMatch "^(wp-config\.php|xmlrpc\.php)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 2. Блокировка плохих ботов и автоматических сканеров по User-Agent
+RewriteCond %{HTTP_USER_AGENT} (binlar|casper|cmsworldmap|comodo|diavol|dotbot|ezooms|fiddler|geonode|getright|gigabot|harvest|httrack|kingfisher|grabber|libwww-perl|mag-agent|extract|miner|nikto|nmap|NPbot|offline|omgilibot|piranha|purebot|python|rogue|sindex|spbot|sqlmap|teleport|turnit|urllib|webbanditz|webcopier|webreaper|websitestripper|winhttp|zermelo|zeus|zmeu) [NC]
+RewriteRule ^ - [F,L]
+
+# 3. Блокировка прямых POST-запросов на вход и комментарии (без Referer)
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} ^(.*)?(wp-login\.php|wp-comments-post\.php)(.*)$ [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(.*)?japan-trip\.co\.il [NC]
+RewriteRule ^ - [F,L]
+</IfModule>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

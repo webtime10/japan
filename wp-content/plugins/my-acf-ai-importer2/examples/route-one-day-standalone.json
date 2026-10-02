@@ -1,0 +1,63 @@
+{
+  "sections": [
+    {
+      "layout": "route_one_day",
+      "data": {
+        "section_title": "One Day Adventure in Zurich",
+        "days": [
+          {
+            "badge": "Day 1",
+            "subtitle": "Exploring the Charm of Zurich",
+            "timeline": [
+              {
+                "time": "08:00",
+                "text": "Start your morning at Kroptock Cafe Bar, savoring delectable flaky pastries alongside a cup of rich, aromatic coffee."
+              },
+              {
+                "time": "09:30",
+                "text": "Next, make your way to the Museum Rietberg, an elegant villa housing exquisite collections of non-European art."
+              },
+              {
+                "time": "11:00",
+                "text": "Embark on a scenic cruise across Lake Zurich, enjoying breathtaking views of the city skyline and surrounding mountains."
+              },
+              {
+                "time": "12:30",
+                "text": "Stroll through the winding cobblestone streets of Zurich's Old Town (Altstadt), discovering its delightful hidden gems."
+              },
+              {
+                "time": "13:00",
+                "text": "Enjoy lunch at the Raclette Factory, where you can indulge in delectable melted Swiss cheese served with hearty potatoes."
+              },
+              {
+                "time": "14:30",
+                "text": "Head to Grossmünster Church and climb its tower for stunning panoramic views overlooking the entire city of Zurich."
+              },
+              {
+                "time": "16:00",
+                "text": "Take a leisurely wander along Lindenhof Hill, soaking in the scenic beauty and relaxing in its tranquil park setting."
+              },
+              {
+                "time": "17:00",
+                "text": "Immerse yourself in the lively atmosphere of Bahnhofstrasse, exploring the vibrant shops on Zurich's renowned shopping avenue."
+              },
+              {
+                "time": "19:00",
+                "text": "Enjoy dinner at a local eatery in Niederdorf, savoring the authentic flavors of traditional Swiss cuisine."
+              },
+              {
+                "time": "21:00",
+                "text": "Cap off your evening with refreshing cocktails at one of Zurich's inviting bars located in the bustling nightlife district."
+              }
+            ],
+            "photos": [
+              { "photo": null },
+              { "photo": null },
+              { "photo": null }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+# Translation of Plugins - All in One SEO – AI SEO Plugin to Boost SEO Rankings &amp; Traffic (Schema, Local SEO, Sitemap &amp; SEO Insights) - Stable (latest release) in Afrikaans
+# This file is distributed under the same license as the Plugins - All in One SEO – AI SEO Plugin to Boost SEO Rankings &amp; Traffic (Schema, Local SEO, Sitemap &amp; SEO Insights) - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-11-11 14:13:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: af_ZA\n"
+"Project-Id-Version: Plugins - All in One SEO – AI SEO Plugin to Boost SEO Rankings &amp; Traffic (Schema, Local SEO, Sitemap &amp; SEO Insights) - Stable (latest release)\n"
+
+#: app/Common/Tools/SystemStatus.php:98
+msgid "Search Engine Visibility"
+msgstr "Soek-enjin sigbaarheid"
+
+#: app/Common/Tools/SystemStatus.php:58
+msgid "Site Language"
+msgstr "Webwerf taal"
+
+#: languages/aioseo-lite.php:8476
+msgid "SEO for Categories, Tags and Custom Taxonomies"
+msgstr "SEO vir kategorië, sleutelwoorde en unieke taksonomieë"
+
+#: languages/aioseo-lite.php:9103
+msgid "Subscribe"
+msgstr "Inteken"
+
+#: languages/aioseo-lite.php:8491
+msgid "SEO News"
+msgstr "SEO Nuus"
+
+#: languages/aioseo-lite.php:2583
+msgid "Credits"
+msgstr "Krediete"
+
+#: languages/aioseo-lite.php:10516
+msgid "Translate"
+msgstr "Vertaal"
+
+#: languages/aioseo-lite.php:10804
+msgid "Upgrade"
+msgstr "Opgradeer "
+
+#: languages/aioseo-lite.php:1229
+msgid "Analyze"
+msgstr "Analiseer"
+
+#: languages/aioseo-lite.php:4779
+msgid "Image SEO"
+msgstr "Foto SEO"
+
+#. Translators: This is an action link users can click to purchase a license
+#. for All in One SEO Pro.
+#: app/Lite/Admin/Admin.php:51 app/Lite/Admin/Admin.php:77
+#: app/Lite/Main/Filters.php:76 languages/aioseo-lite.php:10844
+msgid "Upgrade to Pro"
+msgstr "Gradeer op na Pro"
+
+#. Translators: This is an action link users can click to open our general
+#. documentation page.
+#: app/Lite/Main/Filters.php:71
+msgid "Documentation"
+msgstr "Dokumentasie"
+
+#. Translators: This is an action link users can click to open the General
+#. Settings menu.
+#: app/Common/Admin/Admin.php:664 app/Lite/Main/Filters.php:61
+#: languages/aioseo-lite.php:8516
+msgid "SEO Settings"
+msgstr "SEO Instellings"
+
+#: languages/aioseo-lite.php:3629
+msgid "Facebook Admin ID"
+msgstr "Facebook Admin ID"
+
+#: languages/aioseo-lite.php:3632
+msgid "Facebook App ID"
+msgstr "Facebook Program ID"
+
+#: languages/aioseo-lite.php:3372
+msgid "Enable Sitemap Indexes"
+msgstr "Skakel Werfkaart Indekse aan"
+
+#: app/Common/Views/sitemap/html/widget-options.php:74
+#: languages/aioseo-lite.php:7406
+msgid "Post Types"
+msgstr "Plasing Tipes"
+
+#: app/Common/Views/sitemap/html/widget-options.php:97
+#: languages/aioseo-lite.php:9211
+msgid "Taxonomies"
+msgstr "Taksonomieë"
+
+#: languages/aioseo-lite.php:7079
+msgid "Page URL"
+msgstr "Bladsy URL"
+
+#: languages/aioseo-lite.php:5555
+msgid "Last Modified"
+msgstr "Laaste verander"
+
+#: app/Common/Sitemap/Xsl.php:49 languages/aioseo-lite.php:850
+msgid "Additional Pages"
+msgstr "Bykomende Bladsye"
+
+#: languages/aioseo-lite.php:816
+msgid "Add URL"
+msgstr "Voeg URL by"
+
+#: app/Common/SearchStatistics/IndexStatus.php:282
+msgid "All Post Types"
+msgstr "Alle Plasing Tipes"
+
+#: app/Common/Tools/SystemStatus.php:74
+msgid "Site URL"
+msgstr "Webwerf URL"
+
+#: languages/aioseo-lite.php:3939
+msgid "Front Page"
+msgstr "Voorblad"
+
+#: languages/aioseo-lite.php:670
+msgid "Activity"
+msgstr "Aktiwiteit"
+
+#: languages/aioseo-lite.php:8081
+msgid "Save"
+msgstr "Stoor"
+
+#: app/Common/Tools/SystemStatus.php:70
+msgid "Home URL"
+msgstr "Tuis URL"
+
+#: app/Common/Tools/SystemStatus.php:82
+msgid "Multisite"
+msgstr "Multiwerf"
+
+#: app/Common/Tools/SystemStatus.php:319 languages/aioseo-lite.php:664
+msgid "Active Theme"
+msgstr "Aktiewe Tema"
+
+#: languages/aioseo-lite.php:9079
+#: dist/Lite/assets/link-format/link-format-block.js:2
+msgid "Submit"
+msgstr "Dien in"
+
+#: languages/aioseo-lite.php:11016
+msgid "User Agent"
+msgstr "Gebruiker Agent"
+
+#: languages/aioseo-lite.php:790
+msgid "Add Rule"
+msgstr "Voeg Reël by"
+
+#: languages/aioseo-lite.php:6909
+msgid "Optimize"
+msgstr "Optimaliseer"
+
+#: languages/aioseo-lite.php:11668
+msgid "XML Sitemap"
+msgstr "XML Werfkaart"
+
+#: languages/aioseo-lite.php:1112
+msgid "Allows you to specify the maximum number of posts in a sitemap (up to 50,000)."
+msgstr "Laat jou toe om die maksimum aantal poste op 'n werfkaart (tot 50,000) te spesifiseer."
+
+#: languages/aioseo-lite.php:8389
+msgid "Select which Post Types appear in your sitemap."
+msgstr "Selekteer watter Pos Tipes in jou werfkaart verskyn."
+
+#: languages/aioseo-lite.php:4994
+msgid "Include Date Archives in your sitemap."
+msgstr "Sluit Datum Argiewe by jou werfkaart in."
+
+#: languages/aioseo-lite.php:4990
+msgid "Include Author Archives in your sitemap."
+msgstr "Sluit Outeur Argiewe by jou werfkaart in."
+
+#: languages/aioseo-lite.php:922
+msgid "Advanced Settings"
+msgstr "Gevorderde Instellings"
+
+#: languages/aioseo-lite.php:11168
+msgid "View the Changelog"
+msgstr "Besigtig die Changelog"
+
+#: languages/aioseo-lite.php:11209
+msgid "Watch video tutorials"
+msgstr "Kyk die video tutoriale"
+
+#: languages/aioseo-lite.php:4199
+msgid "Getting started? Read the Beginners Guide"
+msgstr "Begin jy? Lees die Beginners Gids"
+
+#: languages/aioseo-lite.php:4283
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+#: app/Common/Admin/Admin.php:466 app/Common/Admin/SiteHealth.php:91
+msgid "SEO"
+msgstr "SEO"
+
+#: app/Common/Admin/Admin.php:646
+msgid "Edit SEO"
+msgstr "Wysig SEO"
+
+#. Plugin Name of the plugin
+#: all_in_one_seo_pack.php
+msgid "All in One SEO"
+msgstr "Alles in Een SEO"
+
+#. Translators: This is an action link users can click to open our premium
+#. support.
+#: app/Lite/Main/Filters.php:66 languages/aioseo-lite.php:9164
+msgid "Support"
+msgstr "Ondersteun"
+
+#: app/Common/Tools/SystemStatus.php:50 languages/aioseo-lite.php:11066
+msgid "Version"
+msgstr "Weergawe"
+
+#: app/Common/Admin/Admin.php:268 languages/aioseo-lite.php:3729
+msgid "Feature Manager"
+msgstr "Funksiebestuurder"
+
+#: languages/aioseo-lite.php:8007
+msgid "Robots.txt"
+msgstr "Robots.txt"
+
+#: languages/aioseo-lite.php:11096
+msgid "Video Sitemap"
+msgstr "Video Werfkaart"
+
+#: languages/aioseo-lite.php:3193
+msgid "Edit .htaccess"
+msgstr "Redigeer .hraccess"
+
+#: languages/aioseo-lite.php:3190
+#: dist/Lite/assets/link-format/link-format-block.js:2
+msgid "Edit"
+msgstr "Redigeer"
+
+#: app/Common/SearchStatistics/IndexStatus.php:286
+#: app/Common/Views/report/summary.php:171
+#: app/Common/Views/report/summary.php:268
+#: app/Common/Views/report/summary.php:638
+#: app/Common/Views/report/summary.php:779 languages/aioseo-lite.php:7351
+msgid "Post"
+msgstr "Plasing"
+
+#: languages/aioseo-lite.php:1957
+msgid "Cancel"
+msgstr "Kanselleer"
+
+#: app/Common/Tools/SystemStatus.php:83 app/Common/Tools/SystemStatus.php:87
+#: app/Common/Tools/SystemStatus.php:294 app/Common/Tools/SystemStatus.php:298
+#: app/Common/Tools/SystemStatus.php:302 languages/aioseo-lite.php:6320
+msgid "No"
+msgstr "Nee"
+
+#: languages/aioseo-lite.php:3626
+msgid "Facebook"
+msgstr "Facebook"
+
+#: languages/aioseo-lite.php:4827
+msgid "Import"
+msgstr "Voer in"
+
+#: languages/aioseo-lite.php:3605
+msgid "Export Settings"
+msgstr "Voer Instellings uit"
+
+#: languages/aioseo-lite.php:10785
+msgid "Update Options"
+msgstr "Opdateer Opsies"
+
+#: languages/aioseo-lite.php:8963
+msgid "Sport"
+msgstr "Sport"
+
+#: languages/aioseo-lite.php:1633
+msgid "Bar"
+msgstr "Balk"
+
+#: languages/aioseo-lite.php:2215
+msgid "Company"
+msgstr "Maatskappy"
+
+#: languages/aioseo-lite.php:1938
+msgid "Cafe"
+msgstr "Kafee"
+
+#: languages/aioseo-lite.php:4616
+msgid "Hotel"
+msgstr "Hotel"
+
+#: languages/aioseo-lite.php:7942
+msgid "Restaurant"
+msgstr "Restaurant"
+
+#: languages/aioseo-lite.php:1991
+msgid "Cause"
+msgstr "Rede"
+
+#: languages/aioseo-lite.php:8972
+msgid "Sports League"
+msgstr "Sport Liga"
+
+#: languages/aioseo-lite.php:8975
+msgid "Sports Team"
+msgstr "Sportspan"
+
+#: languages/aioseo-lite.php:1630
+msgid "Band"
+msgstr "Orkes"
+
+#: languages/aioseo-lite.php:10667
+msgid "University"
+msgstr "Universiteit"
+
+#: languages/aioseo-lite.php:8157
+msgid "School"
+msgstr "Skool"
+
+#: languages/aioseo-lite.php:673
+msgid "Actor"
+msgstr "Akteur"
+
+#: languages/aioseo-lite.php:1476
+msgid "Athlete"
+msgstr "Atleet"
+
+#: app/Common/Sitemap/Xsl.php:57 languages/aioseo-lite.php:1504
+msgid "Author"
+msgstr "Skrywer"
+
+#: languages/aioseo-lite.php:2953
+msgid "Director"
+msgstr "Direkteur"
+
+#: languages/aioseo-lite.php:6179
+msgid "Musician"
+msgstr "Musikant"
+
+#: languages/aioseo-lite.php:7310
+msgid "Politician"
+msgstr "Politikus"
+
+#: languages/aioseo-lite.php:7555
+msgid "Profile"
+msgstr "Profiel"
+
+#: languages/aioseo-lite.php:7574
+msgid "Public Figure"
+msgstr "Openbare Figuur"
+
+#: languages/aioseo-lite.php:2090
+msgid "City"
+msgstr "Stad"
+
+#: languages/aioseo-lite.php:2536
+msgid "Country"
+msgstr "Land"
+
+#: languages/aioseo-lite.php:5509
+msgid "Landmark"
+msgstr "Landmerk"
+
+#: languages/aioseo-lite.php:986
+msgid "Album"
+msgstr "Album"
+
+#: languages/aioseo-lite.php:1783
+msgid "Book"
+msgstr "Boek"
+
+#: languages/aioseo-lite.php:3107
+msgid "Drink"
+msgstr "Drink"
+
+#: languages/aioseo-lite.php:3841
+msgid "Food"
+msgstr "Kos"
+
+#: languages/aioseo-lite.php:3964
+msgid "Game"
+msgstr "Spel"
+
+#: languages/aioseo-lite.php:6153
+msgid "Movie"
+msgstr "Film"
+
+#: app/Common/Main/Updates.php:926 languages/aioseo-lite.php:7527
+msgid "Product"
+msgstr "Produk"
+
+#: languages/aioseo-lite.php:8910
+msgid "Song"
+msgstr "Lied"
+
+#: languages/aioseo-lite.php:10591
+msgid "TV Show"
+msgstr "Televisieprogram"
+
+#: languages/aioseo-lite.php:3509
+msgid "Episode"
+msgstr "Episode"
+
+#: app/Common/Main/Updates.php:884 languages/aioseo-lite.php:1421
+msgid "Article"
+msgstr "Artikel"
+
+#: languages/aioseo-lite.php:1769
+msgid "Blog"
+msgstr "Blog"
+
+#: languages/aioseo-lite.php:11333
+msgid "Website"
+msgstr "Webtuiste"
+
+#: languages/aioseo-lite.php:8772
+msgid "Site Name"
+msgstr "Werf Naam"
+
+#: app/Common/Utils/Tags.php:536 languages/aioseo-lite.php:3732
+msgid "Featured Image"
+msgstr "Getoonde Foto"
+
+#: languages/aioseo-lite.php:7354
+msgid "Post Author Image"
+msgstr "Pos Skrywer Foto"
+
+#: languages/aioseo-lite.php:3797
+msgid "First Available Image"
+msgstr "Eerste Beskikbare Foto"
+
+#: languages/aioseo-lite.php:4749
+msgid "Image"
+msgstr "Foto"
+
+#: languages/aioseo-lite.php:2632
+msgid "Custom Image"
+msgstr "Standaard Foto"
+
+#: languages/aioseo-lite.php:9147
+msgid "Summary"
+msgstr "Opsomming"
+
+#: languages/aioseo-lite.php:1569
+msgid "Automatically Generate Article Tags"
+msgstr "Outomaties Gegenereerde Artikel Merke"
+
+#: languages/aioseo-lite.php:1424
+msgid "Article Section"
+msgstr "Artikel Afdeling"
+
+#: languages/aioseo-lite.php:1427
+msgid "Article Tags"
+msgstr "Artikel Merke"
+
+#: languages/aioseo-lite.php:7190
+msgid "Person"
+msgstr "Persoon"
+
+#: languages/aioseo-lite.php:6964
+msgid "Organization"
+msgstr "Organisasie"
+
+#: languages/aioseo-lite.php:6696
+msgid "Object Type"
+msgstr "Objek Tipe"
+
+#: languages/aioseo-lite.php:9179
+msgid "System Status"
+msgstr "Systeem Status"
+
+#: app/Common/Tools/SystemStatus.php:170 app/Common/Tools/SystemStatus.php:174
+#: app/Common/Tools/SystemStatus.php:178 app/Common/Tools/SystemStatus.php:182
+#: app/Common/Tools/SystemStatus.php:186 app/Common/Tools/SystemStatus.php:190
+#: app/Common/Tools/SystemStatus.php:194 app/Common/Tools/SystemStatus.php:198
+#: app/Common/Tools/SystemStatus.php:202 app/Common/Tools/SystemStatus.php:206
+#: app/Common/Tools/SystemStatus.php:210 app/Common/Tools/SystemStatus.php:214
+#: app/Common/Tools/SystemStatus.php:218
+msgid "Not set"
+msgstr "Nie ingestel nie"
+
+#: languages/aioseo-lite.php:6718
+msgid "On"
+msgstr "Aan"
+
+#: languages/aioseo-lite.php:6708
+msgid "Off"
+msgstr "Af"
+
+#: app/Common/EmailReports/Summary/Content.php:556
+#: app/Common/EmailReports/Summary/Content.php:582
+#: app/Common/Tools/SystemStatus.php:258 languages/aioseo-lite.php:6192
+msgid "N/A"
+msgstr "NVT"
+
+#: app/Common/Tools/SystemStatus.php:249
+msgid "Operating System"
+msgstr "Bedryfstelsel"
+
+#: languages/aioseo-lite.php:8579
+msgid "Server"
+msgstr "Bediener"
+
+#: app/Common/Tools/SystemStatus.php:269
+msgid "SQL Mode"
+msgstr "SQL Modus"
+
+#: app/Common/Tools/SystemStatus.php:273
+msgid "PHP Version"
+msgstr "PHP Weergawe"
+
+#: app/Common/Tools/SystemStatus.php:277
+msgid "PHP Memory Limit"
+msgstr "PHP Geheuelimiet"
+
+#: app/Common/Tools/SystemStatus.php:281
+msgid "PHP Max Upload Size"
+msgstr "PHP Maksimum Oplaaigrootte"
+
+#: app/Common/Tools/SystemStatus.php:285
+msgid "PHP Max Post Size"
+msgstr "PHP Maksimum Plasingsgrootte"
+
+#: app/Common/Tools/SystemStatus.php:83 app/Common/Tools/SystemStatus.php:87
+#: app/Common/Tools/SystemStatus.php:294 app/Common/Tools/SystemStatus.php:298
+#: app/Common/Tools/SystemStatus.php:302 languages/aioseo-lite.php:11692
+msgid "Yes"
+msgstr "Ja"
+
+#: app/Common/Utils/Tags.php:531 languages/aioseo-lite.php:2915
+msgid "Description"
+msgstr "Beskrywing"
+
+#: languages/aioseo-lite.php:3399
+msgid "Enabled"
+msgstr "Aangeskakel"
+
+#: app/Common/Tools/SystemStatus.php:170 app/Common/Tools/SystemStatus.php:174
+#: app/Common/Tools/SystemStatus.php:178 app/Common/Tools/SystemStatus.php:182
+#: app/Common/Tools/SystemStatus.php:186 app/Common/Tools/SystemStatus.php:190
+#: app/Common/Tools/SystemStatus.php:214 app/Common/Tools/SystemStatus.php:218
+#: languages/aioseo-lite.php:2972
+msgid "Disabled"
+msgstr "Afgeskakel"
+
+#: languages/aioseo-lite.php:2918
+msgid "Description Format"
+msgstr "Beskrywing Formaat"
+
+#: app/Common/Admin/Admin.php:380
+#: app/Common/Views/sitemap/html/widget-options.php:13
+#: languages/aioseo-lite.php:10286
+msgid "Title"
+msgstr "Titel"
+
+#: languages/aioseo-lite.php:4599
+msgid "Home Page Settings"
+msgstr "Tuisblad Instellings"
+
+#: languages/aioseo-lite.php:1544
+msgid "Auto"
+msgstr "Outo"
+
+#: languages/aioseo-lite.php:10175
+msgid "This option allows you to toggle the use of Meta Keywords throughout the whole of the site."
+msgstr "Hierdie opsie laat jou toe om die gebruik van Mega Sleutelwoorde regdeur die hele werf af te wissel."
+
+#: languages/aioseo-lite.php:2004
+msgid "Check this if you want your categories for a given post used as the Meta Keywords for this post (in addition to any keywords you specify on the Edit Post screen)."
+msgstr "Kies dit as jy wil hê dat jou kategorieë vir 'n gegewe plalsing gebruik moet word as die Meta Sleutelwoorde vir hierdie plasing (bykomend tot enige sleutelwoorde wat jy spesifiseer in die Redigeer Plasing skerm)."
+
+#: languages/aioseo-lite.php:2010
+msgid "Check this if you want your tags for a given post used as the Meta Keywords for this post (in addition to any keywords you specify on the Edit Post screen)."
+msgstr "Kies dit as jy wil hê dat jou merke vir 'n gegewe plasing gebruik moet word as die Meta Sleutelwoorde vir hierdie plasing (bykomend tot enige sleutelwoorde wat jy spesifiseer op die Redigeer Plasing skerm)."
+
+#: app/Common/Admin/Admin.php:220 languages/aioseo-lite.php:3980
+msgid "General Settings"
+msgstr "Algemene Instellings"

@@ -1,0 +1,720 @@
+# Translation of Plugins - Disable Admin Notices &#8211; Hide Dashboard Notifications - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - Disable Admin Notices &#8211; Hide Dashboard Notifications - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-02-06 08:24:02+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - Disable Admin Notices &#8211; Hide Dashboard Notifications - Stable (latest release)\n"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:424
+msgid "Sign me up"
+msgstr "Подписаться"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:422
+msgid "Your email address"
+msgstr "Ваш email-адрес"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:409
+msgid "Stay connected for news & updates!"
+msgstr "Оставайтесь на связи, чтобы получать новости и обновления!"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:367
+msgid "Leave a Review"
+msgstr "Оставить отзыв"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:362
+msgid "Liking the plugin? A quick review would mean a lot and helps us make it even better."
+msgstr "Нравится плагин? Ваш короткий отзыв будет очень важен и поможет нам сделать его ещё лучше."
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:361
+msgid "Leave a review:"
+msgstr "Оставьте отзыв:"
+
+#: includes/classes/class-configurate-notices.php:593
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: admin/pages/class-pages-notices.php:126
+msgid "Restore"
+msgstr "Восстановить"
+
+#: admin/pages/class-pages-notices.php:102
+msgid "Notices that are hidden for all users of the site"
+msgstr "Уведомления, скрытые для всех пользователей сайта"
+
+#: admin/pages/class-pages-notices.php:100
+#: includes/classes/class-configurate-notices.php:621
+msgid "Hidden for all"
+msgstr "Скрытые для всех"
+
+#: admin/pages/class-pages-notices.php:89
+msgid "Notices that are hidden only for you"
+msgstr "Уведомления, скрытые только для вас"
+
+#: admin/pages/class-pages-edit-redirects.php:138
+msgid "Unblock"
+msgstr "Разблокировать"
+
+#: admin/pages/class-pages-edit-redirects.php:125
+msgid "Some plugins open a page automatically after installation or update to show announcements, promotions, or other information. Enter the URLs of those pages here to prevent them from opening automatically."
+msgstr "Некоторые плагины автоматически открывают страницу после установки или обновления для отображения объявлений, рекламных акций или другой информации. Введите здесь URL-адреса этих страниц, чтобы предотвратить их автоматическое открытие."
+
+#: admin/pages/class-pages-edit-redirects.php:123
+msgid "Add block"
+msgstr "Заблокировать"
+
+#: admin/pages/class-pages-edit-redirects.php:121
+msgid "Enter url for block"
+msgstr "Введите URL для блокировки"
+
+#: admin/pages/class-pages-edit-admin-bar.php:150
+#: admin/pages/class-pages-edit-redirects.php:130
+msgid "Action"
+msgstr "Действие"
+
+#: admin/pages/class-pages-edit-admin-bar.php:149
+msgid "Menu title"
+msgstr "Название меню"
+
+#: admin/pages/class-pages-edit-admin-bar.php:146
+msgid "Disable admin bar items"
+msgstr "Отключение элементов верхней панели"
+
+#: admin/options.php:100
+msgid "Disable WordPress core update notifications"
+msgstr "Отключить уведомления об обновлениях ядра WordPress"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:417
+msgid "Thank you for your subscription."
+msgstr "Спасибо за вашу подписку."
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:138
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:129
+#: libs/factory/logger/pages/class-logger-impressive-page.php:133
+msgid "You do not have sufficient permissions to perform this action!"
+msgstr "У вас нет прав для выполнения этого действия."
+
+#. Author URI of the plugin
+#: disable-admin-notices.php
+msgid "https://themeisle.com"
+msgstr "https://themeisle.com"
+
+#. Author of the plugin
+#: disable-admin-notices.php
+msgid "Themeisle"
+msgstr "Themeisle"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:463
+msgid "Enter the option name to search..."
+msgstr "Введите название опции для поиска..."
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:461
+msgid "Can't find the settings you need? Use the search by the plugin options:"
+msgstr "Не можете найти нужные настройки? Воспользуйтесь поиском по настройкам плагина:"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:414
+msgid "Thank you, you have successfully subscribed!"
+msgstr "Спасибо, вы успешно подписались!"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:385
+msgid "Donation for plugin development"
+msgstr "Пожертвования на развитие плагина"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:334
+msgid "Upgrade for $%s"
+msgstr "Обновление для $%s"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:301
+msgid "MORE IN CLEARFY <span>BUSINESS</span>"
+msgstr "БОЛЬШЕ В CLEARFY <span>BUSINESS</span>"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:295
+msgid "Perfect support."
+msgstr "Идеальная поддержка."
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:294
+msgid "No ads;"
+msgstr "Без рекламы;"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:293
+msgid "Advanced settings;"
+msgstr "Расширенные настройки;"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:292
+msgid "Multisite support;"
+msgstr "Поддержка мультисайтов;"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:291
+msgid "40 new premium components within a year for the single price;"
+msgstr "40 новых компонентов премиум-класса в течение года по единой цене;"
+
+#: libs/factory/templates/pages/templates/impressive/class-pages.php:290
+msgid "4 premium components now;"
+msgstr "4 новых премиум компонентов;"
+
+#: libs/factory/templates/pages/templates/impressive/class-page-template-impressive.php:350
+msgid "It seems that a caching/performance plugin is active on this site. Please manually invalidate that plugin's cache after making any changes to the settings below."
+msgstr "Похоже, что на этом сайте активен плагин кэширования/производительности. Пожалуйста, вручную удалите кэш этого плагина после внесения любых изменений в приведенные ниже настройки."
+
+#: libs/factory/templates/pages/templates/impressive/class-page-template-impressive.php:350
+msgid "The settings have been updated successfully!"
+msgstr "Настройки были успешно обновлены!"
+
+#: libs/factory/templates/pages/templates/impressive-lite/class-page-template-impressive-lite.php:264
+#: libs/factory/templates/pages/templates/impressive/class-page-template-impressive.php:618
+msgid "Save"
+msgstr "Сохранить"
+
+#: libs/factory/templates/pages/templates/impressive-lite/class-page-template-impressive-lite.php:222
+#: libs/factory/templates/pages/templates/impressive/class-page-template-impressive.php:719
+msgid "You do not have permission to edit page."
+msgstr "У вас недостаточно прав, для редактирования этой страницы."
+
+#: libs/factory/templates/pages/setup-parts/class-step-custom.php:35
+msgid "Skip"
+msgstr "Пропустить"
+
+#: libs/factory/templates/pages/setup-parts/class-step-custom.php:24
+msgid "Finish"
+msgstr "Готово"
+
+#: libs/factory/templates/pages/setup-parts/class-step-custom.php:21
+#: libs/factory/templates/pages/setup-parts/class-step-form.php:93
+msgid "Continue"
+msgstr "Продолжить"
+
+#: libs/factory/templates/pages/class-pages-components.php:178
+msgid "These are components of the plugin bundle. When you activate the plugin, all the components turned on by default. If you don’t need some function, you can easily turn it off on this page."
+msgstr "Это компоненты пакета плагинов. При активации плагина все компоненты включены по умолчанию. Если вам не нужна какая-либо функция, вы можете легко отключить ее на этой странице."
+
+#: libs/factory/templates/pages/class-pages-components.php:176
+msgid "<strong>Plugin Components</strong>."
+msgstr "<strong>Компоненты плагина</strong>."
+
+#: libs/factory/templates/pages/class-pages-components.php:111
+msgid "An unknown error occurred while updating plugin components. Please contact the plugin support team to resolve this issue."
+msgstr "При обновлении компонентов плагина произошла неизвестная ошибка. Пожалуйста, свяжитесь со службой поддержки плагина, чтобы решить эту проблему."
+
+#: libs/factory/templates/pages/class-pages-components.php:103
+msgid "Activate license"
+msgstr "Активировать лицензию"
+
+#: libs/factory/templates/pages/class-pages-components.php:103
+msgid "To use premium components, you need activate a license!"
+msgstr "Чтобы использовать премиум-компоненты, вам необходимо активировать лицензию!"
+
+#: libs/factory/templates/pages/class-pages-components.php:95
+msgid "Components have been successfully updated to the latest version."
+msgstr "Компоненты успешно обновлены до последней версии."
+
+#: libs/factory/templates/pages/class-pages-components.php:49
+msgid "More features for plugin"
+msgstr "Дополнительные функции для плагина"
+
+#: libs/factory/templates/pages/class-pages-components.php:48
+msgid "Components"
+msgstr "Компоненты"
+
+#: libs/factory/templates/pages/class-page-setup.php:179
+msgid "Not now"
+msgstr "Не сейчас"
+
+#: libs/factory/templates/pages/class-page-setup.php:84
+msgid "Setup"
+msgstr "Установка"
+
+#: libs/factory/templates/pages/class-page-setup.php:77
+#: libs/factory/templates/pages/class-page-setup.php:78
+msgid "Setup master"
+msgstr "Мастер установки"
+
+#: libs/factory/templates/pages/class-page-more-features.php:170
+msgid "Get the ultimate plugin 100% FREE"
+msgstr "Получить полную версию бесплатно на 100%"
+
+#: libs/factory/templates/pages/class-page-more-features.php:156
+msgid "In quick mode, you can easily configure the plugin according to your needs."
+msgstr "В быстром режиме вы можете легко настроить плагин в соответствии с вашими потребностями."
+
+#: libs/factory/templates/pages/class-page-more-features.php:155
+msgid "Easy setup"
+msgstr "Простая настройка"
+
+#: libs/factory/templates/pages/class-page-more-features.php:148
+msgid ""
+"Allows you to hide the version of the site and plugins. Allows you to hide your\n"
+"\t\t\t\t\t\t\tWordPress."
+msgstr ""
+"Позволяет скрыть версию сайта и плагинов. Позволяет скрыть ваш\n"
+"WordPress."
+
+#: libs/factory/templates/pages/class-page-more-features.php:147
+msgid "Site privacy"
+msgstr "Конфиденциальность сайта"
+
+#: libs/factory/templates/pages/class-page-more-features.php:141
+msgid "Increases performance by disabling unused functions and reducing the number of requests."
+msgstr "Повышает производительность, отключая неиспользуемые функции и уменьшая количество запросов."
+
+#: libs/factory/templates/pages/class-page-more-features.php:140
+msgid "Speed Optimization"
+msgstr "Оптимизация производительности"
+
+#: libs/factory/templates/pages/class-page-more-features.php:134
+msgid "Allows you to remove unused widgets."
+msgstr "Позволяет удалить неиспользуемые виджеты."
+
+#: libs/factory/templates/pages/class-page-more-features.php:133
+msgid "Manage widgets"
+msgstr "Управление виджетами"
+
+#: libs/factory/templates/pages/class-page-more-features.php:126
+msgid ""
+"Enables or disables automatically updates for plugins, themes and core. It is also possible\n"
+"\t\t\t\t\t\t\tto disable all updates."
+msgstr ""
+"Включает или отключает автоматические обновление плагинов, тем и ядра. Также возможно\n"
+"отключение всех обновлений."
+
+#: libs/factory/templates/pages/class-page-more-features.php:125
+msgid "Manage updates"
+msgstr "Менеджер обновлений"
+
+#: libs/factory/templates/pages/class-page-more-features.php:119
+msgid "Disables comments on the entire site or on specific pages."
+msgstr "Отключает комментарии на всем сайте или у определенных страниц."
+
+#: libs/factory/templates/pages/class-page-more-features.php:118
+msgid "Disable comments"
+msgstr "Отключает комментарии"
+
+#: libs/factory/templates/pages/class-page-more-features.php:112
+msgid "Enables and disables features that improve the protection of your site."
+msgstr "Включает и отключает функции, которые улучшают защиту вашего сайта."
+
+#: libs/factory/templates/pages/class-page-more-features.php:111
+msgid "Site protection"
+msgstr "Защита сайта"
+
+#: libs/factory/templates/pages/class-page-more-features.php:105
+msgid "Removes duplicate pages, closes external links, changes the headers of the server."
+msgstr "Удаляет дубликаты страниц, закрывает внешние ссылки, изменяет заголовки сервера."
+
+#: libs/factory/templates/pages/class-page-more-features.php:104
+msgid "Improve SEO"
+msgstr "Улучшает SEO"
+
+#: libs/factory/templates/pages/class-page-more-features.php:98
+msgid "Clears the source code of the page from unused code."
+msgstr "Очищает исходный код страницы от неиспользуемого кода."
+
+#: libs/factory/templates/pages/class-page-more-features.php:97
+msgid "Code cleaning"
+msgstr "Очищает код"
+
+#: libs/factory/templates/pages/class-page-more-features.php:82
+msgid "More features"
+msgstr "Больше функций"
+
+#: libs/factory/templates/pages/class-page-more-features.php:68
+msgid "More features (<b>free</b>)"
+msgstr "Больше функций (<b>бесплатно</b>)"
+
+#: libs/factory/templates/includes/ajax-handlers.php:36
+msgid "You did not send your email address or it is incorrect!"
+msgstr "Вы не отправили свой адрес электронной почты или он неверный!"
+
+#: libs/factory/pages/pages.php:73
+msgid "You are trying to call this earlier than the plugin menu will be registered."
+msgstr "Вы пытаетесь вызвать это раньше, чем будет зарегистрировано меню плагина."
+
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:38
+#: libs/factory/logger/pages/class-logger-impressive-page.php:40
+msgid "Plugin debug report"
+msgstr "Отчет об отладке плагина"
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:127
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:118
+#: libs/factory/logger/pages/class-logger-impressive-page.php:121
+msgid "Logs clean-up successfully"
+msgstr "Журналы успешно очищены"
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:121
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:112
+#: libs/factory/logger/pages/class-logger-impressive-page.php:115
+msgid "Failed to clean-up logs. Please try again later."
+msgstr "Не удалось очистить журналы. Повторите попытку позже."
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:100
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:90
+#: libs/factory/logger/pages/class-logger-impressive-page.php:92
+msgid "In this section, you can track how the plugin works. Sending this log to the developer will help you resolve possible issues."
+msgstr "В этом разделе вы можете отслеживать, как работает плагин. Отправка этого журнала разработчику поможет вам решить возможные проблемы."
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:97
+msgid "Logs of the"
+msgstr "Журналы"
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:90
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:83
+#: libs/factory/logger/pages/class-logger-impressive-page.php:85
+msgid "Clean-up Logs (<span id=\"wbcr-log-size\">%s</span>)"
+msgstr "Очистка журналов (<span id=\"wbcr-log-size\">%s</span>)"
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:89
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:83
+#: libs/factory/logger/pages/class-logger-impressive-page.php:85
+msgid "Working..."
+msgstr "Обработка..."
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:85
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:79
+#: libs/factory/logger/pages/class-logger-impressive-page.php:81
+msgid "Export Debug Information"
+msgstr "Экспорт информации об отладке"
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:39
+msgid "Plugin log"
+msgstr "Журнал плагина"
+
+#: libs/factory/logger/pages/class-logger-admin-page.php:38
+#: libs/factory/logger/pages/class-logger-admin-page.php:68
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:69
+#: libs/factory/logger/pages/class-logger-impressive-lite.php:88
+#: libs/factory/logger/pages/class-logger-impressive-page.php:39
+#: libs/factory/logger/pages/class-logger-impressive-page.php:70
+#: libs/factory/logger/pages/class-logger-impressive-page.php:90
+msgid "Plugin Log"
+msgstr "Журнал плагина"
+
+#: libs/factory/forms/controls/pattern.php:117
+msgid "Changing the color may takes a minute or more. Please be patient."
+msgstr "В некоторых случаях изменение цвета может занять около минуты. Пожалуйста, будьте терпеливы."
+
+#: libs/factory/forms/controls/pattern.php:114
+msgid "Select color:"
+msgstr "Выберите цвет:"
+
+#: libs/factory/forms/controls/pattern.php:107
+msgid "re-color"
+msgstr "перекрасить"
+
+#: libs/factory/forms/controls/pattern.php:105
+msgid "Change color"
+msgstr "Выбрать цвет"
+
+#: libs/factory/forms/controls/paddings-editor.php:70
+msgid "Select a side and move the slider to set up:"
+msgstr "Выберите сторону и переместите ползунок:"
+
+#: libs/factory/forms/controls/multiple-textbox.php:89
+msgid "Add new"
+msgstr "Добавить новый"
+
+#: libs/factory/forms/controls/holders/more-link.php:56
+msgid "hide extra options"
+msgstr "скрыть дополнительные настроки"
+
+#: libs/factory/forms/controls/gradient.php:70
+msgid "horizontal"
+msgstr "горизонтальный"
+
+#: libs/factory/forms/controls/gradient.php:69
+msgid "vertical"
+msgstr "вертикальный"
+
+#: libs/factory/forms/controls/google-font.php:136
+msgid "Unexpected error. The list of Google Fonts are empty."
+msgstr "Непредвиденная ошибка. Список шрифтов Google пуст."
+
+#: libs/factory/forms/controls/google-font.php:126
+msgid "Invalide response from the Google Fonts API."
+msgstr "Недействительный ответ API Google Fonts."
+
+#: libs/factory/forms/controls/google-font.php:118
+msgid "Unable to retrieve the list of Google Fonts."
+msgstr "Не удалось получить список шрифтов Google."
+
+#: libs/factory/forms/controls/google-font.php:68
+msgid "Google Fonts:"
+msgstr "Google Fonts:"
+
+#: libs/factory/forms/controls/google-font.php:57
+msgid "Standard:"
+msgstr "Стандартный:"
+
+#: libs/factory/forms/controls/font.php:190
+msgid "Monospaced:"
+msgstr "Группа Monospaced:"
+
+#: libs/factory/forms/controls/font.php:134
+msgid "Serif:"
+msgstr "Группа Serif:"
+
+#: libs/factory/forms/controls/font.php:83
+msgid "Sans Serif:"
+msgstr "Группа Sans Serif:"
+
+#: libs/factory/forms/controls/font.php:80
+#: libs/factory/forms/controls/google-font.php:52
+msgid "(use default website font)"
+msgstr "(шрифт сайта по умолчанию)"
+
+#: libs/factory/forms/controls/dropdown.php:271
+#: libs/factory/forms/controls/dropdown.php:352
+msgid "- empty -"
+msgstr "- пусто -"
+
+#: libs/factory/forms/controls/dropdown.php:126
+#: libs/factory/forms/controls/list.php:96
+#: libs/factory/forms/controls/list.php:139
+msgid "The list is empty."
+msgstr "Список пуст."
+
+#: admin/pages/class-pages-edit-admin-bar.php:165
+#: libs/factory/forms/controls/checkbox.php:136
+msgid "Off"
+msgstr "Выкл"
+
+#: libs/factory/forms/controls/checkbox.php:133
+msgid "On"
+msgstr "Вкл"
+
+#: libs/factory/core/includes/functions.php:152
+msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
+msgstr "Функция %1$s с версии %2$s <strong>считается устаревшей</strong>. Альтернативы не предусмотрено."
+
+#: libs/factory/core/includes/functions.php:150
+msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
+msgstr "Функция %1$s с версии %2$s <strong>считается устаревшей</strong>! Используйте %3$s."
+
+#: libs/factory/core/includes/components/class-install-component-button.php:435
+#: libs/factory/templates/pages/class-pages-components.php:232
+msgid "Read more"
+msgstr "Читать далее"
+
+#: libs/factory/core/includes/components/class-install-component-button.php:434
+msgid "Preparation..."
+msgstr "Подготовка..."
+
+#: libs/factory/core/includes/components/class-install-component-button.php:433
+msgid "Please wait..."
+msgstr "Подождите..."
+
+#: libs/factory/core/includes/components/class-install-component-button.php:432
+msgid "Delete"
+msgstr "Удалить"
+
+#: libs/factory/core/includes/components/class-install-component-button.php:431
+msgid "Deactivate"
+msgstr "Деактивировано"
+
+#: libs/factory/core/includes/components/class-install-component-button.php:430
+msgid "Install"
+msgstr "Установить"
+
+#: libs/factory/core/includes/components/class-install-component-button.php:429
+msgid "Activate"
+msgstr "Активировать"
+
+#: libs/factory/core/includes/class-factory-requirements.php:299
+msgid "Plugin %s is already activated, you are trying to activate it again."
+msgstr "Плагин %s уже активирован, вы пытаетесь активировать его снова."
+
+#: libs/factory/core/includes/class-factory-plugin-abstract.php:577
+msgid "You cannot use this feature on the frontend."
+msgstr "Вы не можете использовать эту функцию во внешней части сайта."
+
+#: libs/factory/core/includes/class-factory-migrations.php:525
+msgid "There is no PHP Tokenizer extension installed on your server, you cannot use the token_get_all function."
+msgstr "На вашем сервере не установлено расширение PHP Tokenizer, вы не можете использовать функцию token_get_all."
+
+#: libs/factory/core/includes/class-factory-migrations.php:194
+msgid "migrations DEBUG bar"
+msgstr "панель переноса (ОТЛАДКА)"
+
+#: libs/factory/core/includes/class-factory-migrations.php:187
+msgid "Migrate now"
+msgstr "Перенести сейчас"
+
+#: libs/factory/core/includes/class-factory-migrations.php:186
+msgid "Need migration:"
+msgstr "Требуется перенос:"
+
+#: libs/factory/core/includes/class-factory-migrations.php:185
+msgid "Current plugin version:"
+msgstr "Текущая версия плагина:"
+
+#: libs/factory/core/includes/class-factory-migrations.php:184
+msgid "Old plugin version (debug):"
+msgstr "Старая версия плагина (отладка):"
+
+#: libs/factory/core/includes/class-factory-migrations.php:182
+msgid "Plugin activated:"
+msgstr "Плагин активирован:"
+
+#: libs/factory/core/includes/class-factory-migrations.php:150
+msgid "migration error"
+msgstr "ошибка переноса"
+
+#: libs/factory/core/includes/class-factory-migrations.php:143
+msgid "I fixed, confirm migration"
+msgstr "Я исправил, подтверждаю перенос"
+
+#: libs/factory/core/includes/class-check-compatibility.php:90
+#: libs/factory/core/includes/class-factory-requirements.php:292
+msgid "You need to update WordPress to %s or higher!"
+msgstr "Вам необходимо обновить WordPress до версии %s или выше!"
+
+#: libs/factory/core/includes/class-check-compatibility.php:85
+#: libs/factory/core/includes/class-factory-requirements.php:285
+msgid "You need to update the PHP version to %s or higher!"
+msgstr "Вам необходимо обновить версию PHP до %s или выше!"
+
+#: libs/factory/core/includes/class-check-compatibility.php:79
+#: libs/factory/core/includes/class-factory-requirements.php:255
+msgid "Possible reasons:"
+msgstr "Возможные причины:"
+
+#: libs/factory/core/includes/class-check-compatibility.php:78
+#: libs/factory/core/includes/class-factory-requirements.php:254
+msgid "The %s plugin has stopped."
+msgstr "Плагин %s остановлен."
+
+#: libs/factory/core/includes/class-check-compatibility.php:76
+#: libs/factory/core/includes/class-factory-requirements.php:252
+msgid "warning"
+msgstr "предупреждение"
+
+#: libs/factory/core/ajax/install-addons.php:199
+msgid "Unable to connect to the filesystem. Please confirm your credentials."
+msgstr "Невозможно подключиться к файловой системе. Пожалуйста, подтвердите свои учетные данные."
+
+#: libs/factory/core/ajax/install-addons.php:154
+msgid "Sorry, you are not allowed to install plugins on this site."
+msgstr "Извините, вам не разрешено устанавливать плагины на этот сайт."
+
+#: libs/factory/core/ajax/install-addons.php:144
+msgid "No plugin specified."
+msgstr "Не указан плагин."
+
+#: libs/factory/core/ajax/install-addons.php:116
+msgid "Required attribute [component_name] is empty."
+msgstr "Обязательный атрибут [component_name] пуст."
+
+#: libs/factory/core/ajax/install-addons.php:97
+msgid "An unknown error occurred during the activation of the component."
+msgstr "При активации компонента произошла неизвестная ошибка."
+
+#: libs/factory/core/ajax/install-addons.php:47
+msgid "You are trying to perform an invalid action."
+msgstr "Вы пытаетесь выполнить недопустимое действие."
+
+#: libs/factory/core/ajax/install-addons.php:31
+msgid "Required attributes are not passed or empty."
+msgstr "Обязательные атрибуты не переданы или пусты."
+
+#: libs/factory/core/ajax/install-addons.php:27
+msgid "Something went wrong."
+msgstr "Что-то пошло не так."
+
+#: includes/classes/class-configurate-notices.php:306
+msgid "Hide <b>for all</b>"
+msgstr "Скрыть <b>для всех</b>"
+
+#: includes/classes/class-configurate-notices.php:302
+msgid "Hide <b>for me</b>"
+msgstr "Скрыть <b>для меня</b>"
+
+#: includes/classes/class-configurate-notices.php:119
+#: includes/classes/class-configurate-notices.php:634
+msgid "Restore notice"
+msgstr "Восстановить уведомление"
+
+#: admin/pages/class-pages-notices.php:87
+#: includes/classes/class-configurate-notices.php:106
+msgid "Hidden for you"
+msgstr "Скрытые для Вас"
+
+#: includes/classes/class-configurate-notices.php:95
+msgid "Notifications %s"
+msgstr "Уведомления %s"
+
+#: admin/pages/class-pages-settings.php:85
+#: libs/factory/templates/pages/templates/impressive/class-page-template-impressive.php:132
+msgid "Settings"
+msgstr "Настройки"
+
+#: admin/pages/class-pages-settings.php:73
+msgid "General settings"
+msgstr "Основные настройки"
+
+#: admin/pages/class-pages-notices.php:52
+msgid "Manage hidden notices"
+msgstr "Управление скрытыми нотисами"
+
+#: admin/pages/class-pages-notices.php:51
+msgid "Hidden notices"
+msgstr "Скрытые нотисы"
+
+#: admin/pages/class-pages-edit-redirects.php:54
+msgid "Break advertising redirects"
+msgstr "Отключение рекламных редиректов"
+
+#: admin/pages/class-pages-edit-redirects.php:53
+#: admin/pages/class-pages-edit-redirects.php:118
+msgid "Block ad redirects"
+msgstr "Блокировать перенаправления рекламы"
+
+#: admin/pages/class-pages-edit-admin-bar.php:53
+msgid "Hide admin bar items"
+msgstr "Скрыть элементы панели администратора"
+
+#: admin/options.php:258 admin/pages/class-pages-settings.php:116
+msgid "Hidden notices are successfully reset, now you can see them again!"
+msgstr "Скрытые уведомления успешно восстановлены, теперь вы можете снова видеть их!"
+
+#: admin/options.php:250
+msgid "all users"
+msgstr "все пользователи"
+
+#: admin/options.php:246
+msgid "current user"
+msgstr "текущий пользователь"
+
+#: admin/options.php:232
+msgid "Reset hidden notices for:"
+msgstr "Сброс скрытых уведомлений для"
+
+#: admin/boot.php:74
+msgid "Enable hidden notices in admin bar"
+msgstr "Включить скрытые ранее уведомления панели администратора"
+
+#: admin/boot.php:68 admin/pages/class-pages-settings.php:72
+msgid "Hide admin notices"
+msgstr "Скрыть уведомления"
+
+#: libs/factory/core/ajax/install-addons.php:27
+#: libs/factory/core/ajax/install-addons.php:112
+msgid "You don't have enough capability to edit this information."
+msgstr "У вас недостаточно возможностей для редактирования этой информации."
+
+#. Description of the plugin
+#: disable-admin-notices.php
+msgid "Disable admin notices plugin gives you the option to hide updates warnings and inline notices in the admin panel."
+msgstr "Плагин Отключение уведомлений администратора - дает вам возможность скрыть предупреждения об обновлениях и встроенные уведомления в панели администратора."
+
+#. Plugin URI of the plugin
+#: disable-admin-notices.php
+msgid "https://clearfy.pro/disable-admin-notices"
+msgstr "https://clearfy.pro/disable-admin-notices"
+
+#. Plugin Name of the plugin
+#: disable-admin-notices.php
+msgid "Disable Admin Notices Individually"
+msgstr "Disable Admin Notices Individually"

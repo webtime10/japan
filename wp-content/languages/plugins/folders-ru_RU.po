@@ -1,0 +1,1727 @@
+# Translation of Plugins - Folders &#8211; Unlimited Folders to Organize Media Library Folder, Pages, Posts, File Manager - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - Folders &#8211; Unlimited Folders to Organize Media Library Folder, Pages, Posts, File Manager - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-07-19 09:06:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - Folders &#8211; Unlimited Folders to Organize Media Library Folder, Pages, Posts, File Manager - Stable (latest release)\n"
+
+#: templates/admin/modals.php:311
+msgid "You've successfully organized your files into folders for the first time."
+msgstr "Вы впервые успешно организовали свои файлы в папки."
+
+#: templates/admin/modals.php:366
+msgid "Would you like to be reminded in the future?"
+msgstr "Хотели бы Вы, чтобы Вам напоминали об этом в будущем?"
+
+#: templates/admin/settings-tabs/folder-settings.php:304
+msgid "When this setting is enabled, you will be able to access the Folders settings page by clicking on 'Settings' in the WordPress dashboard and then selecting 'Folders' from the submenu."
+msgstr "Когда эти настройки включены, вы сможете получить доступ к странице настройки папок, щелкнув кнопку \"Настройки\" в консоли WordPress и выбрав в подменю пункт \"Папки\"."
+
+#: templates/admin/modals.php:370
+msgid "7 Days"
+msgstr "7 дней"
+
+#: templates/admin/modals.php:371
+msgid "14 Days"
+msgstr "14 дней"
+
+#: templates/admin/modals.php:345
+msgid "Can you please show us some love and rate Folders? It'll really help us spread the word"
+msgstr "Пожалуйста, проявите к нам уважение и оцените Folders. Это очень поможет нам расширить возможности"
+
+#: templates/admin/modals.php:315
+msgid "⚙️ Create Unlimited folders and subfolders"
+msgstr "⚙️ Создание неограниченного количества папок и подпапок"
+
+#: templates/admin/modals.php:372
+msgid "Don't remind me"
+msgstr "Не напоминайте мне"
+
+#: templates/admin/upgrade-table.php:180
+msgid "Directly upload folder or folder structures with their content"
+msgstr "Прямая загрузка папок или структуры папок с их содержимым"
+
+#: templates/admin/modals.php:381
+msgid "Five Stars!"
+msgstr "Пять звёзд!"
+
+#: templates/admin/modals.php:390
+msgid "Feel free to connect for questions and suggestions. Thank you for choosing us!"
+msgstr "Не стесняйтесь обращаться к нам с вопросами и предложениями. Спасибо, что выбрали нас!"
+
+#: templates/admin/modals.php:317
+msgid "🛠 Upload folders directly and download them as ZIP"
+msgstr "🛠 Загружайте папки напрямую и скачивайте их в формате ZIP"
+
+#: templates/admin/modals.php:316
+msgid "🗂️ Automatically filter posts, pages, media files based on author, date, type and more"
+msgstr "🗂️ Автоматическая фильтрация записей, страниц, медиа файлов по автору, дате, типу и т.д"
+
+#: templates/admin/modals.php:318
+msgid "🔒 Restrict users within their own folders"
+msgstr "🔒 Ограничение пользователей в их собственных папках"
+
+#: templates/admin/media-replace.php:89
+msgid "Maximum file size 40 MB"
+msgstr "Максимальный размер файла 40 МБ"
+
+#: templates/admin/modals.php:310
+msgid "Great job! 🎉"
+msgstr "Отличная работа! 🎉"
+
+#: templates/admin/modals.php:313
+msgid "Upgrade to Pro today"
+msgstr "Обновите до Pro сегодня"
+
+#: templates/admin/settings-tabs/folder-settings.php:184
+msgid "Undo any action on Folders. Undo move, copy, rename etc actions with this feature"
+msgstr "Отмена любых действий с папками. С помощью этой функции можно отменить действия по перемещению, копированию, переименованию и т.д"
+
+#: templates/admin/settings-tabs/customize-folders.php:345
+#: templates/admin/settings-tabs/customize-folders.php:358
+msgid "The list of your folders will also appear at the top of the page, e.g. under 'Media library'."
+msgstr "Список ваших папок также появится в верхней части страницы, например, в разделе \"Медиа библиотека\"."
+
+#: templates/admin/modals.php:358
+msgid "Review (optional)"
+msgstr "Обзор (необязательно)"
+
+#: templates/admin/modals.php:368
+msgid "Remind me after"
+msgstr "Напомните мне после"
+
+#: templates/admin/modals.php:349 templates/admin/modals.php:356
+msgid "rating"
+msgstr "рейтинг"
+
+#: templates/admin/modals.php:359
+msgid "Please write your review here"
+msgstr "Пожалуйста, напишите свой отзыв здесь"
+
+#: templates/admin/upgrade-table.php:148
+msgid "Organize pages, media files, posts, plugins and custom post types"
+msgstr "Организация страниц, медиа-файлов, записей, плагинов и пользовательских типов записей"
+
+#: templates/admin/settings-tabs/folder-settings.php:317
+msgid "Show folders separately on your WordPress sidebar for quick and easy access to folders of Media, Posts, Pages etc"
+msgstr "Отображение отдельных папок в области виджетов WordPress для быстрого и удобного доступа к папкам мультимедиа, записи, страницы и т.д"
+
+#: templates/admin/modals.php:352
+msgid "Share Your Experience"
+msgstr "Поделитесь своим опытом"
+
+#: templates/admin/modals.php:344
+msgid "Seems like Folders is bringing you value 🥳"
+msgstr "Похоже, Folders приносит вам пользу 🥳"
+
+#: includes/media.replace.php:1226 includes/media.replace.php:1240
+msgid "Sorry, this file type is not permitted for security reasons"
+msgstr "Извините, этот тип файла запрещен по соображениям безопасности"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:83
+msgid "View only: These users can only view the folders"
+msgstr "Только просмотр: эти пользователи могут просматривать только папки"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:120
+msgid "View Only"
+msgstr "Только просмотр"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:82
+msgid "View & Edit: These users can only update and view currently existing folders"
+msgstr "Просмотр и редактирование: эти пользователи могут только обновлять и просматривать существующие папки"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:119
+msgid "View & Edit"
+msgstr "Просмотр и редактирование"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:107
+msgid "Users"
+msgstr "Пользователи"
+
+#: templates/admin/media-replace.php:117
+msgid "Also replace file name with new file name and update all links"
+msgstr "Также замените имя файла на новое и обновите все ссылки"
+
+#: templates/admin/media-replace.php:150
+msgid "Also replace file date with"
+msgstr "Также замените дату файла на"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:118
+msgid "Admin"
+msgstr "Админ"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:81
+msgid "Admin: Full access to modifying, creating and viewing folders"
+msgstr "Администратор: полный доступ к изменению, созданию и просмотру папок"
+
+#: templates/admin/upgrade-table.php:169
+msgid "Advanced access management for your team with roles that restrict their access to view and edit your folders."
+msgstr "Расширенное управление доступом для сотрудников с помощью ролей, ограничивающих их доступ к просмотру и редактированию папок."
+
+#: templates/admin/upgrade-table.php:157
+msgid "Automatically filter posts/pages/custom posts/media files based on author, date, file types & more "
+msgstr "Автоматически фильтровать записи/страницы/пользовательские записи/медиа-файлы по автору, дате, типам файлов и т. д. "
+
+#: includes/media.replace.php:722
+msgid "File name has been updated"
+msgstr "Имя файла было обновлено"
+
+#: includes/media.replace.php:922
+msgid "File name"
+msgstr "Имя файла"
+
+#: includes/media.replace.php:926 templates/admin/media-replace.php:88
+msgid "Drag and drop files here"
+msgstr "Перетащите файлы сюда"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:79
+msgid "Give specific users or general WordPress user roles granular access to Folders:"
+msgstr "Предоставьте конкретным пользователям или общим ролям пользователей WordPress разграниченный доступ к папкам:"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:210
+msgid "Give Access To Your Teammates"
+msgstr "Предоставьте доступ своим коллегам"
+
+#: templates/admin/upgrade-table.php:514
+msgid "Frequently Asked Questions"
+msgstr "Часто задаваемые вопросы"
+
+#: templates/admin/media-replace.php:106
+msgid "For replacing a file the file extension should be the same ex. .png files can not be changed by .pdf file. Make sure you uploaded same types of file."
+msgstr "Для замены файла, расширение файла должно быть одинаковым, например, файлы .png не могут быть заменены файлами .pdf. Убедитесь, что вы загрузили файлы одного типа."
+
+#: templates/admin/settings-tabs/folder-user-settings.php:76
+msgid "Folders Access Management"
+msgstr "Управление доступом к папкам"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:211
+msgid "Upgrade to Pro to have granular access management, dynamic folders, subfolders and more"
+msgstr "Перейдите на версию Pro, и получите более детальное управление доступом, динамические папки, вложенные папки и многое другое"
+
+#: templates/admin/upgrade-table.php:508
+msgid "TRUSTED BY LEADING COMPANIES WORLDWIDE"
+msgstr "ДОВЕРЯЮТ ВЕДУЩИЕ КОМПАНИИ МИРА"
+
+#: includes/media.replace.php:719
+msgid "The title is same as the current filename"
+msgstr "Заголовок совпадает с именем текущего файла"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:106
+#: templates/admin/settings-tabs/folder-user-settings.php:135
+msgid "Roles"
+msgstr "Роли"
+
+#: templates/admin/media-replace.php:49
+msgid "Replace Your File"
+msgstr "Заменить файл"
+
+#: templates/admin/media-replace.php:166
+msgid "Replace the date with"
+msgstr "Заменить дату на"
+
+#: templates/admin/media-replace.php:116
+msgid "Replace Name"
+msgstr "Заменить имя"
+
+#: templates/admin/media-replace.php:149
+msgid "Replace Date"
+msgstr "Заменить дату"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:84
+msgid "No Access: These users have no access to folders"
+msgstr "Нет доступа: эти пользователи не имеют доступа к папкам"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:121
+msgid "No Access"
+msgstr "Нет доступа"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:136
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: templates/admin/media-replace.php:162
+msgid "Keep Old Date"
+msgstr "Оставить старую дату"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:92
+msgid "Set Folders permissions for user roles and specific users."
+msgstr "Установите права доступа к Folders согласно ролям пользователей и определенным пользователем."
+
+#: templates/admin/settings-tabs/folder-user-settings.php:127
+msgid "Search by user roles"
+msgstr "Поиск по ролям пользователей"
+
+#: templates/admin/upgrade-table.php:168
+msgid "Folders access management"
+msgstr "Управление доступом к папкам"
+
+#: includes/folders.class.php:439
+msgid "Folder Access"
+msgstr "Доступ к папке"
+
+#: includes/class-review-box.php:470
+msgid "Your"
+msgstr "Ваш"
+
+#: includes/class-review-box.php:484
+msgid "Co-founder"
+msgstr "Соучредитель"
+
+#: includes/class-review-box.php:470
+msgid "feedback"
+msgstr "обратная связь"
+
+#: includes/class-review-box.php:483
+msgid "Gal Dubinski"
+msgstr "Gal Dubinski"
+
+#: includes/class-review-box.php:490
+msgid "Please rate us:"
+msgstr "Пожалуйста, оцените нас:"
+
+#: templates/admin/folder-popup.php:16
+msgid "Welcome to Folders"
+msgstr "Добро пожаловать в Folders"
+
+#: templates/admin/upgrade-table.php:164
+msgid "User access restriction"
+msgstr "Ограничение доступа пользователей"
+
+#: templates/admin/settings-tabs/customize-folders.php:314
+msgid "When a folder has too much text or you have many levels of sub-folders, a horizontal scroll bar will appear on the bottom to scroll & view Folder names"
+msgstr "Если в папке слишком много текста или имеется много уровней вложенности папок, внизу появляется горизонтальная полоса прокрутки для перемещения и просмотра названия папок"
+
+#: includes/folders.class.php:5777
+msgid "Uploading files"
+msgstr "Загрузка файлов"
+
+#: templates/admin/upgrade-table.php:176
+msgid "Clean unused media files from your Media Library"
+msgstr "Очистите неиспользуемые медиафайлы из вашей медиатеки"
+
+#: includes/folders.class.php:5789
+msgid "Are you sure you want to delete the selected folders?"
+msgstr "Вы уверены, что хотите удалить выбранные папки?"
+
+#: templates/admin/upgrade-table.php:205
+msgid "Bookmark, lock/unlock or duplicate folders for faster & easier access to your favorite folders"
+msgstr "Создание закладок, блокировка/разблокировка или дублирование папок для более быстрого и удобного доступа к избранным папкам"
+
+#: templates/admin/upgrade-table.php:204
+msgid "Bookmark, lock & duplicate folders"
+msgstr "Закладки, блокировка и дублирование папок"
+
+#: templates/admin/upgrade-table.php:213
+msgid "Before deleting files permanently, move them to trash to reduce accidental deletion"
+msgstr "Перед окончательным удалением файлов переместите их в корзину, чтобы уменьшить вероятность случайного удаления"
+
+#: includes/folders.class.php:5766
+msgid "Download Zip"
+msgstr "Скачать Zip"
+
+#: templates/admin/upgrade-table.php:184
+msgid "Download folders as ZIP"
+msgstr "Скачать папки в формате ZIP"
+
+#: templates/admin/upgrade-table.php:185
+msgid "Download all contents of a media folder as a ZIP"
+msgstr "Скачать всё содержимое папки мультимедиа в формате ZIP"
+
+#: includes/folders.class.php:5769
+msgid "Cut"
+msgstr "Вырезать"
+
+#: templates/admin/upgrade-table.php:217
+msgid "Customize folders with your preferred colors, font size, font family & more"
+msgstr "Настраивайте папки, используя предпочитаемые цвета, размер шрифта, семейство шрифтов и многое другое"
+
+#: includes/folders.class.php:5770
+msgid "Copy"
+msgstr "Копировать"
+
+#: includes/folders.class.php:5795
+msgid "Collapse"
+msgstr "Свернуть"
+
+#: templates/admin/upgrade-table.php:216
+msgid "Customize folder styles with fonts, custom colors & more"
+msgstr "Настройте стили папок с помощью шрифтов, произвольного цвета и т.д"
+
+#: templates/admin/upgrade-table.php:153
+msgid "Create unlimited folders, sub-folders with multi-level support"
+msgstr "Создавайте неограниченное количество папок и подпапок с многоуровневой поддержкой"
+
+#: templates/admin/upgrade-table.php:160
+msgid "Create folders for various custom post types. I.e. WooCommerce, Elementor"
+msgstr "Создание папок для пользовательских типов записи. Например, WooCommerce, Elementor"
+
+#: templates/admin/settings-tabs/customize-folders.php:314
+msgid "Enable Horizontal Scroll"
+msgstr "Включить горизонтальную прокрутку"
+
+#: includes/folders.class.php:5804
+msgid "Duplicate folder (Activate)"
+msgstr "Дублировать папку (Активировать)"
+
+#: includes/folders.class.php:5813
+msgid "Duplicate folder (Pro)"
+msgstr "Дублировать папку (Pro)"
+
+#: includes/folders.class.php:5796
+msgid "Duplicating to a new folder"
+msgstr "Дублировать в новую папку"
+
+#: includes/folders.class.php:5765
+msgid "Duplicate folder"
+msgstr "Дублировать папку"
+
+#: includes/folders.class.php:5774
+msgid "Drag and drop your media files to the relevant folders"
+msgstr "Перетащите медиа файлы в соответствующие папки"
+
+#: includes/folders.class.php:5814
+msgid "Download Zip (Pro)"
+msgstr "Скачать Zip (Pro)"
+
+#: includes/folders.class.php:5805
+msgid "Download Zip (Activate)"
+msgstr "Скачать Zip (Активировать)"
+
+#: includes/folders.class.php:5811
+msgid "New Sub-folder (Pro)"
+msgstr "Новая подпапка (Pro)"
+
+#: includes/folders.class.php:5802
+msgid "New Sub-folder (Activate)"
+msgstr "Новая подпапка (Активировать)"
+
+#: includes/folders.class.php:5757
+msgid "New Sub-folder"
+msgstr "Новая подпапка"
+
+#: includes/folders.class.php:5753
+msgid "New folder"
+msgstr "Новая папка"
+
+#: includes/folders.class.php:5776
+msgid "Move Selected files to:"
+msgstr "Переместить выбранные файлы в:"
+
+#: templates/admin/upgrade-table.php:212
+msgid "Move files to trash before permanently removing"
+msgstr "Переместите файлы в корзину перед их окончательным удалением"
+
+#: templates/admin/upgrade-table.php:169 templates/admin/upgrade-table.php:200
+#: templates/admin/upgrade-table.php:201
+msgid "Metadata details on Media Library hover"
+msgstr "Подробности о метаданных при наведении на медиатеку"
+
+#: templates/admin/upgrade-table.php:177
+msgid "Media Cleaner will first analyze your whole WordPress and show you a list of unused media files for you to go through and delete them"
+msgstr "Media Cleaner сначала проанализирует весь ваш WordPress и покажет список неиспользуемых медиа файлов, чтобы вы могли просмотреть и удалить их"
+
+#: templates/admin/folder-popup.php:25
+msgid "Go to Folders"
+msgstr "Перейти к папкам"
+
+#: templates/admin/folder-popup.php:21
+msgid "Help Center"
+msgstr "Центр помощи"
+
+#: includes/folders.class.php:5790
+msgid "Items in the selected folders will not be deleted."
+msgstr "Элементы в выбранных папках не будут удалены."
+
+#: includes/folders.class.php:5812
+msgid "Lock Folder (Pro)"
+msgstr "Блокировка папки (Pro)"
+
+#: includes/folders.class.php:5803
+msgid "Lock Folder (Activate)"
+msgstr "Блокировка папки (Активировать)"
+
+#: includes/folders.class.php:5763
+msgid "Lock Folder"
+msgstr "Заблокировать папку"
+
+#: includes/folders.class.php:5779
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: templates/admin/upgrade-table.php:152
+msgid "Unlimited subfolders (with multilevel support)"
+msgstr "Неограниченное количество подпапок (с многоуровневой поддержкой)"
+
+#: templates/admin/upgrade-table.php:192
+msgid "Sort folders based on the date"
+msgstr "Сортировка папок по дате"
+
+#: templates/admin/upgrade-table.php:193
+msgid "Sort folders based on the creation date of the folders"
+msgstr "Сортировка папок по дате их создания"
+
+#: templates/admin/upgrade-table.php:165
+msgid "Restrict users within their own folders only (restrict Dynamic Folder access as well)"
+msgstr "Ограничение доступа пользователей только к собственным папкам (ограничьте также доступ к динамическим папкам)"
+
+#: includes/folders.class.php:5778
+msgid "Please select items to move in folder"
+msgstr "Пожалуйста, выберите элементы для перемещения в папку"
+
+#: includes/folders.class.php:5791
+msgid "Please select at least one folder to delete"
+msgstr "Пожалуйста, выберите хотя бы одну папку для удаления"
+
+#: includes/folders.class.php:5771
+msgid "Paste"
+msgstr "Вставить"
+
+#: includes/folders.class.php:5815
+msgid "Open this folder by default (Pro)"
+msgstr "Открыть эту папку по умолчанию (Pro)"
+
+#: includes/folders.class.php:5767
+msgid "Open this folder by default"
+msgstr "Открыть эту папку по умолчанию"
+
+#: templates/admin/upgrade-table.php:189
+msgid "Replace all types of media files including PDF/SVG/ZIP/DOCX/XSLX & more. While replacing compare the two files side by side"
+msgstr "Замена всех типов мультимедийных файлов, включая PDF/SVG/ZIP/DOCX/XSLX и др. При замене сравнивайте два файла между собой"
+
+#: includes/folders.class.php:5768
+msgid "Remove default folder"
+msgstr "Удалить папку по умолчанию"
+
+#: templates/admin/upgrade-table.php:197
+msgid "Replace media files when uploading and update all references in the database, change dates, organize by newer date & more without hurting your SEO"
+msgstr "Замена медиа файлов при загрузке и обновление всех ссылок в базе данных, изменение дат, упорядочивание по более новой дате и многое другое без ущерба для SEO"
+
+#: templates/admin/upgrade-table.php:188
+msgid "Replace media for all file types and update file names from WordPress titles"
+msgstr "Замена медиа файлов для всех типов файлов и обновление имен файлов из заголовков WordPress"
+
+#: templates/admin/modals.php:197
+msgid "Hey, it looks like you want to move the file to \"Unassigned Files.\" Do you want to move the file from the current folder only or from all the folders where the file exists?"
+msgstr "Похоже, что вы хотите переместить файл в папку \"Не распределенные файлы\". Вы хотите переместить файл только из текущей папки или из всех папок, в которых он существует?"
+
+#: templates/admin/upgrade-table.php:181
+msgid "Upload a folder (all its content within the folder) directly"
+msgstr "Прямая загрузка папки ( всё содержимое внутри папки)"
+
+#: includes/folders.class.php:5764
+msgid "Unlock Folder"
+msgstr "Разблокировать папку"
+
+#: includes/folders.class.php:5785
+msgid "Selected"
+msgstr "Выбранные"
+
+#: includes/folders.class.php:5775
+msgid "Select All"
+msgstr "Выбрать всё"
+
+#: templates/admin/upgrade-table.php:161
+msgid "Use folders with other plugins that have custom post type (e.g. Elementor templates, WooCommerce & more)"
+msgstr "Использование папок с другими плагинами, имеющими пользовательский тип записи (например, шаблоны Elementor, WooCommerce и другие)"
+
+#: includes/folders.class.php:5782
+msgid "Select Items to move"
+msgstr "Выберите элементы для перемещения"
+
+#: includes/folders.class.php:5759
+msgid "Remove Sticky Folder"
+msgstr "Удалить закреплённую папку"
+
+#: includes/folders.class.php:5760
+msgid "Sticky Folder"
+msgstr "Закреплённая папка"
+
+#: includes/folders.class.php:5801
+msgid "Sticky Folder (Activate)"
+msgstr "Закреплённая папка (Активировать)"
+
+#: includes/folders.class.php:5810
+msgid "Sticky Folder (Pro)"
+msgstr "Закреплённая папка (Pro)"
+
+#: templates/admin/upgrade-table.php:31
+msgid "1 Year"
+msgstr "1 год"
+
+#: templates/admin/general-settings.php:816
+msgid "You need to alter a setting to make Folders compatible with WordPress.com media library."
+msgstr "Для обеспечения совместимости Folders с медиатекой WordPress.com необходимо изменить настройки."
+
+#: templates/admin/update.php:52
+msgid "You can remove yourself from the list whenever you want, no strings attached"
+msgstr "Вы можете удалить себя из списка, когда захотите, без каких-либо условий"
+
+#: includes/class-review-box.php:504
+msgid "You are awesome "
+msgstr "Вы просто супер "
+
+#: includes/class-review-box.php:518
+msgid "Would you like us to remind you about this later?"
+msgstr "Хотите, чтобы мы напомнили Вам об этом позже?"
+
+#: includes/class-upgrade-box.php:303
+msgid "Would you like us to remind you about this later? "
+msgstr "Хотите, чтобы мы напомнили Вам об этом позже? "
+
+#: templates/admin/settings-tabs/folder-settings.php:373
+msgid "WordPress.com User?"
+msgstr "Пользователь WordPress.com?"
+
+#: includes/form.fields.php:76
+msgid "View shortcuts"
+msgstr "Просмотр ярлыков"
+
+#: templates/admin/settings-tabs/folder-settings.php:259
+msgid "Use Media Cleaning to clear unused media files"
+msgstr "Используйте функцию очистки медиафайлов для удаления неиспользуемых медиафайлов"
+
+#: templates/admin/settings-tabs/folder-settings.php:151
+msgid "Use keyboard shortcuts to navigate faster"
+msgstr "Используйте сочетания клавиш для более быстрой навигации"
+
+#: templates/admin/media-cleaning.php:27
+msgid "Upgrade to Folders Pro"
+msgstr "Обновление до Folders Pro"
+
+#: includes/class-upgrade-box.php:290
+msgid "Upgrade to "
+msgstr "Обновить до "
+
+#: includes/class-upgrade-box.php:293
+msgid "Upgrade now"
+msgstr "Обновить сейчас"
+
+#: templates/admin/update.php:26
+msgid "Be the first to know product updates, tips & discounts"
+msgstr "Будьте первыми, кто узнает об обновлениях продуктов, советах и ​​скидках"
+
+#: templates/admin/update.php:27
+msgid "Be among the first to know about our latest features & what we’re working on. Plus insider offer & flash sales"
+msgstr "Будьте в числе первых, кто узнает о наших последних возможностях и о том, над чем мы работаем. Плюс инсайдерские предложения и внезапные распродажи"
+
+#: includes/class-review-box.php:524 includes/class-upgrade-box.php:307
+msgid "Don't remind me about this "
+msgstr "Не напоминайте мне об этом "
+
+#: templates/admin/general-settings.php:926 templates/admin/modals.php:431
+msgid "Delete Folder"
+msgstr "Удалить папку"
+
+#: templates/admin/general-settings.php:914 templates/admin/modals.php:419
+msgid "Cut Folder"
+msgstr "Вырезать папку"
+
+#: templates/admin/general-settings.php:910 templates/admin/modals.php:415
+msgid "Copy Folder"
+msgstr "Копировать папку"
+
+#: templates/admin/general-settings.php:942 templates/admin/modals.php:447
+msgid "Collapse Folder"
+msgstr "Свернуть папку"
+
+#: templates/admin/general-settings.php:902 templates/admin/modals.php:407
+msgid "Create New Folder"
+msgstr "Создать новую папку"
+
+#: templates/admin/media-cleaning.php:23
+msgid "Find unused media files which aren't used in your website. An internal trash allows you to make sure everything works properly before deleting the media entries (and files) permanently."
+msgstr "Найдите неиспользуемые медиа файлы, которые не нужны на вашем сайте. Встроенная корзина позволяет убедиться, что всё работает правильно, прежде чем удалить медиа запись (и файлы) окончательно."
+
+#: templates/admin/general-settings.php:938 templates/admin/modals.php:443
+msgid "Expand Folder"
+msgstr "Развернуть папку"
+
+#: templates/admin/general-settings.php:922 templates/admin/modals.php:427
+msgid "Duplicate Folder"
+msgstr "Дублировать папку"
+
+#: templates/admin/general-settings.php:930 templates/admin/modals.php:435
+msgid "Next Folder"
+msgstr "Следующая папка"
+
+#: includes/folders.class.php:6279 includes/folders.class.php:6280
+msgid "Media Cleaning"
+msgstr "Media Cleaning"
+
+#: templates/admin/update.php:23
+msgid "Grow your WordPress or Shopify websites with our plugins"
+msgstr "Развивайте свои сайты WordPress или Shopify с помощью наших плагинов"
+
+#: templates/admin/media-cleaning.php:34
+msgid "Hide this page from the menu"
+msgstr "Скрыть эту страницу из меню"
+
+#: templates/admin/general-settings.php:906 templates/admin/modals.php:411
+msgid "Rename Folder"
+msgstr "Переименовать папку"
+
+#: includes/class-upgrade-box.php:305
+msgid "Remind me in 7 days "
+msgstr "Напомнить мне через 7 дней "
+
+#: includes/class-upgrade-box.php:306
+msgid "Remind me in 30 days"
+msgstr "Напомнить мне через 30 дней"
+
+#: includes/class-review-box.php:522
+msgid "Remind me in 3 days "
+msgstr "Напомнить мне через 3 дня "
+
+#: includes/class-review-box.php:523
+msgid "Remind me in 10 days "
+msgstr "Напомнить мне через 10 дней "
+
+#: includes/class-review-box.php:506
+msgid "Premio team "
+msgstr "Команда Premio "
+
+#: includes/form.class.php:75
+msgid "Press Ctrl+K to view keyboard shortcuts"
+msgstr "Нажмите Ctrl+K для просмотра сочетаний клавиш"
+
+#: templates/admin/update.php:49
+msgid "No, I will do it later"
+msgstr "Нет, я сделаю это позже"
+
+#: templates/admin/general-settings.php:898 templates/admin/modals.php:403
+msgid "Keyboard shortcuts (Ctrl+K)"
+msgstr "Сочетания клавиш (Ctrl+K)"
+
+#: templates/admin/general-settings.php:918 templates/admin/modals.php:423
+msgid "Paste Folder"
+msgstr "Вставить папку"
+
+#: templates/admin/general-settings.php:934 templates/admin/modals.php:439
+msgid "Previous Folder"
+msgstr "Предыдущая папка"
+
+#: templates/admin/general-settings.php:819
+msgid "Learn how to enable Folders on media library"
+msgstr "Узнайте, как включить папки в медиа библиотеке"
+
+#: includes/class-review-box.php:505
+msgid "Thanks for your support, we really appreciate it!"
+msgstr "Спасибо за вашу поддержку, мы очень ценим её!"
+
+#: templates/admin/settings-tabs/folder-settings.php:265
+msgid "The Media Cleaning feature enables you to clean unused media files for your WordPress site and adds a Media Cleaning item under Media"
+msgstr "Функция очистки медиа файлов позволяет очищать неиспользуемые медиа файлы на сайте WordPress и добавляет элемент \"Очистка медиа\" в разделе \"Медиафайлы\""
+
+#: templates/admin/update.php:41
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#: templates/admin/general-settings.php:813
+msgid "Seems you’re using WordPress.com"
+msgstr "Похоже, вы используете WordPress.com"
+
+#: templates/admin/media-cleaning.php:15
+msgid "Scan for unused media"
+msgstr "Сканирование неиспользуемых медиа файлов"
+
+#. Description of the plugin
+#: folders.php
+msgid "Organize your Media library, Pages, and Posts into folders. You can easily drag and drop items into directories and change the folders tree view."
+msgstr "Организуйте свою библиотеку файлов, страницы и записи по папкам. Вы можете легко перетаскивать элементы в каталоги и изменять представление дерева папок."
+
+#: templates/admin/modals.php:194
+msgid "Confirm your change"
+msgstr "Подтвердите изменения"
+
+#: templates/admin/modals.php:177
+msgid "Don't show this popup again"
+msgstr "Больше не показывать это всплывающее окно"
+
+#: includes/folders.class.php:5794 includes/form.class.php:96
+msgid "Expand"
+msgstr "Раскрыть"
+
+#: includes/form.class.php:103
+msgid "Expand is pro feature"
+msgstr "Раскрыть — это про функция"
+
+#: includes/media.replace.php:290 includes/media.replace.php:370
+msgid "File successfully replaced"
+msgstr "Файл успешно заменен"
+
+#: includes/form.class.php:103 templates/admin/admin-content.php:235
+#: templates/admin/admin-content.php:241 templates/admin/admin-content.php:247
+#: templates/admin/admin-content.php:253 templates/admin/admin-content.php:259
+msgid "Upgrade Now 🎉"
+msgstr "Обновить сейчас 🎉"
+
+#: includes/media.replace.php:291 includes/media.replace.php:371
+msgid "The file has been successfully replaced using the file replacement feature"
+msgstr "Файл успешно заменен с помощью функции замены файла"
+
+#: templates/admin/admin-content.php:241
+msgid "Cut is pro feature"
+msgstr "Вырезать - функция pro"
+
+#: templates/admin/admin-content.php:253
+msgid "Paste is pro feature"
+msgstr "Вставить - функция pro"
+
+#: templates/admin/admin-content.php:247
+msgid "Copy is pro feature"
+msgstr "Копировать - функция pro"
+
+#: templates/admin/admin-content.php:235
+msgid "Uploading folder is pro feature"
+msgstr "Загрузка папки - функция pro"
+
+#: templates/admin/admin-content.php:259
+msgid "Lock/Unlock is pro feature"
+msgstr "Блокировка/разблокировка - функция pro"
+
+#: templates/admin/modals.php:173
+msgid "You can still create unlimited folders in the free version."
+msgstr "Вы по-прежнему можете создавать неограниченные папки в бесплатной версии."
+
+#: templates/admin/modals.php:201
+msgid "From all folders"
+msgstr "Из всех папок"
+
+#: templates/admin/modals.php:202
+msgid "Just from this folder"
+msgstr "Только из этой папки"
+
+#: templates/admin/general-settings.php:649
+msgid "User Restrictions"
+msgstr "Ограничения для пользователей"
+
+#: templates/admin/settings-tabs/folder-settings.php:246
+msgid "Move files to trash by default before deleting"
+msgstr "Переместить файлы в корзину по умолчанию перед удалением"
+
+#: templates/admin/settings-tabs/folder-settings.php:252
+msgid "When enabled, files will be moved to trash to prevent mistakes, and then you can delete permanently from the trash"
+msgstr "Если этот параметр включен, файлы будут перемещены в корзину, чтобы предотвратить ошибки, а затем вы сможете навсегда удалить их из корзины"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:19
+msgid "Restrict users to their folders only"
+msgstr "Ограничить доступ пользователей только к их папкам"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:20
+msgid "Users will only be able to access their folders and media. Only Admin users will be able to view all folders"
+msgstr "Пользователи смогут получить доступ только к своим папкам и медиа файлам. Только пользователи с правами администратора смогут просматривать все папки"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:45
+msgid "Restrict access to dynamic folders"
+msgstr "Ограничение доступа к динамическим папкам"
+
+#: templates/admin/settings-tabs/folder-user-settings.php:46
+msgid "Regular users will not access dynamic folders."
+msgstr "Обычные пользователи не будут получать доступ к динамическим папкам."
+
+#: templates/admin/settings-tabs/folder-user-settings.php:47
+msgid "Only Admin users will be able to view dynamic folders."
+msgstr "Только пользователи с правами администратора смогут просматривать динамические папки."
+
+#: templates/admin/settings-tabs/folder-settings.php:178
+msgid "Use folders with Undo action after performing tasks"
+msgstr "Используйте папки с действием Отменить (Undo) после выполнения задач"
+
+#: templates/admin/settings-tabs/customize-folders.php:40
+#: templates/admin/settings-tabs/customize-folders.php:80
+#: templates/admin/settings-tabs/customize-folders.php:117
+#: templates/admin/settings-tabs/customize-folders.php:154
+#: templates/admin/settings-tabs/customize-folders.php:191
+msgid "Custom"
+msgstr "Пользовательское"
+
+#: templates/admin/media-replace.php:169
+msgid "Custom date"
+msgstr "Пользовательская дата"
+
+#: includes/media.replace.php:198
+msgid "Change file name"
+msgstr "Изменить имя файла"
+
+#: templates/admin/settings-tabs/folder-settings.php:192
+msgid "Default timeout"
+msgstr "Время ожидания по умолчанию"
+
+#: templates/admin/settings-tabs/folder-settings.php:164
+#: templates/admin/upgrade-table.php:156 templates/admin/upgrade-table.php:157
+msgid "Dynamic Folders"
+msgstr "Динамические папки"
+
+#: templates/admin/general-settings.php:879
+msgid "You've reached the 10 folder limitation!"
+msgstr "Вы достигли ограничения в 10 папок!"
+
+#: templates/admin/settings-tabs/folder-settings.php:272
+msgid "Auto Rename file based on title"
+msgstr "Авто переименование файла в зависимости от названия"
+
+#: templates/admin/settings-tabs/folder-settings.php:278
+msgid "Replace the actual file name of media files with the title from the WordPress editor."
+msgstr "Замените фактическое имя файла медиафайлов на название из редактора WordPress."
+
+#: includes/media.replace.php:1059
+msgid "Change file name according to title"
+msgstr "Изменить имя файла в соответствии с названием"
+
+#: includes/media.replace.php:1132
+msgid "Update file name with title"
+msgstr "Обновить имя файла с названием"
+
+#: templates/admin/media-replace.php:188
+msgid "Put new upload in updated folder"
+msgstr "Поместить новую загрузку в обновленную папку"
+
+#: includes/folders.class.php:5797 templates/admin/modals.php:23
+#: templates/admin/modals.php:215
+msgid "Add a new folder"
+msgstr "Добавить новую папку"
+
+#: templates/admin/modals.php:32 templates/admin/modals.php:69
+#: templates/admin/modals.php:221
+msgid "Folder name"
+msgstr "Имя папки"
+
+#: templates/admin/modals.php:287
+msgid "Action performed successfully"
+msgstr "Действие выполнено успешно"
+
+#: templates/admin/modals.php:296
+msgid "Action reversed successfully"
+msgstr "Действие отменено успешно"
+
+#: templates/admin/modals.php:26
+msgid "Enter your folder's name (or create more than one folder by separating the name with a comma)"
+msgstr "Введите имя папки (или создайте несколько папок, разделив имя запятой)"
+
+#: templates/admin/modals.php:289
+msgid "Undo"
+msgstr "Отмена"
+
+#: templates/admin/modals.php:114
+msgid "Unlock unlimited amount of folders by activating license key."
+msgstr "Разблокируйте неограниченное кол-во папок, активировав лицензионный ключ."
+
+#: templates/admin/modals.php:147 templates/admin/modals.php:167
+msgid "Sub-folders is a pro feature"
+msgstr "Вложенные папки - функция pro"
+
+#: templates/admin/modals.php:150 templates/admin/modals.php:170
+msgid "Hey, it looks like you want to create sub-folders on Folders. Sub-folders is a premium feature. Upgrade to Pro to create, access and organize your files with sub-folders."
+msgstr "Похоже, что вы хотите создать вложенные папки в Folders. Вложенные папки - это премиум-функция. Обновите версию до Pro, чтобы создавать, получать доступ и организовывать свои файлы с помощью вложенных папок."
+
+#: includes/folders.class.php:5780 templates/admin/modals.php:244
+#: templates/admin/modals.php:248
+msgid "Select Folder"
+msgstr "Выберите папку"
+
+#: templates/admin/settings-tabs/folder-settings.php:170
+msgid "Automatically filter posts/pages/custom posts/media files based on author, date, file types & more"
+msgstr "Авто фильтрация записей/страниц/ пользовательских записей/медиафайлов на основе автора, даты, типов файлов и т.д."
+
+#: templates/admin/settings-tabs/folder-settings.php:223
+#: templates/admin/upgrade-table.php:201
+msgid "Show useful metadata including title, size, type, date, dimension & more on hover."
+msgstr "Показывайте полезные метаданные, включая название, размер, тип, дату, размер и многое другое при наведении курсора."
+
+#: templates/admin/modals.php:40 templates/admin/modals.php:226
+msgid "Pro tip"
+msgstr "Профессиональный совет"
+
+#: includes/form.class.php:123 includes/form.class.php:124
+msgid "(Pro)"
+msgstr "(Pro)"
+
+#: includes/form.class.php:117
+msgid "A → Z"
+msgstr "А → Я"
+
+#: templates/admin/general-settings.php:632
+msgid "Changes Saved"
+msgstr "Изменения сохранены"
+
+#: templates/admin/help.php:52
+#: templates/admin/settings-tabs/folders-import.php:204
+msgid "Contact Us"
+msgstr "Связаться с нами"
+
+#: templates/admin/settings-tabs/folders-import.php:234
+msgid "Danger Zone"
+msgstr "Опасная зона"
+
+#: includes/media.replace.php:923
+msgid "Size"
+msgstr "Размер"
+
+#: templates/admin/general-settings.php:652
+msgid "Tools"
+msgstr "Инструменты"
+
+#: includes/media.replace.php:924
+msgid "Type"
+msgstr "Тип"
+
+#: templates/admin/general-settings.php:633
+msgid "Your changes have been saved."
+msgstr "Ваши изменения сохранены."
+
+#: includes/form.class.php:118
+msgid "Z → A"
+msgstr "Я → А"
+
+#: templates/admin/settings-tabs/folders-import.php:256
+msgid "Delete Now"
+msgstr "Удалить сейчас"
+
+#: templates/admin/settings-tabs/folders-import.php:239
+msgid "(Not recommended)"
+msgstr "(Не рекомендуется)"
+
+#: templates/admin/general-settings.php:638
+msgid "All folders has been successfully deleted."
+msgstr "Все папки успешно удалены."
+
+#: templates/admin/settings-tabs/folders-import.php:191
+msgid "Click import to start importing external folders."
+msgstr "Нажмите кнопку Импорт, чтобы начать импорт внешних папок."
+
+#: templates/admin/settings-tabs/folders-import.php:201
+msgid "Couldn't detect any external folders that can be imported. Please contact us if you have external folders that were not detected"
+msgstr "Не удалось обнаружить внешние папки, которые можно импортировать. Свяжитесь с нами, если у вас есть внешние папки, которые не были обнаружены"
+
+#: templates/admin/settings-tabs/folders-import.php:253
+msgid "Delete all folders data manually This feature will remove all existing folders created by the plugin. Use this feature with caution."
+msgstr "Удалить данные всех папок вручную Эта функция удалит все существующие папки, созданные плагином. Используйте эту функцию с осторожностью."
+
+#: templates/admin/settings-tabs/folders-import.php:239
+msgid "Delete all folders when the plugin is removed. This feature will remove all existing folders created by the plugin upon deletion."
+msgstr "Удалить все папки при удалении плагина. Эта функция удалит все существующие папки, созданные плагином, при его удалении."
+
+#: templates/admin/settings-tabs/folders-import.php:238
+msgid "Delete plugin data upon deletion"
+msgstr "Удалить данные плагина при удалении"
+
+#: templates/admin/settings-tabs/folders-import.php:191
+msgid "External folders found."
+msgstr "Найдены внешние папки."
+
+#: templates/admin/general-settings.php:637
+msgid "Folders Deleted"
+msgstr "Удаление папок"
+
+#: templates/admin/settings-tabs/folders-import.php:252
+msgid "Manual Data Removal"
+msgstr "Ручное удаление данных"
+
+#: templates/admin/general-settings.php:769
+msgid "I want to delete anyway"
+msgstr "Я все равно хочу удалить"
+
+#: includes/media.replace.php:1100
+msgid "to replace media files other than images"
+msgstr "для замены медиафайлов, отличных от изображений"
+
+#: templates/admin/general-settings.php:232
+msgid "This will delete all existing folders & settings"
+msgstr "Это приведет к удалению всех существующих папок и настроек"
+
+#: templates/admin/settings-tabs/folder-settings.php:217
+msgid "Show media details on hover"
+msgstr "Показывать подробную информацию о медиа при наведении"
+
+#: includes/media.replace.php:1044
+msgid "to replace any kind of files while uploading including pdf/svg/docx/etc & more."
+msgstr "для замены любых файлов при загрузке, включая pdf/svg/docx/etc и другие."
+
+#: templates/admin/settings-tabs/folder-settings.php:204
+msgid "Enable Replace Media"
+msgstr "Включить замену медиа"
+
+#: templates/admin/settings-tabs/folder-settings.php:210
+msgid "The Replace Media feature will allow you to replace your media files throughout your website with the click of a button,  which means the file will be replaced for all your posts, pages, etc"
+msgstr "Функция Заменить медиа позволит вам заменить медиафайлы на всем сайте одним нажатием кнопки, что означает, что файл будет заменен для всех ваших постов, страниц и т.д."
+
+#: includes/media.replace.php:1002
+msgid "Replace Media 🔑"
+msgstr "Заменить медиа 🔑"
+
+#: includes/form.class.php:134
+msgid "Unlock all Pro features"
+msgstr "Разблокируйте все функции Pro"
+
+#: templates/admin/settings-tabs/customize-folders.php:344
+#: templates/admin/settings-tabs/customize-folders.php:357
+msgid "Show Folders in upper position"
+msgstr "Показать Folders вверху"
+
+#: templates/admin/general-settings.php:784
+msgid "Type DELETE to confirm"
+msgstr "Введите DELETE для подтверждения"
+
+#: includes/form.class.php:120 includes/form.class.php:123
+msgid "Sort by newest"
+msgstr "Сортировать по самым новым"
+
+#: includes/form.class.php:121 includes/form.class.php:124
+msgid "Sort by oldest"
+msgstr "Сортировать по самым старым"
+
+#: templates/admin/general-settings.php:239
+msgid "Please type DELETE and click on the \"Delete\" button to confirm"
+msgstr "Введите DELETE и нажмите на кнопку \"Удалить\" для подтверждения"
+
+#: templates/admin/media-replace.php:201
+msgid "Replace File"
+msgstr "Заменить файл"
+
+#: templates/admin/general-settings.php:697
+#: templates/admin/general-settings.php:723
+#: templates/admin/general-settings.php:848
+#: templates/admin/settings-tabs/folders-import.php:190
+#: templates/admin/settings-tabs/folders-import.php:194
+#: templates/admin/settings-tabs/folders-import.php:224
+#: templates/admin/settings-tabs/folders-import.php:292
+msgid "Import"
+msgstr "Импорт"
+
+#: templates/admin/general-settings.php:712
+#: templates/admin/general-settings.php:837
+msgid "Import data"
+msgstr "Импорт данных"
+
+#: includes/plugins.class.php:80 includes/plugins.class.php:176
+msgid "Invalid request"
+msgstr "Неверный запрос"
+
+#: includes/media.replace.php:1042 includes/media.replace.php:1093
+msgid "Upload a new file"
+msgstr "Загрузить новый файл"
+
+#: templates/admin/media-replace.php:5
+msgid "You do not have permission to upload files."
+msgstr "У вас нет прав для загрузки файлов."
+
+#: templates/admin/general-settings.php:722
+#: templates/admin/general-settings.php:849
+msgid "s"
+msgstr "s"
+
+#: templates/admin/general-settings.php:724
+#: templates/admin/general-settings.php:752
+msgid "Delete plugin data"
+msgstr "Удаление данных плагина"
+
+#: includes/media.replace.php:1042 includes/media.replace.php:1094
+#: includes/media.replace.php:1101
+msgid "Click on the button to replace the file with another file"
+msgstr "Нажмите на кнопку, чтобы заменить файл другим файлом"
+
+#: templates/admin/settings-tabs/folder-settings.php:311
+msgid "Show the folders also in WordPress menu"
+msgstr "Показывать папки также в меню WordPress"
+
+#: templates/admin/media-replace.php:50
+msgid "Upload a new file instead of the current one"
+msgstr "Загрузить новый файл вместо текущего"
+
+#: templates/admin/general-settings.php:35
+msgid "Import folders from %plugin%"
+msgstr "Импорт папок из %plugin%"
+
+#: templates/admin/general-settings.php:38
+msgid "You're about to delete %plugin%'s folders. Are you sure you'd like to proceed?"
+msgstr "Вы собираетесь удалить папки %plugin%. Вы уверены, что хотите продолжить?"
+
+#: templates/admin/media-replace.php:109
+msgid "Replacement file is not the same filetype. This might cause unexpected issues"
+msgstr "Файл замены имеет другой тип файла. Это может вызвать непредвиденные проблемы"
+
+#: includes/media.replace.php:187 templates/admin/media-replace.php:46
+msgid "Replace Media"
+msgstr "Заменить медиа"
+
+#: includes/media.replace.php:942 includes/media.replace.php:943
+#: includes/media.replace.php:998 includes/media.replace.php:1091
+#: includes/media.replace.php:1098 includes/media.replace.php:1130
+msgid "Replace media"
+msgstr "Заменить медиа"
+
+#: templates/admin/general-settings.php:838
+msgid "We've detected that you use another folders plugin. Would you like the Folders plugin to import your current folders? Keep in mind you can always do it in Folders Settings -> Import"
+msgstr "Мы обнаружили, что вы используете другой плагин папок. Хотели бы вы, чтобы плагин Folders импортировал ваши текущие папки? Помните, что вы всегда можете сделать это в Настройки Folders -> Импорт"
+
+#: templates/admin/settings-tabs/folder-settings.php:298
+msgid "Place the Folders settings page nested under \"Settings\""
+msgstr "Поместите страницу настроек Folders в раздел \"Настройки\""
+
+#. translators: %s: Number of installations.
+#: templates/admin/recommended-plugins.php:456
+msgid "%s Active Installations"
+msgstr "%s активных установок"
+
+#. translators: %s: Human-readable time difference.
+#: templates/admin/recommended-plugins.php:437
+msgid "%s ago"
+msgstr "%s назад"
+
+#. translators: 1: URL to WordPress Updates screen, 2: URL to Update PHP page.
+#: templates/admin/recommended-plugins.php:356
+msgid "<a href=\"%1$s\">Please update WordPress</a>, and then <a href=\"%2$s\">learn more about updating PHP</a>."
+msgstr "<a href=\"%1$s\">Обновите WordPress</a>, а затем <a href=\"%2$s\">узнайте больше об обновлении PHP</a>."
+
+#. translators: %s: URL to Update PHP page.
+#: templates/admin/recommended-plugins.php:370
+#: templates/admin/recommended-plugins.php:389
+msgid "<a href=\"%s\">Learn more about updating PHP</a>."
+msgstr "<a href=\"%s\">Узнайте больше об обновлении PHP</a>."
+
+#. translators: %s: URL to WordPress Updates screen.
+#: templates/admin/recommended-plugins.php:364
+#: templates/admin/recommended-plugins.php:380
+msgid "<a href=\"%s\">Please update WordPress</a>."
+msgstr "<a href=\"%s\">Обновите WordPress</a>."
+
+#: templates/admin/recommended-plugins.php:277
+msgid "Activate"
+msgstr "Активировать"
+
+#: templates/admin/general-settings.php:37
+#: templates/admin/general-settings.php:749
+#: templates/admin/general-settings.php:765
+#: templates/admin/recommended-plugins.php:477
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#. translators: %s: Plugin author.
+#: templates/admin/recommended-plugins.php:210
+msgid "By %s"
+msgstr "По %s"
+
+#: templates/admin/recommended-plugins.php:478
+msgid "If you hide the recommended plugins page from your menu, it won't appear there again. Are you sure you'd like to do it?"
+msgstr "Если вы скроете страницу рекомендуемых плагинов из своего меню, она больше там не появится. Вы уверены, что хотите это сделать?"
+
+#: templates/admin/recommended-plugins.php:236
+msgid "Install Now"
+msgstr "Установить сейчас"
+
+#: templates/admin/recommended-plugins.php:434
+msgid "Last Updated:"
+msgstr "Последнее обновление:"
+
+#: includes/folders.class.php:6249 includes/folders.class.php:6250
+msgid "Recommended Plugins"
+msgstr "Рекомендуемые плагины"
+
+#: templates/admin/recommended-plugins.php:385
+msgid "This plugin doesn&#8217;t work with your version of PHP."
+msgstr "Этот плагин&#8217; не работает с вашей версией PHP."
+
+#: templates/admin/recommended-plugins.php:376
+msgid "This plugin doesn&#8217;t work with your version of WordPress."
+msgstr "Этот плагин&#8217; не работает с вашей версией WordPress."
+
+#: templates/admin/recommended-plugins.php:352
+msgid "This plugin doesn&#8217;t work with your versions of WordPress and PHP."
+msgstr "Этот плагин&#8217; не работает с вашими версиями WordPress и PHP."
+
+#: templates/admin/recommended-plugins.php:163
+msgid "Try out our recommended plugins"
+msgstr "Попробуйте наши рекомендуемые плагины"
+
+#: templates/admin/recommended-plugins.php:462
+msgid "Untested with your version of WordPress"
+msgstr "Не тестировалось с вашей версией WordPress"
+
+#: templates/admin/recommended-plugins.php:258
+msgid "Update Now"
+msgstr "Обновить сейчас"
+
+#. translators: %s: Number of millions.
+#: templates/admin/recommended-plugins.php:446
+msgctxt "Active plugin installations"
+msgid "%s+ Million"
+msgid_plural "%s+ Million"
+msgstr[0] "Более %s миллиона"
+msgstr[1] "Более %s миллионов"
+msgstr[2] "Более %s миллионов"
+
+#: templates/admin/recommended-plugins.php:290
+msgid "Network Activate"
+msgstr "Активировать сеть"
+
+#. translators: %s: Plugin name and version.
+#: templates/admin/recommended-plugins.php:320
+msgid "More information about %s"
+msgstr "Больше информации о %s"
+
+#: templates/admin/recommended-plugins.php:322
+msgid "More Details"
+msgstr "Детали"
+
+#: templates/admin/recommended-plugins.php:164
+msgid "Hide From Menu"
+msgstr "Скрыть из меню"
+
+#: includes/folders.class.php:1395
+msgid "Unassigned"
+msgstr "Не назначено"
+
+#: includes/folders.class.php:1098 includes/folders.class.php:5786
+#: templates/admin/modals.php:253
+msgid "Move to Folder"
+msgstr "Переместить в папку"
+
+#: templates/admin/upgrade-table.php:395
+msgid "30 days money back guaranteed"
+msgstr "Гарантия возврата денег в течение 30 дней"
+
+#: includes/folders.class.php:5002
+msgid "Add New Folder"
+msgstr "Добавить новую папку"
+
+#: templates/admin/settings-tabs/customize-folders.php:408
+#: templates/admin/settings-tabs/customize-folders.php:422
+msgid "All Files"
+msgstr "Все файлы"
+
+#: templates/admin/folder-deactivate-form.php:36
+msgid "Anonymous feedback"
+msgstr "Анонимный отзыв"
+
+#: templates/admin/admin-content.php:319
+#: templates/admin/folder-deactivate-form.php:45
+#: templates/admin/general-settings.php:698
+#: templates/admin/general-settings.php:753
+#: templates/admin/general-settings.php:768
+#: templates/admin/general-settings.php:794
+#: templates/admin/general-settings.php:885
+#: templates/admin/media-replace.php:202 templates/admin/modals.php:47
+#: templates/admin/modals.php:76 templates/admin/modals.php:117
+#: templates/admin/modals.php:153 templates/admin/modals.php:180
+#: templates/admin/modals.php:252
+#: templates/admin/settings-tabs/folders-import.php:291
+#: templates/admin/settings-tabs/folders-import.php:306
+msgid "Cancel"
+msgstr "Отмена"
+
+#: templates/admin/help.php:64 templates/admin/help.php:121
+msgid "Chat"
+msgstr "Чат"
+
+#: templates/admin/general-settings.php:735
+#: templates/admin/general-settings.php:860 templates/admin/help.php:26
+#: templates/admin/modals.php:134 templates/admin/modals.php:325
+msgid "Close"
+msgstr "Закрыть"
+
+#: includes/folders.class.php:5772 templates/admin/admin-content.php:264
+#: templates/admin/general-settings.php:793
+#: templates/admin/settings-tabs/customize-folders.php:395
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/admin/help.php:127
+msgid "Done!"
+msgstr "Отлично!"
+
+#: includes/folders.class.php:5000
+msgid "Edit Folder"
+msgstr "Изменить папку"
+
+#: includes/folders.class.php:4998 includes/folders.class.php:5010
+msgid "Folder"
+msgstr "Папка"
+
+#: templates/admin/settings-tabs/customize-folders.php:415
+#: templates/admin/settings-tabs/customize-folders.php:423
+msgid "Folder 1"
+msgstr "Папка 1"
+
+#: templates/admin/settings-tabs/customize-folders.php:416
+#: templates/admin/settings-tabs/customize-folders.php:424
+msgid "Folder 2"
+msgstr "Папка 2"
+
+#: templates/admin/settings-tabs/customize-folders.php:417
+#: templates/admin/settings-tabs/customize-folders.php:425
+msgid "Folder 3"
+msgstr "Папка 3"
+
+#: includes/form.class.php:78
+#: templates/admin/settings-tabs/customize-folders.php:379
+msgid "New Folder"
+msgstr "Новая папка"
+
+#: includes/folders.class.php:5006 includes/tree.class.php:176
+msgid "Parent Folder"
+msgstr "Родительская папка"
+
+#: includes/folders.class.php:2753
+msgid "Please enter your message"
+msgstr "Введите ваше сообщение"
+
+#. Author of the plugin
+#: folders.php templates/admin/help.php:20
+msgid "Premio"
+msgstr "Premio"
+
+#: includes/folders.class.php:5758
+#: templates/admin/settings-tabs/customize-folders.php:392
+msgid "Rename"
+msgstr "Переименовать"
+
+#: includes/folders.class.php:5005
+msgid "Search Folders"
+msgstr "Поиск папок"
+
+#: templates/admin/help.php:110
+msgid "Sending Request..."
+msgstr "Отправка запроса..."
+
+#: includes/folders.class.php:5843
+msgid "Settings"
+msgstr "Настройки"
+
+#: includes/class-review-box.php:537 includes/folders.class.php:5793
+#: templates/admin/modals.php:48 templates/admin/modals.php:77
+#: templates/admin/modals.php:362 templates/admin/modals.php:376
+msgid "Submit"
+msgstr "Отправить"
+
+#: templates/admin/upgrade-table.php:399
+msgid "The plugin will always keep working even if you don't renew your license"
+msgstr "Плагин всегда будет работать, даже если вы не продлеваете лицензию"
+
+#: includes/folders.class.php:5001
+msgid "Update Folder"
+msgstr "Обновить папку"
+
+#: includes/folders.class.php:5847
+msgid "Upgrade"
+msgstr "Обновить"
+
+#: includes/folders.class.php:5792 templates/admin/modals.php:98
+msgid "Yes, Delete it!"
+msgstr "Да, удалить!"
+
+#: templates/admin/folder-deactivate-form.php:31
+msgid "Your comment"
+msgstr "Ваш комментарий"
+
+#: templates/admin/help.php:134
+msgid "Your message is sent successfully."
+msgstr "Сообщение успешно отправлено."
+
+#: includes/folders.class.php:497 includes/folders.class.php:502
+#: includes/folders.class.php:534 includes/folders.class.php:539
+#: includes/folders.class.php:672 includes/folders.class.php:677
+#: includes/folders.class.php:715 includes/folders.class.php:724
+#: includes/folders.class.php:836 includes/folders.class.php:839
+#: includes/folders.class.php:842 includes/folders.class.php:854
+#: includes/folders.class.php:922 includes/folders.class.php:925
+#: includes/folders.class.php:928 includes/folders.class.php:1426
+#: includes/folders.class.php:1429 includes/folders.class.php:1432
+#: includes/folders.class.php:1444 includes/folders.class.php:1480
+#: includes/folders.class.php:1483 includes/folders.class.php:1486
+#: includes/folders.class.php:1498 includes/folders.class.php:1534
+#: includes/folders.class.php:1537 includes/folders.class.php:1540
+#: includes/folders.class.php:1543 includes/folders.class.php:1546
+#: includes/folders.class.php:1597 includes/folders.class.php:1599
+#: includes/folders.class.php:1604 includes/folders.class.php:1649
+#: includes/folders.class.php:1652 includes/folders.class.php:1655
+#: includes/folders.class.php:1658 includes/folders.class.php:1661
+#: includes/folders.class.php:2776 includes/folders.class.php:2783
+#: includes/folders.class.php:2869 includes/folders.class.php:2875
+#: includes/folders.class.php:3022 includes/folders.class.php:3025
+#: includes/folders.class.php:3037 includes/folders.class.php:3080
+#: includes/folders.class.php:3083 includes/folders.class.php:3086
+#: includes/folders.class.php:3098 includes/folders.class.php:3135
+#: includes/folders.class.php:3138 includes/folders.class.php:3141
+#: includes/folders.class.php:3144 includes/folders.class.php:3155
+#: includes/folders.class.php:3233 includes/folders.class.php:3236
+#: includes/folders.class.php:3243 includes/folders.class.php:3316
+#: includes/folders.class.php:3318 includes/folders.class.php:3323
+#: includes/folders.class.php:3376 includes/folders.class.php:3378
+#: includes/folders.class.php:3383 includes/folders.class.php:3436
+#: includes/folders.class.php:3439 includes/folders.class.php:3441
+#: includes/folders.class.php:3446 includes/folders.class.php:3511
+#: includes/folders.class.php:3519 includes/folders.class.php:3567
+#: includes/folders.class.php:3570 includes/folders.class.php:3573
+#: includes/folders.class.php:3576 includes/folders.class.php:3581
+#: includes/folders.class.php:3623 includes/folders.class.php:3626
+#: includes/folders.class.php:3629 includes/folders.class.php:3634
+#: includes/folders.class.php:3679 includes/folders.class.php:3682
+#: includes/folders.class.php:3685 includes/folders.class.php:3690
+#: includes/folders.class.php:3747 includes/folders.class.php:3750
+#: includes/folders.class.php:3841 includes/folders.class.php:4366
+#: includes/folders.class.php:4374 includes/import.export.class.php:57
+#: includes/import.export.class.php:62 includes/import.export.class.php:261
+#: includes/import.export.class.php:266
+msgid "Your request is not valid"
+msgstr "Ваш запрос недействителен"
+
+#: includes/folders.class.php:2677 includes/folders.class.php:4999
+#: includes/folders.class.php:5752
+msgid "All Folders"
+msgstr "Все папки"
+
+#: templates/admin/folder-deactivate-form.php:33
+msgid " to contact our support now"
+msgstr " связаться с нашей службой поддержки сейчас"
+
+#: includes/folders.class.php:2678 includes/folders.class.php:5781
+msgid "(Unassigned)"
+msgstr "(Не назначено)"
+
+#: includes/folders.class.php:1398
+msgid "+ Create a New Folder"
+msgstr "+ Создать новую папку"
+
+#: includes/folders.class.php:290 includes/folders.class.php:6263
+#: includes/folders.class.php:6264 includes/media.replace.php:1044
+#: includes/media.replace.php:1062 includes/media.replace.php:1100
+#: includes/media.replace.php:1132 templates/admin/general-settings.php:654
+#: templates/admin/media-replace.php:61 templates/admin/media-replace.php:66
+#: templates/admin/media-replace.php:196 templates/admin/modals.php:118
+#: templates/admin/modals.php:154 templates/admin/modals.php:181
+#: templates/admin/modals.php:323
+#: templates/admin/settings-tabs/customize-folders.php:17
+#: templates/admin/settings-tabs/customize-folders.php:41
+#: templates/admin/settings-tabs/customize-folders.php:57
+#: templates/admin/settings-tabs/customize-folders.php:81
+#: templates/admin/settings-tabs/customize-folders.php:94
+#: templates/admin/settings-tabs/customize-folders.php:118
+#: templates/admin/settings-tabs/customize-folders.php:131
+#: templates/admin/settings-tabs/customize-folders.php:155
+#: templates/admin/settings-tabs/customize-folders.php:168
+#: templates/admin/settings-tabs/customize-folders.php:192
+#: templates/admin/settings-tabs/customize-folders.php:237
+#: templates/admin/settings-tabs/customize-folders.php:275
+#: templates/admin/settings-tabs/customize-folders.php:348
+#: templates/admin/settings-tabs/folder-user-settings.php:30
+#: templates/admin/settings-tabs/folder-user-settings.php:37
+#: templates/admin/settings-tabs/folder-user-settings.php:57
+#: templates/admin/settings-tabs/folder-user-settings.php:64
+#: templates/admin/settings-tabs/folder-user-settings.php:89
+#: templates/admin/settings-tabs/folder-user-settings.php:216
+#: templates/admin/settings-tabs/notification-settings.php:189
+msgid "Upgrade to Pro"
+msgstr "Обновить до Pro"
+
+#: includes/folders.class.php:5003
+msgid "Add folder name"
+msgstr "Добавить имя папки"
+
+#: includes/folders.class.php:5787 templates/admin/modals.php:91
+msgid "Are you sure you want to delete the selected folder?"
+msgstr "Вы уверены, что хотите удалить выбранную папку?"
+
+#: includes/folders.class.php:5773
+#: templates/admin/settings-tabs/customize-folders.php:427
+msgid "Bulk Organize"
+msgstr "Массовая организация"
+
+#: templates/admin/settings-tabs/customize-folders.php:131
+msgid "Dropdown color"
+msgstr "Цвет выпадающего списка"
+
+#: includes/folders.class.php:2761 templates/admin/help.php:58
+msgid "Email"
+msgstr "Email"
+
+#: templates/admin/folder-deactivate-form.php:27
+msgid "Email address"
+msgstr "Email-адрес"
+
+#: includes/folders.class.php:1388
+msgid "First select the folder, and then upload the files"
+msgstr "Сначала выберите папку, а затем загрузите файлы"
+
+#: includes/folders.class.php:4401
+msgid "Folder name already exists"
+msgstr "Имя папки уже существует"
+
+#: includes/folders.class.php:3838 includes/folders.class.php:4371
+msgid "Folder name can no be empty"
+msgstr "Имя папки не может быть пустым"
+
+#: templates/admin/settings-tabs/customize-folders.php:168
+msgid "Folders background color"
+msgstr "Цвет фона папок"
+
+#: templates/admin/settings-tabs/customize-folders.php:234
+#: templates/admin/settings-tabs/customize-folders.php:237
+msgid "Folders font"
+msgstr "Шрифт папок"
+
+#: templates/admin/settings-tabs/customize-folders.php:275
+#: templates/admin/settings-tabs/customize-folders.php:278
+msgid "Folders size"
+msgstr "Размер папок"
+
+#. Author URI of the plugin
+#: folders.php
+msgid "https://premio.io/downloads/folders/"
+msgstr "https://premio.io/downloads/folders/"
+
+#: includes/folders.class.php:1387
+msgid "Select a folder (Optional)"
+msgstr "Выберите папку (необязательно)"
+
+#: includes/folders.class.php:845 includes/folders.class.php:848
+#: includes/folders.class.php:931 includes/folders.class.php:934
+#: includes/folders.class.php:1435 includes/folders.class.php:1438
+#: includes/folders.class.php:1489 includes/folders.class.php:1492
+#: includes/folders.class.php:3028 includes/folders.class.php:3031
+#: includes/folders.class.php:3089 includes/folders.class.php:3092
+msgid "You have not permission to update width"
+msgstr "У вас нет разрешения на обновление ширины"
+
+#: templates/admin/modals.php:97
+msgid "No, Keep it"
+msgstr "Нет, сохранить"
+
+#: includes/folders.class.php:5844 templates/admin/help.php:25
+msgid "Need help?"
+msgstr "Нужна помощь?"
+
+#: includes/folders.class.php:6119
+msgid "Move selected items"
+msgstr "Переместить выбранные элементы"
+
+#: templates/admin/settings-tabs/customize-folders.php:411
+msgid "Unassigned Files"
+msgstr "Не назначенные файлы"
+
+#: includes/folders.class.php:1593 includes/folders.class.php:3147
+#: includes/folders.class.php:3150 includes/folders.class.php:3312
+#: includes/folders.class.php:3372 includes/folders.class.php:3508
+#: includes/folders.class.php:3564 includes/folders.class.php:3832
+msgid "You have not permission to update folder"
+msgstr "У вас нет разрешения на обновление папки"
+
+#: includes/folders.class.php:3432
+msgid "You have not permission to update folder order"
+msgstr "У вас нет разрешения на изменение порядка папок"
+
+#: includes/folders.class.php:3514 includes/folders.class.php:4378
+#: includes/folders.class.php:4384
+msgid "Unable to create folder, Your request is not valid"
+msgstr "Невозможно создать папку, Ваш запрос не действителен"
+
+#: includes/folders.class.php:3676 includes/folders.class.php:3744
+msgid "You have not permission to remove folder"
+msgstr "У вас нет разрешения на удаление папки"
+
+#: includes/folders.class.php:3753 includes/folders.class.php:3758
+msgid "Unable to delete folder, Your request is not valid"
+msgstr "Невозможно удалить папку, Ваш запрос не действителен"
+
+#: includes/folders.class.php:3835 includes/folders.class.php:3844
+#: includes/folders.class.php:3849
+msgid "Unable to rename folder, Your request is not valid"
+msgstr "Невозможно переименовать папку, ваш запрос недействителен"
+
+#: includes/folders.class.php:3872
+msgid "Unable to rename folder"
+msgstr "Невозможно переименовать папку"
+
+#: includes/folders.class.php:4368
+msgid "You have not permission to add folder"
+msgstr "У вас нет разрешения на добавление папки"
+
+#: templates/admin/folder-deactivate-form.php:33
+msgid "Having any problem with the Folders plugins?"
+msgstr "Возникли проблемы с плагинами Folders?"
+
+#: templates/admin/modals.php:36 templates/admin/modals.php:73
+msgid "Please enter folder name"
+msgstr "Введите имя папки"
+
+#: templates/admin/modals.php:63
+msgid "Rename folder"
+msgstr "Переименовать папку"
+
+#: includes/folders.class.php:5788 templates/admin/modals.php:94
+msgid "Items in the folder will not be deleted."
+msgstr "Элементы в папке не будут удалены."
+
+#: templates/admin/general-settings.php:882
+msgid "Unlock unlimited amount of folders by upgrading to one of our pro plans."
+msgstr "Разблокируйте неограниченное количество папок, перейдя на один из наших про планов."
+
+#: templates/admin/general-settings.php:886
+msgid "See Pro Plans"
+msgstr "Посмотреть планы про"
+
+#. Plugin Name of the plugin
+#: folders.php includes/class-email-signup.php:60
+#: includes/folders.class.php:435 includes/folders.class.php:4997
+#: includes/folders.class.php:5004 includes/folders.class.php:6232
+#: includes/form.class.php:64
+#: templates/admin/settings-tabs/customize-folders.php:376
+msgid "Folders"
+msgstr "Folders"
+
+#: includes/folders.class.php:6219 includes/folders.class.php:6220
+#: includes/folders.class.php:6233 templates/admin/general-settings.php:613
+#: templates/admin/general-settings.php:648
+msgid "Folders Settings"
+msgstr "Настройки Folders"
+
+#: templates/admin/general-settings.php:650
+msgid "Customize Folders"
+msgstr "Настроить Folders"
+
+#: templates/admin/folder-deactivate-form.php:22
+msgid "Quick feedback about Folders"
+msgstr "Быстрый отзыв о Folders"
+
+#: templates/admin/folder-deactivate-form.php:25
+msgid "Your feedback will help us improve the product, please tell us why did you decide to deactivate Folders :)"
+msgstr "Ваш отзыв поможет нам улучшить продукт, пожалуйста, расскажите нам, почему вы решили отключить Folders :)"
+
+#: templates/admin/settings-tabs/customize-folders.php:370
+msgid "See the full functionality on your media library, posts, pages, and custom posts"
+msgstr "Изучите все функции вашей медиатеки, записей, страниц и пользовательских записей"
+
+#: templates/admin/folder-deactivate-form.php:33
+msgid "Click here"
+msgstr "Щёлкните здесь"
+
+#: templates/admin/settings-tabs/folder-settings.php:8
+msgid "Use folders with"
+msgstr "Используйте папки с"
+
+#: templates/admin/settings-tabs/folder-settings.php:90
+msgid "Default folder"
+msgstr "Папка по умолчанию"
+
+#: templates/admin/upgrade-table.php:40 templates/admin/upgrade-table.php:78
+#: templates/admin/upgrade-table.php:116
+msgid "1 Website"
+msgstr "1 сайт"
+
+#: templates/admin/upgrade-table.php:58 templates/admin/upgrade-table.php:96
+#: templates/admin/upgrade-table.php:134
+msgid "500 Websites"
+msgstr "500 сайтов"
+
+#: templates/admin/help.php:61
+msgid "How can we help you?"
+msgstr "Чем мы можем вам помочь?"
+
+#: templates/admin/upgrade-table.php:281 templates/admin/upgrade-table.php:364
+msgid "Buy now"
+msgstr "Купить"
