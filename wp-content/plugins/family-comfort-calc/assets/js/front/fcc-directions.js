@@ -321,33 +321,221 @@
 		return raw.split(',').indexOf(String(id)) !== -1;
 	}
 
-	function collectMatchingCards(root, ageId, interestId) {
+	function arrayHasId(list, id) {
+		if (!list || !list.length || !id) {
+			return false;
+		}
+		return list.map(String).indexOf(String(id)) !== -1;
+	}
+
+	function arraysIntersect(a, b) {
+		if (!a || !a.length || !b || !b.length) {
+			return false;
+		}
+		for (var i = 0; i < a.length; i++) {
+			if (arrayHasId(b, a[i])) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Город подходит, если есть тег с пересечением по возрасту И по интересу.
+	 */
+	function cardMatchesTagFilters(card, ageIds, interestIds) {
+		var raw = card.getAttribute('data-fcc-tag-filters') || '[]';
+		var filters;
+		try {
+			filters = JSON.parse(raw);
+		} catch (e) {
+			filters = [];
+		}
+
+		if (filters && filters.length) {
+			for (var i = 0; i < filters.length; i++) {
+				var row = filters[i] || {};
+				var ages = row.a || [];
+				var interests = row.i || [];
+				if (arraysIntersect(ages, ageIds) && arraysIntersect(interests, interestIds)) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		// Fallback для старых карточек.
+		for (var j = 0; j < ageIds.length; j++) {
+			for (var k = 0; k < interestIds.length; k++) {
+				var ageMatch = listHasId(card.getAttribute('data-fcc-age') || '', ageIds[j]);
+				var interestMatch = listHasId(card.getAttribute('data-fcc-interest') || '', interestIds[k]);
+				if (ageMatch && interestMatch) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	function collectMatchingCards(root, ageIds, interestIds) {
 		var pool = root.querySelector('#fcc-family-comfort-card-pool');
 		if (!pool) {
 			return [];
 		}
 
 		return Array.prototype.filter.call(pool.querySelectorAll('.ai-family-comfort__card'), function (card) {
-			var ageMatch = listHasId(card.getAttribute('data-fcc-age') || '', ageId);
-			var interestMatch = listHasId(card.getAttribute('data-fcc-interest') || '', interestId);
-			return ageMatch && interestMatch;
+			return cardMatchesTagFilters(card, ageIds, interestIds);
+		});
+	}
+
+	function getMsSelectedValues(ms) {
+		if (!ms) {
+			return [];
+		}
+		return Array.prototype.map.call(ms.querySelectorAll('.fcc-ms__item:checked'), function (el) {
+			return String(el.value);
+		});
+	}
+
+	function syncMsAllState(ms) {
+		var all = ms.querySelector('.fcc-ms__all');
+		var items = ms.querySelectorAll('.fcc-ms__item');
+		if (!all || !items.length) {
+			return;
+		}
+		var checked = 0;
+		Array.prototype.forEach.call(items, function (el) {
+			if (el.checked) {
+				checked += 1;
+			}
+		});
+		all.checked = checked === items.length;
+		all.indeterminate = checked > 0 && checked < items.length;
+	}
+
+	function updateMsLabel(ms) {
+		var placeholder = ms.getAttribute('data-placeholder') || '';
+		var valueEl = ms.querySelector('.fcc-ms__value');
+		if (!valueEl) {
+			return;
+		}
+		var labels = [];
+		Array.prototype.forEach.call(ms.querySelectorAll('.fcc-ms__item:checked'), function (el) {
+			var text = el.parentNode ? (el.parentNode.querySelector('span') || {}).textContent : '';
+			text = String(text || '').trim();
+			if (text) {
+				labels.push(text);
+			}
+		});
+		valueEl.textContent = labels.length ? labels.join(', ') : placeholder;
+	}
+
+	function closeMs(ms) {
+		if (!ms) {
+			return;
+		}
+		ms.classList.remove('is-open');
+		var panel = ms.querySelector('.fcc-ms__panel');
+		var trigger = ms.querySelector('.fcc-ms__trigger');
+		if (panel) {
+			panel.hidden = true;
+		}
+		if (trigger) {
+			trigger.setAttribute('aria-expanded', 'false');
+		}
+	}
+
+	function openMs(ms) {
+		if (!ms) {
+			return;
+		}
+		document.querySelectorAll('.fcc-ms.is-open').forEach(function (other) {
+			if (other !== ms) {
+				closeMs(other);
+			}
+		});
+		ms.classList.add('is-open');
+		var panel = ms.querySelector('.fcc-ms__panel');
+		var trigger = ms.querySelector('.fcc-ms__trigger');
+		if (panel) {
+			panel.hidden = false;
+		}
+		if (trigger) {
+			trigger.setAttribute('aria-expanded', 'true');
+		}
+	}
+
+	function initMultiSelects(root) {
+		root.querySelectorAll('.fcc-ms').forEach(function (ms) {
+			var trigger = ms.querySelector('.fcc-ms__trigger');
+			var applyBtn = ms.querySelector('.fcc-ms__apply');
+			var all = ms.querySelector('.fcc-ms__all');
+
+			if (trigger) {
+				trigger.addEventListener('click', function (e) {
+					e.preventDefault();
+					if (trigger.disabled) {
+						return;
+					}
+					if (ms.classList.contains('is-open')) {
+						closeMs(ms);
+					} else {
+						openMs(ms);
+					}
+				});
+			}
+
+			if (all) {
+				all.addEventListener('change', function () {
+					var on = !!all.checked;
+					ms.querySelectorAll('.fcc-ms__item').forEach(function (el) {
+						el.checked = on;
+					});
+					all.indeterminate = false;
+				});
+			}
+
+			ms.querySelectorAll('.fcc-ms__item').forEach(function (el) {
+				el.addEventListener('change', function () {
+					syncMsAllState(ms);
+				});
+			});
+
+			if (applyBtn) {
+				applyBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					updateMsLabel(ms);
+					closeMs(ms);
+					updateDirections(root, false);
+				});
+			}
+
+			syncMsAllState(ms);
+			updateMsLabel(ms);
+		});
+
+		document.addEventListener('click', function (e) {
+			if (e.target.closest('.fcc-ms')) {
+				return;
+			}
+			root.querySelectorAll('.fcc-ms.is-open').forEach(closeMs);
 		});
 	}
 
 	function updateDirections(root, showResults) {
-		var ageSelect = root.querySelector('#fcc-family-comfort-age');
-		var interestSelect = root.querySelector('#fcc-family-comfort-interest');
+		var ageMs = root.querySelector('.fcc-ms[data-fcc-ms="age"]');
+		var interestMs = root.querySelector('.fcc-ms[data-fcc-ms="interest"]');
 		var emptyEl = root.querySelector('#fcc-family-comfort-empty');
 		var slider = getSlider(root);
 
-		if (!ageSelect || !interestSelect) {
+		if (!ageMs || !interestMs) {
 			return;
 		}
 
-		var selectedAge = ageSelect.value;
-		var selectedInterest = interestSelect.value;
+		var selectedAges = getMsSelectedValues(ageMs);
+		var selectedInterests = getMsSelectedValues(interestMs);
 
-		if (!showResults || !selectedAge || !selectedInterest) {
+		if (!showResults || !selectedAges.length || !selectedInterests.length) {
 			slider.returnCardsToPool();
 			slider.sliderEl.classList.remove('is-active');
 			if (emptyEl) {
@@ -356,7 +544,7 @@
 			return;
 		}
 
-		var matching = collectMatchingCards(root, selectedAge, selectedInterest);
+		var matching = collectMatchingCards(root, selectedAges, selectedInterests);
 
 		if (emptyEl) {
 			emptyEl.hidden = matching.length > 0;
@@ -373,24 +561,11 @@
 
 		root.dataset.fccInit = '1';
 
-		var ageSelect = root.querySelector('#fcc-family-comfort-age');
-		var interestSelect = root.querySelector('#fcc-family-comfort-interest');
 		var button = root.querySelector('.ai-family-comfort__button');
 
 		getSlider(root);
+		initMultiSelects(root);
 		updateDirections(root, false);
-
-		if (ageSelect) {
-			ageSelect.addEventListener('change', function () {
-				updateDirections(root, false);
-			});
-		}
-
-		if (interestSelect) {
-			interestSelect.addEventListener('change', function () {
-				updateDirections(root, false);
-			});
-		}
 
 		if (button) {
 			button.addEventListener('click', function () {

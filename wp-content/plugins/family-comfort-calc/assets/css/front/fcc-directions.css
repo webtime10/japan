@@ -49,6 +49,13 @@ html {
 	gap: 22px 28px;
 }
 
+.ai-family-comfort__field-label {
+	display: block;
+	margin: 0 0 10px;
+	font-size: 17px;
+	color: #7a7f87;
+}
+
 .ai-family-comfort__field label {
 	display: block;
 	margin: 0 0 10px;
@@ -72,6 +79,125 @@ html {
 	background-position: calc(100% - 28px) 50%, calc(100% - 21px) 50%;
 	background-size: 8px 8px, 8px 8px;
 	background-repeat: no-repeat;
+}
+
+/* Multi-select */
+.fcc-ms {
+	position: relative;
+	width: 100%;
+}
+
+.fcc-ms__trigger {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 74px;
+	padding: 0 58px 0 30px;
+	border: 0;
+	border-radius: 34px;
+	background: #f4f4f4;
+	color: #192d37;
+	font-size: 20px;
+	font-weight: 600;
+	font-family: inherit;
+	text-align: start;
+	cursor: pointer;
+	outline: none;
+	background-image: linear-gradient(45deg, transparent 50%, #7a7f87 50%), linear-gradient(135deg, #7a7f87 50%, transparent 50%);
+	background-position: calc(100% - 28px) calc(50% + 3px), calc(100% - 21px) calc(50% + 3px);
+	background-size: 8px 8px, 8px 8px;
+	background-repeat: no-repeat;
+}
+
+.fcc-ms.is-open .fcc-ms__trigger {
+	background-image: linear-gradient(135deg, transparent 50%, #7a7f87 50%), linear-gradient(45deg, #7a7f87 50%, transparent 50%);
+	background-position: calc(100% - 28px) calc(50% - 2px), calc(100% - 21px) calc(50% - 2px);
+}
+
+.fcc-ms__trigger:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.fcc-ms__value {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+}
+
+.fcc-ms__panel {
+	position: absolute;
+	z-index: 40;
+	top: calc(100% + 8px);
+	left: 0;
+	right: 0;
+	padding: 12px 12px 14px;
+	border-radius: 18px;
+	background: #fff;
+	box-shadow: 0 10px 30px rgba(25, 45, 55, 0.16);
+}
+
+.fcc-ms__list {
+	max-height: min(520px, calc(100vh - 180px));
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	margin: 0 0 10px;
+	padding: 0 2px;
+}
+
+.fcc-ms__option {
+	display: flex !important;
+	align-items: center;
+	gap: 8px;
+	margin: 0 !important;
+	padding: 4px 6px;
+	border-radius: 8px;
+	font-size: 16px !important;
+	font-weight: 500;
+	line-height: 1.25;
+	color: #192d37 !important;
+	cursor: pointer;
+	user-select: none;
+}
+
+.fcc-ms__option:hover {
+	background: #f4f7fa;
+}
+
+.fcc-ms__option input {
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	flex: 0 0 auto;
+	accent-color: #3b82f6;
+}
+
+.fcc-ms__option--all {
+	font-weight: 700 !important;
+	border-bottom: 1px solid #e8eef3;
+	border-radius: 0;
+	padding: 2px 6px 8px !important;
+	margin-bottom: 6px !important;
+}
+
+.fcc-ms__apply {
+	display: block;
+	width: 100%;
+	height: 48px;
+	border: 0;
+	border-radius: 14px;
+	background: linear-gradient(90deg, #f5d05f 0%, #fff3bb 50%, #f3ca59 100%);
+	color: #695729;
+	font-size: 17px;
+	font-weight: 700;
+	font-family: inherit;
+	cursor: pointer;
+}
+
+.fcc-ms__apply:hover {
+	background: linear-gradient(90deg, #efc64a 0%, #ffef9a 50%, #eabf45 100%);
 }
 
 .ai-family-comfort__button {
@@ -217,7 +343,7 @@ html {
 	border-radius: 16px;
 	background: #fff;
 	box-shadow: 0 10px 30px rgba(31, 41, 51, 0.06);
-	--fcc-tags-slot-height: calc(38px * 3 + 2px * 2);
+	--fcc-tags-slot-height: calc(38px * 2 + 2px);
 }
 
 .ai-family-comfort__card[hidden] {
@@ -388,6 +514,8 @@ html {
 	transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
+/* Места / теги — серые pill как в макете (стили выше: .ai-family-comfort__tags .fcc-tag) */
+
 .fcc-tags-more {
 	grid-column: 1 / -1;
 	justify-self: start;
@@ -523,6 +651,7 @@ html {
 	}
 
 	.ai-family-comfort__field select,
+	.fcc-ms__trigger,
 	.ai-family-comfort__button {
 		height: 62px;
 		font-size: 16px;
@@ -558,15 +687,21 @@ html {
 	}
 }
 
-html[dir="rtl"] .ai-family-comfort__field label {
+html[dir="rtl"] .ai-family-comfort__field label,
+html[dir="rtl"] .ai-family-comfort__field-label {
 	text-align: right;
 }
 
-html[dir="rtl"] .ai-family-comfort__field select {
+html[dir="rtl"] .ai-family-comfort__field select,
+html[dir="rtl"] .fcc-ms__trigger {
 	direction: rtl;
 	text-align: right;
 	padding: 0 54px 0 30px;
 	background-position: calc(100% - 28px) 50%, calc(100% - 21px) 50%;
+}
+
+html[dir="rtl"] .fcc-ms.is-open .fcc-ms__trigger {
+	background-position: calc(100% - 28px) calc(50% - 2px), calc(100% - 21px) calc(50% - 2px);
 }
 
 html[dir="rtl"] .ai-family-comfort__card {

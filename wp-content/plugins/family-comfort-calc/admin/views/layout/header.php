@@ -14,12 +14,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $nav_items = array_merge(
-	array( 'dashboard' => __( 'Главная', 'family-comfort-calc' ) ),
+	array(
+		'dashboard' => __( 'Главная', 'family-comfort-calc' ),
+		'post'      => __( 'Посты', 'family-comfort-calc' ),
+	),
 	fcc_get_group_types()
 );
 
 $route_to_nav = array(
 	'dashboard'          => 'dashboard',
+	'post'               => 'post',
 	'age_category'       => 'age',
 	'interest_category'  => 'interest',
 	'direction_category' => 'direction',
@@ -41,6 +45,8 @@ if ( empty( $heading_title ) && ! empty( $title ) ) {
 				<li class="<?php echo $active_nav === $nav_key ? 'active' : ''; ?>">
 					<?php if ( 'dashboard' === $nav_key ) : ?>
 						<a href="<?php echo esc_url( FCC_Router::url( 'dashboard', 'index' ) ); ?>"><?php echo esc_html( $label ); ?></a>
+					<?php elseif ( 'post' === $nav_key ) : ?>
+						<a href="<?php echo esc_url( FCC_Router::url( 'post', 'index' ) ); ?>"><?php echo esc_html( $label ); ?></a>
 					<?php else : ?>
 						<a href="<?php echo esc_url( FCC_Router::url( $nav_key . '_category', 'index' ) ); ?>"><?php echo esc_html( $label ); ?></a>
 					<?php endif; ?>

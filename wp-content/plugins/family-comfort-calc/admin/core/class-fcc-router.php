@@ -13,17 +13,18 @@ class FCC_Router {
 
 	/** @var array<string, string> */
 	private static $page_to_route = array(
-		'family_comfort_calc'          => 'dashboard',
-		'family_comfort_calc_age'      => 'age_category',
-		'family_comfort_calc_interest' => 'interest_category',
-		'family_comfort_calc_direction'=> 'direction_category',
+		'family_comfort_calc'           => 'dashboard',
+		'family_comfort_calc_post'      => 'post',
+		'family_comfort_calc_age'       => 'age_category',
+		'family_comfort_calc_interest'  => 'interest_category',
+		'family_comfort_calc_direction' => 'direction_category',
 	);
 
 	/** @var array<string, string> */
 	private static $route_to_group = array(
-		'age_category'      => 'age',
-		'interest_category' => 'interest',
-		'direction_category'=> 'direction',
+		'age_category'       => 'age',
+		'interest_category'  => 'interest',
+		'direction_category' => 'direction',
 	);
 
 	public static function handle_early_save() {
@@ -103,6 +104,9 @@ class FCC_Router {
 		$action = isset( $_GET['action'] ) ? sanitize_key( wp_unslash( $_GET['action'] ) ) : 'index'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		switch ( $route ) {
+			case 'post':
+				$controller = new FCC_Post_Controller( 'post' );
+				break;
 			case 'age_category':
 			case 'interest_category':
 			case 'direction_category':

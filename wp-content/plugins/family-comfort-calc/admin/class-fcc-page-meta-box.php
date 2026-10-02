@@ -1,6 +1,7 @@
 <?php
 /**
- * Meta box на страницах (page): категории и теги Family Comfort.
+ * Meta box на WP-страницах: город (radio), возраст, интересы, название тега.
+ * Тег уходит на карточку города в Family Comfort (посты плагина).
  *
  * @package family-comfort-calc
  */
@@ -23,13 +24,11 @@ class FCC_Page_Meta_Box {
 	}
 
 	/**
-	 * По умолчанию метабокс свёрнут.
-	 *
 	 * @param array $classes
 	 * @return array
 	 */
 	public function postbox_classes( $classes ) {
-		$closed = get_user_option( 'closedpostboxes_page' );
+		$closed       = get_user_option( 'closedpostboxes_page' );
 		$should_close = ( false === $closed ) || ( is_array( $closed ) && in_array( self::BOX_ID, $closed, true ) );
 
 		if ( $should_close && ! in_array( 'closed', $classes, true ) ) {
@@ -56,129 +55,87 @@ class FCC_Page_Meta_Box {
 	public function render( $post ) {
 		wp_nonce_field( 'fcc_page_meta_save', self::NONCE_KEY );
 
-		$selected_ids = fcc_get_page_category_ids( (int) $post->ID );
-		$groups         = fcc_get_group_types();
-		$tags           = fcc_get_page_tags( (int) $post->ID );
-		$max_tags       = fcc_get_page_tags_max();
-		$image          = fcc_get_page_image( (int) $post->ID );
-		$is_enabled     = fcc_is_page_card_enabled( (int) $post->ID );
+		$selected = fcc_get_wp_page_category_ids( (int) $post->ID );
+		$auto_tag = fcc_get_wp_page_auto_tag( (int) $post->ID );
+		$city_id  = ! empty( $selected['direction'][0] ) ? (int) $selected['direction'][0] : 0;
+		$groups   = fcc_get_group_types();
 
-		echo '<div class="fcc-page-meta-fields">';
+		echo '<div class="fcc-wp-page-meta">';
+		echo '<p class="description">' . esc_html__( 'Выберите город (один), возраст и интересы. Укажите название тега — он появится на карточке этого города в калькуляторе Family Comfort.', 'family-comfort-calc' ) . '</p>';
 
 		foreach ( $groups as $group => $label ) {
-			$field_id = 'fcc-page-' . $group;
-			$selected = isset( $selected_ids[ $group ] ) && is_array( $selected_ids[ $group ] ) ? $selected_ids[ $group ] : array();
+			$field_id = 'fcc-wp-page-' . $group;
 			$options  = fcc_get_categories( $group );
+			$is_city  = ( 'direction' === $group );
+			$picked   = isset( $selected[ $group ] ) ? $selected[ $group ] : array();
 
-			echo '<p class="fcc-page-meta-row fcc-page-meta-row--categories">';
-			echo '<span class="fcc-page-meta-label"><strong>' . esc_html( $label ) . '</strong></span>';
+			echo '<div class="fcc-page-meta-row fcc-page-meta-row--categories">';
+			echo '<p class="fcc-page-meta-label"><strong>' . esc_html( $label ) . '</strong>';
+			if ( $is_city ) {
+				echo ' <span class="description">(' . esc_html__( 'радио — один город', 'family-comfort-calc' ) . ')</span>';
+			}
+			echo '</p>';
 
 			if ( empty( $options ) ) {
-				echo '<span class="description">' . esc_html__( 'Категорий пока нет.', 'family-comfort-calc' ) . '</span>';
-			} else {
-				echo '<div class="fcc-page-meta-checkboxes" id="' . esc_attr( $field_id ) . '-list">';
-				foreach ( $options as $cat ) {
-					$cat_id = (int) $cat->category_id;
-					if ( (int) $cat->status !== 1 && ! in_array( $cat_id, $selected, true ) ) {
-						continue;
-					}
-					$name      = $cat->name ? $cat->name : '#' . $cat_id;
-					$input_id  = $field_id . '-' . $cat_id;
-					$is_checked = in_array( $cat_id, $selected, true );
+				echo '<p class="description">' . esc_html__( 'Категорий пока нет. Добавьте их в Family Comfort.', 'family-comfort-calc' ) . '</p>';
+				echo '</div>';
+				continue;
+			}
 
+			$list_class = $is_city ? 'fcc-page-meta-radios' : 'fcc-page-meta-checkboxes';
+			echo '<div class="' . esc_attr( $list_class ) . '" id="' . esc_attr( $field_id ) . '-list">';
+
+			foreach ( $options as $cat ) {
+				$cat_id = (int) $cat->category_id;
+				$active = $is_city ? ( $city_id === $cat_id ) : in_array( $cat_id, $picked, true );
+
+				if ( (int) $cat->status !== 1 && ! $active ) {
+					continue;
+				}
+
+				$name     = $cat->name ? $cat->name : '#' . $cat_id;
+				$input_id = $field_id . '-' . $cat_id;
+
+				if ( $is_city ) {
+					echo '<label class="fcc-page-meta-radio" for="' . esc_attr( $input_id ) . '">';
+					printf(
+						'<input type="radio" id="%1$s" name="fcc_wp_page_meta[direction]" value="%2$d" %3$s>',
+						esc_attr( $input_id ),
+						$cat_id,
+						checked( $city_id === $cat_id, true, false )
+					);
+					echo '<span>' . esc_html( $name ) . '</span></label>';
+				} else {
 					echo '<label class="fcc-page-meta-checkbox" for="' . esc_attr( $input_id ) . '">';
 					printf(
-						'<input type="checkbox" id="%1$s" name="fcc_page_meta[%2$s][]" value="%3$d" %4$s>',
+						'<input type="checkbox" id="%1$s" name="fcc_wp_page_meta[%2$s][]" value="%3$d" %4$s>',
 						esc_attr( $input_id ),
 						esc_attr( $group ),
 						$cat_id,
-						checked( $is_checked, true, false )
+						checked( $active, true, false )
 					);
-					echo '<span>' . esc_html( $name ) . '</span>';
-					echo '</label>';
+					echo '<span>' . esc_html( $name ) . '</span></label>';
 				}
-				echo '</div>';
-
-				echo '<p class="fcc-page-meta-select-actions">';
-				printf(
-					'<button type="button" class="button button-link-delete fcc-page-meta-clear" data-target="%1$s">%2$s</button>',
-					esc_attr( $field_id . '-list' ),
-					esc_html__( 'Сбросить выбор', 'family-comfort-calc' )
-				);
-				echo '</p>';
 			}
 
-			echo '</p>';
+			echo '</div>';
+			echo '<p class="fcc-page-meta-select-actions">';
+			printf(
+				'<button type="button" class="button button-link-delete fcc-wp-page-meta-clear" data-target="%1$s" data-type="%2$s">%3$s</button>',
+				esc_attr( $field_id . '-list' ),
+				esc_attr( $is_city ? 'radio' : 'checkbox' ),
+				esc_html__( 'Сбросить выбор', 'family-comfort-calc' )
+			);
+			echo '</p></div>';
 		}
 
-		echo '<p class="description fcc-page-meta-categories-hint">' . esc_html__( 'Можно не выбирать ничего или снять выбор кнопкой «Сбросить выбор». Направления — это город на карточке.', 'family-comfort-calc' ) . '</p>';
-
-		echo '<div class="fcc-page-meta-card-settings">';
-		echo '<p class="fcc-page-meta-row"><strong>' . esc_html__( 'Карточка на фронте', 'family-comfort-calc' ) . '</strong></p>';
-
-		echo '<div class="form-group fcc-page-meta-media-field">';
-		echo '<label class="fcc-page-meta-label" for="fcc-page-image">' . esc_html__( 'Фото', 'family-comfort-calc' ) . '</label>';
-		echo '<div class="fcc-page-meta-media-field__controls">';
-		echo '<input type="text" class="regular-text fcc-page-meta-media-input" id="fcc-page-image" name="fcc_page_image" value="' . esc_attr( $image ) . '" placeholder="https://">';
-		echo '<button type="button" class="button fcc-page-meta-media-select">' . esc_html__( 'Выбрать', 'family-comfort-calc' ) . '</button>';
-		echo '<button type="button" class="button fcc-page-meta-media-clear" ' . ( '' === $image ? 'disabled' : '' ) . ' aria-label="' . esc_attr__( 'Удалить фото', 'family-comfort-calc' ) . '">&times;</button>';
-		echo '</div>';
-		echo '<div class="fcc-page-meta-media-preview">';
-		if ( '' !== $image ) {
-			echo '<img src="' . esc_url( $image ) . '" alt="">';
-		}
-		echo '</div>';
-		echo '</div>';
-
-		echo '<p class="fcc-page-meta-row fcc-page-meta-status-row">';
-		echo '<label><input type="checkbox" name="fcc_page_status" value="1" ' . checked( $is_enabled, true, false ) . '> ' . esc_html__( 'Статус: включено', 'family-comfort-calc' ) . '</label>';
-		echo '<span class="description">' . esc_html__( 'Если выключено — страница не попадает в выдачу калькулятора.', 'family-comfort-calc' ) . '</span>';
-		echo '</p>';
-		echo '</div>';
-
-		echo '<div class="fcc-page-tags" data-max="' . esc_attr( (string) $max_tags ) . '">';
-		echo '<p class="fcc-page-meta-row fcc-page-tags__heading"><strong>' . esc_html__( 'Теги', 'family-comfort-calc' ) . '</strong></p>';
-
-		echo '<div class="fcc-page-tags__list" id="fcc-page-tags-list">';
-		foreach ( $tags as $tag ) {
-			$this->render_tag_chip( $tag['label'], $tag['url'] );
-		}
-		echo '</div>';
-
-		echo '<input type="hidden" name="fcc_page_tags_json" id="fcc-page-tags-json" value="' . esc_attr( wp_json_encode( $tags ) ) . '">';
-
-		echo '<div class="fcc-page-tags__add-form" id="fcc-page-tags-add-form" hidden>';
-		echo '<div class="fcc-page-tags__inputs">';
-		echo '<input type="text" class="regular-text fcc-page-tags__input-label" id="fcc-page-tag-label" placeholder="' . esc_attr__( 'Тег', 'family-comfort-calc' ) . '" autocomplete="off">';
-		echo '<input type="url" class="regular-text fcc-page-tags__input-url" id="fcc-page-tag-url" placeholder="' . esc_attr__( 'Ссылка', 'family-comfort-calc' ) . '" autocomplete="off">';
-		echo '<button type="button" class="button button-primary fcc-page-tags__btn-ok" id="fcc-page-tag-ok">' . esc_html__( 'OK', 'family-comfort-calc' ) . '</button>';
-		echo '<button type="button" class="button fcc-page-tags__btn-cancel" id="fcc-page-tag-cancel">' . esc_html__( 'Отмена', 'family-comfort-calc' ) . '</button>';
-		echo '</div>';
-		echo '</div>';
-
-		echo '<p class="fcc-page-tags__actions">';
-		echo '<button type="button" class="button" id="fcc-page-tag-add">' . esc_html__( 'Добавить тег', 'family-comfort-calc' ) . '</button>';
-		echo '<span class="fcc-page-tags__counter" id="fcc-page-tags-counter">' . esc_html( sprintf( /* translators: 1: current count, 2: max count */ __( '%1$d / %2$d', 'family-comfort-calc' ), count( $tags ), $max_tags ) ) . '</span>';
-		echo '</p>';
-
-		echo '<p class="description">' . esc_html( sprintf( /* translators: %d: max tags */ __( 'До %d тегов. У каждого тега — надпись и необязательная ссылка.', 'family-comfort-calc' ), $max_tags ) ) . '</p>';
+		echo '<div class="fcc-page-meta-auto-tag">';
+		echo '<p class="fcc-page-meta-label"><label for="fcc-wp-page-auto-tag"><strong>' . esc_html__( 'Название тега', 'family-comfort-calc' ) . '</strong></label></p>';
+		echo '<input type="text" class="regular-text" id="fcc-wp-page-auto-tag" name="fcc_wp_page_auto_tag" value="' . esc_attr( $auto_tag ) . '" placeholder="' . esc_attr__( 'например: Рейхстаг', 'family-comfort-calc' ) . '" autocomplete="off">';
+		echo '<p class="description">' . esc_html__( 'Ссылка тега = адрес этой страницы. Нужны город + возраст + интересы.', 'family-comfort-calc' ) . '</p>';
 		echo '</div>';
 
 		echo '</div>';
-	}
-
-	/**
-	 * @param string $label
-	 * @param string $url
-	 */
-	private function render_tag_chip( $label, $url = '' ) {
-		echo '<span class="fcc-page-tag" data-label="' . esc_attr( $label ) . '" data-url="' . esc_attr( $url ) . '">';
-		echo '<span class="fcc-page-tag__text">' . esc_html( $label ) . '</span>';
-		if ( '' !== $url ) {
-			echo '<span class="fcc-page-tag__url" title="' . esc_attr( $url ) . '">' . esc_html( $url ) . '</span>';
-		}
-		echo '<button type="button" class="fcc-page-tag__remove" aria-label="' . esc_attr__( 'Удалить тег', 'family-comfort-calc' ) . '">&times;</button>';
-		echo '</span>';
 	}
 
 	/**
@@ -202,17 +159,25 @@ class FCC_Page_Meta_Box {
 			return;
 		}
 
-		$posted = isset( $_POST['fcc_page_meta'] ) && is_array( $_POST['fcc_page_meta'] )
-			? wp_unslash( $_POST['fcc_page_meta'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$posted = isset( $_POST['fcc_wp_page_meta'] ) && is_array( $_POST['fcc_wp_page_meta'] )
+			? wp_unslash( $_POST['fcc_wp_page_meta'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			: array();
 
-		foreach ( fcc_get_page_meta_keys() as $group => $meta_key ) {
+		foreach ( fcc_get_wp_page_meta_keys() as $group => $meta_key ) {
 			$raw_ids = array();
-			if ( isset( $posted[ $group ] ) ) {
+
+			if ( 'direction' === $group ) {
+				if ( isset( $posted['direction'] ) && '' !== (string) $posted['direction'] ) {
+					$raw_ids = array( $posted['direction'] );
+				}
+			} elseif ( isset( $posted[ $group ] ) ) {
 				$raw_ids = is_array( $posted[ $group ] ) ? $posted[ $group ] : array( $posted[ $group ] );
 			}
 
 			$valid_ids = fcc_sanitize_page_category_ids( $group, $raw_ids );
+			if ( 'direction' === $group && count( $valid_ids ) > 1 ) {
+				$valid_ids = array( (int) $valid_ids[0] );
+			}
 
 			if ( ! empty( $valid_ids ) ) {
 				update_post_meta( $post_id, $meta_key, $valid_ids );
@@ -221,25 +186,15 @@ class FCC_Page_Meta_Box {
 			}
 		}
 
-		$tags_raw = isset( $_POST['fcc_page_tags_json'] ) ? wp_unslash( $_POST['fcc_page_tags_json'] ) : '[]'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$decoded  = json_decode( (string) $tags_raw, true );
-		$tags     = fcc_sanitize_page_tags( is_array( $decoded ) ? $decoded : array() );
+		$auto_tag = isset( $_POST['fcc_wp_page_auto_tag'] )
+			? sanitize_text_field( wp_unslash( (string) $_POST['fcc_wp_page_auto_tag'] ) )
+			: '';
 
-		if ( ! empty( $tags ) ) {
-			update_post_meta( $post_id, fcc_get_page_tags_meta_key(), $tags );
+		if ( '' !== $auto_tag ) {
+			update_post_meta( $post_id, fcc_get_wp_page_auto_tag_meta_key(), $auto_tag );
 		} else {
-			delete_post_meta( $post_id, fcc_get_page_tags_meta_key() );
+			delete_post_meta( $post_id, fcc_get_wp_page_auto_tag_meta_key() );
 		}
-
-		$image = isset( $_POST['fcc_page_image'] ) ? esc_url_raw( wp_unslash( (string) $_POST['fcc_page_image'] ) ) : '';
-		if ( '' !== $image ) {
-			update_post_meta( $post_id, fcc_get_page_image_meta_key(), $image );
-		} else {
-			delete_post_meta( $post_id, fcc_get_page_image_meta_key() );
-		}
-
-		$status = isset( $_POST['fcc_page_status'] ) ? 1 : 0;
-		update_post_meta( $post_id, fcc_get_page_status_meta_key(), $status );
 	}
 
 	/**
@@ -255,43 +210,31 @@ class FCC_Page_Meta_Box {
 			return;
 		}
 
-		wp_enqueue_media();
-
 		wp_enqueue_style(
-			'fcc-page-meta',
+			'fcc-wp-page-meta',
 			FCC_URL . 'assets/css/admin/page-meta.css',
 			array(),
 			FCC_VERSION
 		);
 
-		$deps = array( 'jquery', 'postbox' );
-		if ( wp_script_is( 'my-acf-ai-importer-script', 'registered' ) ) {
-			$deps[] = 'my-acf-ai-importer-script';
-		}
-
-		$closed_boxes = get_user_option( 'closedpostboxes_page' );
-		$is_closed    = ( false === $closed_boxes ) || ( is_array( $closed_boxes ) && in_array( self::BOX_ID, $closed_boxes, true ) );
-
 		wp_enqueue_script(
-			'fcc-page-meta',
-			FCC_URL . 'assets/js/admin/page-meta.js',
-			$deps,
+			'fcc-wp-page-meta',
+			FCC_URL . 'assets/js/admin/wp-page-meta.js',
+			array( 'jquery', 'postbox' ),
 			FCC_VERSION,
 			true
 		);
 
+		$closed_boxes = get_user_option( 'closedpostboxes_page' );
+		$is_closed    = ( false === $closed_boxes ) || ( is_array( $closed_boxes ) && in_array( self::BOX_ID, $closed_boxes, true ) );
+
 		wp_localize_script(
-			'fcc-page-meta',
-			'fccPageMeta',
+			'fcc-wp-page-meta',
+			'fccWpPageMeta',
 			array(
-				'boxId'        => self::BOX_ID,
-				'isClosed'     => $is_closed,
-				'toggleLabel'  => __( 'Свернуть/развернуть Family Comfort', 'family-comfort-calc' ),
-				'maxTags'      => fcc_get_page_tags_max(),
-				'emptyLabel'   => __( 'Введите текст тега.', 'family-comfort-calc' ),
-				'limitReached' => __( 'Можно добавить не больше 10 тегов.', 'family-comfort-calc' ),
-				'mediaTitle'   => __( 'Выберите фото', 'family-comfort-calc' ),
-				'mediaButton'  => __( 'Использовать', 'family-comfort-calc' ),
+				'boxId'       => self::BOX_ID,
+				'isClosed'    => $is_closed,
+				'toggleLabel' => __( 'Свернуть/развернуть Family Comfort', 'family-comfort-calc' ),
 			)
 		);
 	}

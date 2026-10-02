@@ -619,10 +619,11 @@ font-size: 23px;
 /* Таблица цен 2: title | price | details */
 .table-price--v2 .price-row {
     display: grid !important;
-    grid-template-columns: minmax(0, 1.15fr) minmax(89px, 0.6fr) 300px !important;
-    column-gap: 18px;
+    grid-template-columns: 300px 460px 300px !important;
+    column-gap: 0px;
     align-items: center;
     height: auto !important;
+    justify-content: space-between;
 }
 
 .table-price--v2 .price-row-details {
@@ -675,7 +676,7 @@ font-size: 23px;
 
 .price-row-right {
     text-align: right;
-    white-space: nowrap;
+    white-space: wrap;
     font-size: 29px;
     font-weight: 800;
     color: #0B2744;

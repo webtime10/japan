@@ -47,7 +47,7 @@ class FCC_Shortcode {
 		$age_options      = fcc_get_select_options( 'age' );
 		$interest_options = fcc_get_select_options( 'interest' );
 		$cards            = fcc_get_direction_cards_data();
-		$has_data         = ! empty( $age_options ) && ! empty( $interest_options );
+		$has_data         = ! empty( $cards ) && ! empty( $age_options ) && ! empty( $interest_options );
 
 		ob_start();
 		include FCC_PATH . 'front/template.php';

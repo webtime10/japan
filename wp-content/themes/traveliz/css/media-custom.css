@@ -1597,7 +1597,7 @@ html[dir="rtl"] .now-carousel-items{
     }
 .main-title {
 
-    margin-bottom: 35px;
+    padding-bottom: 7px !important;
 }
     .landmark {
         padding-top: 47px;
@@ -3208,12 +3208,14 @@ font-size: 16px;
         margin-left: 6px;
     }
     .day-header {
-    display: grid;
-    grid-template-columns: 79px 1fr;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 35px;
-}
+        display: flex;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 35px;
+        justify-content: center;
+    }
 
  }
 @media (max-width: 591px) { 
@@ -4908,7 +4910,7 @@ display: none;
 @media (max-width: 411px) { 
     .active-otd-banner-content p {
         max-width: 830px;
-        margin: 8px 33px 0px 98px;
+        margin: 8px 33px 6px 98px;
         font-size: 15px;
         font-weight: 600;
         color: white;

@@ -56,6 +56,36 @@ function fcc_active_bd() {
 		KEY language_id (language_id)
 	) $charset_collate;"
 	);
+
+	dbDelta(
+		"CREATE TABLE {$prefix}post (
+		post_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+		direction_id bigint(20) unsigned NOT NULL DEFAULT 0,
+		image varchar(500) NOT NULL DEFAULT '',
+		url varchar(500) NOT NULL DEFAULT '',
+		places longtext NOT NULL,
+		age_ids longtext NOT NULL,
+		interest_ids longtext NOT NULL,
+		sort_order int(11) NOT NULL DEFAULT 0,
+		status tinyint(1) NOT NULL DEFAULT 1,
+		date_added datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		date_modified datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		PRIMARY KEY  (post_id),
+		KEY direction_id (direction_id),
+		KEY status (status)
+	) $charset_collate;"
+	);
+
+	dbDelta(
+		"CREATE TABLE {$prefix}post_description (
+		post_id bigint(20) unsigned NOT NULL,
+		language_id bigint(20) unsigned NOT NULL,
+		name varchar(255) NOT NULL DEFAULT '',
+		description longtext NOT NULL,
+		PRIMARY KEY  (post_id,language_id),
+		KEY language_id (language_id)
+	) $charset_collate;"
+	);
 }
 
 /**

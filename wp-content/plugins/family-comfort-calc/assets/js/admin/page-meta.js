@@ -154,41 +154,50 @@
 		return $chip;
 	}
 
-	function resetAddForm() {
-		$('#fcc-page-tag-label').val('');
-		$('#fcc-page-tag-url').val('');
-		$('#fcc-page-tags-add-form').prop('hidden', true);
-	}
-
-	function showAddForm() {
-		if (getTagsFromDom().length >= maxTags) {
-			window.alert(cfg.limitReached || 'Можно добавить не больше 10 тегов.');
-			return;
-		}
-		$('#fcc-page-tags-add-form').prop('hidden', false);
-		$('#fcc-page-tag-label').trigger('focus');
-	}
-
-	function addTag() {
-		var label = $.trim($('#fcc-page-tag-label').val());
-		var url = $.trim($('#fcc-page-tag-url').val());
-		var tags = getTagsFromDom();
-
-		if (!label) {
-			window.alert(cfg.emptyLabel || 'Введите текст тега.');
-			$('#fcc-page-tag-label').trigger('focus');
+	function initTags() {
+		var $wrap = $('.fcc-page-tags');
+		if (!$wrap.length) {
 			return;
 		}
 
-		if (tags.length >= maxTags) {
-			window.alert(cfg.limitReached || 'Можно добавить не больше 10 тегов.');
-			return;
-		}
-
-		$('#fcc-page-tags-list').append(buildTagChip({ label: label, url: url }));
 		syncTagsHidden();
-		resetAddForm();
+
+		$(document).on('click', '.fcc-page-tag__remove', function (e) {
+			e.preventDefault();
+			$(this).closest('.fcc-page-tag').remove();
+			syncTagsHidden();
+		});
 	}
+
+	/**
+	 * Expose helpers for attraction page picker.
+	 */
+	window.fccTagsApi = {
+		getTags: getTagsFromDom,
+		sync: syncTagsHidden,
+		add: function (tag) {
+			var tags = getTagsFromDom();
+			if (tags.length >= maxTags) {
+				window.alert(cfg.limitReached || 'Можно добавить не больше 10 тегов.');
+				return false;
+			}
+			var label = $.trim((tag && tag.label) || '');
+			var url = $.trim((tag && tag.url) || '');
+			if (!label) {
+				return false;
+			}
+			var dup = tags.some(function (t) {
+				return t.label === label && t.url === url;
+			});
+			if (dup) {
+				return false;
+			}
+			$('#fcc-page-tags-list').append(buildTagChip({ label: label, url: url }));
+			syncTagsHidden();
+			return true;
+		},
+		maxTags: maxTags
+	};
 
 	function initMediaField() {
 		$(document).on('click', '.fcc-page-meta-media-select', function (e) {
@@ -242,47 +251,6 @@
 				return;
 			}
 			$('#' + targetId + ' input[type="checkbox"]').prop('checked', false);
-		});
-	}
-
-	function initTags() {
-		var $wrap = $('.fcc-page-tags');
-		if (!$wrap.length) {
-			return;
-		}
-
-		syncTagsHidden();
-
-		$(document).on('click', '#fcc-page-tag-add', function (e) {
-			e.preventDefault();
-			showAddForm();
-		});
-
-		$(document).on('click', '#fcc-page-tag-ok', function (e) {
-			e.preventDefault();
-			addTag();
-		});
-
-		$(document).on('click', '#fcc-page-tag-cancel', function (e) {
-			e.preventDefault();
-			resetAddForm();
-		});
-
-		$(document).on('click', '.fcc-page-tag__remove', function (e) {
-			e.preventDefault();
-			$(this).closest('.fcc-page-tag').remove();
-			syncTagsHidden();
-		});
-
-		$(document).on('keydown', '#fcc-page-tag-label, #fcc-page-tag-url', function (e) {
-			if (e.key === 'Enter') {
-				e.preventDefault();
-				addTag();
-			}
-			if (e.key === 'Escape') {
-				e.preventDefault();
-				resetAddForm();
-			}
 		});
 	}
 
