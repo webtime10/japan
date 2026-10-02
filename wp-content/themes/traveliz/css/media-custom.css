@@ -574,7 +574,7 @@ width: 100%;
 }
 .table-price--v2 .price-row {
         display: grid !important;
-        grid-template-columns: minmax(0, 1.15fr) minmax(89px, 0.6fr) 300px !important;
+        grid-template-columns: 1fr !important;
         height: auto !important;
 }
 .day-badge {
