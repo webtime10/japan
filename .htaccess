@@ -16,9 +16,11 @@ RewriteCond %{HTTP_USER_AGENT} (binlar|casper|cmsworldmap|comodo|diavol|dotbot|e
 RewriteRule ^ - [F,L]
 
 # 3. Блокировка прямых POST-запросов на вход и комментарии (без Referer)
+# Локально разрешаем japan.loc, на проде — japan-trip.co.il
 RewriteCond %{REQUEST_METHOD} POST
 RewriteCond %{REQUEST_URI} ^(.*)?(wp-login\.php|wp-comments-post\.php)(.*)$ [NC]
 RewriteCond %{HTTP_REFERER} !^https?://(.*)?japan-trip\.co\.il [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(.*)?japan\.loc [NC]
 RewriteRule ^ - [F,L]
 </IfModule>
 <IfModule mod_rewrite.c>

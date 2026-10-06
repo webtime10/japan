@@ -22,16 +22,16 @@ define('FS_METHOD', 'direct');
 //define('WP_TEMP_DIR', dirname(__FILE__) . '/wp-content/upgrade');
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', "webtime_dev_japan" );
+define( 'DB_NAME', "japan2" );
 
 /** Database username */
-define( 'DB_USER', "webtime_dev_japan" );
+define( 'DB_USER', "root" );
 
 /** Database password */
-define( 'DB_PASSWORD', "n2s};ZFRq9qHoqV$" );
+define( 'DB_PASSWORD', "123" );
 
 /** Database hostname */
-define( 'DB_HOST', "localhost" );
+define( 'DB_HOST', "127.0.1.29" );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
@@ -103,10 +103,7 @@ define('LARAVEL_API_KEY', '123456sei091_');
 define('AI_CALCULATOR_LARA_API_KEY', '123456sei091_2');
 
 /* That's all, stop editing! Happy publishing. */
-$carto_config_file = __DIR__ . '/wp-content/carto-config.php';
-if ( is_readable( $carto_config_file ) ) {
-    require_once $carto_config_file;
-}
+
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );

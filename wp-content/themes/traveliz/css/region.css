@@ -687,6 +687,7 @@ font-size: 23px;
     font-weight: 600;
     color: #000;
     margin-inline-start: 6px;
+    display: block;
 }
 
 /* Нижний ряд из трёх карточек */
