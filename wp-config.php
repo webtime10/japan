@@ -22,7 +22,7 @@ define('FS_METHOD', 'direct');
 //define('WP_TEMP_DIR', dirname(__FILE__) . '/wp-content/upgrade');
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', "japan2" );
+define( 'DB_NAME', "japan3" );
 
 /** Database username */
 define( 'DB_USER', "root" );

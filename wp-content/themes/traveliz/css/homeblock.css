@@ -365,7 +365,7 @@ font-weight: 500;
 }
 .into-route{
     display: grid;
-    grid-template-columns: 454px 1fr;
+    grid-template-columns: 454px minmax(0, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     padding-bottom: 32px;

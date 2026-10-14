@@ -11,13 +11,111 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! function_exists( 'traveliz_schema_clean_text' ) ) {
 	/**
-	 * Convert HTML/text to a clean single-line string.
+	 * Convert HTML/text to a clean single-line string for Schema.org.
+	 * Also strips leaked WordPress attachment / media metadata blobs.
 	 */
 	function traveliz_schema_clean_text( $text ) {
 		$value = wp_strip_all_tags( (string) $text, true );
 		$value = html_entity_decode( $value, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+
+		// Drop WP attachment / media-library dumps (field dumps, post_status, file trails).
+		$value = preg_replace(
+			'/\b(?:image|file|sizes|width|height|filesize|mime_type|post_mime_type|post_status|post_parent|post_type|guid|ID)\s*[:=]\s*\S+/iu',
+			' ',
+			$value
+		);
+		$value = preg_replace( '/\b(?:inherit|auto-draft)\b/iu', ' ', $value );
+		// e.g. "Shinjuku-14_1.webp 89686 1200 800 2026-08-17 12:46:13"
+		$value = preg_replace(
+			'/\b[\w.-]+\.(?:jpe?g|png|gif|webp|svg|avif)\b(?:\s+(?!\d{4}-\d{2}-\d{2})\d+){1,20}(?:\s+\d{4}-\d{2}-\d{2}(?:\s+\d{2}:\d{2}:\d{2})?)?/iu',
+			' ',
+			$value
+		);
 		$value = preg_replace( '/\s+/u', ' ', $value );
+
 		return trim( (string) $value );
+	}
+}
+
+if ( ! function_exists( 'traveliz_schema_parse_offer_price' ) ) {
+	/**
+	 * Parse a human price string into Schema.org Offer fields.
+	 * Uses the minimum number from a range (e.g. "₪170–280" → 170 + ILS).
+	 *
+	 * @param string $raw Price label from ACF.
+	 * @return array{price:?string,priceCurrency:?string,description:?string}
+	 */
+	function traveliz_schema_parse_offer_price( $raw ) {
+		$raw = traveliz_schema_clean_text( $raw );
+		$out = array(
+			'price'         => null,
+			'priceCurrency' => null,
+			'description'   => $raw !== '' ? $raw : null,
+		);
+		if ( $raw === '' ) {
+			return $out;
+		}
+
+		$currency = null;
+		if ( preg_match( '/₪|ILS\b|NIS\b/iu', $raw ) ) {
+			$currency = 'ILS';
+		} elseif ( preg_match( '/\$|USD\b/iu', $raw ) ) {
+			$currency = 'USD';
+		} elseif ( preg_match( '/€|EUR\b/iu', $raw ) ) {
+			$currency = 'EUR';
+		} elseif ( preg_match( '/£|GBP\b/iu', $raw ) ) {
+			$currency = 'GBP';
+		} elseif ( preg_match( '/¥|JPY\b/iu', $raw ) ) {
+			$currency = 'JPY';
+		} elseif ( preg_match( '/CHF\b/iu', $raw ) ) {
+			$currency = 'CHF';
+		}
+
+		$numbers = array();
+		if ( preg_match_all( '/\d+(?:[.,]\d+)?/u', $raw, $m ) ) {
+			foreach ( $m[0] as $chunk ) {
+				$n = (float) str_replace( ',', '.', $chunk );
+				if ( $n > 0 ) {
+					$numbers[] = $n;
+				}
+			}
+		}
+
+		if ( $numbers !== [] ) {
+			$min = min( $numbers );
+			$out['price'] = ( floor( $min ) == $min )
+				? (string) (int) $min
+				: rtrim( rtrim( number_format( $min, 2, '.', '' ), '0' ), '.' );
+		}
+		if ( $currency ) {
+			$out['priceCurrency'] = $currency;
+		}
+
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'traveliz_schema_apply_offer_price' ) ) {
+	/**
+	 * Merge parsed price into an Offer node; keep human range in description.
+	 *
+	 * @param array  $offer Offer node (by ref).
+	 * @param string $raw   Raw price string.
+	 */
+	function traveliz_schema_apply_offer_price( array &$offer, $raw ) {
+		$parsed = traveliz_schema_parse_offer_price( $raw );
+		if ( $parsed['price'] !== null ) {
+			$offer['price'] = $parsed['price'];
+		}
+		if ( $parsed['priceCurrency'] !== null ) {
+			$offer['priceCurrency'] = $parsed['priceCurrency'];
+		}
+		if ( $parsed['description'] !== null ) {
+			$existing = isset( $offer['description'] ) ? traveliz_schema_clean_text( $offer['description'] ) : '';
+			$offer['description'] = $existing !== ''
+				? $existing . ' · ' . $parsed['description']
+				: $parsed['description'];
+		}
 	}
 }
 

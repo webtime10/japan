@@ -379,14 +379,29 @@ width: 49px;
     transform: scale(1.1);
 	box-shadow: 0 0 0 3px rgba(98, 110, 121, 0.3);
 }
+.route-right {
+   min-width: 0;
+   width: 100%;
+}
+
+/* На page.php блок может быть внутри .flexibol-block — не сплющивать 3D */
+.flexibol-block:has(section.route),
+.flexibol-block:has(.carousel_d3) {
+   overflow: visible;
+   transform: none;
+   filter: none;
+   perspective: none;
+}
+
 .carousel_d3  {
     max-width: 1080px;
     margin: 30px auto;
     width: 100%;
+    min-width: 0;
     perspective: 2000px;
     perspective-origin: center center;
     position: relative;
-    
+    isolation: isolate;
 }
 
 .carousel-wrapper_d3 {
@@ -399,6 +414,8 @@ width: 49px;
     justify-content: center;
     touch-action: pan-y;
     margin-top: 0px;
+    width: 100%;
+    min-width: 0;
 }
 
 .carousel-items_d3 {
@@ -415,11 +432,10 @@ width: 49px;
    left: 47%;
    top: 50%;
    transform-origin: center center;
-   transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
    cursor: pointer;
    z-index: 1;
    backface-visibility: hidden;
-   will-change: transform;
 }
 .zakaz{
     background: linear-gradient(254.44deg, #F3D17B 10.01%, #FFECB4 47.46%, #F3D17B 87.94%);
@@ -447,11 +463,17 @@ width: 49px;
 }
 
 /* 3D positioning for cards - enhanced overlapping effect */
+.carousel-block_d3.prev,
+.carousel-block_d3.active,
+.carousel-block_d3.next {
+   will-change: transform;
+   visibility: visible;
+}
+
 .carousel-block_d3.prev {
-   transform: translate(-50%, -50%) translateX(-180px) translateZ(-200px) rotateY(20deg) scale(0.75);
-   opacity: 0.8;
-   z-index: 1;
-   filter: blur(0);
+   transform: translate(-50%, -50%) translateX(-140px) translateZ(-200px) rotateY(18deg) scale(0.72);
+   opacity: 0.75;
+   z-index: 2;
    pointer-events: none;
 }
 
@@ -459,7 +481,6 @@ width: 49px;
    transform: translate(-50%, -50%) translateZ(50px) rotateY(0deg) scale(1);
    opacity: 1;
    z-index: 3;
-   filter: blur(0);
    pointer-events: auto;
 }
 
@@ -472,18 +493,52 @@ width: 49px;
 }
 
 .carousel-block_d3.next {
-   transform: translate(-50%, -50%) translateX(180px) translateZ(-200px) rotateY(-20deg) scale(0.75);
-   opacity: 0.8;
-   z-index: 1;
-   filter: blur(0);
+   transform: translate(-50%, -50%) translateX(140px) translateZ(-200px) rotateY(-18deg) scale(0.72);
+   opacity: 0.75;
+   z-index: 2;
    pointer-events: none;
 }
 
+/* Скрытые слайды: без z-index:-1 и без will-change — иначе при >17 ломается 3D-сцена */
 .carousel-block_d3.hidden {
-   transform: translate(-50%, -50%) translateX(0) translateZ(-300px) rotateY(0deg) scale(0.7);
+   transform: translate(-50%, -50%);
    opacity: 0;
-   z-index: -1;
+   z-index: 0;
+   visibility: hidden;
    pointer-events: none;
+   will-change: auto;
+   transition: none;
+}
+
+.carousel-dots_d3 {
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 8px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 5px;
+   max-width: 100%;
+   margin: 0;
+   padding: 0 12px;
+   box-sizing: border-box;
+   z-index: 4;
+   pointer-events: none;
+}
+
+.carousel-dot_d3 {
+   width: 7px;
+   height: 7px;
+   border-radius: 50%;
+   background: rgba(255, 255, 255, 0.4);
+   flex: 0 0 auto;
+   pointer-events: auto;
+   cursor: pointer;
+}
+
+.carousel-dot_d3.active_d3 {
+   background: rgba(255, 255, 255, 0.95);
 }
 
 /*********** BUTTONS ***********/

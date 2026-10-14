@@ -965,6 +965,7 @@ $('.wrap-btn-menu-wotasap').toggleClass('active');
 // faq
        const wrapper = document.querySelector('#faq-wrapper');
 
+        if (wrapper) {
         wrapper.addEventListener('click', function(event) {
             const currentItem = event.target.closest('.faq-item');
             if (!currentItem) return;
@@ -983,7 +984,7 @@ $('.wrap-btn-menu-wotasap').toggleClass('active');
             const isActive = currentItem.classList.toggle('active');
       
         });
-		
+        }
 
 
 
@@ -1020,25 +1021,29 @@ function setCurrentSlide(carousel, slide) {
 // Обновление позиций карточек в 3D пространстве
 function update3DPositions(carousel) {
 	const carouselItems = carousel.querySelector('.carousel-items_d3');
+	if (!carouselItems) {
+		return;
+	}
 	const blocks = Array.from(carouselItems.querySelectorAll('.carousel-block_d3'));
 	const totalBlocks = blocks.length;
+	if (!totalBlocks) {
+		return;
+	}
 	const currentSlide = getCurrentSlide(carousel);
-	
+	// floor — чтобы при чётном числе слайдов (18+) кольцо считалось стабильно
+	const half = Math.floor(totalBlocks / 2);
+
 	blocks.forEach(function(block, index) {
-		// Удаляем все классы позиционирования
 		block.classList.remove('prev', 'active', 'next', 'hidden');
-		
-		// Вычисляем относительную позицию от текущего слайда
+
 		let relativePos = index - currentSlide;
-		
-		// Обрабатываем циклический переход
-		if (relativePos > totalBlocks / 2) {
-			relativePos = relativePos - totalBlocks;
-		} else if (relativePos < -totalBlocks / 2) {
-			relativePos = relativePos + totalBlocks;
+		if (relativePos > half) {
+			relativePos -= totalBlocks;
+		} else if (relativePos < -half) {
+			relativePos += totalBlocks;
 		}
-		
-		// Присваиваем классы в зависимости от позиции
+
+		// Всегда три видимых карточки в 3D; остальные только класс hidden (без display:none)
 		if (relativePos === -1) {
 			block.classList.add('prev');
 		} else if (relativePos === 0) {
@@ -1115,13 +1120,18 @@ function updateDots(carousel) {
 function initDots(carousel) {
 	const totalBlocks = carousel.querySelectorAll('.carousel-block_d3').length;
 	const dotsContainer = carousel.querySelector('.carousel-dots_d3');
-	dotsContainer.innerHTML = '';
-	
+
 	// Инициализируем текущий слайд, если еще не установлен
 	if (!carousel.hasAttribute('data-current-slide')) {
 		setCurrentSlide(carousel, 0);
 	}
-	
+
+	if (!dotsContainer) {
+		return;
+	}
+
+	dotsContainer.innerHTML = '';
+
 	for (let i = 0; i < totalBlocks; i++) {
 		const dot = document.createElement('span');
 		dot.className = 'carousel-dot_d3';
@@ -1132,19 +1142,44 @@ function initDots(carousel) {
 		});
 		dotsContainer.appendChild(dot);
 	}
-	
+
 	// Устанавливаем первую точку как активную
 	updateDots(carousel);
 }
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-	// Инициализация точек и 3D позиций для всех каруселей
-	const carousels = document.querySelectorAll('.carousel_d3');
-	carousels.forEach(function(carousel) {
+function initCarouselD3(carousel) {
+	if (!carousel || carousel.dataset.d3Ready === '1') {
+		return;
+	}
+	carousel.dataset.d3Ready = '1';
+	try {
 		initDots(carousel);
-		update3DPositions(carousel);
+	} catch (e) {}
+	update3DPositions(carousel);
+	try {
 		initTouchEvents(carousel);
+	} catch (e) {}
+}
+
+function initAllCarouselsD3() {
+	document.querySelectorAll('.carousel_d3').forEach(initCarouselD3);
+}
+
+// Инициализация при загрузке (скрипт в footer — DOM уже может быть ready)
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', initAllCarouselsD3);
+} else {
+	initAllCarouselsD3();
+}
+window.addEventListener('load', function() {
+	document.querySelectorAll('.carousel_d3').forEach(function(carousel) {
+		// Если классы 3D так и не проставились — переинициализация
+		if (!carousel.querySelector('.carousel-block_d3.active')) {
+			carousel.dataset.d3Ready = '';
+			initCarouselD3(carousel);
+		} else {
+			update3DPositions(carousel);
+		}
 	});
 });
 
@@ -1212,6 +1247,9 @@ var offset = 300,
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', function() {
+	if (!back_to_top) {
+		return;
+	}
 	//hide or show the "back to top" link
 	window.addEventListener('scroll', function(){
 		var scrollTop = window.pageYOffset || document.documentElement.scrollTop;

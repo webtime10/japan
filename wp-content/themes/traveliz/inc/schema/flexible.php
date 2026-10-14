@@ -773,7 +773,7 @@ function traveliz_schema_process_row_price_table( array $row, $page_url, $sectio
 			$offer['description'] = $night;
 		}
 		if ( $p !== '' ) {
-			$offer['price'] = $p;
+			traveliz_schema_apply_offer_price( $offer, $p );
 		}
 		$item_nodes[]  = $offer;
 		$offers_refs[] = array( '@id' => $offer_id );
@@ -829,7 +829,7 @@ function traveliz_schema_process_row_price_table_2( array $row, $page_url, $sect
 			$offer['description'] = $details;
 		}
 		if ( $p !== '' ) {
-			$offer['price'] = $p;
+			traveliz_schema_apply_offer_price( $offer, $p );
 		}
 		$item_nodes[]  = $offer;
 		$offers_refs[] = array( '@id' => $offer_id );

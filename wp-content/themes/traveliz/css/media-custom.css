@@ -2053,14 +2053,15 @@ html[dir="rtl"] .into-2-bas-swiss .carousel-block_m span {
         left: 47%;
         top: 50%;
         transform-origin: center center;
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         z-index: 1;
         backface-visibility: hidden;
-        will-change: transform;
 }
 .carousel_d3 {
         margin: 0px auto 0 0px;
+        min-width: 0;
+        isolation: isolate;
     }
 .carousel-wrapper_d3 {
     margin: 10px 0;
@@ -2072,6 +2073,8 @@ html[dir="rtl"] .into-2-bas-swiss .carousel-block_m span {
     justify-content: center;
     touch-action: pan-y;
     margin-top: 0px;
+    width: 100%;
+    min-width: 0;
 }
 .carousel-button-left_d3, .carousel-button-right_d3 {
     position: absolute;
