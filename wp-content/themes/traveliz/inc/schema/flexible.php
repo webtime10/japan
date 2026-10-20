@@ -289,6 +289,17 @@ function traveliz_schema_process_row_tourist_reviews( array $row, $page_url, $se
 		return null;
 	}
 
+	$page_name = traveliz_schema_clean_text( get_the_title() );
+	if ( $page_name === '' ) {
+		$page_name = $page_url;
+	}
+	$item_reviewed = array(
+		'@type' => 'WebPage',
+		'@id'   => $page_url,
+		'name'  => $page_name,
+		'url'   => $page_url,
+	);
+
 	$item_nodes = array();
 	$pos        = 0;
 	foreach ( $items_raw as $it ) {
@@ -303,10 +314,11 @@ function traveliz_schema_process_row_tourist_reviews( array $row, $page_url, $se
 		++$pos;
 		$rev_id = $page_url . '#review-' . $section_index . '-' . $pos;
 		$review = array(
-			'@type'        => 'Review',
-			'@id'          => $rev_id,
-			'reviewBody'   => $body,
-			'reviewRating' => array(
+			'@type'         => 'Review',
+			'@id'           => $rev_id,
+			'itemReviewed'  => $item_reviewed,
+			'reviewBody'    => $body,
+			'reviewRating'  => array(
 				'@type'       => 'Rating',
 				'ratingValue' => 5,
 				'bestRating'  => 5,
