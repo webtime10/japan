@@ -102,7 +102,7 @@ if ( ! function_exists( 'traveliz_schema_process_flexible_layout' ) ) {
  * @return array|array<int, array>|null
  */
 function traveliz_schema_from_flexible_row( $layout, array $row ) {
-	$page_url      = function_exists( 'get_permalink' ) ? get_permalink() : '';	$section_index = 1;
+	$page_url      = function_exists( 'get_permalink' ) ? traveliz_schema_canonical_url( get_permalink() ) : '';	$section_index = 1;
 	if ( $page_url === false || $page_url === '' ) {
 		return null;
 	}
@@ -289,6 +289,18 @@ function traveliz_schema_process_row_tourist_reviews( array $row, $page_url, $se
 		return null;
 	}
 
+	$reviewed_url = traveliz_schema_canonical_url( $page_url );
+	$page_name    = traveliz_schema_clean_text( get_the_title() );
+	if ( $page_name === '' ) {
+		$page_name = $reviewed_url;
+	}
+	$item_reviewed = array(
+		'@type' => 'LocalBusiness',
+		'@id'   => $reviewed_url,
+		'name'  => $page_name,
+		'url'   => $reviewed_url,
+	);
+
 	$item_nodes = array();
 	$pos        = 0;
 	foreach ( $items_raw as $it ) {
@@ -301,10 +313,11 @@ function traveliz_schema_process_row_tourist_reviews( array $row, $page_url, $se
 			continue;
 		}
 		++$pos;
-		$rev_id = $page_url . '#review-' . $section_index . '-' . $pos;
+		$rev_id = $reviewed_url . '#review-' . $section_index . '-' . $pos;
 		$review = array(
 			'@type'        => 'Review',
 			'@id'          => $rev_id,
+			'itemReviewed' => $item_reviewed,
 			'reviewBody'   => $body,
 			'reviewRating' => array(
 				'@type'       => 'Rating',
@@ -321,7 +334,7 @@ function traveliz_schema_process_row_tourist_reviews( array $row, $page_url, $se
 		$item_nodes[] = $review;
 	}
 
-	$list_id = $page_url . '#reviews-list-' . $section_index;
+	$list_id = $reviewed_url . '#reviews-list-' . $section_index;
 	$name    = $block_title !== '' ? $block_title : 'Tourist reviews';
 	if ( ! traveliz_schema_graph_append_item_list_with_nodes( $list_id, $name, $item_nodes, $graph, null ) ) {
 		return null;
@@ -1139,7 +1152,7 @@ if ( ! function_exists( 'traveliz_schema_collect_flexible_blocks' ) ) {
 		if ( ! $post_id ) {
 			return array();
 		}
-		$page_url = get_permalink( $post_id );
+		$page_url = traveliz_schema_canonical_url( get_permalink( $post_id ) );
 		if ( ! $page_url ) {
 			return array();
 		}

@@ -62,7 +62,7 @@ if ( ! function_exists( 'traveliz_schema_generate_graph' ) ) {
 			$post = get_post( $post_id );
 		}
 
-		$page_url = get_permalink( $post_id );
+		$page_url = traveliz_schema_canonical_url( get_permalink( $post_id ) );
 		if ( ! $page_url ) {
 			return null;
 		}

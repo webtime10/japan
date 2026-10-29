@@ -37,6 +37,53 @@ if ( ! function_exists( 'traveliz_schema_clean_text' ) ) {
 	}
 }
 
+if ( ! function_exists( 'traveliz_schema_canonical_url' ) ) {
+	/**
+	 * Absolute URL with non-ASCII path/fragment percent-encoded (UTF-8).
+	 * Safe to call on an already encoded permalink.
+	 *
+	 * @param string $url Permalink or schema @id.
+	 * @return string
+	 */
+	function traveliz_schema_canonical_url( $url ) {
+		$url = trim( (string) $url );
+		if ( $url === '' ) {
+			return '';
+		}
+
+		$parts = wp_parse_url( $url );
+		if ( ! is_array( $parts ) || empty( $parts['scheme'] ) || empty( $parts['host'] ) ) {
+			return esc_url_raw( $url );
+		}
+
+		$path     = isset( $parts['path'] ) ? (string) $parts['path'] : '';
+		$segments = explode( '/', $path );
+		$encoded  = array();
+		foreach ( $segments as $segment ) {
+			if ( $segment === '' ) {
+				$encoded[] = '';
+				continue;
+			}
+			$encoded[] = rawurlencode( rawurldecode( $segment ) );
+		}
+
+		$built = $parts['scheme'] . '://' . $parts['host'];
+		if ( ! empty( $parts['port'] ) ) {
+			$built .= ':' . (int) $parts['port'];
+		}
+		$built .= implode( '/', $encoded );
+
+		if ( isset( $parts['query'] ) && $parts['query'] !== '' ) {
+			$built .= '?' . $parts['query'];
+		}
+		if ( isset( $parts['fragment'] ) && $parts['fragment'] !== '' ) {
+			$built .= '#' . rawurlencode( rawurldecode( (string) $parts['fragment'] ) );
+		}
+
+		return esc_url_raw( $built );
+	}
+}
+
 if ( ! function_exists( 'traveliz_schema_parse_offer_price' ) ) {
 	/**
 	 * Parse a human price string into Schema.org Offer fields.
